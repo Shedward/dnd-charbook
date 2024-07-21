@@ -1,5 +1,6 @@
-#import "../dnd/dnd.typ": contentPage
-#show: doc => contentPage(doc)
+#import "../dnd/dnd.typ": prelude
+
+#show: doc => prelude(doc)
 
 #include "01-cover.typ"
 #include "02-attacks.typ"

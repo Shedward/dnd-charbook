@@ -1,11 +1,14 @@
 #import "../dnd/dnd.typ"
 
-User manual
-= Dobrogon Magarynich
-DM1043/S843
+#import "../dnd/layout/layout.typ"
 
-#dnd.frame[
-  Word
-]
-
-Something something
+#layout.cover(
+  "Dobrogon Magarynich",
+  author: "Batya M.",
+  title: "User manual",
+  caption: [
+    Document number: 8001-004-01-e \
+    Revision: 3.0B
+  ],
+  subtitle: "DM1043/S843"
+)
