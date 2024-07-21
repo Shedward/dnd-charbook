@@ -1,6 +1,6 @@
-#import "../dnd.typ"
+#import "../core/core.typ"
 
-#let padding = dnd.paddings(1.5)
+#let padding = core.paddings(2)
 
 #let cover(
   author: none,
@@ -8,12 +8,12 @@
   name,
   subtitle: none,
   caption: none
-) = dnd.framed(
-  stroke: dnd.strokes.normal,
+) = core.framed(
+  stroke: core.strokes.normal,
   padding: padding,
   fitting: "expand"
 )[
-  #dnd.framed(
+  #core.framed(
     padding: padding,
     fitting: "expand"
   )[
@@ -27,14 +27,14 @@
         #caption
       ]
       #place(center + horizon)[
-        #dnd.bookSubtitle[
+        #core.bookSubtitle[
           #title
         ] \
-        #dnd.bookTitle[
+        #core.bookTitle[
           #name
         ] \
         #v(8mm)
-        #dnd.bookSubtitle[
+        #core.bookSubtitle[
           #set text(18pt)
           #subtitle
         ] \

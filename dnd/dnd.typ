@@ -1,2 +1,2 @@
-#import "styles.typ": *
-#import "graphics.typ": *
+#import "core/core.typ"
+#import "page/page.typ"

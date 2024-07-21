@@ -1,8 +1,18 @@
-#import "../dnd/dnd.typ": prelude
+#import "../dnd/dnd.typ"
 
-#show: doc => prelude(doc)
+#show: doc => dnd.core.prelude(doc)
 
-#include "01-cover.typ"
+#dnd.page.cover(
+  "Dobrogon Magarynich",
+  author: "Batya M.",
+  title: "User manual",
+  caption: [
+    Document number: 8001-004-01-e \
+    Revision: 3.0B
+  ],
+  subtitle: "DM1043/S843"
+)
+
 #include "02-attacks.typ"
 #include "03-charlist.typ"
 #include "04-abilities.typ"
