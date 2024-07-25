@@ -5,22 +5,21 @@
   padding: paddings(1),
   background: (size) => rect(width: size.width, height: size.height),
   body
-) = context {
-  let bodyWithPadding = if padding > 0pt [
-    #pad(padding)[#body]
-  ] else [
-    #body
-  ]
-
+) = {
   layout(size => {
+    let bodyWithPadding = pad(padding)[#body]
+    let contentSize = () => {
+      measure(block(width: size.width)[#bodyWithPadding])
+    }
+
     let size = if fitting == "expand" {
       size
     } else if fitting == "shrink" {
       measure(bodyWithPadding)
     } else if fitting == "expand-h" {
-      (width: size.width, height: measure(bodyWithPadding).height)
+      (width: size.width, height: contentSize().height)
     } else if fitting == "expand-v" {
-      (width: measure(bodyWithPadding).width, height: size.height)
+      (width: contentSize().width, height: size.height)
     } else {
       panic("fitting " + fitting + " is not supported, expected: shrink|expand|expand-h|expand-v")
     }

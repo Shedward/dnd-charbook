@@ -22,7 +22,7 @@
       hline,
       emptyCell(colspan: 3),
       hline,
-      emptyCell(colspan: 3),
+      emptyCell(colspan: 3)
     )
   ]
 
