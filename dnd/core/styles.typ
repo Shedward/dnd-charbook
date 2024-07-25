@@ -1,4 +1,4 @@
-#import "dimenstions.typ": *
+#import "dimentions.typ": *
 
 #let fonts = (
   body: "Mookmania",

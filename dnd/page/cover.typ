@@ -1,7 +1,7 @@
-#import "../core/core.typ"
+#import "../core/core.typ": *
 
 // Outter padding used in cover
-#let coverPaddings = core.paddings(1.5)
+#let coverPaddings = paddings(1.5)
 
 // Renders cover page
 // Parameters:
@@ -17,15 +17,15 @@
   title: none,
   subtitle: none,
   caption: none
-) = core.framed(
-  stroke: core.strokes.normal,
-  padding: coverPaddings,
-  fitting: "expand",
+) = framed(
+  stroke: strokes.normal,
+  insets: coverPaddings,
+  fitting: expand,
   radius: coverPaddings
 )[
-  #core.framed(
-    padding: 2.0 * coverPaddings,
-    fitting: "expand",
+  #framed(
+    insets: 2.0 * coverPaddings,
+    fitting: expand,
     radius: coverPaddings
   )[
     #box(width: 100%, height: 100%)[
@@ -38,14 +38,14 @@
         #caption
       ]
       #place(center + horizon)[
-        #core.bookSubtitle[
+        #bookSubtitle[
           #title
         ] \
-        #core.bookTitle[
+        #bookTitle[
           "#name"
         ] \
         #v(8mm)
-        #core.bookSubtitle[
+        #bookSubtitle[
           #set text(18pt)
           #subtitle
         ] \

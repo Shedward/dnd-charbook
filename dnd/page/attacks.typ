@@ -7,7 +7,7 @@
   let vline(row) = table.vline(stroke: strokes.thin, start: row, end: row + 1)
   let hline = table.hline(stroke: strokes.thin)
 
-  let attackFrame(lines: 3) = framed(fitting: "expand-h")[
+  let attackFrame(lines: 4) = framed(fitting: expand-h)[
     #table(
       columns: (1fr, 1fr, 1fr),
       stroke: none,
