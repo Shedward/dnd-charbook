@@ -1,6 +1,6 @@
 #import "../dnd/dnd.typ"
 
-#show: doc => dnd.core.prelude(doc)
+#show: dnd.core.charbook
 
 #dnd.page.cover(
   "Dobrogon Magarynich",
@@ -13,7 +13,4 @@
   subtitle: "DM1043/S843"
 )
 
-#include "02-attacks.typ"
-#include "03-charlist.typ"
-#include "04-abilities.typ"
-#include "05-inventory.typ"
+#dnd.page.attacks

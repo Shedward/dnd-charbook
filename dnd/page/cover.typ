@@ -1,26 +1,37 @@
 #import "../core/core.typ"
 
-#let padding = core.paddings(2)
+// Outter padding used in cover
+#let coverPaddings = core.paddings(1.5)
 
+// Renders cover page
+// Parameters:
+// - name: Name of the character, shown in the middle of cover
+// - author: Name of the author, shown in top-right corner
+// - title: Flavor title, shown above character name
+// - subtitle: Flavor subtitle, shown below character name
+// - caption: Additional text for flavor or another info,
+//   shown at bottom-left corner
 #let cover(
+  name,
   author: none,
   title: none,
-  name,
   subtitle: none,
   caption: none
 ) = core.framed(
   stroke: core.strokes.normal,
-  padding: padding,
-  fitting: "expand"
+  padding: coverPaddings,
+  fitting: "expand",
+  radius: coverPaddings
 )[
   #core.framed(
-    padding: padding,
-    fitting: "expand"
+    padding: 2.0 * coverPaddings,
+    fitting: "expand",
+    radius: coverPaddings
   )[
     #box(width: 100%, height: 100%)[
       #if author != none [
         #place(top + right)[
-          Author: #author
+          #author
         ]
       ]
       #place(bottom + left)[
@@ -31,7 +42,7 @@
           #title
         ] \
         #core.bookTitle[
-          #name
+          "#name"
         ] \
         #v(8mm)
         #core.bookSubtitle[

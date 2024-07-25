@@ -1,34 +1,65 @@
+#import "dimenstions.typ": *
 
-#let prelude(doc) = {
+#let fonts = (
+  body: "Mookmania",
+  header: "Alegreya SC"
+)
+
+// Initial style settings.
+// Should be `#show: dnd.core.charbook`
+// at the top of the document
+#let charbook(doc) = {
   set page(
-    paper: "a5"
+    paper: "a5",
+    margin: 18mm
   )
   set par(justify: true)
   set text(
-    font: "Mookmania",
+    font: fonts.body,
     size: 9pt
   )
 
   doc
 }
 
+// Style for book's title at cover
 #let bookTitle(body) = {
   set text(
-    font: "Alegreya SC",
+    font: fonts.header,
     weight: "bold",
     size: 22pt
   )
   body
 }
 
+// Style for secondary information at cover
 #let bookSubtitle(body) = {
   set text(
-    font: "Alegreya SC",
+    font: fonts.header,
     size: 16pt
   )
   body
 }
 
-#let contentPage(doc) = {
-  columns(2, doc)
+// Style for table header
+#let tableHeader(body) = {
+  set text(
+    font: fonts.header,
+    size: 7pt
+  )
+  smallcaps(body)
+}
+
+// Style for page with text content (ability list, biography, etc.)
+#let columned(doc) = {
+  [
+    #columns(2, gutter: 8mm)[#doc]
+    #place(center + horizon)[
+      #line(
+        angle: 90deg,
+        length: 100%,
+        stroke: strokes.thin
+      )
+    ]
+  ]
 }

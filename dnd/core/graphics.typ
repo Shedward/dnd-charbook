@@ -1,12 +1,4 @@
-
-// Dimentions constants for template
-#let strokes = (
-  thin: 0.5pt,
-  normal: 1.0pt
-)
-
-// Normalized paddings
-#let paddings(p) = p * 2mm
+#import "dimenstions.typ": *
 
 #let container(
   fitting: "shrink",
@@ -25,8 +17,12 @@
       size
     } else if fitting == "shrink" {
       measure(bodyWithPadding)
+    } else if fitting == "expand-h" {
+      (width: size.width, height: measure(bodyWithPadding).height)
+    } else if fitting == "expand-v" {
+      (width: measure(bodyWithPadding).width, height: size.height)
     } else {
-      panic("fitting " + fitting + " is not supported, expected: expand|shrink")
+      panic("fitting " + fitting + " is not supported, expected: shrink|expand|expand-h|expand-v")
     }
 
     [
