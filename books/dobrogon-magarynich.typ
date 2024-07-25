@@ -14,3 +14,5 @@
 )
 
 #dnd.page.attacks
+
+#dnd.page.notes

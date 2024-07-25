@@ -17,39 +17,41 @@
   title: none,
   subtitle: none,
   caption: none
-) = framed(
-  stroke: strokes.normal,
-  insets: coverPaddings,
-  fitting: expand,
-  radius: coverPaddings
-)[
-  #framed(
-    insets: 2.0 * coverPaddings,
+) = page(
+  framed(
+    stroke: strokes.normal,
+    insets: coverPaddings,
     fitting: expand,
     radius: coverPaddings
   )[
-    #box(width: 100%, height: 100%)[
-      #if author != none [
-        #place(top + right)[
-          #author
+    #framed(
+      insets: 2.0 * coverPaddings,
+      fitting: expand,
+      radius: coverPaddings
+    )[
+      #box(width: 100%, height: 100%)[
+        #if author != none [
+          #place(top + right)[
+            #author
+          ]
         ]
-      ]
-      #place(bottom + left)[
-        #caption
-      ]
-      #place(center + horizon)[
-        #bookSubtitle[
-          #title
-        ] \
-        #bookTitle[
-          "#name"
-        ] \
-        #v(8mm)
-        #bookSubtitle[
-          #set text(18pt)
-          #subtitle
-        ] \
+        #place(bottom + left)[
+          #caption
+        ]
+        #place(center + horizon)[
+          #bookSubtitle[
+            #title
+          ] \
+          #bookTitle[
+            "#name"
+          ] \
+          #v(8mm)
+          #bookSubtitle[
+            #set text(18pt)
+            #subtitle
+          ] \
+        ]
       ]
     ]
   ]
-]
+)

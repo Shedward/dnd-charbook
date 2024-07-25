@@ -24,7 +24,13 @@
   body
 ) = {
   layout(size => {
-    let bodyWithPadding = pad(insets)[#body]
+    let padArgs = if type(insets) == dictionary {
+      insets
+    } else {
+      (rest: insets)
+    }
+
+    let bodyWithPadding = pad(..padArgs)[#body]
     let contentSize = () => {
       measure(block(width: size.width)[#bodyWithPadding])
     }
