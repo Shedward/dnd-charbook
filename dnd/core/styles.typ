@@ -22,6 +22,15 @@
   doc
 }
 
+#let charStat(body) = {
+  set text(
+    font: fonts.body,
+    weight: "bold",
+    size: 8pt
+  )
+  body
+}
+
 // Style for book's title at cover
 #let bookTitle(body) = {
   set text(

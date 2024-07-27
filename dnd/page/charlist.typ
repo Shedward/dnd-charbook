@@ -14,7 +14,7 @@
           rows: (1fr, auto),
           [],
           grid.hline(stroke: (thickness: strokes.normal)),
-          pad(y: paddings(1), c)
+          pad(y: paddings(1), charStat(c))
         )
       ]
     ])
