@@ -11,7 +11,7 @@
 #let charbook(doc) = {
   set page(
     paper: "a5",
-    margin: 18mm
+    margin: 20mm
   )
   set par(justify: true)
   set text(

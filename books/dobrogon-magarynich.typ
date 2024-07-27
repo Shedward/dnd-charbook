@@ -15,4 +15,4 @@
 
 #dnd.page.attacks
 
-#dnd.page.notes
+#dnd.page.charlist
