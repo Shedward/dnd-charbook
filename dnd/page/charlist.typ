@@ -21,12 +21,27 @@
   )
 ]
 
-#let charlist = page[
+#let charlist(
+  character
+) = page[
   #grid(
     columns: (20mm, 1fr, 25mm),
-    rows: 100%,
+    rows: (auto, 1fr),
     gutter: paddings(1),
     // ---
+    grid.cell(colspan: 2)[
+      #characterName(character.name)
+        #table(
+          columns: (1fr, 1fr),
+          align: (left, right),
+          inset: 2pt,
+          stroke: none,
+          [ #character.class, #character.subclass ], character.alignment,
+          [ #character.race, #character.type ], character.story
+        )
+        #line(length: 100%, stroke: strokes.thin)
+    ],
+    grid.cell[ Hello ],
     stats(), frame(), frame()
   )
 ]

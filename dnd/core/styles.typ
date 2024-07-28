@@ -31,6 +31,15 @@
   body
 }
 
+#let characterName(body) = {
+  set text(
+    font: fonts.header,
+    weight: "bold",
+    size: 18pt
+  )
+  body
+}
+
 // Style for book's title at cover
 #let bookTitle(body) = {
   set text(

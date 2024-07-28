@@ -2,8 +2,18 @@
 
 #show: dnd.core.charbook
 
+#let dobrogon = dnd.core.character(
+  name: "Dobrogon Magarynich",
+  class: "Artificer",
+  subclass: "Alchemist",
+  race: "Autognome",
+  type: "Construct",
+  alignment: "Chaotic Neutral",
+  story: "Failed Merchant"
+)
+
 #dnd.page.cover(
-  "Dobrogon Magarynich",
+  dobrogon.name,
   author: "Batya M.",
   title: "User manual",
   caption: [
@@ -15,4 +25,6 @@
 
 #dnd.page.attacks
 
-#dnd.page.charlist
+#dnd.page.charlist(
+  dobrogon
+)
