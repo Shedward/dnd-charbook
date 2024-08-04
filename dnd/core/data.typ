@@ -17,3 +17,5 @@
   story: story,
   level: level
 )
+
+#let stats = ("STR", "DEX", "CON", "INT", "WIS", "CHA")

@@ -1,5 +1,6 @@
 #import "dimentions.typ": *
 #import "graphics.typ": *
+#import "styles.typ": *
 
 // Set of available fittings
 
@@ -11,6 +12,8 @@
 #let expand-h = "expand-h"
 // Content expand vertically, but shrink horizontally
 #let expand-v = "expand-v"
+// Content tries to keep square form for available space
+#let squared = "squared"
 
 // Helper function for building any container.
 // - fitting: Declares how layout of container works. Can be shrink, expand, expand-h or expand-v
@@ -43,14 +46,17 @@
       (width: size.width, height: contentSize().height)
     } else if fitting == expand-v {
       (width: contentSize().width, height: size.height)
+    } else if fitting == squared {
+      let minDimention = calc.min(size.width, size.height)
+      (width: minDimention, height: minDimention)
     } else {
       panic("fitting " + fitting + " is not supported, expected: shrink|expand|expand-h|expand-v")
     }
 
     [
-      #block()[
-        #background(size)
-        #place(center + horizon)[
+      #background(size)
+      #place(center + horizon)[
+        #block(width: size.width, height: size.height)[
           #bodyWithPadding
         ]
       ]
@@ -78,3 +84,22 @@
   ),
   body
 )
+
+
+#let propBox(
+  shape: frame.with(radius: paddings(1) - 0.1 * paddings(1)),
+  body
+) = container(
+  fitting: squared,
+  background: size => shape(
+    width: size.width,
+    height: size.height,
+    stroke: strokes.normal
+  )
+)[
+  #box(width: 100%, height: 100%)[
+    #place(bottom + center)[
+      #propCap[ #body ]
+    ]
+  ]
+]

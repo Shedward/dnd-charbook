@@ -1,7 +1,7 @@
 #import "../core/core.typ": *
 
 #let stats(
-  names: ("STR", "DEX", "CON", "INT", "WIS", "CHA")
+  names: stats
 ) = framed(fitting: expand)[
   #grid(
     columns: 100%,
@@ -21,11 +21,30 @@
   )
 ]
 
+#let propsSeparator = line(stroke: strokes.thin)
+
+#let props() = framed(fitting: expand)[
+  #grid(columns: 100%, row-gutter: paddings(1),
+    propBox[Initiative],
+    propBox[AC],
+    propsSeparator,
+    propBox[Max],
+    propBox[Cur.],
+    propBox[Temp.],
+    propsSeparator,
+    propBox[Prof.Bonus],
+    propBox[Movement],
+    box(height: 100%)[
+      #circle()
+    ]
+  )
+]
+
 #let charlist(
   character
 ) = page[
   #grid(
-    columns: (20mm, 1fr, 25mm),
+    columns: (20mm, 1fr, 20mm),
     rows: (auto, 1fr),
     gutter: paddings(1),
     // ---
@@ -37,11 +56,14 @@
           inset: 2pt,
           stroke: none,
           [ #character.class, #character.subclass ], character.alignment,
-          [ #character.race, #character.type ], character.story
+          [ #character.race, #character.type ], character.story,
         )
-        #line(length: 100%, stroke: strokes.thin)
     ],
-    grid.cell[ Hello ],
-    stats(), frame(), frame()
+    grid.cell[
+      #pad(paddings(1))[
+        #propBox[Level]
+      ]
+    ],
+    stats(), frame(), props()
   )
 ]

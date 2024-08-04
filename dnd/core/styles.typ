@@ -31,6 +31,14 @@
   body
 }
 
+#let propCap(body) = {
+  set text(
+    font: fonts.header,
+    size: 7pt
+  )
+  smallcaps(body)
+}
+
 #let characterName(body) = {
   set text(
     font: fonts.header,
