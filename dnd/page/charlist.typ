@@ -21,22 +21,25 @@
   )
 ]
 
-#let propsSeparator = line(stroke: strokes.thin)
+#let propsSeparator = line(stroke: strokes.thin, length: 100% + paddings(2), angle: 0deg)
+
+#let healthPropBox = propBox.with(shape: heart, dy: -0.25em)
 
 #let props() = framed(fitting: expand)[
-  #grid(columns: 100%, row-gutter: paddings(1),
+  #grid(
+    columns: 100%,
+    rows: (auto, auto, 1fr, auto, auto, auto, 1fr, auto),
+    row-gutter: paddings(1),
+    // ---
     propBox[Initiative],
-    propBox[AC],
+    healthPropBox[AC],
     propsSeparator,
-    propBox[Max],
-    propBox[Cur.],
-    propBox[Temp.],
+    healthPropBox[Max],
+    healthPropBox[Cur.],
+    healthPropBox[Temp.],
     propsSeparator,
-    propBox[Prof.Bonus],
-    propBox[Movement],
-    box(height: 100%)[
-      #circle()
-    ]
+    propBox[Prf.Bonus],
+    propBox[Movement]
   )
 ]
 
@@ -44,7 +47,7 @@
   character
 ) = page[
   #grid(
-    columns: (20mm, 1fr, 20mm),
+    columns: (20mm, 1fr, 21mm),
     rows: (auto, 1fr),
     gutter: paddings(1),
     // ---

@@ -4,7 +4,7 @@
 // Parameters:
 // - width: Outer width of frame
 // - height: Outer height of frame
-// - stoke: Stroke width, use values from dimenstions.stroke
+// - stroke: Stroke width, use values from dimenstions.stroke
 // - radius: Inner radius of frame
 #let frame(
   width: 100%,
@@ -27,3 +27,25 @@
     ((radius, 0pt), (0pt, 0.5 * radius), (0pt, 0pt))
   )
 ]
+
+#let heart(width: 100%, height: 100%, stroke: strokes.thin) = {
+  let xCenter = 0.5 * width
+  let yTopRuler = 0.1 * height
+  let topHanger = 0.125 * height
+  let bottomHanger = topHanger
+  let yBottomRuler = 0.75 * height
+  let xLeftRuler = 0.1 * width
+  let xRightRuler = width - xLeftRuler
+
+  path(
+    closed: true,
+    stroke: stroke,
+    // ---
+    ((xCenter, width), (topHanger, -topHanger), (-topHanger, -topHanger)),
+    ((xLeftRuler, yBottomRuler), (bottomHanger, bottomHanger)),
+    ((xLeftRuler, yTopRuler), (-topHanger, topHanger)),
+    ((xCenter, yTopRuler), (-topHanger, -topHanger), (topHanger, -topHanger)),
+    ((xRightRuler, yTopRuler), (-topHanger, -topHanger)),
+    ((xRightRuler, yBottomRuler), (bottomHanger, -bottomHanger))
+  )
+}

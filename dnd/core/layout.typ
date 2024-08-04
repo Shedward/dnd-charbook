@@ -54,7 +54,9 @@
     }
 
     [
-      #background(size)
+      #block(width: size.width, height: size.height)[
+        #background(size)
+      ]
       #place(center + horizon)[
         #block(width: size.width, height: size.height)[
           #bodyWithPadding
@@ -88,6 +90,8 @@
 
 #let propBox(
   shape: frame.with(radius: paddings(1) - 0.1 * paddings(1)),
+  dx: 0pt,
+  dy: 0pt,
   body
 ) = container(
   fitting: squared,
@@ -98,7 +102,7 @@
   )
 )[
   #box(width: 100%, height: 100%)[
-    #place(bottom + center)[
+    #place(bottom + center, dx: dx, dy: dy)[
       #propCap[ #body ]
     ]
   ]
