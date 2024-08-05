@@ -39,11 +39,11 @@
   smallcaps(body)
 }
 
-#let caption(body) = {
+#let statCaption(body, fill: black) = {
   set text(
     font: fonts.body,
-    size: 7pt,
-    fill: gray
+    size: 6pt,
+    fill: fill
   )
   body
 }

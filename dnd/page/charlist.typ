@@ -22,13 +22,40 @@
   )
 ]
 
-#let savings() = grid(
+#let innerTableStrokes(x, y) = (
+  top: if y > 0 { strokes.hairline } else { 0pt },
+  bottom: none
+)
+
+#let savingRolls() = table(
+  columns: (1fr, 10mm, 1fr, 10mm),
+  stroke: innerTableStrokes,
+  // ---
+  ..(for stat in data.stats {
+    (none, statCaption(stat))
+  })
+)
+
+#let deathRolls() = rect()
+
+#let rollsCaption(caption: none, body) = figure(
+  caption: propCap(caption),
+  supplement: none,
+  numbering: none,
+  body
+)
+
+#let saves() = grid(
   columns: (1fr, auto),
   column-gutter: paddings(1),
   // ---
-  [Saving rolls],
+  rollsCaption(caption: [Saving roll])[
+    #savingRolls()
+  ],
   grid.vline(stroke: strokes.hairline),
-  square()
+  rollsCaption(caption: [Death saves])[
+    #deathRolls()
+  ]
 )
 
 #let skills() = grid(
@@ -37,20 +64,20 @@
   row-gutter: paddings(1),
   // ---
   framed(fitting: expand-h)[
-    #savings()
+    #saves()
   ],
   framed(fitting: expand, insets: (x: paddings(2), y: 0pt))[
     #table(
       columns: (18mm, 1fr, 10mm),
       rows: 1fr,
-      stroke: (x: none, y: strokes.hairline),
+      stroke: innerTableStrokes,
       align: (auto, left, center),
       // ---
       ..(for skill in data.skills {
         (
           none,
           skill.name,
-          caption(skill.stat)
+          statCaption(fill: gray, skill.stat)
         )
       })
     )
