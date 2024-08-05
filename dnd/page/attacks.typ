@@ -7,8 +7,8 @@
     tableHeader(body)
   )
   let emptyCell(colspan: 1) = grid.cell(colspan: colspan, [])
-  let vline(row) = grid.vline(stroke: strokes.thin, start: row, end: row + 1)
-  let hline = grid.hline(stroke: strokes.thin)
+  let vline(row) = grid.vline(stroke: strokes.hairline, start: row, end: row + 1)
+  let hline = grid.hline(stroke: strokes.hairline)
 
   let attackFrame(lines: 4) = framed(
     fitting: expand-h,
@@ -20,7 +20,7 @@
       stroke: none,
       headerCell(colspan: 2)[Name], headerCell[Damage],
       emptyCell(colspan: 2), vline(1), emptyCell(),
-      grid.hline(stroke: (thickness: strokes.thin, dash: "dashed")),
+      grid.hline(stroke: (thickness: strokes.hairline, dash: "dashed")),
       emptyCell(colspan: 2), vline(2), emptyCell(),
 
       headerCell[Range], headerCell[Atk. bonus], headerCell[Type],

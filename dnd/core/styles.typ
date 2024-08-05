@@ -39,6 +39,15 @@
   smallcaps(body)
 }
 
+#let caption(body) = {
+  set text(
+    font: fonts.body,
+    size: 7pt,
+    fill: gray
+  )
+  body
+}
+
 #let characterName(body) = {
   set text(
     font: fonts.header,

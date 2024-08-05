@@ -1,4 +1,5 @@
 #import "../core/core.typ": *
+#import "../core/data.typ"
 
 #let stats(
   names: stats
@@ -13,13 +14,48 @@
           columns: 100%,
           rows: (1fr, auto),
           [],
-          grid.hline(stroke: (thickness: strokes.normal)),
+          grid.hline(stroke: strokes.normal),
           pad(y: paddings(1), charStat(c))
         )
       ]
     ])
   )
 ]
+
+#let savings() = grid(
+  columns: (1fr, auto),
+  column-gutter: paddings(1),
+  // ---
+  [Saving rolls],
+  grid.vline(stroke: strokes.hairline),
+  square()
+)
+
+#let skills() = grid(
+  columns: 100%,
+  rows: (auto, 1fr),
+  row-gutter: paddings(1),
+  // ---
+  framed(fitting: expand-h)[
+    #savings()
+  ],
+  framed(fitting: expand, insets: (x: paddings(2), y: 0pt))[
+    #table(
+      columns: (18mm, 1fr, 10mm),
+      rows: 1fr,
+      stroke: (x: none, y: strokes.hairline),
+      align: (auto, left, center),
+      // ---
+      ..(for skill in data.skills {
+        (
+          none,
+          skill.name,
+          caption(skill.stat)
+        )
+      })
+    )
+  ]
+)
 
 #let propsSeparator = line(stroke: strokes.thin, length: 100% + paddings(2), angle: 0deg)
 
@@ -67,6 +103,6 @@
         #propBox[Level]
       ]
     ],
-    stats(), frame(), props()
+    stats(), skills(), props()
   )
 ]
