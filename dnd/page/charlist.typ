@@ -115,7 +115,7 @@
     row-gutter: paddings(1),
     // ---
     propBox[Initiative],
-    healthPropBox[AC],
+    propBox(shape: shield, dy: -0.25em)[AC],
     propsSeparator,
     healthPropBox[Max],
     healthPropBox[Cur.],

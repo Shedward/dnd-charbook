@@ -48,6 +48,30 @@
   )
 }
 
+#let shield(width: 100%, height: 100%, stroke: strokes.thin) = {
+  let xCenter = 0.5 * width
+  let yTopRuler = 0pt
+  let topHanger = 0.125 * height
+  let bottomHanger = topHanger
+  let yBottomRuler = 0.75 * height
+  let xLeftRuler = 0.055 * width
+  let xRightRuler = width - xLeftRuler
+
+  path(
+    closed: true,
+    stroke: stroke,
+    // ---
+    ((xCenter, width), (topHanger, -topHanger), (-topHanger, -topHanger)),
+    ((xLeftRuler, yBottomRuler), (bottomHanger, bottomHanger)),
+
+    (xLeftRuler, yTopRuler),
+    ((xCenter, yTopRuler), (-topHanger, topHanger), (topHanger, topHanger)),
+    (xRightRuler, yTopRuler),
+
+    ((xRightRuler, yBottomRuler), (bottomHanger, -bottomHanger))
+  )
+}
+
 #let rhombus(
   width: 100%,
   stroke: strokes.thin
