@@ -39,9 +39,9 @@
 #let deathSavesCheckboxes(caption) = grid.cell(colspan: 2)[
   #propCap(caption)
   #box[
-    #rect(width: 11mm, height: 1mm)
+    #rect(width: 12mm, height: 1mm)
     #place(center + horizon)[
-      #checkboxes(3, width: 2.5mm, padding: 75%, shape: circle.with(fill: white))
+      #checkboxes(3, width: 2.5mm, padding: 100%, shape: circle.with(fill: white))
     ]
   ]
 ]
