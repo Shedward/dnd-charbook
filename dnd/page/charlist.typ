@@ -36,7 +36,26 @@
   })
 )
 
-#let deathRolls() = rect()
+#let deathSavesCheckboxes(caption) = grid.cell(colspan: 2)[
+  #propCap(caption)
+  #box[
+    #rect(width: 11mm, height: 1mm)
+    #place(center + horizon)[
+      #checkboxes(3, width: 2.5mm, padding: 75%, shape: circle.with(fill: white))
+    ]
+  ]
+]
+
+#let deathSaves() = grid(
+  columns: (auto, auto),
+  rows: (auto, auto),
+  gutter: paddings(1),
+  // ---
+  propCap[Destiny P.], propCap[Ins],
+  checkboxes(3), checkboxes(1),
+  deathSavesCheckboxes[Sc.],
+  deathSavesCheckboxes[Fl.]
+)
 
 #let rollsCaption(caption: none, body) = figure(
   caption: propCap(caption),
@@ -46,15 +65,16 @@
 )
 
 #let saves() = grid(
-  columns: (1fr, auto),
-  column-gutter: paddings(1),
+  columns: (1fr, auto, auto),
+  gutter: paddings(0.5),
+  inset: paddings(0.5),
   // ---
   rollsCaption(caption: [Saving roll])[
     #savingRolls()
   ],
-  grid.vline(stroke: strokes.hairline),
+  line(length: 100%, angle: 90deg, stroke: strokes.hairline),
   rollsCaption(caption: [Death saves])[
-    #deathRolls()
+    #deathSaves()
   ]
 )
 
