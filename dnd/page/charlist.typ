@@ -118,7 +118,12 @@
     propBox(shape: shield, dy: -0.25em)[AC],
     propsSeparator,
     healthPropBox[Max],
-    healthPropBox[Cur.],
+    badge(
+      width: 60%,
+      height: 4mm
+    )[
+      #healthPropBox[Cur.]
+    ],
     healthPropBox[Temp.],
     propsSeparator,
     propBox[Prf.Bonus],

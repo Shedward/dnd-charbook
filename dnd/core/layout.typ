@@ -107,3 +107,25 @@
     ]
   ]
 ]
+
+#let badge(
+  caption: none,
+  height: auto,
+  width: auto,
+  alignment: top + right,
+  body
+) = [
+  #box[
+    #body
+    #place(alignment)[
+      #rect(
+        width: width,
+        height: height,
+        fill: white,
+        stroke: strokes.normal
+      )[
+        #propCap(caption)
+      ]
+    ]
+  ]
+]
