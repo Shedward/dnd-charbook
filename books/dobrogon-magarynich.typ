@@ -28,3 +28,5 @@
 #dnd.page.charlist(
   dobrogon
 )
+
+#dnd.page.inventory

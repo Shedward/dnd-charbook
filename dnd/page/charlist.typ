@@ -22,14 +22,9 @@
   )
 ]
 
-#let innerTableStrokes(x, y) = (
-  top: if y > 0 { strokes.hairline } else { 0pt },
-  bottom: none
-)
-
 #let savingRolls() = table(
   columns: (1fr, 10mm, 1fr, 10mm),
-  stroke: innerTableStrokes,
+  stroke: innerRowStrokes(),
   // ---
   ..(for stat in data.stats {
     (none, statCaption(stat))
@@ -90,7 +85,7 @@
     #table(
       columns: (18mm, 1fr, 10mm),
       rows: 1fr,
-      stroke: innerTableStrokes,
+      stroke: innerRowStrokes(),
       align: (auto, left, center),
       // ---
       ..(for skill in data.skills {

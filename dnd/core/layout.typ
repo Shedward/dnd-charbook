@@ -129,3 +129,13 @@
     ]
   ]
 ]
+
+#let innerRowStrokes(stroke: strokes.hairline) = (x, y) => (
+  top: if y > 0 { stroke } else { 0pt },
+  bottom: none
+)
+
+#let innerColumnStrokes(stroke: strokes.hairline) = (x, y) => (
+  left: if x > 0 { stroke } else { 0pt },
+  right: none
+)

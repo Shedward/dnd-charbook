@@ -67,6 +67,22 @@
   body
 }
 
+#let section(body) = {
+  set text(
+    font: fonts.header,
+    size: 20pt
+  )
+  body
+}
+
+#let subsection(body) = {
+  set text(
+    font: fonts.header,
+    size: 15pt
+  )
+  body
+}
+
 // Style for secondary information at cover
 #let bookSubtitle(body) = {
   set text(

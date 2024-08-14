@@ -29,9 +29,12 @@
     )
   ]
 
-  page[
+  page(
+    header: section[Attacks]
+  )[
     #grid(
       columns: (1fr, 1fr),
+      rows: 1fr,
       stroke: none,
       gutter: paddings(2),
       ..((attackFrame(),) * 8),
