@@ -47,7 +47,7 @@
   ],
   spell(
     prep: alwaysPrepared,
-    name: [Create\ Bonfire],
+    name: "Create Bonfire",
     school: "Conjuration",
     castType: concentration,
     duration: minute(1),
@@ -59,10 +59,21 @@
   spell(
     prep: alwaysPrepared,
     name: "Fire Bolt",
+    school: "Evocation",
     duration: instant,
     range: target(120),
     components: components("VS")
   )[
     Ranged, *Frost 2d8, Slow 10ft*
+  ],
+  spell(
+    prep: alwaysPrepared,
+    name: "Ray of Frost",
+    school: "Evocation",
+    duration: instant,
+    range: target(60),
+    components: components("VS")
+  )[
+    Ranged, *Frost 2d8 + Slow 10ft*
   ]
 )
