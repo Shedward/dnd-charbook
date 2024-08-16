@@ -48,6 +48,23 @@
   body
 }
 
+#let spellBody(body) = {
+  set text(
+    font: fonts.body,
+    size: 7pt
+  )
+  body
+}
+
+#let spellCaption(body, fill: black) = {
+  set text(
+    font: fonts.body,
+    size: 5pt,
+    fill: fill
+  )
+  body
+}
+
 #let characterName(body) = {
   set text(
     font: fonts.header,

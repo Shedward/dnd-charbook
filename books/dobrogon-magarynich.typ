@@ -2,7 +2,7 @@
 
 #show: dnd.core.charbook
 
-#let dobrogon = dnd.core.character(
+#let dobrogon = dnd.game.character(
   name: "Dobrogon Magarynich",
   class: "Artificer",
   subclass: "Alchemist",
@@ -30,3 +30,39 @@
 )
 
 #dnd.page.inventory
+
+#import "../dnd/page/spells.typ": *
+
+#dnd.page.spells(
+  spell(
+    prep: alwaysPrepared,
+    name: "Mending",
+    school: "Transmutation",
+    castTime: minute(1),
+    duration: instant,
+    range: touch,
+    components: components("VSM")
+  )[
+    *Repair* small tear or *Heal self HD(1d8) + CON* (min 1)
+  ],
+  spell(
+    prep: alwaysPrepared,
+    name: [Create\ Bonfire],
+    school: "Conjuration",
+    castType: concentration,
+    duration: minute(1),
+    range: cube(5, range: 60),
+    components: components("VS")
+  )[
+    Create area, DEX or *Fire 2d8* on enter or stay
+  ],
+  spell(
+    prep: alwaysPrepared,
+    name: "Fire Bolt",
+    duration: instant,
+    range: target(120),
+    components: components("VS")
+  )[
+    Ranged, *Frost 2d8, Slow 10ft*
+  ]
+)

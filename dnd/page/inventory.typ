@@ -59,7 +59,7 @@
   let coins = ("PP", "GP", "SP", "CP")
   grid(
     columns: (20mm, 1fr, 20mm, 20mm),
-    rows: (5mm, auto),
+    rows: (4mm, auto),
     gutter: paddings(2),
     inset: (bottom: 0pt, rest: paddings(1)),
     stroke: innerRowStrokes(),

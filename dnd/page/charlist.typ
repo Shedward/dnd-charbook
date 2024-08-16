@@ -1,8 +1,8 @@
 #import "../core/core.typ": *
-#import "../core/data.typ"
+#import "../game/game.typ"
 
-#let stats(
-  names: stats
+#let statsGrid(
+  names: game.stats
 ) = framed(fitting: expand)[
   #grid(
     columns: 100%,
@@ -26,7 +26,7 @@
   columns: (1fr, 10mm, 1fr, 10mm),
   stroke: innerRowStrokes(),
   // ---
-  ..(for stat in data.stats {
+  ..(for stat in game.stats {
     (none, statCaption(stat))
   })
 )
@@ -73,7 +73,7 @@
   ]
 )
 
-#let skills() = grid(
+#let skillsGrid() = grid(
   columns: 100%,
   rows: (auto, 1fr),
   row-gutter: paddings(1),
@@ -88,7 +88,7 @@
       stroke: innerRowStrokes(),
       align: (auto, left, center),
       // ---
-      ..(for skill in data.skills {
+      ..(for skill in game.skills {
         (
           none,
           skill.name,
@@ -103,7 +103,7 @@
 
 #let healthPropBox = propBox.with(shape: heart, dy: -0.25em)
 
-#let props() = framed(fitting: expand)[
+#let propsGrid() = framed(fitting: expand)[
   #grid(
     columns: 100%,
     rows: (auto, auto, 1fr, auto, auto, auto, 1fr, auto),
@@ -150,6 +150,6 @@
         #propBox[Level]
       ]
     ],
-    stats(), skills(), props()
+    statsGrid(), skillsGrid(), propsGrid()
   )
 ]
