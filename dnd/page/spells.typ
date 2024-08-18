@@ -17,28 +17,44 @@
   table.cell(colspan: 3, par(justify: true, spell.body))
 )
 
-#let spells(..spells) = {
+#let spellsTable(..spells) = {
+  show: spellBody
+  set text(hyphenate: false)
+
+  table(
+    columns: (9mm, 25mm, 8mm, 1fr, 1fr, 1fr),
+    align: top + left,
+    stroke: (x, y) => (
+      top: if (y > 0 and calc.rem(y, 2) == 1) { strokes.hairline } else { 0pt },
+      bottom: none
+    ),
+    inset: paddings(0.75),
+
+    table.cell(align: center, tableHeader[Pr.]),
+    tableHeader[Name],
+    table.cell(align: center, tableHeader[Time]),
+    tableHeader[Dur],
+    tableHeader[Range],
+    tableHeader[Comp.],
+
+    ..(spells.pos().map(spellRow).flatten()),
+  )
+}
+
+#let spellsSection(level: none, ..spells) = {
+  let levelRow = if level == none {()} else {
+    (
+      level.name,
+      level.slots
+    )
+  }
   framed(fitting: expand-h)[
-    #show: spellBody
-    #set text(hyphenate: false)
-
-    #table(
-      columns: (9mm, 24mm, 8mm, 1fr, 1fr, 1fr),
-      align: top + left,
-      stroke: (x, y) => (
-        top: if (y > 0 and calc.rem(y, 2) == 1) { strokes.hairline } else { 0pt },
-        bottom: none
-      ),
-      inset: paddings(0.75),
-
-      table.cell(align: center, tableHeader[Pr.]),
-      tableHeader[Name],
-      table.cell(align: center, tableHeader[Time]),
-      tableHeader[Dur],
-      tableHeader[Range],
-      tableHeader[Comp.],
-
-      ..(spells.pos().map(spellRow).flatten()),
+    #grid(
+      columns: 2,
+      align: (left, right),
+      inset: paddings(1),
+      ..levelRow,
+      grid.cell(colspan: 2, spellsTable(..spells))
     )
   ]
 }

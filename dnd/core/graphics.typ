@@ -85,12 +85,12 @@
   )
 }
 
-#let checkboxes(count, width: 4mm, padding: 25%, shape: rhombus) = if (count == 1) {
-  shape(width: width, stroke: strokes.normal)
+#let checkboxes(count, size: 4mm, padding: 25%, shape: rhombus) = if (count == 1) {
+  shape(width: size, stroke: strokes.normal)
 } else {
   grid(
     columns: (auto,) * count,
-    column-gutter: padding * width,
-    ..((shape(width: width, stroke: strokes.normal),) * count)
+    column-gutter: padding * size,
+    ..((shape(width: size, stroke: strokes.normal),) * count)
   )
 }

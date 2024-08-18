@@ -36,7 +36,7 @@
   #box[
     #rect(width: 12mm, height: 1mm)
     #place(center + horizon)[
-      #checkboxes(3, width: 2.5mm, padding: 100%, shape: circle.with(fill: white))
+      #checkboxes(3, size: 2.5mm, padding: 100%, shape: circle.with(fill: white))
     ]
   ]
 ]

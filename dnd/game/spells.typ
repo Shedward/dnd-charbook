@@ -7,7 +7,7 @@
 
 // Durations
 #let instant = [Inst.]
-#let round(r: 1) = str(r) + [R]
+#let round(r) = str(r) + [r]
 #let minute(m) = str(m) + [m]
 #let hour(h) = str(h) + [h]
 
@@ -15,9 +15,15 @@
 #let ritual = [R]
 #let concentration = [C]
 
-// Range
-#let self = [Self]
-#let touch = [Touch]
+// School
+#let abjuration = "Abjuration"
+#let conjuration = "Conjuration"
+#let necromancy = "Necromancy"
+#let evocation = "Evocation"
+#let transmutation = "Transmutation"
+#let divination = "Divination"
+#let enchantment = "Enchantment"
+#let illustion = "Illusion"
 
 // Preparation
 #let alwaysPrepared = sym.infinity
@@ -29,24 +35,49 @@
   #spellCaption[#count free]
 ]
 
+// Range
+#let self = [Self]
+#let touch = [Touch]
+
 #let rangeDescr(range) = if (range == 0) [#self] else [#(range)ft]
 #let countDescr(count) = if (count>1) [#sym.times#count] else []
 
+#let mile(m) = 5279 * m
+
 #let target(range, count: 1) = [#(rangeDescr(range))#icon("target")#countDescr(count)]
 #let point(range, count: 1) = [#(rangeDescr(range))#icon("point")#countDescr(count)]
-#let circle(range: 0, radius) = [#(rangeDescr(range))/#(radius)ft#icon("circle")]
-#let square(range: 0, width) = [#(rangeDescr(range))/#(width)ft#icon("square")]
-#let cube(range: 0, width) = [#(rangeDescr(range))/#(width)ft#icon("cube")]
-#let sphere(range: 0, width) = [#(rangeDescr(range))/#(width)ft#icon("sphere")]
+#let area(iconName) = (size, range: 0) => [#(rangeDescr(range))/#(size)ft#icon(iconName)]
+
+#let circle = area("circle")
+#let square = area("square")
+#let cube = area("cube")
+#let sphere = area("sphere")
+#let straightLine = area("arrow-right")
 
 #let components(components, required: none) = (
   components: components,
   required: required
 )
+#let spellComponents = components
+
+#let cantrip = (
+  name: subsection[Cantrip],
+  slots: none
+)
+
+#let spellSlots(count) = box(framed(checkboxes(count), stroke: strokes.normal))
+
+#let spellLevel(
+  level,
+  slots: none
+) = (
+  name: subsection[Level #level],
+  slots: spellSlots(slots)
+)
 
 #let spell(
+  name,
   prep: preparing,
-  name: none,
   school: none,
   castTime: action,
   castType: none,
@@ -62,6 +93,8 @@
   castType: castType,
   duration: duration,
   range: range,
-  components: components,
+  components: if (type(components) == "string") { spellComponents(components) } else { components },
   body: body
 )
+
+#let atHigherLevels(body) = emph[(Lvl~up:~#body)]

@@ -55,18 +55,22 @@
   columns: (paddings(2.5), 1fr, paddings(3), paddings(3))
 )
 
-#let moneyInput = framed(fitting: expand-h, insets: paddings(1), {
-  let coins = ("PP", "GP", "SP", "CP")
-  grid(
-    columns: (20mm, 1fr, 20mm, 20mm),
-    rows: (4mm, auto),
-    gutter: paddings(2),
-    inset: (bottom: 0pt, rest: paddings(1)),
-    stroke: innerRowStrokes(),
-    ..((none,) * coins.len()),
-    ..(coins.map(propCap))
-  )
-})
+#let moneyInput = framed(
+  fitting: expand-h,
+  insets: (x: paddings(2), y: paddings(1)),
+  {
+    let coins = ("PP", "GP", "SP", "CP")
+    grid(
+      columns: (20mm, 1fr, 20mm, 20mm),
+      rows: (4mm, auto),
+      gutter: paddings(2),
+      inset: (bottom: 0pt, rest: paddings(1)),
+      stroke: innerRowStrokes(),
+      ..((none,) * coins.len()),
+      ..(coins.map(propCap))
+    )
+  }
+)
 
 #let inventory = [
   #page(
