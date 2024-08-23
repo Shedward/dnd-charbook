@@ -50,7 +50,7 @@
       level.slots
     )
   }
-  framed(fitting: expand-h)[
+  framed(fitting: expand-h, insets: (x: paddings(1), y: paddings(0.5)))[
     #grid(
       columns: 2,
       align: (left, right),

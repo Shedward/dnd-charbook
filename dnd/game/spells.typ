@@ -10,6 +10,7 @@
 #let round(r) = str(r) + [r]
 #let minute(m) = str(m) + [m]
 #let hour(h) = str(h) + [h]
+#let always = sym.infinity
 
 // Cast type
 #let ritual = [R]
@@ -54,6 +55,11 @@
 #let sphere = area("sphere")
 #let straightLine = area("arrow-right")
 
+// Sources
+#let class = [Class]
+#let race = [Race]
+#let story = [Story]
+
 #let cantrip = (
   name: subsection[Cantrip],
   slots: none
@@ -78,6 +84,7 @@
   duration: none,
   range: none,
   components: none,
+  source: class,
   body
 ) = (
   prep: prep,
