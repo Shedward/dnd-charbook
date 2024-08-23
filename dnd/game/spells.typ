@@ -54,12 +54,6 @@
 #let sphere = area("sphere")
 #let straightLine = area("arrow-right")
 
-#let components(components, required: none) = (
-  components: components,
-  required: required
-)
-#let spellComponents = components
-
 #let cantrip = (
   name: subsection[Cantrip],
   slots: none
@@ -83,7 +77,7 @@
   castType: none,
   duration: none,
   range: none,
-  components: components(none),
+  components: none,
   body
 ) = (
   prep: prep,
@@ -93,8 +87,12 @@
   castType: castType,
   duration: duration,
   range: range,
-  components: if (type(components) == "string") { spellComponents(components) } else { components },
+  components: components,
   body: body
 )
 
 #let atHigherLevels(body) = emph[(Lvl~up:~#body)]
+
+#let required(body) = [
+  Req.: #underline(text(weight: "bold", body))
+]

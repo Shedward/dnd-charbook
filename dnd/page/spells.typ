@@ -2,19 +2,21 @@
 #import "../game/game.typ": *
 
 #let spellRow(spell) = (
-  table.cell(rowspan: 2, align: top + center)[#spell.prep],
-  table.cell(rowspan: 2, align: top + left)[
-    #spell.name\
-    #spellCaption(spell.school)
+  table.cell(rowspan: 2, align: horizon + center)[#spell.prep],
+  table.cell(rowspan: 2, align: horizon + left)[
+    #par(justify: false)[
+      #spell.name\
+      #spellCaption(spell.school)
+    ]
   ],
   table.cell(align: left)[#spell.castTime],
   spell.duration,
   spell.range,
-  spell.components.components,
-  table.cell(align: right)[
+  spell.components,
+  table.cell(align: right, inset: (top: paddings(0.25)))[
     #if (spell.castType == none) [-] else [#spell.castType]
   ],
-  table.cell(colspan: 3, par(justify: true, spell.body))
+  table.cell(colspan: 3, inset: (top: paddings(0.25)), par(spell.body))
 )
 
 #let spellsTable(..spells) = {
@@ -22,7 +24,7 @@
   set text(hyphenate: false)
 
   table(
-    columns: (9mm, 25mm, 8mm, 1fr, 1fr, 1fr),
+    columns: (9mm, 23mm, 8mm, 1fr, 1fr, 1fr),
     align: top + left,
     stroke: (x, y) => (
       top: if (y > 0 and calc.rem(y, 2) == 1) { strokes.hairline } else { 0pt },

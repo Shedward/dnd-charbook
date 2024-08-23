@@ -164,3 +164,199 @@
     #atHigherLevels[+1d8,+5lb]
   ],
 )
+
+#pagebreak()
+
+#dnd.page.spellsSection(
+  spell(
+    "Cure Wounds",
+    prep: preparing,
+    school: evocation,
+    castTime: action,
+    duration: instant,
+    range: touch,
+    components: "VS"
+  )[
+    *Heal 1d8* + INT
+    #atHigherLevels[+1d8]
+  ],
+
+  spell(
+    "Detect Magic",
+    prep: preparing,
+    school: evocation,
+    castTime: action,
+    castType: concentration + ritual,
+    duration: instant,
+    range: sphere(30),
+    components: "VS"
+  )[
+    *Detect presence*, spend 1A to see auraaround object
+    that bears magic and detect it's school
+  ],
+
+  spell(
+    "Disguise Self",
+    prep: preparing,
+    school: abjuration,
+    castTime: action,
+    duration: hour(1),
+    range: self,
+    components: "VS"
+  )[
+    *Shapeshift*, #(sym.plus.minus)1ft height. Testing by *Investigation*
+  ],
+
+  spell(
+    "Expeditious Retreat",
+    prep: preparing,
+    school: transmutation,
+    castTime: bonusAction,
+    castType: concentration,
+    duration: minute(10),
+    range: self,
+    components: "VS"
+  )[
+    You can *Dash*
+  ],
+
+  spell(
+    "Faerie Fire",
+    prep: preparing,
+    school: necromancy,
+    castTime: action,
+    castType: concentration,
+    duration: minute(1),
+    range: cube(20, range: 60),
+    components: "V"
+  )[
+    DEX or *Advantage againts*, light 10ft, no invisibility
+  ],
+
+  spell(
+    "False Life",
+    prep: preparing,
+    school: evocation,
+    castTime: action,
+    duration: hour(1),
+    range: self,
+    components: "VSM"
+  )[
+    Add *Temp. HP 1d4+4*
+    #atHigherLevels[+5HP]
+  ],
+
+  spell(
+    "Feather Fall",
+    prep: preparing,
+    school: transmutation,
+    castTime: reaction,
+    duration: minute(1),
+    range: target(60),
+    components: "VM"
+  )[
+    *Slow falling speed by 60ft*
+  ],
+
+  spell(
+    "Grease",
+    prep: preparing,
+    school: conjuration,
+    castTime: action,
+    duration: minute(1),
+    range: square(10, range: 60),
+    components: "VSM"
+  )[
+    Create area, DEX or *Prone*
+  ],
+
+  spell(
+    "Identify",
+    prep: preparing,
+    school: divination,
+    castTime: minute(1),
+    duration: instant,
+    range: square(10, range: 60),
+    components: "VSM"
+  )[
+    *Identify* items and spells.
+    #required[pearl 100gp]
+  ],
+
+  spell(
+    "Jump",
+    prep: preparing,
+    school: transmutation,
+    castTime: action,
+    duration: minute(1),
+    range: touch,
+    components: "VSM"
+  )[
+    *Jump* distance #sym.times 3
+  ],
+
+  spell(
+    "Longstrider",
+    prep: preparing,
+    school: transmutation,
+    castTime: action,
+    duration: hour(1),
+    range: touch,
+    components: "VSM"
+  )[
+    *Speed* +10ft
+    #atHigherLevels[+1 target]
+  ],
+
+  spell(
+    "Purify Food and Drink",
+    prep: preparing,
+    school: transmutation,
+    castTime: action,
+    duration: instant,
+    range: sphere(5, range: 10),
+    components: "VS"
+  )[
+    *Clean poison and disease* in non-magical food
+  ],
+
+  spell(
+    "Sanctuary",
+    prep: preparing,
+    school: abjuration,
+    castTime: bonusAction,
+    duration: minute(1),
+    range: target(30),
+    components: "VS"
+  )[
+    *Protection*, enemy: WIS or change target or skip
+  ],
+
+  spell(
+    "Snare",
+    prep: preparing,
+    school: abjuration,
+    castTime: minute(1),
+    duration: hour(8),
+    range: circle(5),
+    components: "VSM"
+  )[
+    *Trap*, INT or *Entangled*
+    #required[consume 25ft rope]
+  ],
+
+  spell(
+    "Tasha's Caustic Brew",
+    prep: preparing,
+    school: conjuration,
+    castTime: action,
+    castType: concentration + ritual,
+    duration: minute(1),
+    range: straightLine([30x5]),
+    components: "VSM"
+  )[
+    DEX or *Acid 2d4* each start,
+    target can spend 1A to clean
+    #atHigherLevels[+2d4]
+  ],
+)
