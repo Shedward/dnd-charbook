@@ -92,6 +92,8 @@
   shape: frame.with(radius: paddings(1) - 0.1 * paddings(1)),
   dx: 0pt,
   dy: 0pt,
+  width: 100%,
+  height: 100%,
   body
 ) = container(
   fitting: squared,
@@ -101,7 +103,7 @@
     stroke: strokes.normal
   )
 )[
-  #box(width: 100%, height: 100%)[
+  #box(width: width, height: height)[
     #place(bottom + center, dx: dx, dy: dy)[
       #propCap[ #body ]
     ]

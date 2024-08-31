@@ -19,6 +19,36 @@
   table.cell(colspan: 3, inset: (top: paddings(0.25)), par(spell.body))
 )
 
+#let spellPropBox(content, dy: -0.5em) = {
+  box(height: 15mm)[
+    #framed(fitting: expand)[]
+    #place(bottom + center, dy: dy)[
+      #propCap(content)
+    ]
+  ]
+}
+
+#let spellcasting(character) = {
+  framed(fitting: expand-h)[
+  #grid(
+    row-gutter: paddings(1),
+    grid(
+      columns: (1fr, 1fr, 1fr),
+      inset: 0.25em,
+      character.class,
+      grid.hline(stroke: strokes.thin),
+      [Tools, Infusions],
+      grid.cell(rowspan: 2)[Ritual Casting],
+      propCap[Class], propCap[Focus]
+    ),
+    grid(
+      columns: (1fr, 1fr, 1fr, 1fr),
+      column-gutter: paddings(1),
+      spellPropBox[Ability], spellPropBox[Atk Bonus], spellPropBox[Save DC], spellPropBox[Max Prep.]
+    )
+  )]
+}
+
 #let spellsTable(..spells) = {
   show: spellBody
   set text(hyphenate: false)
@@ -43,20 +73,27 @@
   )
 }
 
-#let spellsSection(level: none, ..spells) = {
+#let spellsSection(
+  level: none,
+  bottom: none,
+  ..spells
+) = {
   let levelRow = if level == none {()} else {
     (
-      level.name,
-      level.slots
+      grid(
+        columns: (1fr, 1fr),
+        align: (left, right),
+        level.name,
+        level.slots
+      ),
     )
   }
   framed(fitting: expand-h, insets: (x: paddings(1), y: paddings(0.5)))[
     #grid(
-      columns: 2,
-      align: (left, right),
+      columns: 1,
       inset: paddings(1),
       ..levelRow,
-      grid.cell(colspan: 2, spellsTable(..spells))
+      spellsTable(..spells)
     )
   ]
 }
