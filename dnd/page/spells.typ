@@ -54,7 +54,7 @@
   set text(hyphenate: false)
 
   table(
-    columns: (9mm, 23mm, 8mm, 1fr, 1fr, 1fr),
+    columns: (9mm, 20mm, 8mm, 1fr, 1fr, 1fr),
     align: top + left,
     stroke: (x, y) => (
       top: if (y > 0 and calc.rem(y, 2) == 1) { strokes.hairline } else { 0pt },
