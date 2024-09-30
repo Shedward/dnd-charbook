@@ -1,7 +1,6 @@
 #import "../core/core.typ": *
 
 #let attacks = {
-
   let headerCell(colspan: 1, body) = grid.cell(
     colspan: colspan,
     tableHeader(body)

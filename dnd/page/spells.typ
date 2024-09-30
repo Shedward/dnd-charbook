@@ -19,11 +19,14 @@
   table.cell(colspan: 3, inset: (top: paddings(0.25)), par(spell.body))
 )
 
-#let spellPropBox(content, dy: -0.5em) = {
+#let spellPropBox(caption, topContent: none, dy: -0.5em) = {
   box(height: 15mm)[
     #framed(fitting: expand)[]
     #place(bottom + center, dy: dy)[
-      #propCap(content)
+      #propCap(caption)
+    ]
+    #place(top + center, dy: -dy)[
+      #propCap(topContent)
     ]
   ]
 }

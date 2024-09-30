@@ -2,7 +2,8 @@
 
 #let fonts = (
   body: "Mookmania",
-  header: "Alegreya SC"
+  header: "Alegreya SC",
+  ability: "Nodesto Cyrillic"
 )
 
 // Initial style settings.
@@ -118,16 +119,35 @@
   smallcaps(body)
 }
 
+#let abilityHeader(body) = {
+  set text(
+    font: fonts.ability,
+    size: 18pt
+  )
+
+  body
+}
+
+#let abilitySource(body) = {
+  set text(
+    font: fonts.header,
+    size: 8pt
+  )
+  smallcaps(body)
+}
+
 // Style for page with text content (ability list, biography, etc.)
-#let columned(doc) = {
+#let columned(doc, withSeparator: true) = {
   [
     #columns(2, gutter: 8mm)[#doc]
-    #place(center + horizon)[
-      #line(
-        angle: 90deg,
-        length: 100%,
-        stroke: strokes.thin
-      )
-    ]
+    #if withSeparator {
+      place(center + horizon)[
+        #line(
+          angle: 90deg,
+          length: 100%,
+          stroke: strokes.thin
+        )
+      ]
+    }
   ]
 }

@@ -101,14 +101,13 @@
     width: size.width,
     height: size.height,
     stroke: strokes.normal
-  )
-)[
-  #box(width: width, height: height)[
+  ),
+  box(width: width, height: height)[
     #place(bottom + center, dx: dx, dy: dy)[
       #propCap[ #body ]
     ]
   ]
-]
+)
 
 #let badge(
   caption: none,
@@ -131,6 +130,11 @@
     ]
   ]
 ]
+
+#let repeated(count, spacing: paddings(1), body) = grid(
+  row-gutter: spacing,
+  ..(range(count).map(_ => body))
+)
 
 #let innerRowStrokes(stroke: strokes.hairline) = (x, y) => (
   top: if y > 0 { stroke } else { 0pt },

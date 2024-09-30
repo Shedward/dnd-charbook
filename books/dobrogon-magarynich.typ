@@ -1,4 +1,5 @@
 #import "../dnd/dnd.typ"
+#import "../dnd/game/game.typ": *
 
 #show: dnd.core.charbook
 
@@ -25,13 +26,9 @@
 
 #dnd.page.attacks
 
-#dnd.page.charlist(
-  dobrogon
-)
+#dnd.page.charlist(dobrogon)
 
 #dnd.page.inventory
-
-#import "../dnd/page/spells.typ": *
 
 #page(
   header: section[Spellcasting]
@@ -755,4 +752,143 @@
       Bonus Action: Move to 30ft
     ],
   )
+
+  #todo("Add spells note to the bottom of the page")
 ]
+
+#dnd.page.abilities(
+  ability("Build For Success", source: "Autognome")[
+    You can add a *d4* to one *attack~roll*, *ability~check*,
+    or *saving~throw* you make, and you can do so after seeing the d20 roll
+    but before the effects of the roll are resolved.
+    You can use this trait a number of times equal to your proficiency bonus,
+    and you regain all expended uses when you finish a long rest.
+
+    #abilityCharges(3)
+  ],
+
+  ability("Healing Machine", source: "Autognome")[
+    If the *Mending* spell is cast on you, you can spend a Hit Dice,
+    roll it, and regain a number of hit points equal to the roll
+    plus your Constitution modifier (minimum of 1 hit point).
+    In addition, your creator designed you to benefit from several spells
+    that preserve life but that normally don't affect Constructs:
+    Cure Wounds, Healing Word, Mass Cure Wounds, Mass Healing Word,
+    and Spare the Dying.
+  ],
+
+  ability("Mechanical Nature", source: "Autognome")[
+    You have *resistance to poison* damage and *immunity to desease*,
+    and you have advantage on saving throws agains being *paralyzed*
+    or *poisoned*. You don't need to eat, drink, or breathe.
+  ],
+
+  ability("Sentry Rest", source: "Autognome")[
+    When you take a long rest, you spend at least 6 hours
+    in an inactive, motionless state, instead of sleeping.
+    In this state, you appear inert, but you remain conscious.
+  ],
+
+  ability("Supply Chain", source: "Failed Merchant")[
+    From your time as a merchant, you retain connections
+    with wholesalers, suppliers, and other merchants
+    and enterpreneurs.
+    You can call upon these connections when looking
+    for item or information.
+  ],
+
+  ability("The Right Tool f.t. Job", source: "Artificer")[
+    At 3rd level, you've learned how to produce exactly the tool you need:
+    with thieves' tools or artisan's tools in hand,
+    you can magically create one set of artisan's tools
+    in an unoccupied space within 5 feet of you.
+    This creation requires 1 hour of uninterrupted work,
+    which can coincide with a short or long rest.
+    Though the product of magic, the tools are nonmagical,
+    and they vanish when you use this feature again.
+
+    #abilitySlot(2)
+  ],
+
+  ability("Magic Tinkering", source: "Artificer")[
+    To use this ability, you must have thieves's
+    tools or artisan's tools in hand.
+
+    + The object sheds *bright light* in 5-foot radius
+      and dim light for an additional 5 feet.
+    + Object emits a *recorded message* that can be heard
+      up to 10 feet away 6 seconds long.
+    + The object continuously emits your choice of an
+      *odor* or *nonverbal sound* perceivable
+      up to 10 feet away
+    + A static *visual effect* appears on one
+      of the object surface
+
+    #repeated(4, abilitySlot(2))
+  ],
+
+  ability("Alchemy Savant", source: "Alchemist")[
+    Whenever you cast a spell using your alchemist's supplies
+    as the spellcasting focus, you gain a bonus to one roll on the spell.
+    That roll must *restore HP* or be a damage roll that deals
+    *acid*, *fire*, *necrotic*, or *poison* damage.
+    And the bonus equals INT
+  ],
+
+  ability("Experimental Elixir", source: "Alchemist")[
+    Beginning at 3rd level, whenever you finish a long rest,
+    you can magically produce an experimental elixir in an empty
+    flask you touch.
+
+    + *Healing.* The drinker regains a number of hit points
+      equal to *2d4 + INT*
+    + *Swiftness.* The drinker's walking speed increases by 10 feet
+      for 1 hour.
+    + *Resilience.* The drinker gains a +1 bonus to AC for 10 minutes.
+    + *Boldness.* The drinker can roll a *d4* and add the number rolled
+      to every *attack row and saving throw* they make for the next minute.
+    + *Flight.* The drinker gains a flying speed of 10 feet for 10 minutes.
+    + *Transformation.* The drinker's body is transformed as if
+      by the Alter Self spell. The drinker determines the transformation
+      caused by the spell, the effects of which last for 10 minutes
+
+    #repeated(4, abilitySlot(1))
+  ],
+
+  ability("Infuse Item", source: "Artificer")[
+    Whenever you finish a long rest, you can touch a nonmagical object
+    and imbue it with  one of your artificer infusions,
+    turning it into a magic item.
+    An infusion works on only certain kinds of objects,
+    as specified in the infusion's description.
+    If the item requires attunement, you can attune yourself
+    to it the instant you infuse the item.
+    If you decide to attune to the item later,
+    you must do so using the normal process for attunement
+
+    Your infusion remains in an item indefinitely,
+    but when you die, the infusion vanishes after
+    a number of days equal to your Intelligence modifier
+    (minimum of 1 day).
+    The infusion also vanishes if you replace your knowledge of
+    the infusion
+
+    You can infuse more than one nonmagical object
+    at the end of a long rest.
+    You must touch each of the objects,
+    and each of your infusions can be in only one object at a time.
+    Moreover, no object can bear more than one of your
+    infusions at a time.
+    If you try to exceed your maximum number of infusions,
+    the oldest infusion ends, and then the new infusion applies.
+
+    If an infusion ends on an item that contains other things,
+    like a bag of holding, its contents  harmlessly appear in and around
+    its space.
+
+    #colbreak(weak: true)
+
+    #subsection[Active]
+    #repeated(5, spacing: paddings(3), abilitySlot(3))
+  ]
+)
