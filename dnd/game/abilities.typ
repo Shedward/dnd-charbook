@@ -29,6 +29,13 @@
   }
 }
 
+#let abilityRequirement(body) = [
+  #set text(top-edge: 0.5em)
+  #set par(first-line-indent: 0em)
+
+  #emph(body)
+]
+
 #let abilitySlot(lines) = figure(
   box(
     framed(
@@ -42,3 +49,12 @@
     ]
   )
 )
+
+#let abilityTable(header, ..cells) = {
+
+  table(
+    columns: header.len(),
+    table.header(..header),
+    ..cells
+  )
+}

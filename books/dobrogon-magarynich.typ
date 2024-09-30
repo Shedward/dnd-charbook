@@ -890,5 +890,50 @@
 
     #subsection[Active]
     #repeated(5, spacing: paddings(3), abilitySlot(3))
+  ],
+)
+
+#dnd.page.abilities(
+  title: [Known Infusions],
+
+  ability("Enhanced Weapon")[
+    #abilityRequirement[
+      A simple or martial weapon
+    ]
+
+    This magic weapon grants a +1 bonus to attack
+    and damage rolls made with it.
+  ],
+
+  ability("Returning Weapon")[
+    #abilityRequirement[
+      A simple or martial weapon with throwin property
+    ]
+
+    This magic weapon grants a +1 bonus to attack
+    and damage rolls made with it,
+    and it returns to the wielder’s hand immediately
+    after it is used to make a ranged attack.
+  ],
+
+  ability("Replicate Item:\nAlchemy Jug")[
+    Once a day using their action,
+    the person holding the jug may name one liquid from the below table,
+    and the jug will produce up to the maximum amount listed for that liquid,
+    after which that liquid can be poured out at a rate of up to 2 gallons per minute.
+
+    #abilityTable(
+      ("Substance",   "Max Amount"),
+      "Acid",         "8 ounces",
+      "Basic poison", "1/2 ounce",
+      "Beer",         "4 gallons",
+      "Honey",        "1 gallon",
+      "Mayonnaise",   "2 gallons",
+      "Oil",          "1 quart",
+      "Vinegar",      "2 gallons",
+      "Fresh water",  "8 gallons",
+      "Salt water",   "12 gallons",
+      "Wine",         "1 gallon"
+    )
   ]
 )
