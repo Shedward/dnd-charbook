@@ -50,11 +50,16 @@
   )
 )
 
-#let abilityTable(header, ..cells) = {
+#let abilityHeaderCell(content) = table.cell(
+  stroke: none,
+  tableHeader(content)
+)
 
+#let abilityTable(header, ..cells) = {
   table(
     columns: header.len(),
-    table.header(..header),
+    stroke: strokes.hairline,
+    table.header(..(header.map(abilityHeaderCell))),
     ..cells
   )
 }

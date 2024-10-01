@@ -6,6 +6,11 @@
   ability: "Nodesto Cyrillic"
 )
 
+#let colors = (
+  primary: black,
+  secondary: gray
+)
+
 // Initial style settings.
 // Should be `#show: dnd.core.charbook`
 // at the top of the document
@@ -17,7 +22,8 @@
   set par(justify: true)
   set text(
     font: fonts.body,
-    size: 9pt
+    size: 9pt,
+    fill: colors.primary
   )
 
   doc

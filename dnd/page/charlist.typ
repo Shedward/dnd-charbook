@@ -92,7 +92,7 @@
         (
           none,
           skill.name,
-          statCaption(fill: gray, skill.stat)
+          statCaption(fill: colors.secondary, skill.stat)
         )
       })
     )
