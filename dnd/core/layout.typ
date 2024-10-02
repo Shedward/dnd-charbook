@@ -145,3 +145,17 @@
   left: if x > 0 { stroke } else { 0pt },
   right: none
 )
+
+#let simpleTable(header, ..cells) = {
+  let headerCell(content) = table.cell(
+    stroke: none,
+    tableHeader(content)
+  )
+
+  table(
+    columns: header.len(),
+    stroke: strokes.hairline,
+    table.header(..(header.map(headerCell))),
+    ..cells
+  )
+}

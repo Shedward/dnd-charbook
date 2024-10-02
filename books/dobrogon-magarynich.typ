@@ -922,7 +922,7 @@
     and the jug will produce up to the maximum amount listed for that liquid,
     after which that liquid can be poured out at a rate of up to 2 gallons per minute.
 
-    #abilityTable(
+    #simpleTable(
       ("Substance",   "Max Amount"),
       "Acid",         "8 ounces",
       "Basic poison", "1/2 ounce",
@@ -964,4 +964,74 @@
     The gate then closes.
     The gate is one-way only and can't be reopened.
   ]
+)
+
+#dnd.page.proficiencies(
+  toolsProficiency(
+    "Alchemist's Supplies",
+    source: "Alchemist",
+    items: (
+      "glass beaker x2",
+      "metal frame for holding",
+      "glass stirring rod",
+      "small pestle and mortar",
+      "a porch of common ingredients (salt, iron powder, purified water)"
+    ),
+    actions: (
+      action("Make a Smoke Cloud", dc: 10),
+      action("Identify a Poison", dc: 10),
+      action("Identify a Substance", dc: 15),
+      action("Make a Fire", dc: 15),
+      action("Neutralize an Acid", dc: 20),
+      action("Craft a Substance")[
+        During a long rest you can create one of a listed substances.
+        To make it you need to *spend raw materials for a half of price of substance*
+        #simpleTable(
+          ("Substance", "Price"),
+          "Acid",             "25g / vial",
+          "Alchemist's fire", "50g / flask",
+          "Antitoxin",        "50g / dose",
+          "Oil",              "1s / flask",
+          "Perfume",          "5g / vial",
+          "Soap",             "2c / item"
+        )
+      ]
+    ),
+    skillsEffects: (
+      skillEffect(arcana)[
+        You can get more information about potions and other substances.
+      ],
+      skillEffect(investigation)[
+        You can understand what chemicals was used in area.
+      ]
+    )
+  ),
+
+  toolsProficiency(
+    "Thieve's Tools",
+    source: "Artificer",
+    items: (
+      "small file",
+      "set of lockpicks",
+      "small mirror on a little handle",
+      "set of narrow-bladed scissors",
+      "pair of pliers"
+    ),
+    actions: (
+      action("Pick a Lock", dc: any),
+      action("Disarm a Trap", dc: any),
+      action("Set a Trap")[
+        As a part of short rest, you can create a trap
+        using improvised means.
+      ]
+    ),
+    skillsEffects: (
+      skillEffect(history)[
+        You can get more information about places that famous for their traps.
+      ],
+      skillEffect(investigation, perception)[
+        You get more Information about traps.
+      ]
+    )
+  )
 )
