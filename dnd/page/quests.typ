@@ -6,32 +6,32 @@
     align: left,
     tableHeader(body)
   )
-  let emptyCell(colspan: 1) = grid.cell(colspan: colspan, [])
-  let spacerCell(colspan: 2) = grid.cell(colspan: colspan, [], stroke: none)
+  let emptyCell = grid.cell([])
 
-  let questFrame(topLines: 3, bottomLines: 4) = [
+  let questFrame(fromLines: 2, goalLines: 5, rewardLines: 1) = [
     #framed(
       fitting: expand-h,
-      insets: (bottom: 0pt, rest: paddings(2))
+      insets: (top: paddings(1), bottom: 0pt, rest: paddings(2))
     )[
       #grid(
-        columns: (1fr, 1fr),
+        columns: (1fr),
         rows: paddings(2),
-        column-gutter: paddings(1),
         stroke: innerRowStrokes(),
-        headerCell[From:], headerCell[Reward:],
-        ..((emptyCell(),) * 2 * topLines),
-        headerCell[Goal:], emptyCell(),
-        ..((emptyCell(colspan: 2),) * bottomLines)
+        headerCell[Goal:], emptyCell,
+        ..((emptyCell,) * goalLines),
+        headerCell[From:],
+        ..((emptyCell,) * fromLines),
+        headerCell[Reward:], emptyCell,
+        ..((emptyCell,) * rewardLines)
       )
     ]
 
     #place(
       top + right,
       dx: paddings(1),
-      dy: -paddings(1),
+      dy: -paddings(0.5),
       rhombus(
-        width: paddings(3),
+        width: paddings(4),
         stroke: strokes.normal,
         fill: white
       ),
@@ -46,7 +46,7 @@
       rows: 1fr,
       stroke: none,
       gutter: paddings(2),
-      ..((questFrame(),) * 8),
+      ..((questFrame(),) * 6),
     )
   ]
 }
