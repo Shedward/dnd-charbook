@@ -1180,3 +1180,103 @@
     )
   )
 )
+
+#dnd.page.backstory[
+    Dobrogon was created by an old gnome in an unnamed
+    deserted village as a moonshine apparatus.
+    He spent most of his life in the basement, producing
+    alcohol for an old alcoholic, unaware of the outside world.
+
+    The basement was a dim and musty space,
+    filled with worn shelves, cobwebs, and aging bottles.
+    Sunlight peered through a cracked window, revealing a glimpse
+    of the forgotten alchemist's sanctuary.
+
+    At some point, while producing another batch,
+    the old man adjusted something, causing Dobrogon to black out.
+    When he woke up, he saw a swollen green headless body
+    on the floor and a large hole in the wall.
+    The old man was nowhere to be found.
+
+    Dobrogon waited for a while, but the old man never showed up.
+    So, Dobrogon decided to embark on a search.
+    He left his home and wandered until he reached
+    a roadside tavern after a few days.
+    There, he met the owner who suggested he wait
+    for the old man, claiming he would be there soon.
+    In the meantime, Dobrogon crafted a variety of exquisite alcoholic.
+
+    After a year of waiting, exhausted, Dobrogon set off to
+    search for the old man elsewhere.
+    During his journey, he traded alcohol and various
+    beverages and substances derived from it.
+
+    During this period, he became interested in alchemy
+    as a means of creating more powerful and complex
+    substances and compositions.
+
+    Over time, due to active and careless use and lack of repairs
+    (none of the encountered artificers could figure out its ridiculous construction),
+    the built-in distillation cube in his body stopped producing alcohol properly.
+    Occasionally, it would short-circuit, causing a small amount of high-proof alcohol
+    to spray onto the ground or his organic parts
+    (unclear whether it was humans, animals, or worse).
+
+    Now, Dobrogon actively searches for the old man
+    not just because he misses him, but also because
+    he might be the only person who can fix him.
+]
+
+#dnd.page.personality[
+  #biographySection("Personal Traits")[
+    #biographySubsection("Naivety")[
+      I often seeing the word with childlike wonder and a lack of cynicism.
+    ]
+    #biographySubsection("Curiosity")[
+      I possess an strong thirst for knowledge
+      and an insatiable desire to explore the unknown
+    ]
+  ]
+
+  #biographySection("Bonds")[
+    #biographySubsection("Father")[
+      I don't know his actual name.
+      But he made me and care about me.
+    ]
+  ]
+
+  #biographySection("Ideals")[
+    #biographySubsection("Freedom")[
+      After getting first taste of freedom
+      I liked it and won't give it away
+    ]
+  ]
+
+  #colbreak()
+
+  #biographySection("Goals")[
+    #biographySubsection("Find father")[
+      Father missing for a very long time.
+      I'm not even sure if he's alive, but I still have to try find him.
+    ]
+    #biographySubsection("Repair myself")[
+      My systems in a very bad condition.
+      I need to find somebody skillfull enough to repair me.
+    ]
+  ]
+
+  #biographySection("Flaws")[
+    #biographySubsection("Cheap Machine Oil")[
+      My father did not have access to good materials,
+      so the cheapest machine oil was poured into me.
+
+      *I have weakness for frost and cold.*
+    ]
+    #biographySubsection("Poorly Insulated Tubes")[
+      After a while of bad exploitation
+      my alcohol producing systems got leaks.
+
+      *I can randomly get drunk or make a little puddle of strong alcohol*
+    ]
+  ]
+]

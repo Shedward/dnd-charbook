@@ -5,3 +5,4 @@
 #import "spells.typ": *
 #import "abilities.typ": *
 #import "proficiencies.typ": *
+#import "biography.typ": *
