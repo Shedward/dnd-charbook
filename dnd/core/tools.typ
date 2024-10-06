@@ -13,6 +13,13 @@
   v
  }
 
+ #let  mapOrNone(v, t) = if v == none {
+  none
+} else {
+  t(v)
+}
+
+
  #let todo(caption) = block(fill: yellow, radius: 4pt, inset: 0.5em)[
   #raw("[" + valueOrDefault(caption, "TODO") + "]")
  ]

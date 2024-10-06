@@ -13,28 +13,32 @@
       #if proficiency.source != none [
         #abilitySource(proficiency.source)
       ]
-      #par[
-        #for item in proficiency.items [
-          - #item,\
-        ]
+
+      #for item in proficiency.items [
+        - #item\
       ]
+
       #for action in proficiency.actions [
-        #grid(
-          columns: (1fr, 1fr),
-          abilitySubtitle(action.name),
-          if action.dc != none [
-            DC #action.dc
-          ]
-        )
-        #par(first-line-indent: 1.5em)[
-          #action.body
+        #par[
+          #table(
+            stroke: none,
+            inset: 0pt,
+            gutter: 0.75em,
+            columns: (1fr, auto),
+            [*#actionName(action.name)*],
+            mapOrNone(
+              action.dc,
+              v => actionName[dc #v]
+            ),
+            ..arrayOrNone(action.body).map(v => table.cell(colspan: 2, v))
+          )
         ]
       ]
 
       #for skillEffect in proficiency.skillsEffects [
-        #par(first-line-indent: 1.5em)[
-          *#skillEffect.skills.pos().join(", ")*:
-          #skillEffect.body
+        #par[
+            *#skillEffect.skills.pos().join(", ")*:
+            #skillEffect.body\
         ]
       ]
     ]
@@ -43,7 +47,7 @@
       if type(proficiency) == "content" {
         proficiency
       } else if type(proficiency) == "dictionary" {
-        [ #proficiencyBlock(proficiency) ]
+        [ #proficiencyBlock(proficiency)\ ]
       } else {
         panic("Not supported proficiency type " + type(proficiency))
       }

@@ -971,7 +971,7 @@
     "Alchemist's Supplies",
     source: "Alchemist",
     items: (
-      "glass beaker x2",
+      [glass beaker #(sym.times) 2],
       "metal frame for holding",
       "glass stirring rod",
       "small pestle and mortar",
@@ -1007,6 +1007,8 @@
     )
   ),
 
+  colbreak(),
+
   toolsProficiency(
     "Thieve's Tools",
     source: "Artificer",
@@ -1018,8 +1020,8 @@
       "pair of pliers"
     ),
     actions: (
-      toolsAction("Pick a Lock", dc: any),
-      toolsAction("Disarm a Trap", dc: any),
+      toolsAction("Pick a Lock", dc: "target"),
+      toolsAction("Disarm a Trap", dc: "target"),
       toolsAction("Set a Trap")[
         As a part of short rest, you can create a trap
         using improvised means.
@@ -1051,15 +1053,130 @@
     ),
     skillsEffects: (
       skillEffect(history)[
-        Additional info for events abount alcohol
+        Additional info for events abount alcohol.
       ],
       skillEffect(medicine)[
-        You can help with alcohol poisoning and use
+        You can help with alcohol poisoning and use.
         it as pain dull
       ],
       skillEffect(perception)[
-        You can use alco to improve mood of a person
+        You can use alco to improve mood of a person.
       ]
     )
   ),
+
+  colbreak(),
+
+  toolsProficiency(
+    "Tinker's Tools",
+    source: "Artificer",
+    items: (
+      "thread",
+      "needles",
+      "wet-stone",
+      "scarp of cloth and leather",
+      "small pot of glue"
+    ),
+    actions: (
+      toolsAction("Temporary fix a mech", dc: 10),
+      toolsAction("Fix twice as fast", dc: 15),
+      toolsAction("Make item out of junk", dc: 20),
+      toolsAction("Repair")[
+        You can restore 10 hp per hour of work.
+        You need materials.
+      ]
+    ),
+    skillsEffects: (
+      skillEffect(history)[
+        You can determine age and origin of an item,
+        even if you have only few pieces of it.
+      ],
+      skillEffect(investigation)[
+        You can learn how long ago item was broken.
+      ]
+    )
+  ),
+
+  toolsProficiency(
+    "Smith's Tools",
+    source: "Artificer",
+    items: (
+      "hammers",
+      "tongs",
+      "chracoal",
+      "rags",
+      "small pot of glue"
+    ),
+    actions: (
+      toolsAction("Sharpen a dull blade", dc: 10),
+      toolsAction("Fix an armor", dc: 15),
+      toolsAction("Dismantle non magical item", dc: 15),
+      toolsAction("Repair")[
+        You can restore 10 hp per hour of work.
+        You need materials.
+      ]
+    ),
+    skillsEffects: (
+      skillEffect(arcana, history)[
+        You have additional insight for metal objects.
+      ],
+      skillEffect(investigation)[
+        You can spot slues about weapon, armor and other metalwork.
+      ]
+    )
+  ),
+
+  toolsProficiency(
+    "Carpenter's Tools",
+    source: "Artificer",
+    items: (
+      "saw",
+      "hammer and nails",
+      "square, ruler and adze",
+      "plain and chisel"
+    ),
+    actions: (
+      toolsAction("Build a simple construct", dc: 10),
+      toolsAction("Build a complex construct", dc: 15),
+      toolsAction("Find weak spot in door", dc: 15),
+      toolsAction("Dismantle a door", dc: 20),
+      toolsAction("Reinforce window/door")[
+        For 1 min. with materials you increase its DC by 5.
+      ],
+      toolsAction("Build a shelter")[
+        For long rest you can build a shelter. It will break after 1d3
+        days after building.
+      ]
+    ),
+    skillsEffects: (
+      skillEffect(history, investigation, perception)[
+        You can learn more about wooden items
+      ],
+    )
+  ),
+
+  toolsProficiency(
+    "Painter's Supplies",
+    source: "Failed merchant",
+    items: (
+      "easel, chracoal",
+      "canvas",
+      "brushes, palette"
+    ),
+    actions: (
+      toolsAction("Make a portrait", dc: 10),
+      toolsAction("Make a picture with a hidden message", dc: 20),
+      toolsAction("Painting and drawing")[
+        At a short or long rest you can produce simple work of art
+      ]
+    ),
+    skillsEffects: (
+      skillEffect(arcana, history, religion)[
+        You have additional insights about art
+      ],
+      skillEffect(investigation, perception)[
+        You can spot clues about paintings
+      ]
+    )
+  )
 )

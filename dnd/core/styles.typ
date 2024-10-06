@@ -134,13 +134,13 @@
   body
 }
 
-#let abilitySubtitle(body) = {
+#let actionName(body) = {
   set text(
-    font: fonts.ability,
-    size: 12pt
+    font: fonts.header,
+    size: 9pt
   )
 
-  body
+ body
 }
 
 #let abilitySource(body) = {
