@@ -753,7 +753,7 @@
     ],
   )
 
-  #todo("Add spells note to the bottom of the page")
+  #inputGrid(20)
 ]
 
 #dnd.page.abilities(

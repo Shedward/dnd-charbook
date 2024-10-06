@@ -159,3 +159,24 @@
     ..cells
   )
 }
+
+#let inputGrid(lines, lineHeight: paddings(3), width: 100%) = {
+  let gridBox(body) = box(width: width, height: lines * lineHeight, body)
+  let gridLine(y) = line(start: (0%, y), length: 100%, stroke: strokes.hairline)
+
+  if lines == auto {
+    todo("Not implemented")
+  } else if lines == 0 {
+    none
+  } else if lines == 1 {
+    gridBox[
+      #gridLine(lineHeight)
+    ]
+  } else {
+    gridBox[
+      #for lineNumber in range(1, lines) {
+        place(center, gridLine(lineHeight * lineNumber))
+      }
+    ]
+  }
+}
