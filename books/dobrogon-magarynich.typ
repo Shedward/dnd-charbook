@@ -10,7 +10,12 @@
   race: "Autognome",
   type: "Construct",
   alignment: "Chaotic Neutral",
-  story: "Failed Merchant"
+  story: "Failed Merchant",
+  spellcasting: spellcasting(
+    focus: "Tools, Infusions",
+    prepearing: true,
+    rutualCasting: true
+  )
 )
 
 #dnd.page.cover(
@@ -524,7 +529,7 @@
     spell(
       "Invisibility",
       prep: preparing,
-      school: illustion,
+      school: illusion,
       castTime: action,
       castType: concentration,
       duration: hour(1),
@@ -582,7 +587,7 @@
     spell(
       "Magic Mouth",
       prep: preparing,
-      school: illustion,
+      school: illusion,
       castTime: minute(1),
       castType: ritual,
       duration: always,
@@ -669,7 +674,7 @@
     spell(
       "See Invisible",
       prep: preparing,
-      school: illustion,
+      school: illusion,
       castTime: action,
       duration: hour(1),
       range: self,

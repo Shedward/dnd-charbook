@@ -32,6 +32,16 @@
 }
 
 #let spellcasting(character) = {
+  let propBox = (
+  (
+    [Ability],
+    [Atk Bonus],
+    [Save DC],
+    if character.spellcasting.prepearing [Max Prep.]
+  )
+  + character.spellcasting.resources
+  ).filter(v => v != none)
+
   framed(fitting: expand-h)[
   #grid(
     row-gutter: paddings(1),
@@ -40,14 +50,18 @@
       inset: 0.25em,
       character.class,
       grid.hline(stroke: strokes.thin),
-      [Tools, Infusions],
-      grid.cell(rowspan: 2)[Ritual Casting],
+      character.spellcasting.focus,
+      grid.cell(rowspan: 2)[
+        #if character.spellcasting.ritualCasting [
+          Ritual Casting
+        ]
+      ],
       propCap[Class], propCap[Focus]
     ),
     grid(
-      columns: (1fr, 1fr, 1fr, 1fr),
+      columns: (1fr,) * propBox.len(),
       column-gutter: paddings(1),
-      spellPropBox[Ability], spellPropBox[Atk Bonus], spellPropBox[Save DC], spellPropBox[Max Prep.]
+      ..(propBox.map(spellPropBox))
     )
   )]
 }

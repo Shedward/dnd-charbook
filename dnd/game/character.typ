@@ -6,6 +6,7 @@
   type: none,
   alignment: none,
   story: none,
+  spellcasting: none,
   level: 1
 ) = (
   name: name,
@@ -15,6 +16,7 @@
   type: type,
   alignment: alignment,
   story: story,
+  spellcasting: spellcasting,
   level: level
 )
 
@@ -63,4 +65,16 @@
   (name: sleighOfHand, stat: DEX),
   (name: stealth, stat: DEX),
   (name: survival, stat: WIS)
+)
+
+#let spellcasting(
+  focus: none,
+  rutualCasting: false,
+  prepearing: false,
+  resources: ()
+) = (
+  focus: focus,
+  ritualCasting: rutualCasting,
+  prepearing: false,
+  resources: resources
 )

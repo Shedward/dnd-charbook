@@ -24,7 +24,7 @@
 #let transmutation = "Transmutation"
 #let divination = "Divination"
 #let enchantment = "Enchantment"
-#let illustion = "Illusion"
+#let illusion = "Illusion"
 
 // Preparation
 #let alwaysPrepared = sym.infinity
@@ -40,7 +40,12 @@
 #let self = [Self]
 #let touch = [Touch]
 
-#let rangeDescr(range) = if (range == 0) [#self] else [#(range)ft]
+#let rangeDescr(range) = if (range == 0) [
+  #self
+] else [
+  #(range)ft
+]
+
 #let countDescr(count) = if (count>1) [#sym.times#count] else []
 
 #let mile(m) = 5279 * m
@@ -54,6 +59,8 @@
 #let cube = area("cube")
 #let sphere = area("sphere")
 #let straightLine = area("arrow-right")
+
+#let volume(size) = [#(size)ft#icon("cube")]
 
 // Sources
 #let class = [Class]
@@ -77,7 +84,7 @@
 
 #let spell(
   name,
-  prep: preparing,
+  prep: none,
   school: none,
   castTime: action,
   castType: none,
