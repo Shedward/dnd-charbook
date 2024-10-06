@@ -16,7 +16,7 @@
 
 #let any = "~"
 
-#let action(
+#let toolsAction(
   name,
   dc: none,
   ..args

@@ -978,12 +978,12 @@
       "a porch of common ingredients (salt, iron powder, purified water)"
     ),
     actions: (
-      action("Make a Smoke Cloud", dc: 10),
-      action("Identify a Poison", dc: 10),
-      action("Identify a Substance", dc: 15),
-      action("Make a Fire", dc: 15),
-      action("Neutralize an Acid", dc: 20),
-      action("Craft a Substance")[
+      toolsAction("Make a Smoke Cloud", dc: 10),
+      toolsAction("Identify a Poison", dc: 10),
+      toolsAction("Identify a Substance", dc: 15),
+      toolsAction("Make a Fire", dc: 15),
+      toolsAction("Neutralize an Acid", dc: 20),
+      toolsAction("Craft a Substance")[
         During a long rest you can create one of a listed substances.
         To make it you need to *spend raw materials for a half of price of substance*
         #simpleTable(
@@ -1018,9 +1018,9 @@
       "pair of pliers"
     ),
     actions: (
-      action("Pick a Lock", dc: any),
-      action("Disarm a Trap", dc: any),
-      action("Set a Trap")[
+      toolsAction("Pick a Lock", dc: any),
+      toolsAction("Disarm a Trap", dc: any),
+      toolsAction("Set a Trap")[
         As a part of short rest, you can create a trap
         using improvised means.
       ]
@@ -1045,9 +1045,9 @@
       "several feet of tubing"
     ),
     actions: (
-      action("Detect potion in drinks", dc: 10),
-      action("Detect alcohol", dc: 15),
-      action("Ignore alcohol effect", dc: 20)
+      toolsAction("Detect potion in drinks", dc: 10),
+      toolsAction("Detect alcohol", dc: 15),
+      toolsAction("Ignore alcohol effect", dc: 20)
     ),
     skillsEffects: (
       skillEffect(history)[
