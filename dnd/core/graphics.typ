@@ -10,10 +10,12 @@
   width: 100%,
   height: 100%,
   stroke: strokes.thin,
+  fill: none,
   radius: paddings(1) - 0.1 * paddings(1)
 ) = path(
   closed: true,
   stroke: stroke,
+  fill: fill,
   // ---
   (radius, 0pt),
   ((width - radius, 0pt), (0pt, 0pt), (0pt, 0.5 * radius)),
@@ -26,7 +28,7 @@
   ((radius, 0pt), (0pt, 0.5 * radius), (0pt, 0pt))
 )
 
-#let heart(width: 100%, height: 100%, stroke: strokes.thin) = {
+#let heart(width: 100%, height: 100%, stroke: strokes.thin, fill: none) = {
   let xCenter = 0.5 * width
   let yTopRuler = 0.1 * height
   let topHanger = 0.125 * height
@@ -38,6 +40,7 @@
   path(
     closed: true,
     stroke: stroke,
+    fill: none,
     // ---
     ((xCenter, width), (topHanger, -topHanger), (-topHanger, -topHanger)),
     ((xLeftRuler, yBottomRuler), (bottomHanger, bottomHanger)),
@@ -48,7 +51,7 @@
   )
 }
 
-#let shield(width: 100%, height: 100%, stroke: strokes.thin) = {
+#let shield(width: 100%, height: 100%, stroke: strokes.thin, fill: none) = {
   let xCenter = 0.5 * width
   let yTopRuler = 0pt
   let topHanger = 0.125 * height
@@ -60,6 +63,7 @@
   path(
     closed: true,
     stroke: stroke,
+    fill: fill,
     // ---
     ((xCenter, width), (topHanger, -topHanger), (-topHanger, -topHanger)),
     ((xLeftRuler, yBottomRuler), (bottomHanger, bottomHanger)),
@@ -74,12 +78,14 @@
 
 #let rhombus(
   width: 100%,
-  stroke: strokes.thin
+  stroke: strokes.thin,
+  fill: none
 ) = {
   let h = 0.5 * width
   path(
     closed: true,
     stroke: stroke,
+    fill: fill,
     // ---
     (h, 0pt), (width, h), (h, width), (0pt, h)
   )

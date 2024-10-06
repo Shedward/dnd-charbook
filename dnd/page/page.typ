@@ -6,3 +6,4 @@
 #import "abilities.typ": *
 #import "proficiencies.typ": *
 #import "biography.typ": *
+#import "quests.typ": *
