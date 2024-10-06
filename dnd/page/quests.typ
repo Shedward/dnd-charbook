@@ -27,11 +27,22 @@
     ]
 
     #place(
-      top + right,
-      dx: paddings(1),
-      dy: -paddings(0.5),
+      top + left,
+      dx: -paddings(1),
+      dy: paddings(1.1),
       rhombus(
-        width: paddings(4),
+        width: paddings(2),
+        stroke: strokes.normal,
+        fill: white
+      ),
+    )
+
+    #place(
+      bottom + left,
+      dx: -paddings(1.5),
+      dy: -paddings(4),
+      rhombus(
+        width: paddings(3),
         stroke: strokes.normal,
         fill: white
       ),
