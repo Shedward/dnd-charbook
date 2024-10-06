@@ -18,7 +18,7 @@
     ]
   ]
 
-  #columned(withSeparator: false)[
+  #columned(separator: false)[
     #for ability in abilities.pos() {
       if type(ability) == "content" {
         ability

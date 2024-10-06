@@ -4,7 +4,7 @@
   header: section[Tools Proficiencies]
 )[
 
-  #columned(withSeparator: false)[
+  #columned(separator: false)[
     #let proficiencyBlock(proficiency) = [
       #set text(hyphenate: false)
       #set text(top-edge: 0.5em)

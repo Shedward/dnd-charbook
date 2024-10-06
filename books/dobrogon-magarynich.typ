@@ -1234,7 +1234,7 @@
     ]
     #biographySubsection("Curiosity")[
       I possess an strong thirst for knowledge
-      and an insatiable desire to explore the unknown
+      and an insatiable desire to explore the unknown.
     ]
   ]
 
@@ -1248,7 +1248,7 @@
   #biographySection("Ideals")[
     #biographySubsection("Freedom")[
       After getting first taste of freedom
-      I liked it and won't give it away
+      I liked it and won't give it away.
     ]
   ]
 

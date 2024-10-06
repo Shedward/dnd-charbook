@@ -3,7 +3,7 @@
 #let biographyPage(body) = {
   set page(header: section[Biography])
   set text(hyphenate: false)
-  show par: set block(spacing: 0.75em)
+  show par: set block(spacing: 1em)
 
   page(body)
 }
@@ -25,6 +25,6 @@
 
 #let personality(body) = {
   biographyPage[
-      #columned(body, withSeparator: false)
+      #columned(body, separator: false, gutter: paddings(2))
   ]
 }

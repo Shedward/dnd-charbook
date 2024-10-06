@@ -161,10 +161,10 @@
 }
 
 // Style for page with text content (ability list, biography, etc.)
-#let columned(doc, withSeparator: true) = {
+#let columned(doc, separator: true, gutter: paddings(4)) = {
   [
-    #columns(2, gutter: 8mm)[#doc]
-    #if withSeparator {
+    #columns(2, gutter: gutter)[#doc]
+    #if separator {
       place(center + horizon)[
         #line(
           angle: 90deg,
