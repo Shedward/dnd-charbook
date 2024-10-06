@@ -14,10 +14,7 @@ jobs:
       - name: Typst
         uses: lvignoli/typst-action@main
         with:
-          source_file: |
-            first_file.typ
-            second_file.typ
-            third_and_final_file.typ
+          source_file: main.typ
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
