@@ -134,6 +134,15 @@
   body
 }
 
+#let abilitySubtitle(body) = {
+  set text(
+    font: fonts.ability,
+    size: 12pt
+  )
+
+  body
+}
+
 #let abilitySource(body) = {
   set text(
     font: fonts.header,

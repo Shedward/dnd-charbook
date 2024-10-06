@@ -1033,5 +1033,33 @@
         You get more Information about traps.
       ]
     )
-  )
+  ),
+
+  toolsProficiency(
+    "Brewer's Tools",
+    source: "Autognome",
+    items: (
+      "large glass jug",
+      "quantity of hops",
+      "siphon",
+      "several feet of tubing"
+    ),
+    actions: (
+      action("Detect potion in drinks", dc: 10),
+      action("Detect alcohol", dc: 15),
+      action("Ignore alcohol effect", dc: 20)
+    ),
+    skillsEffects: (
+      skillEffect(history)[
+        Additional info for events abount alcohol
+      ],
+      skillEffect(medicine)[
+        You can help with alcohol poisoning and use
+        it as pain dull
+      ],
+      skillEffect(perception)[
+        You can use alco to improve mood of a person
+      ]
+    )
+  ),
 )
