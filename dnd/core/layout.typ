@@ -94,6 +94,7 @@
   dy: 0pt,
   width: 100%,
   height: 100%,
+  content: none,
   body
 ) = container(
   fitting: squared,
@@ -101,13 +102,15 @@
     width: size.width,
     height: size.height,
     stroke: strokes.normal
-  ),
-  box(width: width, height: height)[
+  )
+)[
+  #box(width: width, height: height)[
+    #place(horizon + center, dy: -0.4em)[ #propBody(content) ]
     #place(bottom + center, dx: dx, dy: dy)[
       #propCap[ #body ]
     ]
   ]
-)
+]
 
 #let badge(
   caption: none,

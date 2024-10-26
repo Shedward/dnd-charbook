@@ -147,7 +147,7 @@
     ],
     grid.cell[
       #pad(paddings(1))[
-        #propBox[Level]
+        #propBox(content: character.level)[Level]
       ]
     ],
     statsGrid(), skillsGrid(), propsGrid()

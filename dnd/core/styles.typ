@@ -46,6 +46,14 @@
   smallcaps(body)
 }
 
+#let propBody(body) = {
+  set text(
+    font: fonts.body,
+    size: 16pt
+  )
+  body
+}
+
 #let statCaption(body, fill: black) = {
   set text(
     font: fonts.body,

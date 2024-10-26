@@ -14,7 +14,8 @@
   spellcasting: spellcasting(
     focus: "Брошь",
     resources: ("Ед. чар.",)
-  )
+  ),
+  level: 7
 )
 
 #dnd.page.cover(
@@ -192,15 +193,6 @@
     ],
 
     spell(
-      "Вихрь искревления",
-      range: target(90),
-      duration: instant,
-      source: "Чародей"
-    )[
-      ТЕЛ или переместиться
-    ],
-
-    spell(
       "Палящий луч",
       range: target(120),
       duration: instant,
@@ -269,7 +261,54 @@
     ],
   )
 
-  #inputGrid(14)
+  #dnd.page.spellsSection(
+    level: spellLevel(4, slots: 1),
+
+    spell(
+      "Переносящая дверь",
+      range: point(500),
+      duration: instant,
+      source: "Чародей"
+    )[
+      Я и опционально любое согласное существо (в пределах 5фт)
+      перемещается в другую точку.
+      Точку можно указать на словах.
+    ],
+
+    spell(
+      "Болезненное сияние",
+      range: sphere(30, range: 120),
+      duration: minute(10),
+      castType: concentration,
+      source: "Чародей"
+    )[
+      Если существо входит или начинает свой ход в области -
+      *ТЕЛ или 4к10 + 1 истощение* + источают тусклый свет 5фт.
+    ],
+
+    spell(
+      "Призыв духа абберации",
+      range: point(90),
+      duration: hour(1),
+      castType: concentration,
+      source: "Абберантный разум"
+    )[
+      Вы призываете на выбор духа бехолдера, слаада или звездного порождения.
+      Получает вашу инициативу и ходит после вас.
+    ],
+
+    spell(
+      "Эвардовы чёрные щупальца",
+      range: square(20, range: 90),
+      duration: minute(1),
+      castType: concentration,
+      source: "Абберантный разум"
+    )[
+      Труднопроходимая местность.
+      Если существо входит или начинает ход в области -
+      *ЛОВ или 3к6 дроб. + опутано*. Спас от опутаности СИЛ или ЛОВ
+    ]
+  )
 ]
 
 #page(
@@ -487,7 +526,7 @@
     Эдна может приготовить *зелье лечения 2к4 + МУД*
   ],
 
-  inputGrid(30)
+  inputGrid(28)
 )
 
 #dnd.page.proficiencies(

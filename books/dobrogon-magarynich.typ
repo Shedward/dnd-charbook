@@ -15,7 +15,8 @@
     focus: "Tools, Infusions",
     prepearing: true,
     rutualCasting: true
-  )
+  ),
+  level: 5
 )
 
 #dnd.page.cover(

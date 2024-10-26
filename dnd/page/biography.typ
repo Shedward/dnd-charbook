@@ -3,7 +3,7 @@
 #let biographyPage(body) = {
   set page(header: section[Biography])
   set text(hyphenate: false)
-  show par: set block(spacing: 1em)
+  set par(spacing: 1em)
 
   page(body)
 }
