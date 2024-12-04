@@ -1,6 +1,8 @@
 #import "../dnd/dnd.typ"
 #import "../dnd/game/game.typ": *
 
+#setLocale("ru")
+
 #show: dnd.core.charbook
 
 #let edna = dnd.game.character(
