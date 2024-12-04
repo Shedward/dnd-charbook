@@ -46,10 +46,10 @@
   rows: (auto, auto),
   gutter: paddings(1),
   // ---
-  propCap[Destiny P.], propCap[Ins],
+  propCap(loc(en: [Destiny P.], ru: [Оч. судьб.])), propCap(loc(en: [Ins], ru: [Вдох.])),
   checkboxes(3), checkboxes(1),
-  deathSavesCheckboxes[Sc.],
-  deathSavesCheckboxes[Fl.]
+  deathSavesCheckboxes(loc(en: [Sc.], ru: [Успех])),
+  deathSavesCheckboxes(loc(en: [Fl.], ru: [Пров.]))
 )
 
 #let rollsCaption(caption: none, body) = figure(
@@ -64,11 +64,11 @@
   gutter: paddings(0.5),
   inset: paddings(0.5),
   // ---
-  rollsCaption(caption: [Saving roll])[
+  rollsCaption(caption: loc(en: [Saving roll], ru: [Спасброски]))[
     #savingRolls()
   ],
   line(length: 100%, angle: 90deg, stroke: strokes.hairline),
-  rollsCaption(caption: [Death saves])[
+  rollsCaption(caption: loc(en: [Death saves], ru: [Проверки на смерть]))[
     #deathSaves()
   ]
 )
@@ -109,20 +109,20 @@
     rows: (auto, auto, 1fr, auto, auto, auto, 1fr, auto),
     row-gutter: paddings(1),
     // ---
-    propBox[Initiative],
-    propBox(shape: shield, dy: -0.25em)[AC],
+    propBox(loc(en: [Initiative], ru: [Иниц.])),
+    propBox(shape: shield, dy: -0.25em, loc(en: [AC], ru: [КБ])),
     propsSeparator,
-    healthPropBox[Max],
+    healthPropBox(loc(en: [Max], ru: [Макс])),
     badge(
       width: 60%,
       height: 4mm
     )[
-      #healthPropBox[Cur.]
+      #healthPropBox(loc(en: [Cur.], ru: [Тек.]))
     ],
-    healthPropBox[Temp.],
+    healthPropBox(loc(en: [Temp.], ru: [Врем.])),
     propsSeparator,
-    propBox[Prf.Bonus],
-    propBox[Movement]
+    propBox(loc(en: [Prf.Bonus], ru: [Бон. маст.])),
+    propBox(loc(en: [Movement], ru: [Скорость]))
   )
 ]
 
@@ -147,7 +147,7 @@
     ],
     grid.cell[
       #pad(paddings(1))[
-        #propBox(content: character.level)[Level]
+        #propBox(content: character.level, loc(en: [Level], ru: [Уровень]))
       ]
     ],
     statsGrid(), skillsGrid(), propsGrid()

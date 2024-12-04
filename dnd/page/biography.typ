@@ -1,7 +1,7 @@
 #import "../core/core.typ": *
 
 #let biographyPage(body) = {
-  set page(header: section[Biography])
+  set page(header: section(loc(en: [Biography], ru: [Биография])))
   set text(hyphenate: false)
   set par(spacing: 1em)
 
@@ -14,7 +14,7 @@
     #framed(fitting: expand, insets: paddings(2))[
       #align(left)[
         #columned[
-          #abilityHeader[Backstory]
+          #abilityHeader(loc(en: [Backstory], ru: [Предыстория]))
 
           #body
         ]

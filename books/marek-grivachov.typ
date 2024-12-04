@@ -3,6 +3,8 @@
 
 #show: dnd.core.charbook
 
+#setLocale("ru")
+
 #let marek = dnd.game.character(
   name: "Марек Гривачов",
   class: "Колдун",
@@ -46,7 +48,7 @@
     spell(
       "Мистический заряд",
       prep: none,
-      school: "Воплощение",
+      school: evocation,
       duration: instant,
       range: target(120),
       components: "VS",
@@ -59,7 +61,7 @@
     spell(
       "Фокусы",
       prep: none,
-      school: "Преобразование",
+      school: transmutation,
       duration: hour(1),
       range: point(10),
       components: "VS",
@@ -78,7 +80,7 @@
     spell(
       "Свет",
       prep: none,
-      school: "Воплощение",
+      school: evocation,
       duration: hour(1),
       range: touch,
       components: "VS",
@@ -93,7 +95,7 @@
     spell(
       "Священное пламя",
       prep: none,
-      school: "Воплощение",
+      school: evocation,
       duration: hour(1),
       range: touch,
       components: "VS",
@@ -105,7 +107,7 @@
 ]
 
 #page(
-  header: section[Spellcasting]
+  header: section[Заклинания]
 )[
   // Открыть на 2 ур.
   // #dnd.page.spellsSection(
@@ -161,7 +163,7 @@
     spell(
       "Порча",
       prep: none,
-      school: "Очарование",
+      school: enchantment,
       duration: hour(1),
       range: target(90),
       castType: concentration,
@@ -177,7 +179,7 @@
     spell(
       "Защита от добра и зла",
       prep: none,
-      school: "Ограждение",
+      school: abjuration,
       duration: minute(10),
       range: touch,
       castType: concentration,
@@ -192,7 +194,7 @@
     spell(
       "Лечение ран",
       prep: none,
-      school: "Воплощение",
+      school: evocation,
       duration: instant,
       range: touch,
       components: "VS",
@@ -204,7 +206,7 @@
     spell(
       "Направляющий снаряд",
       prep: none,
-      school: "Воплощение",
+      school: evocation,
       duration: round(1),
       range: target(120),
       components: "VS",
@@ -216,7 +218,7 @@
     spell(
       "Разговор с животным",
       prep: alwaysPrepared,
-      school: "Прорицание",
+      school: divination,
       duration: minute(10),
       components: "VS",
       source: "Воззвание: Животная речь"

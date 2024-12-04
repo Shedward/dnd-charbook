@@ -46,12 +46,12 @@
 ]
 
 #let magicItemsTable = inventoryTable(
-  header: ([Atn], [Magic Item], [Val]),
+  header: (loc(en: [Atn], ru: [Нас.]), loc(en: [Magic Item], ru: [Маг. предметы]), loc(en: [Val], ru: [Цен.])),
   columns: (paddings(2.5), 1fr, paddings(3))
 )
 
 #let itemsTable = inventoryTable(
-  header: ([E], [Item], [C.], [W.]),
+  header: (loc(en: [E], ru: [Эк]), loc(en: [Item], ru: [Предмет]), loc(en: [C.], ru: [Кол.]), loc(en: [W.], ru: [Вес])),
   columns: (paddings(2.5), 1fr, paddings(3), paddings(3))
 )
 
@@ -59,7 +59,13 @@
   fitting: expand-h,
   insets: (x: paddings(2), y: paddings(1)),
   {
-    let coins = ("PP", "GP", "SP", "CP")
+    let coins = (
+      loc(en: "PP", ru: "пм"),
+      loc(en: "GP", ru: "зм"),
+      loc(en: "SP", ru: "см"),
+      loc(en: "CP", ru: "мм")
+    )
+
     grid(
       columns: (20mm, 1fr, 20mm, 20mm),
       rows: (4mm, auto),
@@ -74,7 +80,7 @@
 
 #let inventory = [
   #page(
-    header: section[Inventory]
+    header: section(loc(en: [Inventory], ru: [Интентарь]))
   )[
     #inventoryDoubleColumnGrid(
       magicItemsTable,
@@ -90,7 +96,7 @@
         itemsTable,
         itemsTable
       ),
-      subsection[Money],
+      subsection(loc(en: [Money], ru: [Деньги])),
       moneyInput
     )
   ]

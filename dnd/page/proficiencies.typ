@@ -2,7 +2,7 @@
 #import "../game/proficiencies.typ": *
 
 #let proficiencies(..proficiencies) = page(
-  header: section[Proficiencies]
+  header: section(loc(en: [Proficiencies], ru: [Компетенции]))
 )[
 
   #columned(separator: false)[

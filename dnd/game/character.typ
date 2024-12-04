@@ -1,3 +1,5 @@
+#import "../core/core.typ": *
+
 #let character(
   name: none,
   class: none,
@@ -20,32 +22,32 @@
   level: level
 )
 
-#let STR = "STR"
-#let DEX = "DEX"
-#let CON = "CON"
-#let INT = "INT"
-#let WIS = "WIS"
-#let CHA = "CHA"
+#let STR = loc(en: "STR", ru: "СИЛ")
+#let DEX = loc(en: "DEX", ru: "ЛОВ")
+#let CON = loc(en: "CON", ru: "ТЕЛ")
+#let INT = loc(en: "INT", ru: "ИНТ")
+#let WIS = loc(en: "WIS", ru: "МУД")
+#let CHA = loc(en: "CHA", ru: "ХАР")
 
 #let stats = (STR, DEX, CON, INT, WIS, CHA)
 
-#let acrobatics = "Acrobatics"
-#let animalHandling = "Animal H."
-#let arcana = "Arcana"
-#let athletics = "Athletics"
-#let deception = "Deception"
-#let history = "History"
-#let insight = "Insight"
-#let intimidation = "Intimidation"
-#let investigation = "Investigation"
-#let medicine = "Medicine"
-#let nature = "Nature"
-#let perception = "Perception"
-#let performance = "Performance"
-#let religion = "Religion"
-#let sleighOfHand = "Sleigh of Hand"
-#let stealth = "Stealch"
-#let survival = "Survival"
+#let acrobatics = loc(en: "Acrobatics", ru: "Акробатика")
+#let animalHandling = loc(en: "Animal H.", ru: "Уход за Жив.")
+#let arcana = loc(en: "Arcana", ru: "Магия")
+#let athletics = loc(en: "Athletics", ru: "Атлетика")
+#let deception = loc(en: "Deception", ru: "Обман")
+#let history = loc(en: "History", ru: "История")
+#let insight = loc(en: "Insight", ru: "Проницательность")
+#let intimidation = loc(en: "Intimidation", ru: "Запугивание")
+#let investigation = loc(en: "Investigation", ru: "Расследование")
+#let medicine = loc(en: "Medicine", ru: "Медицина")
+#let nature = loc(en: "Nature", ru: "Природа")
+#let perception = loc(en: "Perception", ru: "Восприятие")
+#let performance = loc(en: "Performance", ru: "Выступление")
+#let religion = loc(en: "Religion", ru: "Религия")
+#let sleighOfHand = loc(en: "Sleigh of Hand", ru: "Ловкость рук")
+#let stealth = loc(en: "Stealch", ru: "Скрытность")
+#let survival = loc(en: "Survival", ru: "Выживание")
 
 #let skills = (
   (name: acrobatics, stat: DEX),

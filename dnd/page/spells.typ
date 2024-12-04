@@ -34,10 +34,12 @@
 #let spellcasting(character) = {
   let propBox = (
   (
-    [Ability],
-    [Atk Bonus],
-    [Save DC],
-    if character.spellcasting.prepearing [Max Prep.]
+    loc(en: [Ability], ru: [Навык]),
+    loc(en: [Atk Bonus], ru: [Бонус Атак]),
+    loc(en: [Save DC], ru: [Сложн. спас.]),
+    if character.spellcasting.prepearing {
+      loc(en: [Max Prep.], ru: [Макс. подгот.])
+    }
   )
   + character.spellcasting.resources
   ).filter(v => v != none)
@@ -53,10 +55,10 @@
       character.spellcasting.focus,
       grid.cell(rowspan: 2)[
         #if character.spellcasting.ritualCasting [
-          Ritual Casting
+          #loc(en: "Ritual Casting", ru: "Ритуальн. Закл.")
         ]
       ],
-      propCap[Class], propCap[Focus]
+      propCap(loc(en: [Class], ru: [Класс])), propCap(loc(en: [Focus], ru: [Фокус]))
     ),
     grid(
       columns: (1fr,) * propBox.len(),
@@ -79,12 +81,12 @@
     ),
     inset: paddings(0.75),
 
-    table.cell(align: center, tableHeader[Pr.]),
-    tableHeader[Name],
-    table.cell(align: center, tableHeader[Time]),
-    tableHeader[Dur],
-    tableHeader[Range],
-    tableHeader[Comp.],
+    table.cell(align: center, tableHeader(loc(en: [Pr.], ru: [Подг]))),
+    tableHeader(loc(en: [Name], ru: [Название])),
+    table.cell(align: center, tableHeader(loc(en: [Time], ru: [Время]))),
+    tableHeader(loc(en: [Dur], ru: [Длит.])),
+    tableHeader(loc(en: [Range], ru: [Даль.])),
+    tableHeader(loc(en: [Comp.], ru: [Компон.])),
 
     ..(spells.pos().map(spellRow).flatten()),
   )
