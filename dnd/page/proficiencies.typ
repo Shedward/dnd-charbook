@@ -1,13 +1,20 @@
 #import "../core/core.typ": *
+#import "../game/proficiencies.typ": *
 
 #let proficiencies(..proficiencies) = page(
-  header: section[Tools Proficiencies]
+  header: section[Proficiencies]
 )[
 
   #columned(separator: false)[
-    #let proficiencyBlock(proficiency) = [
-      #set text(hyphenate: false)
-      #set text(top-edge: 0.5em)
+    #let proficiencyBlockStyle(body) = {
+      set text(hyphenate: false)
+      set text(top-edge: 0.5em)
+
+      body
+    }
+
+    #let toolProficiencyBlock(proficiency) = [
+      #show: proficiencyBlockStyle
 
       #abilityHeader(proficiency.title)\
       #if proficiency.source != none [
@@ -43,11 +50,26 @@
       ]
     ]
 
+    #let simpleProficiencyBlock(proficiency) = [
+      #show: proficiencyBlockStyle
+
+      #simpleProficiencyTitle(proficiency.title)\
+      #if proficiency.source != none [
+        #abilitySource(proficiency.source)
+      ]
+    ]
+
     #for proficiency in proficiencies.pos() {
       if type(proficiency) == "content" {
         proficiency
       } else if type(proficiency) == "dictionary" {
-        [ #proficiencyBlock(proficiency)\ ]
+        [
+          #if proficiency.class == tool {
+            toolProficiencyBlock(proficiency)
+          } else {
+            simpleProficiencyBlock(proficiency)
+          }\
+        ]
       } else {
         panic("Not supported proficiency type " + type(proficiency))
       }

@@ -142,6 +142,15 @@
   body
 }
 
+#let simpleProficiencyTitle(body) = {
+  set text(
+    font: fonts.ability,
+    size: 12pt
+  )
+
+  body
+}
+
 #let abilitySubsection(body) = {
   set text(
     font: fonts.ability,
