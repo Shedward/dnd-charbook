@@ -146,11 +146,11 @@
 }
 
 #let hitDices(type) = byLevel(l => [#type #sym.times #l])
-#let maxHp(firstLevel, nextLevel) = character => {
+#let maxHp(firstLevelHp, nextLevelHp) = character => {
   let con = statValue(character, CON)
   if con != none and character.level != none {
-    let firstLevel = firstLevel + con
-    let nextLevels = nextLevel * (character.level - 1) + calc.min(con, 1)
+    let firstLevel = firstLevelHp + con
+    let nextLevels = (nextLevelHp + calc.min(con, 1)) * (character.level - 1)
     firstLevel + nextLevels
   }
 }
