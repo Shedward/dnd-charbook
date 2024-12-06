@@ -1,6 +1,7 @@
 #import "dimentions.typ": *
 #import "graphics.typ": *
 #import "styles.typ": *
+#import "tools.typ": *
 
 // Set of available fittings
 
@@ -182,4 +183,18 @@
       }
     ]
   }
+}
+
+#let hstack(size: (1fr,), ..elems) = {
+  grid(
+    columns: matchedSize(elems.pos(), size),
+    ..elems
+  )
+}
+
+#let vstack(size: (auto,), ..elems) = {
+  grid(
+    rows: matchedSize(elems.pos(), size),
+    ..elems
+  )
 }

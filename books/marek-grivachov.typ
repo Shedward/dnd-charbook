@@ -34,8 +34,18 @@
   saveProffs: (
     WIS, CHA
   ),
-  proffBonus: 2,
-  speed: 30
+  proffBonus: byLevel(
+    (
+      "1": 2,
+      "5": 3,
+      "9": 4,
+      "13": 5,
+      "17": 6
+    )
+  ),
+  speed: 30,
+  hitDices: hitDices[1к8],
+  maxHp: maxHp(8, 5)
 )
 
 #setCharacter(marek)

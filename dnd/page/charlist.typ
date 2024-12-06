@@ -2,7 +2,23 @@
 #import "names.typ": statName, skillName
 #import "../game/game.typ"
 
+#let statDescription(character, stat) = {
+  vstack(
+    pad(top: 0.5em)[
+      #propBody(game.statModifier(character, stat))
+    ],
+    pad(top: 1em)[
+      #game.statValue(character, stat)
+    ]
+  )
+}
+
+#let saveDescription(character, stat) = {
+  skillBody(saveModifier(character, stat))
+}
+
 #let statsGrid(
+  character,
   names: game.stats
 ) = framed(fitting: expand)[
   #grid(
@@ -14,7 +30,7 @@
         #grid(
           columns: 100%,
           rows: (1fr, auto),
-          [],
+          statDescription(character, c),
           grid.hline(stroke: strokes.normal),
           pad(y: paddings(1), charStat(statName(c)))
         )
@@ -104,7 +120,7 @@
 
 #let healthPropBox = propBox.with(shape: heart, dy: -0.25em)
 
-#let propsGrid() = framed(fitting: expand)[
+#let propsGrid(character) = framed(fitting: expand)[
   #grid(
     columns: 100%,
     rows: (auto, auto, 1fr, auto, auto, auto, 1fr, auto),
@@ -113,7 +129,7 @@
     propBox(loc(en: [Initiative], ru: [Иниц.])),
     propBox(shape: shield, dy: -0.25em, loc(en: [AC], ru: [КБ])),
     propsSeparator,
-    healthPropBox(loc(en: [Max], ru: [Макс])),
+    healthPropBox(loc(en: [Max], ru: [Макс]), content: method(character, c => c.maxHp)),
     badge(
       width: 60%,
       height: 4mm
@@ -151,6 +167,6 @@
         #propBox(content: character.level, loc(en: [Level], ru: [Уровень]))
       ]
     ],
-    statsGrid(), skillsGrid(), propsGrid()
+    statsGrid(character), skillsGrid(), propsGrid(character)
   )
 ]

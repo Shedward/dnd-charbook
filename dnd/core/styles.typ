@@ -49,7 +49,17 @@
 #let propBody(body) = {
   set text(
     font: fonts.body,
+    weight: "bold",
     size: 16pt
+  )
+  body
+}
+
+#let skillBody(body) = {
+  set text(
+    font: fonts.body,
+    weight: "bold",
+    size: 9pt
   )
   body
 }

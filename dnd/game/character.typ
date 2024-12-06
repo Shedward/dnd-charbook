@@ -117,6 +117,50 @@
   resources: resources
 )
 
-#let statModifier(value) = {
-  math.floor((stat - 10) / 2)
+#let byLevel(x) = character => {
+  if character.level == none {
+    none
+  } else if type(x) == "function" {
+    x(character.level)
+  } else if type(x) == "dictionary" {
+    let keys = x.keys().map(int).filter(l => l <= character.level)
+    if keys.len() > 0 {
+      x.at(str(keys.last()))
+    }
+  } else {
+    panic("Not supported")
+  }
+}
+
+#let statValue(character, stat) = {
+  if character.stats != none {
+    character.stats.at(stat, default: none)
+  }
+}
+
+#let statModifier(character, stat) = {
+  let value = statValue(character, stat)
+  if value != none {
+    calc.floor((value - 10) / 2)
+  }
+}
+
+#let hitDices(type) = byLevel(l => [#type #sym.times #l])
+#let maxHp(firstLevel, nextLevel) = character => {
+  let con = statValue(character, CON)
+  if con != none and character.level != none {
+    let firstLevel = firstLevel + con
+    let nextLevels = nextLevel * (character.level - 1) + calc.min(con, 1)
+    firstLevel + nextLevels
+  }
+}
+
+#let saveModifier(character, stat) = {
+  let proffBonus = method(character, c => c.proffBonus)
+  let modifier = statModifier(character, stat)
+
+  if proffBonus != none and modifier != none and character.saveProffs != none {
+    let isTrained = character.saveProffs.contains(stat)
+    modifier + if isTrained { proffBonus } else { 0 }
+  }
 }
