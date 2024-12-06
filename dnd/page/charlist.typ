@@ -1,4 +1,5 @@
 #import "../core/core.typ": *
+#import "names.typ": statName, skillName
 #import "../game/game.typ"
 
 #let statsGrid(
@@ -15,7 +16,7 @@
           rows: (1fr, auto),
           [],
           grid.hline(stroke: strokes.normal),
-          pad(y: paddings(1), charStat(game.statName(c)))
+          pad(y: paddings(1), charStat(statName(c)))
         )
       ]
     ])
@@ -27,7 +28,7 @@
   stroke: innerRowStrokes(),
   // ---
   ..(for stat in game.stats {
-    (none, statCaption(game.statName(stat)))
+    (none, statCaption(statName(stat)))
   })
 )
 
@@ -91,8 +92,8 @@
       ..(for skill in game.skills {
         (
           none,
-          game.skillName(skill.skill),
-          statCaption(fill: colors.secondary, game.statName(skill.stat))
+          skillName(skill.skill),
+          statCaption(fill: colors.secondary, statName(skill.stat))
         )
       })
     )
