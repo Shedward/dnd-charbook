@@ -16,8 +16,29 @@
   spellcasting: spellcasting(
     focus: "Гримуар"
   ),
-  level: 1
+  level: 1,
+  stats: (
+    STR: 8,
+    DEX: 14,
+    CON: 12,
+    INT: 8,
+    WIS: 15,
+    CHA: 16
+  ),
+  skillProffs: (
+    persuation,
+    perception,
+    history,
+    nature
+  ),
+  saveProffs: (
+    WIS, CHA
+  ),
+  proffBonus: 2,
+  speed: 30
 )
+
+#setCharacter(marek)
 
 #dnd.page.cover(
   marek.name,
@@ -271,8 +292,8 @@
   armorProficiency("Лёгкая броня", source: "Колдун 1ур"),
   savingProficiency(WIS, source: "Колдун 1ур"),
   savingProficiency(CHA, source: "Колдун 1ур"),
-  skillProficiency(deception, source: "Колдун 1ур"),
-  skillProficiency(investigation, source: "Колдун 1ур"),
+  skillProficiency(persuation, source: "Колдун 1ур"),
+  skillProficiency(perception, source: "Колдун 1ур"),
   skillProficiency(history, source: "Учённый-затворник"),
   skillProficiency(nature, source: "Учённый-затворник")
 )

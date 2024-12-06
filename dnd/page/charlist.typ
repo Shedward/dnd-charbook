@@ -15,7 +15,7 @@
           rows: (1fr, auto),
           [],
           grid.hline(stroke: strokes.normal),
-          pad(y: paddings(1), charStat(c))
+          pad(y: paddings(1), charStat(game.statName(c)))
         )
       ]
     ])
@@ -27,7 +27,7 @@
   stroke: innerRowStrokes(),
   // ---
   ..(for stat in game.stats {
-    (none, statCaption(stat))
+    (none, statCaption(game.statName(stat)))
   })
 )
 
@@ -91,8 +91,8 @@
       ..(for skill in game.skills {
         (
           none,
-          skill.name,
-          statCaption(fill: colors.secondary, skill.stat)
+          game.skillName(skill.skill),
+          statCaption(fill: colors.secondary, game.statName(skill.stat))
         )
       })
     )

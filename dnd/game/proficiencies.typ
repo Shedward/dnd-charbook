@@ -1,4 +1,5 @@
 #import "../core/core.typ"
+#import "character.typ": skillName, statName
 
 #let tool = "tool"
 #let weapon = "weapon"
@@ -67,14 +68,14 @@
   source: source
 )
 
-#let savingProficiency(stat, source: none) = (
+#let savingProficiency(savingStat, source: none) = (
   class: stat,
-  title: [Спас. по #stat],
+  title: [Спас. по #statName(savingStat)],
   source: source
 )
 
-#let skillProficiency(skill, source: none) = (
-  class: stat,
-  title: skill,
+#let skillProficiency(profficientSkill, source: none) = (
+  class: skill,
+  title: skillName(profficientSkill),
   source: source
 )

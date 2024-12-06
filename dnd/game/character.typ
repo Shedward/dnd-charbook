@@ -1,5 +1,20 @@
 #import "../core/core.typ": *
 
+#let setCharacter(currentCharacter) = [
+  #metadata(currentCharacter) <character>
+]
+
+#let resolveForCharacter(fn) = context {
+  let characterRecords = query(<character>)
+  let currentCharacter = if characterRecords.len() > 0 {
+    characterRecords.first().value
+  } else {
+    panic("Character is not specified")
+  }
+
+  fn(currentCharacter)
+}
+
 #let character(
   name: none,
   class: none,
@@ -9,7 +24,15 @@
   alignment: none,
   story: none,
   spellcasting: none,
-  level: 1
+  level: 1,
+  stats: none,
+  skillProffs: none,
+  saveProffs: none,
+  proffBonus: none,
+  speed: none,
+  hitDices: none,
+  maxHp: none,
+  initiative: none
 ) = (
   name: name,
   class: class,
@@ -19,54 +42,102 @@
   alignment: alignment,
   story: story,
   spellcasting: spellcasting,
-  level: level
+  level: level,
+  stats: stats,
+  skillProffs: skillProffs,
+  saveProffs: saveProffs,
+  proffBonus: proffBonus,
+  speed: speed,
+  maxHp: maxHp,
+  initialite: initiative
 )
 
-#let STR = loc(en: "STR", ru: "СИЛ")
-#let DEX = loc(en: "DEX", ru: "ЛОВ")
-#let CON = loc(en: "CON", ru: "ТЕЛ")
-#let INT = loc(en: "INT", ru: "ИНТ")
-#let WIS = loc(en: "WIS", ru: "МУД")
-#let CHA = loc(en: "CHA", ru: "ХАР")
+#let STR = "STR"
+#let DEX = "DEX"
+#let CON = "CON"
+#let INT = "INT"
+#let WIS = "WIS"
+#let CHA = "CHA"
+
+#let statName(stat) = {
+  (
+    STR: loc(en: "STR", ru: "СИЛ"),
+    DEX: loc(en: "DEX", ru: "ЛОВ"),
+    CON: loc(en: "CON", ru: "ТЕЛ"),
+    INT: loc(en: "INT", ru: "ИНТ"),
+    WIS: loc(en: "WIS", ru: "МУД"),
+    CHA: loc(en: "CHA", ru: "ХАР")
+  ).at(stat)
+}
 
 #let stats = (STR, DEX, CON, INT, WIS, CHA)
 
-#let acrobatics = loc(en: "Acrobatics", ru: "Акробатика")
-#let animalHandling = loc(en: "Animal H.", ru: "Уход за Жив.")
-#let arcana = loc(en: "Arcana", ru: "Магия")
-#let athletics = loc(en: "Athletics", ru: "Атлетика")
-#let deception = loc(en: "Deception", ru: "Обман")
-#let history = loc(en: "History", ru: "История")
-#let insight = loc(en: "Insight", ru: "Проницательность")
-#let intimidation = loc(en: "Intimidation", ru: "Запугивание")
-#let investigation = loc(en: "Investigation", ru: "Расследование")
-#let medicine = loc(en: "Medicine", ru: "Медицина")
-#let nature = loc(en: "Nature", ru: "Природа")
-#let perception = loc(en: "Perception", ru: "Восприятие")
-#let performance = loc(en: "Performance", ru: "Выступление")
-#let religion = loc(en: "Religion", ru: "Религия")
-#let sleighOfHand = loc(en: "Sleigh of Hand", ru: "Ловкость рук")
-#let stealth = loc(en: "Stealch", ru: "Скрытность")
-#let survival = loc(en: "Survival", ru: "Выживание")
+#let acrobatics = "acrobatics"
+#let animalHandling = "animalHandling"
+#let arcana = "arcana"
+#let athletics = "athletics"
+#let deception = "deception"
+#let history = "history"
+#let insight = "insight"
+#let intimidation = "intimidation"
+#let investigation = "investigation"
+#let medicine = "medicine"
+#let nature = "nature"
+#let perception = "perception"
+#let persuation = "persuation"
+#let performance = "performance"
+#let religion = "religion"
+#let sleighOfHand = "sleighOfHand"
+#let stealth = "stealth"
+#let survival = "survival"
+
+#let skillName(skill) = {
+  (
+    acrobatics: loc(en: "Acrobatics", ru: "Акробатика"),
+    animalHandling: loc(en: "Animal H.", ru: "Уход за Жив."),
+    arcana: loc(en: "Arcana", ru: "Магия"),
+    athletics: loc(en: "Athletics", ru: "Атлетика"),
+    deception: loc(en: "Deception", ru: "Обман"),
+    history: loc(en: "History", ru: "История"),
+    insight: loc(en: "Insight", ru: "Проницательность"),
+    intimidation: loc(en: "Intimidation", ru: "Запугивание"),
+    investigation: loc(en: "Investigation", ru: "Расследование"),
+    medicine: loc(en: "Medicine", ru: "Медицина"),
+    nature: loc(en: "Nature", ru: "Природа"),
+    perception: loc(en: "Perception", ru: "Восприятие"),
+    persuation: loc(en: "Persuation", ru: "Убеждение"),
+    performance: loc(en: "Performance", ru: "Выступление"),
+    religion: loc(en: "Religion", ru: "Религия"),
+    sleighOfHand: loc(en: "Sleigh of Hand", ru: "Ловкость рук"),
+    stealth: loc(en: "Stealch", ru: "Скрытность"),
+    survival: loc(en: "Survival", ru: "Выживание")
+
+  ).at(skill)
+}
 
 #let skills = (
-  (name: acrobatics, stat: DEX),
-  (name: animalHandling, stat: WIS),
-  (name: arcana, stat: INT),
-  (name: athletics, stat: STR),
-  (name: deception, stat: CHA),
-  (name: history, stat: INT),
-  (name: insight, stat: WIS),
-  (name: intimidation, stat: INT),
-  (name: investigation, stat: INT),
-  (name: medicine, stat: WIS),
-  (name: nature, stat: INT),
-  (name: perception, stat: WIS),
-  (name: performance, stat: CHA),
-  (name: religion, stat: INT),
-  (name: sleighOfHand, stat: DEX),
-  (name: stealth, stat: DEX),
-  (name: survival, stat: WIS)
+  (skill: athletics, stat: STR),
+
+  (skill: acrobatics, stat: DEX),
+  (skill: sleighOfHand, stat: DEX),
+  (skill: stealth, stat: DEX),
+
+  (skill: history, stat: INT),
+  (skill: arcana, stat: INT),
+  (skill: nature, stat: INT),
+  (skill: investigation, stat: INT),
+  (skill: religion, stat: INT),
+
+  (skill: perception, stat: WIS),
+  (skill: survival, stat: WIS),
+  (skill: medicine, stat: WIS),
+  (skill: insight, stat: WIS),
+  (skill: animalHandling, stat: WIS),
+
+  (skill: performance, stat: CHA),
+  (skill: intimidation, stat: CHA),
+  (skill: deception, stat: CHA),
+  (skill: persuation, stat: CHA)
 )
 
 #let spellcasting(

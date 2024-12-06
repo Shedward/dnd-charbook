@@ -23,3 +23,17 @@
  #let todo(caption) = block(fill: yellow, radius: 4pt, inset: 0.5em)[
   #raw("[" + valueOrDefault(caption, "TODO") + "]")
  ]
+
+ #let contentToString(content) = {
+   if content.has("text") {
+     content.text
+   } else if content.has("children") {
+     content.children.map(to-string).join("")
+   } else if content.has("body") {
+     to-string(content.body)
+   } else if content == [ ] {
+     " "
+   } else {
+     ""
+   }
+ }
