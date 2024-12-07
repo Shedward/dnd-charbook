@@ -1,5 +1,5 @@
 #import "../core/core.typ"
-#import "../page/names.typ": statName, skillName
+#import "character.typ": statName, skillName
 
 #let tool = "tool"
 #let weapon = "weapon"

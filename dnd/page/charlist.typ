@@ -1,5 +1,4 @@
 #import "../core/core.typ": *
-#import "names.typ": statName, skillName
 #import "../game/game.typ"
 
 #let statDescription(character, stat) = {
@@ -39,7 +38,7 @@
           rows: (1fr, auto),
           statDescription(character, c),
           grid.hline(stroke: strokes.normal),
-          pad(y: paddings(1), charStat(statName(c)))
+          pad(y: paddings(1), charStat(game.statName(c)))
         )
       ]
     ])
@@ -53,7 +52,7 @@
   ..(for stat in game.stats {
     (
       statBody[#game.saveModifier(character, stat)],
-      statCaption[#statName(stat)#profficiencyMark(character, stat, c => c.saveProffs)]
+      statCaption[#game.statName(stat)#profficiencyMark(character, stat, c => c.saveProffs)]
     )
   })
 )
@@ -119,12 +118,12 @@
         (
           skillBody(game.skillModifier(character, skill.skill)),
           [
-            #skillName(skill.skill)
+            #game.skillName(skill.skill)
             #profficiencyMark(character, skill.skill, c => c.skillProffs)
           ],
           statCaption(
             fill: colors.secondary,
-            statName(skill.stat)
+            game.statName(skill.stat)
           )
         )
       })

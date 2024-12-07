@@ -65,8 +65,8 @@
   let propBox = (
   (
     (
-      content: statName(spellcastingStat(character)),
-      caption: loc(en: [Ability], ru: [Навык])
+      content: statModifier(character, spellcastingStat(character)),
+      caption: [#loc(en: [Ability], ru: [Навык]) - #statName(spellcastingStat(character))]
     ),
     (
       content: spellAtkBonus(character),

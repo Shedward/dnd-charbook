@@ -1,4 +1,5 @@
 #import "../core/core.typ": *
+#import "character.typ": stats, statName, statModifier, resolveForCharacter
 
 // Cast time
 #let action = loc(en: [A], ru: [Де])
@@ -25,6 +26,56 @@
 #let divination = loc(en: "Divination", ru: "Прорицание")
 #let enchantment = loc(en: "Enchantment", ru: "Очарование")
 #let illusion = loc(en: "Illusion", ru: "Иллюзия")
+
+#let acid = "acid"
+#let bludgeoning = "bludgeoning"
+#let frost = "frost"
+#let fire = "fire"
+#let force = "force"
+#let lightning = "lightning"
+#let necrotic = "necrotic"
+#let piercing = "piercing"
+#let poison = "poison"
+#let psychic = "psychic"
+#let radiant = "radiant"
+#let slashing = "slashing"
+#let thunder = "thunder"
+
+#let damageTypeName(type) = {
+  (
+      acid: loc(en: "Acid", ru: "Кислотный"),
+      bludgeoning: loc(en: "Bludgeoning", ru: "Дробящий"),
+      frost: loc(en: "Frost", ru: "Холодом"),
+      fire: loc(en: "Fire", ru: "Огнем"),
+      force: loc(en: "Force", ru: "Силовой"),
+      lightning: loc(en: "Lightning", ru: "Электричеством"),
+      necrotic: loc(en: "Necrotic", ru: "Некротический"),
+      piercing: loc(en: "Piercing", ru: "Колющий"),
+      poison: loc(en: "Poison", ru: "Ядом"),
+      psychic: loc(en: "Psychic", ru: "Психический"),
+      radiant: loc(en: "Radiant", ru: "Лучистый"),
+      slashing: loc(en: "Slashing", ru: "Рубящий"),
+      thunder: loc(en: "Thunder", ru: "Звуковой"),
+  ).at(type)
+}
+
+#let damageTypeShortName(type) = {
+  (
+      acid: loc(en: "acid", ru: "кисл."),
+      bludgeoning: loc(en: "bludg.", ru: "дроб."),
+      cold: loc(en: "frost", ru: "хол."),
+      fire: loc(en: "fire", ru: "огн."),
+      force: loc(en: "force", ru: "сил."),
+      lightning: loc(en: "light.", ru: "элект."),
+      necrotic: loc(en: "necro.", ru: "некр."),
+      piercing: loc(en: "pierc.", ru: "кол."),
+      poison: loc(en: "pois.", ru: "отрав."),
+      psychic: loc(en: "psych.", ru: "псих."),
+      radiant: loc(en: "rad.", ru: "луч."),
+      slashing: loc(en: "slash.", ru: "руб."),
+      thunder: loc(en: "thund.", ru: "звук."),
+  ).at(type)
+}
 
 // Preparation
 #let alwaysPrepared = sym.infinity
@@ -106,8 +157,51 @@
   body: body
 )
 
-#let atHigherLevels(body) = emph(loc(en: [(Lvl~up:~#body)], ru: [Ур.:~#body]))
+#let atHigherLevels(body) = emph(loc(en: [(Lvl~up:~#body)], ru: [Выс.~ур.:~#body]))
 
 #let required(body) = [
   #loc(en: "Req.", ru: "Обяз."): #underline(text(weight: "bold", body))
+]
+
+#let characterRoll(character, formula) = {
+  let e = formula
+
+  let varianceMin(n, max) = n
+  let varianceMax(n, max) = max * n
+
+  e = e.replace(
+    regex("(\d+)d(\d+)"),
+    g => "variance("+ g.captures.at(0) + "," + g.captures.at(1) + ")"
+  )
+  for stat in stats {
+    e = e.replace(stat, str(statModifier(character, stat)))
+  }
+
+  let evalVariance(variance) = eval(
+    e.replace("variance", variance),
+    scope: (
+      min: varianceMin,
+      max: varianceMax
+    )
+  )
+
+  [#formula #caption[(#evalVariance("min") - #evalVariance("max"))]]
+}
+
+#let roll(formula) = resolveForCharacter(c => characterRoll(c, formula))
+
+#let damage(formula, damageType, ranged: false, saving: none) = [
+  *
+  #if ranged [
+    #loc(en: [Ranged], ru: [Дальн.]),
+  ]
+  #if saving != none [
+    #statName(saving) #loc(en: [or], ru: [или])
+  ]
+  #roll(formula) #damageTypeShortName(damageType)
+  *
+]
+
+#let heal(formula) = [
+  *#loc(en: [Heal], ru: [Лечит]) #roll(formula) #loc(en: [HP], ru: [ОЗ])*
 ]

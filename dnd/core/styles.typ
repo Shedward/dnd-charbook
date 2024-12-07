@@ -38,6 +38,15 @@
   body
 }
 
+#let caption(body) = {
+  text(
+    font: fonts.body,
+    size: 6pt,
+    fill: colors.secondary,
+    body
+  )
+}
+
 #let propCap(body) = {
   set text(
     font: fonts.header,

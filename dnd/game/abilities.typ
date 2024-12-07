@@ -6,7 +6,9 @@
   body: body
 )
 
-#let abilityCharges(count) = figure(box(framed(checkboxes(count))))
+#let abilityCharges(
+  count
+) = figure(box(framed(checkboxes(count))))
 
 #let abilityRequirement(body) = [
   #set text(top-edge: 0.5em)
@@ -25,6 +27,25 @@
       )
     )[
       #inputGrid(lines)
+    ]
+  )
+)
+
+#let abilityCountSlot(width: 50%, caption) = figure(
+  box(
+    width: width,
+    framed(
+      fitting: expand-h,
+      insets: (
+        x: paddings(2),
+        y: paddings(1)
+      )
+    )[
+      #hstack(
+        size: (1fr, auto),
+        align: bottom,
+        inputGrid(1), [\/ #caption]
+      )
     ]
   )
 )

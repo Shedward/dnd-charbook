@@ -136,7 +136,7 @@
   slots: slots
 )
 
-#let byLevel(x) = character => {
+#let byCharacterLevel(character, x) = {
   if character.level == none {
     none
   } else if type(x) == "function" {
@@ -147,6 +147,8 @@
     panic("Not supported")
   }
 }
+
+#let byLevelMethod(x) = character => byCharacterLevel(character, x)
 
 #let statValue(character, stat) = {
   if stat != none and character.stats != none {
@@ -180,7 +182,7 @@
   }
 }
 
-#let hitDices(type) = byLevel(l => hstack(size: (1fr, auto), none, [/#l#type]))
+#let hitDices(type) = byLevelMethod(l => hstack(size: (1fr, auto), none, [/#l#type]))
 
 #let maxHp(firstLevelHp, nextLevelHp) = character => {
   let con = statModifier(character, CON)
@@ -236,4 +238,41 @@
   if proffMod != none and statMod != none {
     8 + proffMod + statMod
   }
+}
+
+#let statName(stat) = {
+  if stat != none {
+    (
+      STR: loc(en: "STR", ru: "СИЛ"),
+      DEX: loc(en: "DEX", ru: "ЛОВ"),
+      CON: loc(en: "CON", ru: "ТЕЛ"),
+      INT: loc(en: "INT", ru: "ИНТ"),
+      WIS: loc(en: "WIS", ru: "МУД"),
+      CHA: loc(en: "CHA", ru: "ХАР")
+    ).at(stat)
+  }
+}
+
+#let skillName(skill) = {
+  (
+    acrobatics: loc(en: "Acrobatics", ru: "Акробатика"),
+    animalHandling: loc(en: "Animal H.", ru: "Уход за Жив."),
+    arcana: loc(en: "Arcana", ru: "Магия"),
+    athletics: loc(en: "Athletics", ru: "Атлетика"),
+    deception: loc(en: "Deception", ru: "Обман"),
+    history: loc(en: "History", ru: "История"),
+    insight: loc(en: "Insight", ru: "Проницательность"),
+    intimidation: loc(en: "Intimidation", ru: "Запугивание"),
+    investigation: loc(en: "Investigation", ru: "Расследование"),
+    medicine: loc(en: "Medicine", ru: "Медицина"),
+    nature: loc(en: "Nature", ru: "Природа"),
+    perception: loc(en: "Perception", ru: "Восприятие"),
+    persuation: loc(en: "Persuation", ru: "Убеждение"),
+    performance: loc(en: "Performance", ru: "Выступление"),
+    religion: loc(en: "Religion", ru: "Религия"),
+    sleighOfHand: loc(en: "Sleigh of Hand", ru: "Ловкость рук"),
+    stealth: loc(en: "Stealch", ru: "Скрытность"),
+    survival: loc(en: "Survival", ru: "Выживание")
+
+  ).at(skill)
 }
