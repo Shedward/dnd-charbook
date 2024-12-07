@@ -43,8 +43,8 @@
       "17": 6
     )
   ),
-  speed: 30,
-  hitDices: hitDices[1к8],
+  speed: speed(walking: 30),
+  hitDices: hitDices[k8],
   maxHp: maxHp(8, 5)
 )
 

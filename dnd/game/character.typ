@@ -48,6 +48,7 @@
   saveProffs: saveProffs,
   proffBonus: proffBonus,
   speed: speed,
+  hitDices: hitDices,
   maxHp: maxHp,
   initialite: initiative
 )
@@ -105,6 +106,18 @@
   (skill: persuation, stat: CHA)
 )
 
+#let speed(
+  walking: none,
+  flying: none,
+  swimming: none,
+  climbing: none
+) = (
+  walking: walking,
+  flying: flying,
+  swimming: swimming,
+  climbing: climbing
+)
+
 #let spellcasting(
   focus: none,
   rutualCasting: false,
@@ -145,7 +158,24 @@
   }
 }
 
-#let hitDices(type) = byLevel(l => [#type #sym.times #l])
+#let initiativeModifier(character) = {
+  statModifier(character, DEX)
+}
+
+#let baseArmorClass(character) = {
+  10 + statModifier(character, DEX)
+}
+
+#let proffBonus(character) = {
+  method(character, c => c.proffBonus)
+}
+
+#let walkingSpeed(character) = {
+  method(character, c => c.speed).walking
+}
+
+#let hitDices(type) = byLevel(l => hstack(size: (1fr, auto), none, [/#l#type]))
+
 #let maxHp(firstLevelHp, nextLevelHp) = character => {
   let con = statModifier(character, CON)
   if con != none and character.level != none {

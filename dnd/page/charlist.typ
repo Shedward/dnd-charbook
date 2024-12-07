@@ -126,20 +126,42 @@
     rows: (auto, auto, 1fr, auto, auto, auto, 1fr, auto),
     row-gutter: paddings(1),
     // ---
-    propBox(loc(en: [Initiative], ru: [Иниц.])),
-    propBox(shape: shield, dy: -0.25em, loc(en: [AC], ru: [КБ])),
+    propBox(
+      content: game.initiativeModifier(character),
+      caption: loc(en: [Initiative], ru: [Иниц.])
+    ),
+    badge(
+      width: 4mm,
+      height: 4mm,
+      content: [ #game.baseArmorClass(character) ]
+    )[
+      #propBox(
+        shape: shield, dy: -0.25em,
+        caption: loc(en: [AC], ru: [КБ])
+      )
+    ],
     propsSeparator,
-    healthPropBox(loc(en: [Max], ru: [Макс]), content: method(character, c => c.maxHp)),
+    healthPropBox(
+      content: method(character, c => c.maxHp),
+      caption: loc(en: [Max], ru: [Макс])
+    ),
     badge(
       width: 60%,
-      height: 4mm
+      height: 4mm,
+      content: method(character, c => c.hitDices)
     )[
-      #healthPropBox(loc(en: [Cur.], ru: [Тек.]))
+      #healthPropBox(caption: loc(en: [Cur.], ru: [Тек.]))
     ],
-    healthPropBox(loc(en: [Temp.], ru: [Врем.])),
+    healthPropBox(caption: loc(en: [Temp.], ru: [Врем.])),
     propsSeparator,
-    propBox(loc(en: [Prf.Bonus], ru: [Бон. маст.])),
-    propBox(loc(en: [Movement], ru: [Скорость]))
+    propBox(
+      content: game.proffBonus(character),
+      caption: loc(en: [Prf.Bonus], ru: [Бон. маст.])
+    ),
+    propBox(
+      content: game.walkingSpeed(character),
+      caption: loc(en: [Movement], ru: [Скорость])
+    )
   )
 ]
 
@@ -164,7 +186,10 @@
     ],
     grid.cell[
       #pad(paddings(1))[
-        #propBox(content: character.level, loc(en: [Level], ru: [Уровень]))
+        #propBox(
+          content: character.level,
+          caption: loc(en: [Level], ru: [Уровень])
+        )
       ]
     ],
     statsGrid(character), skillsGrid(), propsGrid(character)

@@ -95,8 +95,8 @@
   dy: 0pt,
   width: 100%,
   height: 100%,
-  content: none,
-  body
+  caption: none,
+  content: none
 ) = container(
   fitting: squared,
   background: size => shape(
@@ -108,16 +108,18 @@
   #box(width: width, height: height)[
     #place(horizon + center, dy: -0.4em)[ #propBody(content) ]
     #place(bottom + center, dx: dx, dy: dy)[
-      #propCap[ #body ]
+      #propCap[ #caption ]
     ]
   ]
 ]
 
 #let badge(
-  caption: none,
   height: auto,
   width: auto,
+  padding: 0.2em,
   alignment: top + right,
+  contentAlignment: horizon + center,
+  content: none,
   body
 ) = [
   #box[
@@ -128,8 +130,13 @@
         height: height,
         fill: white,
         stroke: strokes.normal
-      )[
-        #propCap(caption)
+      )
+      #place(contentAlignment)[
+        #box(
+          width: width,
+          height: height,
+          pad(padding, propCap(content))
+        )
       ]
     ]
   ]
