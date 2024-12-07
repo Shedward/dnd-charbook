@@ -109,6 +109,7 @@
 
 #dnd.page.cover(
   marek.name,
+  image: image("../resources/images/marek-photo.png", width: 3cm),
   title: "Зачетная книжка студента",
   author: "Факультет разведения",
   caption: [

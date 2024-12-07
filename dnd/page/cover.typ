@@ -16,7 +16,8 @@
   author: none,
   title: none,
   subtitle: none,
-  caption: none
+  caption: none,
+  image: none
 ) = page(
   framed(
     stroke: strokes.normal,
@@ -39,6 +40,9 @@
           #caption
         ]
         #place(center + horizon)[
+          #if image != none {
+            image
+          }
           #bookSubtitle[
             #title
           ] \
