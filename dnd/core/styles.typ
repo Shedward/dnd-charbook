@@ -64,11 +64,20 @@
   body
 }
 
-#let statCaption(body, fill: black) = {
+#let statCaption(body, fill: colors.primary) = {
   set text(
     font: fonts.body,
-    size: 6pt,
-    fill: fill
+    fill: fill,
+    size: 6pt
+  )
+  body
+}
+
+#let statBody(body) = {
+  set text(
+    font: fonts.body,
+    weight: "bold",
+    size: 8pt
   )
   body
 }

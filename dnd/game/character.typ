@@ -106,6 +106,10 @@
   (skill: persuation, stat: CHA)
 )
 
+#let statForSkill(skill) = {
+  skills.filter(i => i.skill == skill).first().stat
+}
+
 #let speed(
   walking: none,
   flying: none,
@@ -171,7 +175,10 @@
 }
 
 #let walkingSpeed(character) = {
-  method(character, c => c.speed).walking
+  let speed = method(character, c => c.speed)
+  if speed != none {
+    speed.walking
+  }
 }
 
 #let hitDices(type) = byLevel(l => hstack(size: (1fr, auto), none, [/#l#type]))
@@ -191,6 +198,17 @@
 
   if proffBonus != none and modifier != none and character.saveProffs != none {
     let isTrained = character.saveProffs.contains(stat)
+    modifier + if isTrained { proffBonus } else { 0 }
+  }
+}
+
+#let skillModifier(character, skill) = {
+  let proffBonus = method(character, c => c.proffBonus)
+  let stat = statForSkill(skill)
+  let modifier = statModifier(character, stat)
+
+  if proffBonus != none and modifier != none and character.skillProffs != none {
+    let isTrained = character.skillProffs.contains(skill)
     modifier + if isTrained { proffBonus } else { 0 }
   }
 }

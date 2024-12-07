@@ -17,6 +17,13 @@
   skillBody(saveModifier(character, stat))
 }
 
+#let profficiencyMark(character, value, proffMethod) = {
+  let proffs = method(character, proffMethod)
+  if proffs != none and proffs.contains(value) {
+    [+]
+  }
+}
+
 #let statsGrid(
   character,
   names: game.stats
@@ -39,12 +46,15 @@
   )
 ]
 
-#let savingRolls() = table(
+#let savingRolls(character) = table(
   columns: (1fr, 10mm, 1fr, 10mm),
   stroke: innerRowStrokes(),
   // ---
   ..(for stat in game.stats {
-    (none, statCaption(statName(stat)))
+    (
+      statBody[#game.saveModifier(character, stat)],
+      statCaption[#statName(stat)#profficiencyMark(character, stat, c => c.saveProffs)]
+    )
   })
 )
 
@@ -76,13 +86,13 @@
   body
 )
 
-#let saves() = grid(
+#let saves(character) = grid(
   columns: (1fr, auto, auto),
   gutter: paddings(0.5),
   inset: paddings(0.5),
   // ---
   rollsCaption(caption: loc(en: [Saving roll], ru: [Спасброски]))[
-    #savingRolls()
+    #savingRolls(character)
   ],
   line(length: 100%, angle: 90deg, stroke: strokes.hairline),
   rollsCaption(caption: loc(en: [Death saves], ru: [Проверки на смерть]))[
@@ -90,13 +100,13 @@
   ]
 )
 
-#let skillsGrid() = grid(
+#let skillsGrid(character) = grid(
   columns: 100%,
   rows: (auto, 1fr),
   row-gutter: paddings(1),
   // ---
   framed(fitting: expand-h)[
-    #saves()
+    #saves(character)
   ],
   framed(fitting: expand, insets: (x: paddings(2), y: 0pt))[
     #table(
@@ -107,9 +117,15 @@
       // ---
       ..(for skill in game.skills {
         (
-          none,
-          skillName(skill.skill),
-          statCaption(fill: colors.secondary, statName(skill.stat))
+          skillBody(game.skillModifier(character, skill.skill)),
+          [
+            #skillName(skill.skill)
+            #profficiencyMark(character, skill.skill, c => c.skillProffs)
+          ],
+          statCaption(
+            fill: colors.secondary,
+            statName(skill.stat)
+          )
         )
       })
     )
@@ -192,6 +208,6 @@
         )
       ]
     ],
-    statsGrid(character), skillsGrid(), propsGrid(character)
+    statsGrid(character), skillsGrid(character), propsGrid(character)
   )
 ]
