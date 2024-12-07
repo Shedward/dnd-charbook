@@ -19,53 +19,96 @@
   table.cell(colspan: 3, inset: (top: paddings(0.25)), par(spell.body))
 )
 
-#let spellPropBox(caption, topContent: none, dy: -0.5em) = {
+#let spellPropBox(content, dy: -0.5em) = {
   box(height: 15mm)[
     #framed(fitting: expand)[]
     #place(bottom + center, dy: dy)[
-      #propCap(caption)
+      #propCap(content.at("caption", default: none))
     ]
+
+    #place(horizon + center, dy: 0.5 * dy)[
+      #propBody(content.at("content", default: none))
+    ]
+
     #place(top + center, dy: -dy)[
-      #propCap(topContent)
+      #propCap(content.at("topCaption", default: none))
     ]
   ]
+}
+
+#let spellSlotsSection(character) = {
+  if character.spellcasting != none and character.spellcasting.slots != none {
+    let slots = method(character, c => c.spellcasting.slots)
+
+    framed(fitting: expand-h)[
+      #propCap(loc(en: [Slots], ru: [Ячейки]))
+      #hstack(
+        size: (auto,),
+        align: horizon,
+        gutter: paddings(2),
+        ..(slots.keys()
+            .map(
+              level => vstack(
+                gutter: paddings(0.5),
+
+                spellSlots(slots.at(level)),
+                [ *#propCap(roman(int(level)))* ]
+              )
+            )
+        )
+      )
+    ]
+  }
 }
 
 #let spellcasting(character) = {
   let propBox = (
   (
-    loc(en: [Ability], ru: [Навык]),
-    loc(en: [Atk Bonus], ru: [Бонус Атак]),
-    loc(en: [Save DC], ru: [Сложн. спас.]),
-    if character.spellcasting.prepearing {
-      loc(en: [Max Prep.], ru: [Макс. подгот.])
-    }
+    (
+      content: statName(spellcastingStat(character)),
+      caption: loc(en: [Ability], ru: [Навык])
+    ),
+    (
+      content: spellAtkBonus(character),
+      caption: loc(en: [Atk Bonus], ru: [Атк. Бонус])
+    ),
+    (
+      content: spellDC(character),
+      caption: loc(en: [Save DC], ru: [Спас. слож.])
+    )
   )
-  + character.spellcasting.resources
+  + character.spellcasting.props.map(p => {
+    (
+      content: method(character, c => p.content),
+      caption: method(character, c => p.caption)
+    )
+  })
   ).filter(v => v != none)
 
   framed(fitting: expand-h)[
-  #grid(
-    row-gutter: paddings(1),
-    grid(
-      columns: (1fr, 1fr, 1fr),
-      inset: 0.25em,
-      character.class,
-      grid.hline(stroke: strokes.thin),
-      character.spellcasting.focus,
-      grid.cell(rowspan: 2)[
-        #if character.spellcasting.ritualCasting [
-          #loc(en: "Ritual Casting", ru: "Ритуальн. Закл.")
-        ]
-      ],
-      propCap(loc(en: [Class], ru: [Класс])), propCap(loc(en: [Focus], ru: [Фокус]))
-    ),
-    grid(
-      columns: (1fr,) * propBox.len(),
-      column-gutter: paddings(1),
-      ..(propBox.map(spellPropBox))
+    #vstack(
+      row-gutter: paddings(1),
+      skipNone: true,
+      grid(
+        columns: (1fr, 1fr, 1fr),
+        inset: 0.25em,
+        character.class,
+        grid.hline(stroke: strokes.thin),
+        character.spellcasting.focus,
+        grid.cell(rowspan: 2)[
+          #if character.spellcasting.ritualCasting [
+            #loc(en: "Ritual Casting", ru: "Ритуальн. Закл.")
+          ]
+        ],
+        propCap(loc(en: [Class], ru: [Класс])), propCap(loc(en: [Focus], ru: [Фокус]))
+      ),
+      grid(
+        columns: (1fr,) * propBox.len(),
+        column-gutter: paddings(1),
+        ..(propBox.map(spellPropBox))
+      )
     )
-  )]
+  ]
 }
 
 #let spellsTable(..spells) = {

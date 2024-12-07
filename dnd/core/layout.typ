@@ -192,16 +192,16 @@
   }
 }
 
-#let hstack(size: (1fr,), ..elems) = {
+#let hstack(size: (1fr,), skipNone: false, ..elems) = {
   grid(
-    columns: matchedSize(elems.pos(), size),
+    columns: matchedSize(filterNone(elems.pos(), shouldSkip: skipNone), size),
     ..elems
   )
 }
 
-#let vstack(size: (auto,), ..elems) = {
+#let vstack(size: (auto,), skipNone: false, ..elems) = {
   grid(
-    rows: matchedSize(elems.pos(), size),
+    rows: matchedSize(filterNone(elems.pos(), shouldSkip: skipNone), size),
     ..elems
   )
 }

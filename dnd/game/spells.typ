@@ -78,8 +78,8 @@
   level,
   slots: none
 ) = (
-  name: subsection(loc(en: [Level #level], ru: [Уровень #level])),
-  slots: spellSlots(slots)
+  name: subsection(loc(en: [Level #level], ru: [Уровень #roman(level)])),
+  slots: if slots != none { spellSlots(slots) }
 )
 
 #let spell(

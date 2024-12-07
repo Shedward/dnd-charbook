@@ -1,14 +1,16 @@
 #import "../core/core.typ": *
 
 #let statName(stat) = {
-  (
-    STR: loc(en: "STR", ru: "СИЛ"),
-    DEX: loc(en: "DEX", ru: "ЛОВ"),
-    CON: loc(en: "CON", ru: "ТЕЛ"),
-    INT: loc(en: "INT", ru: "ИНТ"),
-    WIS: loc(en: "WIS", ru: "МУД"),
-    CHA: loc(en: "CHA", ru: "ХАР")
-  ).at(stat)
+  if stat != none {
+    (
+      STR: loc(en: "STR", ru: "СИЛ"),
+      DEX: loc(en: "DEX", ru: "ЛОВ"),
+      CON: loc(en: "CON", ru: "ТЕЛ"),
+      INT: loc(en: "INT", ru: "ИНТ"),
+      WIS: loc(en: "WIS", ru: "МУД"),
+      CHA: loc(en: "CHA", ru: "ХАР")
+    ).at(stat)
+  }
 }
 
 #let skillName(skill) = {

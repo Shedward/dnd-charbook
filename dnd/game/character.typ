@@ -125,13 +125,15 @@
 #let spellcasting(
   focus: none,
   rutualCasting: false,
-  prepearing: false,
-  resources: ()
+  props: (),
+  stat: none,
+  slots: none
 ) = (
   focus: focus,
   ritualCasting: rutualCasting,
-  prepearing: false,
-  resources: resources
+  props: props,
+  stat: stat,
+  slots: slots
 )
 
 #let byLevel(x) = character => {
@@ -140,17 +142,14 @@
   } else if type(x) == "function" {
     x(character.level)
   } else if type(x) == "dictionary" {
-    let keys = x.keys().map(int).filter(l => l <= character.level)
-    if keys.len() > 0 {
-      x.at(str(keys.last()))
-    }
+    switchInt(character.level, x)
   } else {
     panic("Not supported")
   }
 }
 
 #let statValue(character, stat) = {
-  if character.stats != none {
+  if stat != none and character.stats != none {
     character.stats.at(stat, default: none)
   }
 }
@@ -210,5 +209,31 @@
   if proffBonus != none and modifier != none and character.skillProffs != none {
     let isTrained = character.skillProffs.contains(skill)
     modifier + if isTrained { proffBonus } else { 0 }
+  }
+}
+
+#let spellcastingStat(character) = {
+  if character.spellcasting != none {
+    character.spellcasting.stat
+  }
+}
+
+#let spellAtkBonus(character) = {
+  let proffMod = proffBonus(character)
+  let stat = spellcastingStat(character)
+  let statMod = statModifier(character, stat)
+
+  if proffMod != none and statMod != none {
+    proffMod + statMod
+  }
+}
+
+#let spellDC(character) = {
+  let proffMod = proffBonus(character)
+  let stat = spellcastingStat(character)
+  let statMod = statModifier(character, stat)
+
+  if proffMod != none and statMod != none {
+    8 + proffMod + statMod
   }
 }

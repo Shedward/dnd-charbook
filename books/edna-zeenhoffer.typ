@@ -15,7 +15,7 @@
   story: "Преследуемый",
   spellcasting: spellcasting(
     focus: "Брошь",
-    resources: ("Ед. чар.",)
+    props: ((caption: "Ед. чар.", content: none),)
   ),
   level: 7
 )
