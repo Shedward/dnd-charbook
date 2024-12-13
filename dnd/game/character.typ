@@ -150,6 +150,16 @@
 
 #let byLevelMethod(x) = character => byCharacterLevel(character, x)
 
+#let byLevel(x) = resolveForCharacter(byLevelMethod)
+
+#let atLevel(level, body) = resolveForCharacter(c => if c.level == level {
+  body
+})
+
+#let afterLevel(level, body) = resolveForCharacter(c => if c.level >= level {
+  body
+})
+
 #let statValue(character, stat) = {
   if stat != none and character.stats != none {
     character.stats.at(stat, default: none)
