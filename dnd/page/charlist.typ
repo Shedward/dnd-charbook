@@ -148,7 +148,7 @@
     badge(
       width: 4mm,
       height: 4mm,
-      content: [ #game.baseArmorClass(character) ]
+      content: [ #method(character, c => c.baseArmorClass, default: game.baseArmorClass) ]
     )[
       #propBox(
         shape: shield, dy: -0.25em,

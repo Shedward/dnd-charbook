@@ -63,7 +63,7 @@
   (
       acid: loc(en: "acid", ru: "кисл."),
       bludgeoning: loc(en: "bludg.", ru: "дроб."),
-      cold: loc(en: "frost", ru: "хол."),
+      frost: loc(en: "frost", ru: "хол."),
       fire: loc(en: "fire", ru: "огн."),
       force: loc(en: "force", ru: "сил."),
       lightning: loc(en: "light.", ru: "элект."),
@@ -188,7 +188,30 @@
   [#formula #caption[(#evalVariance("min") - #evalVariance("max"))]]
 }
 
+#let characterFormula(character, formula) = {
+  let e = formula
+
+  for stat in stats {
+    e = e.replace(stat, str(statModifier(character, stat)))
+  }
+
+  if character.level != none {
+    e = e.replace("LVL", str(character.level))
+  }
+
+  let proffBonus = method(character, c => c.proffBonus)
+  if proffBonus != none {
+    e = e.replace("PROF", str(proffBonus))
+  }
+
+  eval(e)
+}
+
 #let roll(formula) = resolveForCharacter(c => characterRoll(c, formula))
+
+#let formula(formula) = resolveForCharacter(c => characterFormula(c, formula))
+
+#let dc(dcFormula) = [ #loc(en: [DC], ru: [СЛ]) #formula(dcFormula)]
 
 #let damage(formula, damageType, ranged: false, saving: none) = [
   *

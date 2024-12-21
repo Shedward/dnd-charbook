@@ -32,7 +32,8 @@
   speed: none,
   hitDices: none,
   maxHp: none,
-  initiative: none
+  initiative: none,
+  baseArmorClass: auto,
 ) = (
   name: name,
   class: class,
@@ -50,7 +51,8 @@
   speed: speed,
   hitDices: hitDices,
   maxHp: maxHp,
-  initialite: initiative
+  initialite: initiative,
+  baseArmorClass: baseArmorClass
 )
 
 #let STR = "STR"

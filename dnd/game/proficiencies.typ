@@ -79,3 +79,9 @@
   title: skillName(profficientSkill),
   source: source
 )
+
+#let languageProficiency(language, source: none) = (
+  class: skill,
+  title: language,
+  source: source
+)
