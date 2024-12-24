@@ -7,6 +7,7 @@
 #let music = "music"
 #let stat = "stat"
 #let skill = "skill"
+#let language = "language"
 
 #let toolsProficiency(
   title,
@@ -81,7 +82,7 @@
 )
 
 #let languageProficiency(language, source: none) = (
-  class: skill,
+  class: language,
   title: language,
   source: source
 )
