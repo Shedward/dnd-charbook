@@ -6,7 +6,7 @@
 #setLocale("ru")
 
 #let marek = dnd.game.character(
-  level: 4,
+  level: 5,
   name: "Марек Гривачов",
   class: "Колдун",
   subclass: "Небожитель",
@@ -412,27 +412,8 @@
       source: "Колдун 3ур"
     )[
       Существо и его снаряжение невидимо
-
       #atHigherLevels[
         Дополнительная цель на каждый уровень выше 2го.
-      ]
-    ],
-
-    spell(
-      "Дребезги",
-      prep: none,
-      school: evocation,
-      range: sphere(10, range: 60),
-      duration: hour(1),
-      components: "VSM",
-      castType: concentration,
-      source: "Колдун 3ур"
-    )[
-      #damage("3d8", thunder, saving: CON) + оглушение.
-      Разрушает предметы
-
-      #atHigherLevels[
-        +1d8 урона за каждый уровень выше 2го.
       ]
     ],
 
@@ -449,6 +430,37 @@
       В области расползается магическая тьма.
       Темное зрение не работает.
       Можно наложить на предмет за которым она будет следовать (свой или не носимый)
+    ]
+  )
+
+  #dnd.page.spellsSection(
+    level: spellLevel(3),
+
+    spell(
+      "Громовой шаг",
+      prep: none,
+      school: evocation,
+      range: point(90),
+      duration: instant,
+      components: "V",
+      source: "Колдун 5ур"
+    )[
+      Телепортируете себя и другое согласное существо в пределах 5фт в точку.
+      Существа в радиусе 10фт от точки телепортации #damage("3d10", thunder, saving: CON)
+      #atHigherLevels[на 4ур и выше +1d10]
+    ],
+
+    spell(
+      "Контрспел",
+      prep: none,
+      school: abjuration,
+      duration: instant,
+      castTime: reaction,
+      components: "S",
+      source: "Колдун 5ур"
+    )[
+      Отменяет заклинание 3го уровня или ниже.
+      Если заклинание 4го и выше - проверка ХАР на Сл 10 + уровень заклинания
     ]
   )
 ]
@@ -499,6 +511,10 @@
 
   ability("Воззвание:\nТуманные видения", source: "Колдун 2ур")[
     Вы можете неограниченно накладывать Безмолвный образ
+  ],
+
+  ability("Воззвание:\nОтталкивающий заряд", source: "Колдун 5ур")[
+    Мистический заряд при попадании отталкивает противника на 10фт
   ],
 
   ability("Договор гриммуара", source: "Колдун 3ур")[
