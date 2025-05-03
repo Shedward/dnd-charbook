@@ -27,6 +27,7 @@
   level: 1,
   stats: none,
   skillProffs: none,
+  skillExpert: (),
   saveProffs: none,
   proffBonus: none,
   speed: none,
@@ -46,6 +47,7 @@
   level: level,
   stats: stats,
   skillProffs: skillProffs,
+  skillExpert: skillExpert,
   saveProffs: saveProffs,
   proffBonus: proffBonus,
   speed: speed,
@@ -222,7 +224,8 @@
 
   if proffBonus != none and modifier != none and character.skillProffs != none {
     let isTrained = character.skillProffs.contains(skill)
-    modifier + if isTrained { proffBonus } else { 0 }
+    let mult = if character.skillExpert.contains(skill) { 2 } else { 1 }
+    modifier + if isTrained { mult * proffBonus } else { 0 }
   }
 }
 
@@ -273,7 +276,7 @@
     athletics: loc(en: "Athletics", ru: "Атлетика"),
     deception: loc(en: "Deception", ru: "Обман"),
     history: loc(en: "History", ru: "История"),
-    insight: loc(en: "Insight", ru: "Проницательность"),
+    insight: loc(en: "Insight", ru: "Проницат."),
     intimidation: loc(en: "Intimidation", ru: "Запугивание"),
     investigation: loc(en: "Investigation", ru: "Расследование"),
     medicine: loc(en: "Medicine", ru: "Медицина"),
