@@ -143,9 +143,9 @@
 #let byCharacterLevel(character, x) = {
   if character.level == none {
     none
-  } else if type(x) == "function" {
+  } else if type(x) == function {
     x(character.level)
-  } else if type(x) == "dictionary" {
+  } else if type(x) == dictionary {
     switchInt(character.level, x)
   } else {
     panic("Not supported")

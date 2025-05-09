@@ -58,7 +58,7 @@
  #let method(o, f, default: (o) => none) = {
    if o == none or f(o) == none {
      none
-   } else if type(f(o)) == "function" {
+   } else if type(f(o)) == function {
      f(o)(o)
    } else if f(o) == auto {
      default(o)
