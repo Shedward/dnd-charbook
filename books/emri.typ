@@ -1,5 +1,6 @@
 #import "../dnd/dnd.typ"
 #import "../dnd/game/game.typ": *
+#import "../dnd/data/data.typ": *
 
 #show: dnd.core.charbook
 
@@ -118,4 +119,24 @@
   header: section[Заклинания]
 )[
     #inputGrid(29)
+]
+
+
+#page[
+  #columns[
+    #let spells = spellbook().filter(
+      is_spell_for_class.with(class: "жрец", subclass: "домен кузни")
+    ).filter(
+      is_spell_for_level.with(level: 3)
+    )
+
+    #for s in spells [
+
+      #s.name\
+
+      #text(size: 8pt)[
+        #s.description\
+      ]
+    ]
+  ]
 ]
