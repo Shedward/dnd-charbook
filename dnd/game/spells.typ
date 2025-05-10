@@ -213,7 +213,10 @@
 
 #let dc(dcFormula) = [ #loc(en: [DC], ru: [СЛ]) #formula(dcFormula)]
 
-#let damage(formula, damageType, ranged: false, saving: none) = [
+#let noDamage = "noDamage"
+#let halfDamage = "halfDamage"
+
+#let damage(formula, damageType, ranged: false, saving: none, saved: halfDamage, upgraded: none) = [
   *
   #if ranged [
     #loc(en: [Ranged], ru: [Дальн.]),
