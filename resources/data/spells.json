@@ -314,8 +314,8 @@
     "name" : "Дружба",
     "original_name" : "Friends",
     "school" : "enchantment",
-    "short_description" : "",
-    "target" : "",
+    "short_description" : "#advantage(CHA) на одно выбранное существо. По окончанию существо понимает что было очаровано",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -350,6 +350,8 @@
     "name" : "Дубинка",
     "original_name" : "Shillelagh",
     "school" : "transmutation",
+    "short_description" : "Превращает дубинку или боевой посох в маг. оружие. Можно использовать базовую характеристику вместо Силы. Кость урона становится к8",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -392,6 +394,8 @@
     "name" : "Защита от оружия",
     "original_name" : "Blade ward",
     "school" : "abjuration",
+    "short_description" : "#resit(bludgeoning, piercing, slashing)",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -425,6 +429,8 @@
     "name" : "Злая насмешка",
     "original_name" : "Vicious mockery",
     "school" : "enchantment",
+    "short_description" : "#damage(\"1d4\", psychic, saving: WIS, saved: noDamage),\nесли не прошел спас дополнительно #disadvantage(attack) до конца след. хода",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -460,13 +466,15 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : null,
     "id" : "druidcraft",
     "is_ritual" : false,
     "level" : 0,
     "name" : "Искусство друидов",
     "original_name" : "Druidcraft",
     "school" : "transmutation",
+    "short_description" : "Один из эффектов:\n- Предсказание погоды\n- Цветок распуститься\/семечко прорасти\/почку раскрыться\n- Звук, запах, порыв ветра или другой природный эффект.\n- Зажеч\/потушить свечу\/факел\/костер",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -513,6 +521,8 @@
     "name" : "Клинок зелёного пламени",
     "original_name" : "Green-flame blade",
     "school" : "evocation",
+    "short_description" : "Рукопашная атака оружием, при попадании одно существо получает дополнительно #damage(\"0\", fire, upgrade: (\"1d8\", \"2d8\", \"3d8\"),\nможно перекинуть огонь на второе существо в пределах 5фт от цели которое получит\n#damage(\"MOD\", thunder, upgrade: (\"1d8 + MOD\", \"2d8 + MOD\", \"3d8 + MOD\"))",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -558,6 +568,8 @@
     "name" : "Лассо молнии",
     "original_name" : "Lightning lure",
     "school" : "evocation",
+    "short_description" : "Спас по СИЛ, если не прошел - цель притягивается на 10фт к вам, если в пределах 5фт - получает #damage(\"1d8\", lightning, upgrade: (\"2d8\", \"3d8\", \"4d8\"))",
+    "target" : "target(15)",
     "with_concentration" : false
   },
   {
@@ -602,6 +614,8 @@
     "name" : "Леденящее прикосновение",
     "original_name" : "Chill touch",
     "school" : "necromancy",
+    "short_description" : "#damage(\"1d8\", necrotic, ranged: true, upgrade: (\"2d8\", \"3d8\", \"4d8\")), дополнительно не может восстанавливать хп. Если цель - Нежить - #disadvantage(attack) по вам",
+    "target" : "target(120)",
     "with_concentration" : false
   },
   {
@@ -641,6 +655,8 @@
     "name" : "Лепка земли",
     "original_name" : "Mold earth",
     "school" : "transmutation",
+    "short_description" : "Возможность управлять кубами земли до 5фт:\n- Переместить\n- Создавать узоры и цвета\n- Изменить труднопроходимость",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -681,6 +697,8 @@
     "name" : "Луч холода",
     "original_name" : "Ray of frost",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d8\", frost, ranged: true, upgrade: (\"2d8\", \"3d8\", \"4d8\")), скорость передвижения уменьшается на 10фт",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -728,6 +746,8 @@
     "name" : "Малая иллюзия",
     "original_name" : "Minor illusion",
     "school" : "illusion",
+    "short_description" : "Создаете илюзию не больше 5фт. Визуальную ИЛИ звуковую",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -763,13 +783,15 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 6,
     "id" : "true-strike",
     "is_ritual" : false,
     "level" : 0,
     "name" : "Меткий удар",
     "original_name" : "True strike",
     "school" : "divination",
+    "short_description" : "#advantage(attack)",
+    "target" : "target(30)",
     "with_concentration" : true
   },
   {
@@ -804,6 +826,8 @@
     "name" : "Мистический заряд",
     "original_name" : "Eldritch blast",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d10\", force, ranged: true).\nНа 5-м уровне - 2 луча, на 11-м - 3, на 17-м - 4.",
+    "target" : "target(120)",
     "with_concentration" : false
   },
   {
@@ -848,6 +872,8 @@
     "name" : "Нашествие",
     "original_name" : "Infestation",
     "school" : "conjuration",
+    "short_description" : "#damage(\"1d6\", poison, saving: CON, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\")),\nесли не прошел спас - бежит в случайном направлении на 5фт (d4)",
+    "target" : "target(30)",
     "with_concentration" : false
   },
   {
@@ -894,6 +920,8 @@
     "name" : "Обморожение",
     "original_name" : "Frostbite",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d6\", frost, saving: CON), если не прошел - #disadvantage(attack)",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -934,6 +962,8 @@
     "name" : "Огненный снаряд",
     "original_name" : "Fire bolt",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d10\", fire, ranged: true, upgrade: (\"2d10\", \"3d10\", \"4d10\"))",
+    "target" : "target(120)",
     "with_concentration" : false
   },
   {
@@ -966,6 +996,8 @@
     "name" : "Первобытная дикость",
     "original_name" : "Primal savagery",
     "school" : "transmutation",
+    "short_description" : "Рукопашная атака против существа в 5фт. При попадании #damage(\"1d10\", acid)",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -1003,13 +1035,15 @@
       "distance" : 120,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "dancing-lights",
     "is_ritual" : false,
     "level" : 0,
     "name" : "Пляшущие огоньки",
     "original_name" : "Dancing lights",
     "school" : "evocation",
+    "short_description" : "Создаете до 4 огоньков любой формы.\nОни излучают тусклый свет на 10фт.\nБонусным огоньки можно переместить.",
+    "target" : "point(120, count: 4)",
     "with_concentration" : true
   },
   {
@@ -1050,6 +1084,8 @@
     "name" : "Погребальный звон",
     "original_name" : "Toll the dead",
     "school" : "necromancy",
+    "short_description" : "#damage(\"1d8\", necrotic, saving: WIS, saved: noDamage, upgrade: (\"2d8\", \"3d8\", \"4d8\")), если хиты нели не полные - #damage(\"1d12\", necrotic, saving: WIS, saved: noDamage, upgrade: (\"2d12\", \"3d12\", \"4d12\"))",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -1099,6 +1135,8 @@
     "name" : "Починка",
     "original_name" : "Mending",
     "school" : "transmutation",
+    "short_description" : "Чинит повреждение или разрыв не больше 1фт",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -1147,6 +1185,8 @@
     "name" : "Раскат грома",
     "original_name" : "Thunderclap",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d6\", thunder, saving: CON, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\")), звук слышен на 100фт",
+    "target" : "circle(5)",
     "with_concentration" : false
   },
   {
@@ -1190,6 +1230,8 @@
     "name" : "Расщепление разума",
     "original_name" : "Mind Sliver",
     "school" : "enchantment",
+    "short_description" : "#damage(\"1d6\", psychic, saving: INT, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\")), если не прошел - -1d4 из следующего спасброска",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -1243,6 +1285,8 @@
     "name" : "Свет",
     "original_name" : "Light",
     "school" : "evocation",
+    "short_description" : "Заклинает предмет светится ярким светом на 20фт и тусклым еще на 20фт.\nМожно выбрать цвет",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -1285,6 +1329,8 @@
     "name" : "Священное пламя",
     "original_name" : "Sacred flame",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d8\", radiant, saving: DEX, saved: noDamage, upgrade: (\"2d8\", \"3d8\", \"4d8\")), укрытие не помогает",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -1319,6 +1365,8 @@
     "name" : "Слово сияния",
     "original_name" : "Word of radiance",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d6\", radiant, saving: CON, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\"))",
+    "target" : "circle(5)",
     "with_concentration" : false
   },
   {
@@ -1363,6 +1411,8 @@
     "name" : "Сообщение",
     "original_name" : "Message",
     "school" : "transmutation",
+    "short_description" : "Существо получает ваше сообщение. \nМагическая тишина, 1фт камня, 1дюйм метала, свинец или 3фт дерева блокируюет заклинание. Заклинание может проходить или обходить предметы",
+    "target" : "target(120)",
     "with_concentration" : false
   },
   {
@@ -1396,13 +1446,15 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "resistance",
     "is_ritual" : false,
     "level" : 0,
     "name" : "Сопротивление",
     "original_name" : "Resistance",
     "school" : "abjuration",
+    "short_description" : "+1d4 к одному спасброску на свой выбор",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -1449,6 +1501,8 @@
     "name" : "Сотворение костра",
     "original_name" : "Create bonfire",
     "school" : "conjuration",
+    "short_description" : "Создает огонь в области. Существа в области получают #damage(\"1d8\", fire, saving: DEX, saved: noDamage, upgrade: (\"2d8\", \"3d8\", \"4d8\")).\nТак же наносит урон при перемещении в область и завершении хода в ней.",
+    "target" : "cube(5, range: 60)",
     "with_concentration" : true
   },
   {
@@ -1482,6 +1536,8 @@
     "name" : "Сотворение пламени",
     "original_name" : "Produce flame",
     "school" : "conjuration",
+    "short_description" : "Создаете огонь в ладони. Он испускает яркий свет 10фт и тусклый еще 10фт. Пламенем можно атаковать на 30фт #damage(\"1d8\", fire, ranged: true, upgrade: (\"2d8\", \"3d8\", \"4d8\"))",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -1520,6 +1576,8 @@
     "name" : "Терновый кнут",
     "original_name" : "Thorn whip",
     "school" : "transmutation",
+    "short_description" : "Рукопашная атака, #damage(\"1d6\", piercing, upgrade: (\"2d6\", \"3d6\", \"4d6\")). Если существо не больше Большого - подтягиваете существо до 10фт к себе",
+    "target" : "target(30)",
     "with_concentration" : false
   },
   {
@@ -1560,13 +1618,15 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "guidance",
     "is_ritual" : false,
     "level" : 0,
     "name" : "Указание",
     "original_name" : "Guidance",
     "school" : "divination",
+    "short_description" : "+1d4 к одной проверке характеристики",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -1611,6 +1671,8 @@
     "name" : "Уход за умирающим",
     "original_name" : "Spare the dying",
     "school" : "necromancy",
+    "short_description" : "Стабилизируете существо с 0 хп.\nНе действует на Нежить и Конструктов",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -1661,6 +1723,8 @@
     "name" : "Фокусы",
     "original_name" : "Prestidigitation",
     "school" : "transmutation",
+    "short_description" : "Небольшой магический эффект:\n- Сенсорный эффект\n- Зажечь или потушить свечу\/факел\/костер\n- Чистите\/мараете до 1фт\n- Остужаете\/нагревайте\/придаете вкус до 1фт\n- Цвет\/метка\/символ на предмете\n- Безделушка помещающаяся в ладонь\nНе более 3 эффектов одновременно",
+    "target" : "point(10)",
     "with_concentration" : false
   },
   {
@@ -1700,6 +1764,8 @@
     "name" : "Формование воды",
     "original_name" : "Shape water",
     "school" : "transmutation",
+    "short_description" : "Возможность управлять водой до 5фт:\n- Переместить\n- Создавать узоры и цвета\n- Изменить цвет\/прозрачность\n- Заморозить\/разморозить",
+    "target" : "",
     "with_concentration" : false
   },
   {
@@ -1741,6 +1807,8 @@
     "name" : "Чудотворство",
     "original_name" : "Thaumaturgy",
     "school" : "transmutation",
+    "short_description" : "Вы создаете небольшое чудо:\n- Голос звучит в 3 раза громче\n- Пламя мерцает\/ярче\/тусклее\n- Дрож в полу\n- Звук\n- Распахивается дверь\/окно\n- Изменяется внешний вид глаз",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -1781,6 +1849,8 @@
     "name" : "Шквал",
     "original_name" : "Gust",
     "school" : "transmutation",
+    "short_description" : "Один из эффектов:\n- Существо не больше Среднего СИЛ или оттолкнет на 5фт\n- Сдуть предмет не тяжелее 5фун. на 10фт\n- Безвредный эффект - шелест, колыхание воздуха",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -1820,6 +1890,8 @@
     "name" : "Электрошок",
     "original_name" : "Shocking grasp",
     "school" : "evocation",
+    "short_description" : "Рукопашная атака, #damage(\"1d8\", lightning, upgrade: (\"2d8\", \"3d8\", \"4d8\")), при попадании цель не может совершать реакции до начала следующего хода",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -1866,6 +1938,8 @@
     "name" : "Ядовитые брызги",
     "original_name" : "Poison spray",
     "school" : "conjuration",
+    "short_description" : "#damage(\"1d12\", saving: CON, saved: noDamage, upgrade: (\"2d12\", \"3d12\", \"4d12\"))",
+    "target" : "target(10)",
     "with_concentration" : false
   },
   {
@@ -1904,6 +1978,8 @@
     "name" : "Адское возмездие",
     "original_name" : "Hellish rebuke",
     "school" : "evocation",
+    "short_description" : "Существо причинившее вам урон получает\n#damage(\"2d10\", fire, saving: DEX)\n#atHigherLevels[+1d10]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -1945,6 +2021,8 @@
     "name" : "Безмолвный образ",
     "original_name" : "Silent image",
     "school" : "illusion",
+    "short_description" : "Создаете зрительную илюзию. Действием можно заставить образ переместиться и изменятся.",
+    "target" : "cube(15, range: 60)",
     "with_concentration" : true
   },
   {
@@ -1984,13 +2062,15 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "bless",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Благословение",
     "original_name" : "Bless",
     "school" : "enchantment",
+    "short_description" : "До 3ех существ могут добавить d4 к броску атаки или спасброску.\n#atHigherLevels[+1 цель]",
+    "target" : "target(30, count: 3)",
     "with_concentration" : true
   },
   {
@@ -2021,13 +2101,15 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "divine-favor",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Божественное благоволение",
     "original_name" : "Divine favor",
     "school" : "evocation",
+    "short_description" : "Оружие наносит дополнительно #damage(\"1d4\", radiant)",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -2069,6 +2151,8 @@
     "name" : "Ведьмин снаряд",
     "original_name" : "Witch bolt",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d12\", ranged: true, lightning), пока действует заклинание - каждый ход действием можно нанести урон еще раз.\n#atHigherLevels[+1d12]",
+    "target" : "target(30)",
     "with_concentration" : true
   },
   {
@@ -2139,6 +2223,8 @@
     "name" : "Волна грома",
     "original_name" : "Thunderwave",
     "school" : "evocation",
+    "short_description" : "#damage(\"2d8\", thunder, saving: CON), при провале - отталкивается на 10фт от вас.\nПредметы тоже отталкиваются. Звук слишем на расстоянии 300 футов.\n#atHigherLevels[+1d8]",
+    "target" : "cube(15)",
     "with_concentration" : false
   },
   {
@@ -2184,6 +2270,8 @@
     "name" : "Волшебная стрела",
     "original_name" : "Magic missile",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d4 + 1\", force, ranged: true)\n#atHigherLevels[+1 цель]",
+    "target" : "target(120, count: 3)",
     "with_concentration" : false
   },
   {
@@ -2219,6 +2307,8 @@
     "name" : "Волшебная стрела Джима",
     "original_name" : "Jims Magic Missile",
     "school" : "evocation",
+    "short_description" : "#damage(\"1d4 + 1\", force, ranged: true)\n#atHigherLevels[+1 цель]",
+    "target" : "target(120, count: 3)",
     "with_concentration" : false
   },
   {
@@ -2249,13 +2339,15 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "compelled-duel",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Вызов на дуэль",
     "original_name" : "Compelled duel",
     "school" : "enchantment",
+    "short_description" : "МУД или существо концетрирует внимание на вас:\n- #disadvantage(attack), на всех кроме вас\n- при попытке переместится за 30фт от вас - спас на МУД\nЗаклинание онанчивается, если вы совершаете враждебные действия к кому-то другому или уходите дальше чем 30фт",
+    "target" : "target(30)",
     "with_concentration" : true
   },
   {
@@ -2285,13 +2377,15 @@
       "distance" : 60,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "cause-fear",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Вызов страха",
     "original_name" : "Cause fear",
     "school" : "necromancy",
+    "short_description" : "#effect(fear, saving: WIS)\nКонструкты или Нежить имеют иммунитет.\n#atHigherLevels[+1 цель, существа должны быть в пределах 30фт]\n",
+    "target" : "target(60)",
     "with_concentration" : true
   },
   {
@@ -2337,13 +2431,15 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "heroism",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Героизм",
     "original_name" : "Heroism",
     "school" : "enchantment",
+    "short_description" : "В начале каждого хода получает временные хиты +MOD\n#atHigherLevels[+1 цель]\n",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -2380,6 +2476,8 @@
     "name" : "Гневная кара",
     "original_name" : "Wrathful smite",
     "school" : "evocation",
+    "short_description" : "Зачаровывает следующую рукопашную атаку оружием.\nОружие дополнительно совершает #damage(\"1d6\", psychic), дополнительно #effect(fear, saving: WIS)",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -2412,6 +2510,8 @@
     "name" : "Град шипов",
     "original_name" : "Hail of thorns",
     "school" : "conjuration",
+    "short_description" : "Зачаровывает следующую дальнобойную атаку оружием.\nЦель и все существа в пределах 5 футах #damage(\"1d10\", piercing, saving: DEX)\n#atHigherLevels[+1d10]",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -2444,6 +2544,8 @@
     "name" : "Громовая кара",
     "original_name" : "Thunderous smite",
     "school" : "evocation",
+    "short_description" : "Зачаровывает следующую рукопашную атаку оружием.\nОна дополнительно наносит #damage(\"2d6\", thunder), так же СИЛ или отброшена на 10фт и сбита с ног. Грохот от удара слышен на 300фт",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -2485,6 +2587,8 @@
     "name" : "Диссонирующий шёпот",
     "original_name" : "Dissonant whispers",
     "school" : "enchantment",
+    "short_description" : "#damage(\"3d6\", saving: WIS), в случае провала цель реакцией перемещается от вас. Глухое существо автоматически преуспевает в спасе.\n#atHigherLevels[+1d6]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -2523,6 +2627,8 @@
     "name" : "Доспех Агатиса",
     "original_name" : "Armor of Agathys",
     "school" : "abjuration",
+    "short_description" : "5 врем. хп, существо попавшее рукопашной атакой, пока есть эти хиты получает #damage(\"5\", cold)\n#atHigherLevels[+5 врем. хп, +5 урона]",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -2560,6 +2666,8 @@
     "name" : "Доспехи мага",
     "original_name" : "Mage armor",
     "school" : "abjuration",
+    "short_description" : "У согласного существа не носящего доспех базовый КД становится 13 + ЛОВ",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -2603,6 +2711,8 @@
     "name" : "Дрожь земли",
     "original_name" : "Earth tremor",
     "school" : "evocation",
+    "short_description" : "ЛОВ или #damage(\"1d6\", bludgeoning) и сбивается с ног. Область становится труднопроходимой.\n#atHigherLevels[+1d6]",
+    "target" : "circle(10)",
     "with_concentration" : false
   },
   {
@@ -2648,6 +2758,8 @@
     "name" : "Дружба с животными",
     "original_name" : "Animal friendship",
     "school" : "enchantment",
+    "short_description" : "Зверь с ИНТ < 4 совершает спас по МУД или очарован.\nВред прекращает заклинание.\n#atHigherLevels[+1 цель]",
+    "target" : "target(30)",
     "with_concentration" : false
   },
   {
@@ -2688,6 +2800,8 @@
     "name" : "Едкое варево Таши",
     "original_name" : "Tasha's Caustic Brew",
     "school" : "evocation",
+    "short_description" : "",
+    "target" : "",
     "with_concentration" : true
   },
   {
