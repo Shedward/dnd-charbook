@@ -30,7 +30,6 @@
       "distance" : 60,
       "type" : "range"
     },
-    "duration" : 0,
     "id" : "acid-splash",
     "is_ritual" : false,
     "level" : 0,
@@ -175,7 +174,7 @@
     "name" : "Волшебный камень",
     "original_name" : "Magic stone",
     "school" : "transmutation",
-    "short_description" : "Превращает от 1 до 3 камней в оружие наносящее #damage(\"1d6 + MOD\", bludgeoning, ranged: true)",
+    "short_description" : "Превращает от 1 до 3 камней в метательное оружие наносящее #damage(\"1d6 + MOD\", bludgeoning, ranged: true)",
     "target" : "touch",
     "with_concentration" : false
   },
@@ -466,7 +465,7 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : null,
+    "duration" : 0,
     "id" : "druidcraft",
     "is_ritual" : false,
     "level" : 0,
@@ -568,7 +567,7 @@
     "name" : "Лассо молнии",
     "original_name" : "Lightning lure",
     "school" : "evocation",
-    "short_description" : "Спас по СИЛ, если не прошел - цель притягивается на 10фт к вам, если в пределах 5фт - получает #damage(\"1d8\", lightning, upgrade: (\"2d8\", \"3d8\", \"4d8\"))",
+    "short_description" : "#effect(move(toYou, distance: 10), saving: STR), если в пределах 5фт - получает #damage(\"1d8\", lightning, upgrade: (\"2d8\", \"3d8\", \"4d8\"))",
     "target" : "target(15)",
     "with_concentration" : false
   },
@@ -697,7 +696,7 @@
     "name" : "Луч холода",
     "original_name" : "Ray of frost",
     "school" : "evocation",
-    "short_description" : "#damage(\"1d8\", frost, ranged: true, upgrade: (\"2d8\", \"3d8\", \"4d8\")), скорость передвижения уменьшается на 10фт",
+    "short_description" : "#damage(\"1d8\", frost, ranged: true, upgrade: (\"2d8\", \"3d8\", \"4d8\")), #effect(slowed(10))",
     "target" : "target(60)",
     "with_concentration" : false
   },
@@ -872,7 +871,7 @@
     "name" : "Нашествие",
     "original_name" : "Infestation",
     "school" : "conjuration",
-    "short_description" : "#damage(\"1d6\", poison, saving: CON, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\")),\nесли не прошел спас - бежит в случайном направлении на 5фт (d4)",
+    "short_description" : "#damage(\"1d6\", poison, saving: CON, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\")),\nесли не прошел спас - #effect(move(random, distance: 5))",
     "target" : "target(30)",
     "with_concentration" : false
   },
@@ -920,7 +919,7 @@
     "name" : "Обморожение",
     "original_name" : "Frostbite",
     "school" : "evocation",
-    "short_description" : "#damage(\"1d6\", frost, saving: CON), если не прошел - #disadvantage(attack)",
+    "short_description" : "#damage(\"1d6\", frost, saving: CON), если не прошел спас - #disadvantage(attack)",
     "target" : "target(60)",
     "with_concentration" : false
   },
@@ -996,7 +995,7 @@
     "name" : "Первобытная дикость",
     "original_name" : "Primal savagery",
     "school" : "transmutation",
-    "short_description" : "Рукопашная атака против существа в 5фт. При попадании #damage(\"1d10\", acid)",
+    "short_description" : "#damage(\"1d10\", acid, melee: true)",
     "target" : "self",
     "with_concentration" : false
   },
@@ -1042,7 +1041,7 @@
     "name" : "Пляшущие огоньки",
     "original_name" : "Dancing lights",
     "school" : "evocation",
-    "short_description" : "Создаете до 4 огоньков любой формы.\nОни излучают тусклый свет на 10фт.\nБонусным огоньки можно переместить.",
+    "short_description" : "Создаете до 4 огоньков любой формы. Каждый огонек #effect(light(dim: 10)).\nБонусным огоньки можно переместить.",
     "target" : "point(120, count: 4)",
     "with_concentration" : true
   },
@@ -1084,7 +1083,7 @@
     "name" : "Погребальный звон",
     "original_name" : "Toll the dead",
     "school" : "necromancy",
-    "short_description" : "#damage(\"1d8\", necrotic, saving: WIS, saved: noDamage, upgrade: (\"2d8\", \"3d8\", \"4d8\")), если хиты нели не полные - #damage(\"1d12\", necrotic, saving: WIS, saved: noDamage, upgrade: (\"2d12\", \"3d12\", \"4d12\"))",
+    "short_description" : "#damage(\"1d8\", necrotic, saving: WIS, saved: noDamage, upgrade: (\"2d8\", \"3d8\", \"4d8\")), если хиты цели не полные - #damage(\"1d12\", necrotic, saving: WIS, saved: noDamage, upgrade: (\"2d12\", \"3d12\", \"4d12\"))",
     "target" : "target(60)",
     "with_concentration" : false
   },
@@ -1185,7 +1184,7 @@
     "name" : "Раскат грома",
     "original_name" : "Thunderclap",
     "school" : "evocation",
-    "short_description" : "#damage(\"1d6\", thunder, saving: CON, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\")), звук слышен на 100фт",
+    "short_description" : "#damage(\"1d6\", thunder, saving: CON, saved: noDamage, upgrade: (\"2d6\", \"3d6\", \"4d6\")), #effect(sound(100))",
     "target" : "circle(5)",
     "with_concentration" : false
   },
@@ -1285,7 +1284,7 @@
     "name" : "Свет",
     "original_name" : "Light",
     "school" : "evocation",
-    "short_description" : "Заклинает предмет светится ярким светом на 20фт и тусклым еще на 20фт.\nМожно выбрать цвет",
+    "short_description" : "#effect(light(bright: 20, dim: 20))",
     "target" : "touch",
     "with_concentration" : false
   },
@@ -1494,7 +1493,7 @@
       "distance" : 60,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "create-bonfire",
     "is_ritual" : false,
     "level" : 0,
@@ -1536,7 +1535,7 @@
     "name" : "Сотворение пламени",
     "original_name" : "Produce flame",
     "school" : "conjuration",
-    "short_description" : "Создаете огонь в ладони. Он испускает яркий свет 10фт и тусклый еще 10фт. Пламенем можно атаковать на 30фт #damage(\"1d8\", fire, ranged: true, upgrade: (\"2d8\", \"3d8\", \"4d8\"))",
+    "short_description" : "Создаете огонь в ладони. Огонь #effect(light(bright: 10, dim: 10)).\nПламенем можно атаковать на 30фт #damage(\"1d8\", fire, ranged: true, upgrade: (\"2d8\", \"3d8\", \"4d8\"))",
     "target" : "self",
     "with_concentration" : false
   },
@@ -1576,7 +1575,7 @@
     "name" : "Терновый кнут",
     "original_name" : "Thorn whip",
     "school" : "transmutation",
-    "short_description" : "Рукопашная атака, #damage(\"1d6\", piercing, upgrade: (\"2d6\", \"3d6\", \"4d6\")). Если существо не больше Большого - подтягиваете существо до 10фт к себе",
+    "short_description" : "#damage(\"1d6\", piercing, melee: true, upgrade: (\"2d6\", \"3d6\", \"4d6\")). Если существо не больше Большого - #effect(move(toYou, distance: 10))",
     "target" : "target(30)",
     "with_concentration" : false
   },
@@ -1765,7 +1764,7 @@
     "original_name" : "Shape water",
     "school" : "transmutation",
     "short_description" : "Возможность управлять водой до 5фт:\n- Переместить\n- Создавать узоры и цвета\n- Изменить цвет\/прозрачность\n- Заморозить\/разморозить",
-    "target" : "",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -1890,7 +1889,7 @@
     "name" : "Электрошок",
     "original_name" : "Shocking grasp",
     "school" : "evocation",
-    "short_description" : "Рукопашная атака, #damage(\"1d8\", lightning, upgrade: (\"2d8\", \"3d8\", \"4d8\")), при попадании цель не может совершать реакции до начала следующего хода",
+    "short_description" : "#damage(\"1d8\", lightning, melee: true, upgrade: (\"2d8\", \"3d8\", \"4d8\")), при попадании цель не может совершать реакции до начала следующего хода",
     "target" : "touch",
     "with_concentration" : false
   },
@@ -2144,7 +2143,7 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "witch-bolt",
     "is_ritual" : false,
     "level" : 1,
@@ -2223,7 +2222,7 @@
     "name" : "Волна грома",
     "original_name" : "Thunderwave",
     "school" : "evocation",
-    "short_description" : "#damage(\"2d8\", thunder, saving: CON), при провале - отталкивается на 10фт от вас.\nПредметы тоже отталкиваются. Звук слишем на расстоянии 300 футов.\n#atHigherLevels[+1d8]",
+    "short_description" : "#damage(\"2d8\", thunder, saving: CON), при провале - отталкивается на 10фт от вас.\nПредметы тоже отталкиваются. #effect(sound(300))\n#atHigherLevels[+1d8]",
     "target" : "cube(15)",
     "with_concentration" : false
   },
@@ -2384,7 +2383,7 @@
     "name" : "Вызов страха",
     "original_name" : "Cause fear",
     "school" : "necromancy",
-    "short_description" : "#effect(fear, saving: WIS)\nКонструкты или Нежить имеют иммунитет.\n#atHigherLevels[+1 цель, существа должны быть в пределах 30фт]\n",
+    "short_description" : "#effect(frightened, saving: WIS)\nКонструкты или Нежить имеют иммунитет.\n#atHigherLevels[+1 цель, существа должны быть в пределах 30фт]\n",
     "target" : "target(60)",
     "with_concentration" : true
   },
@@ -2469,14 +2468,14 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "wrathful-smite",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Гневная кара",
     "original_name" : "Wrathful smite",
     "school" : "evocation",
-    "short_description" : "Зачаровывает следующую рукопашную атаку оружием.\nОружие дополнительно совершает #damage(\"1d6\", psychic), дополнительно #effect(fear, saving: WIS)",
+    "short_description" : "Зачаровывает следующую рукопашную атаку оружием.\nОружие дополнительно совершает #damage(\"1d6\", psychic), дополнительно #effect(frightened, saving: WIS)",
     "target" : "self",
     "with_concentration" : true
   },
@@ -2503,7 +2502,7 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "hail-of-thorns",
     "is_ritual" : false,
     "level" : 1,
@@ -2537,14 +2536,14 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "thunderous-smite",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Громовая кара",
     "original_name" : "Thunderous smite",
     "school" : "evocation",
-    "short_description" : "Зачаровывает следующую рукопашную атаку оружием.\nОна дополнительно наносит #damage(\"2d6\", thunder), так же СИЛ или отброшена на 10фт и сбита с ног. Грохот от удара слышен на 300фт",
+    "short_description" : "Зачаровывает следующую рукопашную атаку оружием.\nОна дополнительно наносит #damage(\"2d6\", thunder), так же #effect(move(fromYou, distance: 10), prone, saving: STR). #effect(sound(300))",
     "target" : "self",
     "with_concentration" : true
   },
@@ -2711,7 +2710,7 @@
     "name" : "Дрожь земли",
     "original_name" : "Earth tremor",
     "school" : "evocation",
-    "short_description" : "ЛОВ или #damage(\"1d6\", bludgeoning) и сбивается с ног. Область становится труднопроходимой.\n#atHigherLevels[+1d6]",
+    "short_description" : "#damage(\"1d6\", bludgeoning, saving: DEX, saved: noDamage), если не прошел #effect(prone). Область становится труднопроходимой.\n#atHigherLevels[+1d6]",
     "target" : "circle(10)",
     "with_concentration" : false
   },
@@ -2758,7 +2757,7 @@
     "name" : "Дружба с животными",
     "original_name" : "Animal friendship",
     "school" : "enchantment",
-    "short_description" : "Зверь с ИНТ < 4 совершает спас по МУД или очарован.\nВред прекращает заклинание.\n#atHigherLevels[+1 цель]",
+    "short_description" : "Зверь с ИНТ < 4, #effect(charmed, saving: WIS).\nВред прекращает заклинание.\n#atHigherLevels[+1 цель]",
     "target" : "target(30)",
     "with_concentration" : false
   },
@@ -2793,15 +2792,15 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "tashas-caustic-brew",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Едкое варево Таши",
     "original_name" : "Tasha's Caustic Brew",
     "school" : "evocation",
-    "short_description" : "",
-    "target" : "",
+    "short_description" : "ЛОВ или в начале каждого хода #damage(\"2d4\", acid).\nДействием можно смыть кислоту.\n#atHigherLevels[+2d4]",
+    "target" : "straightLine(30)",
     "with_concentration" : true
   },
   {
@@ -2837,13 +2836,15 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "tashas-hideous-laughter",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Жуткий смех Таши",
     "original_name" : "Tasha's hideous laughter",
     "school" : "enchantment",
+    "short_description" : "Существо с ИНТ > 4, #effect(prone, incapacitated, saving: WIS). В конце своего хода цель совершает новый спас, при получении урона спас с приемуществом.",
+    "target" : "target(30)",
     "with_concentration" : true
   },
   {
@@ -2901,6 +2902,8 @@
     "name" : "Защита от зла и добра",
     "original_name" : "Protection from evil and good",
     "school" : "abjuration",
+    "short_description" : "Согласное сущестов защищено от Аббераций, Исчадий, Небожителей, Нежити, Фей и Элементалей. Эти враги имеют #disadvantage(attack) и не могут испугать\/очаровать\/одержать",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -2938,6 +2941,8 @@
     "name" : "Звериные узы",
     "original_name" : "Beast bond",
     "school" : "divination",
+    "short_description" : "Зверь с ИНТ < 4, можно передавать телепатические сообщения и образы, зверь имеет #advantage(attack) против любого существа в 5фт от вас, которое вы можете видеть",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -2979,6 +2984,8 @@
     "name" : "Искажение цены",
     "original_name" : "Distort Value",
     "school" : "illusion",
+    "short_description" : "Предмет не больше 1фт. Можно уменьшить\/увеличить цену предмета. Против него можно совершить Расследование.\n#atHigherLevels[+1фт допустимого размера]",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -3018,6 +3025,8 @@
     "name" : "Искусная острота",
     "original_name" : "Silvery barbs",
     "school" : "enchantment",
+    "short_description" : "Существо должно перебросить d20 и использовать меньшее значение. Другое существо (можно себя) получит приемущество на одну следующую проверку в течении минуты.",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -3057,6 +3066,8 @@
     "name" : "Катапульта",
     "original_name" : "Catapult",
     "school" : "transmutation",
+    "short_description" : "Предмет от 1 до 5фт, пролетает 90фт по прямой.\nПри столкновении с чем-то #damage(\"3d8\", bludgeoning, saving: DEX, saved: noDamage)\n#atHigherLevels[+5фт веса, +1d8 урона]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -3097,6 +3108,8 @@
     "name" : "Ледяной кинжал",
     "original_name" : "Ice knife",
     "school" : "conjuration",
+    "short_description" : "Цель получает #damage(\"1d10\", piercing, ranged: true), затем все в 5фт от места взрыва #damage(\"2d6\", frost, saving: DEX, saved: noDamage)\n#atHigherLevels[+1d6 холода]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -3134,6 +3147,8 @@
     "name" : "Ледяные пальцы",
     "original_name" : "Frost fingers",
     "school" : "evocation",
+    "short_description" : "#damage(\"2d8\", frost, saving: CON)\n#atHigherLevels[+1d8]",
+    "target" : "cone(15)",
     "with_concentration" : false
   },
   {
@@ -3177,6 +3192,8 @@
     "name" : "Лечащее слово",
     "original_name" : "Healing word",
     "school" : "evocation",
+    "short_description" : "#heal(\"1d4 + MOD\")\n#atHigherLevels[+1d4]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -3241,6 +3258,8 @@
     "name" : "Лечение ран",
     "original_name" : "Cure wounds",
     "school" : "evocation",
+    "short_description" : "#heal(\"1d8 + MOD\")\n#atHigherLevels[+1d8]",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -3294,6 +3313,8 @@
     "name" : "Луч болезни",
     "original_name" : "Ray of sickness",
     "school" : "necromancy",
+    "short_description" : "#damage(\"2d8\", poison, ranged: true), #effect(poisoned, saving: CON)\n#atHigherLevels[+1d8]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -3344,6 +3365,8 @@
     "name" : "Маскировка",
     "original_name" : "Disguise self",
     "school" : "illusion",
+    "short_description" : "Вы выглядите иначе. Не выдрживает проверку физическим контактом",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -3374,13 +3397,15 @@
       "distance" : 90,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 3600,
     "id" : "hunters-mark",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Метка охотника",
     "original_name" : "Hunter's mark",
     "school" : "divination",
+    "short_description" : "Существо получает +1d6 урона от ваших атак. Вы получаете приемущество на Выживание и Восприятие для поиска цели.\nПосле смерти цели можно бонусным действием выбрать новую цель\n#atHigherLevels[3-4ур - до 8 часов, 5ур - до 24 часов]",
+    "target" : "target(90)",
     "with_concentration" : true
   },
   {
@@ -3422,6 +3447,8 @@
     "name" : "Нанесение ран",
     "original_name" : "Inflict wounds",
     "school" : "necromancy",
+    "short_description" : "#damage(\"3d10\", necrotic, melee: true)\n#atHigherLevels[+1d10]",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -3468,6 +3495,8 @@
     "name" : "Направляющий снаряд",
     "original_name" : "Guiding bolt",
     "school" : "evocation",
+    "short_description" : "#damage(\"4d6\", radiant, ranged: true), следующая атака получает #advantage(attack)",
+    "target" : "target(120)",
     "with_concentration" : false
   },
   {
@@ -3507,6 +3536,8 @@
     "name" : "Невидимое письмо",
     "original_name" : "Illusory script",
     "school" : "illusion",
+    "short_description" : "Писмена на бумаге становятся читаемы только вам и другими выбранными вами. Можно сделать видимым другой смысл.",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -3548,6 +3579,8 @@
     "name" : "Невидимый слуга",
     "original_name" : "Unseen servant",
     "school" : "conjuration",
+    "short_description" : "Создает невидимого слугу Среднего размера, КД 10, 1 хп, Сила 2.\nРаз в ход бонусным действием можно переместить на 15фт и совершить манипуляции с предметом.\nНе может оказаться дальше 60фт.",
+    "target" : "point(60)",
     "with_concentration" : false
   },
   {
@@ -3591,6 +3624,8 @@
     "name" : "Обнаружение болезней и яда",
     "original_name" : "Detect poison and disease",
     "school" : "divination",
+    "short_description" : "Вы можете ощущать присутствие и местонахождение ядов, ядовитых существ и болезней в пределах 30фт. Вы так же распознаете вид яда, существа или болезни.",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -3631,6 +3666,8 @@
     "name" : "Обнаружение зла и добра",
     "original_name" : "Detect evil and good",
     "school" : "divination",
+    "short_description" : "Вы ощущаете местоположение Аберации, Исчадия, Небожителя, Нежити, Феи или Элементаля, освященное\/оскверненное место или предмет.",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -3693,6 +3730,8 @@
     "name" : "Обнаружение магии",
     "original_name" : "Detect magic",
     "school" : "divination",
+    "short_description" : "Вы чувствуете присутствие магии в пределах 30фт. Действием можно увидеть ауру вокруг предмета и узнать школу магии",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -3757,6 +3796,8 @@
     "name" : "Огненные ладони",
     "original_name" : "Burning hands",
     "school" : "evocation",
+    "short_description" : "#damage(\"3d6\", fire, saving: DEX)\n#atHigherLevels[+1d6]",
+    "target" : "cone(15)",
     "with_concentration" : false
   },
   {
@@ -3805,13 +3846,15 @@
       "distance" : 60,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "faerie-fire",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Огонь фей",
     "original_name" : "Faerie fire",
     "school" : "evocation",
+    "short_description" : "Все предметы - #effect(light(dim: 10)), все существа - #effect(light(dim: 10), saving: DEX) и против них #advantage(attack)",
+    "target" : "cube(20, range: 60)",
     "with_concentration" : true
   },
   {
@@ -3860,6 +3903,8 @@
     "name" : "Опознание",
     "original_name" : "Identify",
     "school" : "divination",
+    "short_description" : "Вы узнаете о предмете: магический ли он, его свойства, как использовать, нужна ли настройка, сколько зарядов, действующие на него или создавшие его заклинания.\nВы узнаете о существа: какие заклинания на него действуют.",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -3890,13 +3935,15 @@
       "distance" : 90,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "entangle",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Опутывание",
     "original_name" : "Entangle",
     "school" : "conjuration",
+    "short_description" : "Область труднопроходимая, существо попавшее в область #effect(restrained, saving: STR)",
+    "target" : "square(20, range: 90)",
     "with_concentration" : true
   },
   {
@@ -3926,13 +3973,15 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "ensnaring-strike",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Опутывающий удар",
     "original_name" : "Ensnaring strike",
     "school" : "conjuration",
+    "short_description" : "Зачаровывает следующую рукопашную атаку оружием. \nСущество #effect(restrained, saving: STR). Существа Большого размера делают спас с преимуществом.\nВ начале своего хода опутанное существо получает #damage(\"1d6\", piercing).\n#atHigherLevels[+1d6]",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -3987,6 +4036,8 @@
     "name" : "Очарование личности",
     "original_name" : "Charm person",
     "school" : "enchantment",
+    "short_description" : "Гуманоид, #effect(charmed, saving: WIS), спас с приемуществом если вы с ним сражаетесь.\n#atHigherLevels[+1 цель]",
+    "target" : "target(30)",
     "with_concentration" : false
   },
   {
@@ -4030,6 +4081,8 @@
     "name" : "Очищение пищи и питья",
     "original_name" : "Purify food and drink",
     "school" : "transmutation",
+    "short_description" : "Вся еда и вода отчищаются и избавляются от ядов и болезней",
+    "target" : "sphere(5, range: 10)",
     "with_concentration" : false
   },
   {
@@ -4073,6 +4126,8 @@
     "name" : "Падение пёрышком",
     "original_name" : "Feather fall",
     "school" : "transmutation",
+    "short_description" : "Скорость падения уменьшается до 60фт\/р. Не получает урон от падения",
+    "target" : "target(60, count: 5)",
     "with_concentration" : false
   },
   {
@@ -4105,13 +4160,15 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "searing-smite",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Палящая кара",
     "original_name" : "Searing smite",
     "school" : "evocation",
+    "short_description" : "Зачаровывает следующую рукопашную атаку оружием.\nАтака дополнительно #damage(\"1d6\", fire) и поджигает.\nПодоженная цель - #damage(\"1d6\", fire, saving: CON, saved: noDamage)\nПламя можно потушить действием.\n#atHigherLevels[+1d6 к урону от атаки]",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -4156,6 +4213,8 @@
     "name" : "Поглощение стихий",
     "original_name" : "Absorb elements",
     "school" : "abjuration",
+    "short_description" : "Вы #resist(\"<поглощенный>\").\nСледующая рукопашная атака дополнительно #damage(\"1d6\", \"<поглощенный>\")\n#atHigherLevels[+1d6]",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -4191,6 +4250,8 @@
     "name" : "Поиск фамильяра",
     "original_name" : "Find familiar",
     "school" : "conjuration",
+    "short_description" : "Вы получаете в усложение фамильяра.\n- Слушает команды\n- Действием можно призвать\/отпустить\n- Можно телепатически общатся, смотреть глазами\/ушами в пределах 100фт\n- Можно накладывать заклинания с дистанцией \"касание\"",
+    "target" : "point(10)",
     "with_concentration" : false
   },
   {
@@ -4234,6 +4295,8 @@
     "name" : "Понимание языков",
     "original_name" : "Comprehend languages",
     "school" : "divination",
+    "short_description" : "Понимаете смысл услышеного\/прочитанного (требует касания и 1мин\/стр)",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -4281,13 +4344,15 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "bane",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Порча",
     "original_name" : "Bane",
     "school" : "enchantment",
+    "short_description" : "ХАР или существо проклято.\nПроклятое существо должно вычитать 1d4 из бросков атак и спасов.\n#atHigherLevels[+1 цель]",
+    "target" : "target(30, count: 3)",
     "with_concentration" : true
   },
   {
@@ -4330,6 +4395,8 @@
     "name" : "Поспешное отступление",
     "original_name" : "Expeditious retreat",
     "school" : "transmutation",
+    "short_description" : "В момент наложения заклинания и дальше бонусным действием можно совершать Рывок",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -4383,6 +4450,8 @@
     "name" : "Приказ",
     "original_name" : "Command",
     "school" : "enchantment",
+    "short_description" : "МУД или выполняет команду из 1 слова в свой след. ход.\n#atHigherLevels[+1 цель]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -4429,6 +4498,8 @@
     "name" : "Прыжок",
     "original_name" : "Jump",
     "school" : "transmutation",
+    "short_description" : "Расстояние прыжка x 3",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -4485,6 +4556,8 @@
     "name" : "Псевдожизнь",
     "original_name" : "False life",
     "school" : "necromancy",
+    "short_description" : "#roll(\"1d4 + 4\") временных хп\n#atHigherLevels[+5 хп]",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -4532,6 +4605,8 @@
     "name" : "Разговор с животными",
     "original_name" : "Speak with animals",
     "school" : "divination",
+    "short_description" : "Вы можете понимать Зверей и общаться с ними устно",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -4573,6 +4648,8 @@
     "name" : "Руки Хадара",
     "original_name" : "Arms of Hadar",
     "school" : "conjuration",
+    "short_description" : "Все в области #damage(\"2d6\", necrotic, saving: STR), если не прошел спас - не может совершать реакции.\n#atHigherLevels[+1d6]",
+    "target" : "circle(10)",
     "with_concentration" : false
   },
   {
@@ -4615,6 +4692,8 @@
     "name" : "Сверкающие брызги",
     "original_name" : "Color spray",
     "school" : "illusion",
+    "short_description" : "Под эффект попадает #roll(\"6d10\") хитов, начиная с существ с меньшим хп.\nПопавшие - #effect(blinded).\n#atHigherLevels[+2d10 к общему хп]",
+    "target" : "cone(15)",
     "with_concentration" : false
   },
   {
@@ -4643,13 +4722,15 @@
       "distance" : 90,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 3600,
     "id" : "hex",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Сглаз",
     "original_name" : "Hex",
     "school" : "enchantment",
+    "short_description" : "Существо сглазено.\n- Дополнительно #damage(\"1d6\", necrotic) при атаках\n- Помеха на одну выбранную характеристику.\nПри смерти цели заклинание можно перекинуть на другое существо бонусным действием.\n#atHigherLevels[3-4ур - до 8 часов, 5ур - до 24 часов]",
+    "target" : "target(90)",
     "with_concentration" : true
   },
   {
@@ -4699,6 +4780,8 @@
     "name" : "Сигнал тревоги",
     "original_name" : "Alarm",
     "school" : "abjuration",
+    "short_description" : "Выбранная область реагирует на проникновение телепатическая на 1 милю и звуковая на 60фт",
+    "target" : "cube(20, range: 30)",
     "with_concentration" : false
   },
   {
@@ -4742,6 +4825,8 @@
     "name" : "Силок",
     "original_name" : "Snare",
     "school" : "abjuration",
+    "short_description" : "Круг на полу радусом 5фт становится магической ловушкой.\nПервое существо попавшее в ловушку #effect(restrained, saving: DEX)\nМожно попытаться обнаружить ловушку Расследованием или выбраться спас по ЛОВ",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -4783,6 +4868,8 @@
     "name" : "Скольжение",
     "original_name" : "Grease",
     "school" : "conjuration",
+    "short_description" : "Область становится ловушкой.\nЛюбое попавшее или закончившее ход в ней - #effect(prone, saving: DEX)",
+    "target" : "square(10, range: 60)",
     "with_concentration" : false
   },
   {
@@ -4829,6 +4916,8 @@
     "name" : "Скороход",
     "original_name" : "Longstrider",
     "school" : "transmutation",
+    "short_description" : "Увеличивает скорость на 10фт\n#atHigherLevels[+1 цель]",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -4863,6 +4952,8 @@
     "name" : "Снаряд хаоса",
     "original_name" : "Chaos bolt",
     "school" : "evocation",
+    "short_description" : "Случайно выберите тип урона бросив d8.\nЦель #damage(\"2d8 + 1d6\", \"<выбранный>\", ranged: true).\nЕсли выпало одинаковое значение на двух 1d8 - новый бросок атаки против новой цели.\n#atHigherLevels[+1d6]",
+    "target" : "target(120)",
     "with_concentration" : false
   },
   {
@@ -4905,6 +4996,8 @@
     "name" : "Сотворение или уничтожение воды",
     "original_name" : "Create or destroy water",
     "school" : "transmutation",
+    "short_description" : "Вы создаете\/уничтожаете до 10 галлонов (45л) чистой воды.\n#atHigherLevels[+10 галлонов]",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -4940,6 +5033,8 @@
     "name" : "Тензеров парящий диск",
     "original_name" : "Tenser’s floating disk",
     "school" : "conjuration",
+    "short_description" : "Магический диск диаметром 3фт.\nМожет нести на себе 500фт. Диск следует за вами в пределах 20фт.",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -4984,13 +5079,15 @@
       "distance" : 120,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 3600,
     "id" : "fog-cloud",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Туманное облако",
     "original_name" : "Fog cloud",
     "school" : "conjuration",
+    "short_description" : "Область становится сильно заслонённой.\n#atHigherLevels[+10фт радиуса]",
+    "target" : "sphere(20, range: 120)",
     "with_concentration" : true
   },
   {
@@ -5045,6 +5142,8 @@
     "name" : "Убежище",
     "original_name" : "Sanctuary",
     "school" : "abjuration",
+    "short_description" : "При атаки цели МУД или нужно выбрать другую цель.\nЗаклинание оканчивается если цель атакует",
+    "target" : "target(30)",
     "with_concentration" : false
   },
   {
@@ -5070,13 +5169,15 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "zephyr-strike",
     "is_ritual" : false,
     "level" : 1,
     "name" : "Удар Зефира",
     "original_name" : "Zephyr strike",
     "school" : "transmutation",
+    "short_description" : "Ваше движение не вызывает провоцированных атак. \nОдна атака получает приемущество и дополнительно #damage(\"1d8\", force), так же скорость увеличивается на 30фт до конца хода.",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -5130,6 +5231,8 @@
     "name" : "Усыпление",
     "original_name" : "Sleep",
     "school" : "enchantment",
+    "short_description" : "Под эффект попадает #roll(\"5d8\") хитов, начиная с существ с меньшим хп.\nПопавшие - #effect(unconscious).\n#atHigherLevels[+2d8 к общему хп]",
+    "target" : "target(90)",
     "with_concentration" : false
   },
   {
@@ -5168,6 +5271,8 @@
     "name" : "Цветной шарик",
     "original_name" : "Chromatic orb",
     "school" : "evocation",
+    "short_description" : "Выберите тип урона (звук, кислота, огонь, холод, электричество или яд).\n#damage(\"3d8\", \"<тип>\", ranged: true)\n#atHigherLevels[+1d8]",
+    "target" : "target(90)",
     "with_concentration" : false
   },
   {
@@ -5205,6 +5310,8 @@
     "name" : "Церемония",
     "original_name" : "Ceremony",
     "school" : "abjuration",
+    "short_description" : "Вы совершаете обряд:\n- Создание святой воды\n- Венчание \n- Искупление\n- Вручение",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -5242,6 +5349,8 @@
     "name" : "Чудо-ягоды",
     "original_name" : "Goodberry",
     "school" : "transmutation",
+    "short_description" : "Вы создаете 10 ягод.\nДействием можно съесть ягоду чтобы восстановить 1хп и насытится на весь день",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -5294,6 +5403,8 @@
     "name" : "Щит",
     "original_name" : "Shield",
     "school" : "abjuration",
+    "short_description" : "+5 к КД. Не получаете урон от волшебной стрелы.",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -5336,6 +5447,8 @@
     "name" : "Щит веры",
     "original_name" : "Shield of faith",
     "school" : "abjuration",
+    "short_description" : "+2 к КД",
+    "target" : "target(60)",
     "with_concentration" : true
   },
   {
@@ -5378,13 +5491,15 @@
     "distance" : {
       "type" : "self"
     },
-    "duration" : 0,
+    "duration" : 3600,
     "id" : "pass-without-trace",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Бесследное передвижение",
     "original_name" : "Pass without trace",
     "school" : "abjuration",
+    "short_description" : "Вы и ваши спутники получают +10 к Скрытность, не оставляют следов и нельзя выследить без помощи магии.",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -5431,6 +5546,8 @@
     "name" : "Божественное оружие",
     "original_name" : "Spiritual weapon",
     "school" : "evocation",
+    "short_description" : "Вы создаете призрачное оружие и можете сразу им атаковать.\nЕго можно действием переместить на 20фт и атаковать #damage(\"1d8 + MOD\", force)\n#atHigherLevels[+1d8]",
+    "target" : "point(60)",
     "with_concentration" : false
   },
   {
@@ -5461,13 +5578,14 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : null,
     "id" : "continual-flame",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Вечный огонь",
     "original_name" : "Continual flame",
     "school" : "evocation",
+    "short_description" : "Вы создаете магическое пламя факела.\nЕго можно накрыть или спрятать, но не потушить",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -5519,6 +5637,8 @@
     "name" : "Видение невидимого",
     "original_name" : "See invisibility",
     "school" : "divination",
+    "short_description" : "Вы можете видеть невидимое и существ и предметы на Эфирном плане",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -5559,6 +5679,8 @@
     "name" : "Вихрь искривления",
     "original_name" : "Vortex warp",
     "school" : "conjuration",
+    "short_description" : "ТЕЛ или телепортируется в другое место по выбору\n#atHigherLevels[+30фт]",
+    "target" : "target(90)",
     "with_concentration" : false
   },
   {
@@ -5606,6 +5728,8 @@
     "name" : "Внушение",
     "original_name" : "Suggestion",
     "school" : "enchantment",
+    "short_description" : "МУД или существо выполняет приказ (одна-две фразы).\nУрон от союзника прекращает заклинание",
+    "target" : "target(30)",
     "with_concentration" : true
   },
   {
@@ -5644,13 +5768,15 @@
       "distance" : 60,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 86400,
     "id" : "air-bubble",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Воздушный пузырь",
     "original_name" : "Air bubble",
     "school" : "conjuration",
+    "short_description" : "Дыхательный шар вокруг головы.\n#atHigherLevels[+2 цели]",
+    "target" : "target(60)",
     "with_concentration" : false
   },
   {
@@ -5685,13 +5811,14 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : null,
     "id" : "magic-mouth",
     "is_ritual" : true,
     "level" : 2,
     "name" : "Волшебные уста",
     "original_name" : "Magic mouth",
     "school" : "illusion",
+    "short_description" : "Зачаровывает предмет.\nПри выполнении выбранного условия - предмет произнесет послание (до 25 слов, до 10 минут)",
+    "target" : "point(30)",
     "with_concentration" : false
   },
   {
@@ -5722,13 +5849,14 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : null,
     "id" : "arcane-lock",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Волшебный замок",
     "original_name" : "Arcane lock",
     "school" : "abjuration",
+    "short_description" : "Запирает дверь\/окно\/сундук магией.\nМожно настроить пароль или открыть им открыванием [knock]",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -5779,13 +5907,15 @@
       "distance" : 60,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "phantasmal-force",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Воображаемая сила",
     "original_name" : "Phantasmal force",
     "school" : "illusion",
+    "short_description" : "ИНТ или цель видит и верит илюзии.\nИлюзия может приченить #damage(\"1d6\", psychic)",
+    "target" : "target(60)",
     "with_concentration" : true
   },
   {
@@ -5824,6 +5954,8 @@
     "name" : "Гадание",
     "original_name" : "Augury",
     "school" : "divination",
+    "short_description" : "Можно задать мастеру вопрос о событиях на следующих 30минут.\nМастер может ответить благо\/горе\/ничто.\nПри накладывании несколько раз есть шанс в +25% за каждое использование получить случайный ответ.",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -5890,6 +6022,8 @@
     "name" : "Глухота\/слепота",
     "original_name" : "Blindness\/deafness",
     "school" : "necromancy",
+    "short_description" : "#effect(blinded, saving: CON) или #effect(deafened, saving: CON)\n#atHigherLevels[+1 цели]",
+    "target" : "target(30)",
     "with_concentration" : false
   },
   {
@@ -5927,6 +6061,8 @@
     "name" : "Горящий клинок",
     "original_name" : "Flame blade",
     "school" : "evocation",
+    "short_description" : "Вы создаете горящий клинок в руке.\nДействием можно #damage(\"3d6\", fire, melee: true).\nТак же клинок #effect(light(bright: 10, dim: 10)).\n#atHigherLevels[+1d6]",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -5987,6 +6123,8 @@
     "name" : "Дребезги",
     "original_name" : "Shatter",
     "school" : "evocation",
+    "short_description" : "#damage(\"3d8\", thunder, saving: CON), неорганические существа делают спас с помехой. Объекты тоже получают урон.\n#atHigherLevels[+1d8]",
+    "target" : "sphere(10, range: 60)",
     "with_concentration" : false
   },
   {
@@ -6025,13 +6163,15 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : 0,
+    "duration" : 3600,
     "id" : "barkskin",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Дубовая кора",
     "original_name" : "Barkskin",
     "school" : "transmutation",
+    "short_description" : "КД не ниже 16",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -6062,13 +6202,15 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "dragons-breath",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Дыхание дракона",
     "original_name" : "Dragon's breath",
     "school" : "transmutation",
+    "short_description" : "Наделяйте существо способностью извергать огонь.\nВыберите тип урона кислота\/огонь\/холод\/электичество или яд.\nДействием существо может совершить в 15фт конусе #damage(\"3d6\", \"<тип>\", saving: DEX).\n#atHigherLevels[+1d6]",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -6097,13 +6239,15 @@
     "distance" : {
       "type" : "touch"
     },
-    "duration" : 0,
+    "duration" : 3600,
     "id" : "beast-sense",
     "is_ritual" : true,
     "level" : 2,
     "name" : "Животные чувства",
     "original_name" : "Beast sense",
     "school" : "divination",
+    "short_description" : "Согласный Зверь, вы можете смотреть и слышать глазами и ушами этого зверя.\nПока заклинание активно вы слепы и глухи",
+    "target" : "touch",
     "with_concentration" : true
   },
   {
@@ -6139,6 +6283,8 @@
     "name" : "Завеса стрел",
     "original_name" : "Cordon of arrows",
     "school" : "transmutation",
+    "short_description" : "Зачаровывайте 4 немагических боеприпаса, они становятся ловушкой.\nКогда существо появляется в пределах 30фт - существо атаковано одним из них #damage(\"1d6\", piercing, saving: DEX)\n#atHigherLevels[+2 боеприпаса]",
+    "target" : "point(5)",
     "with_concentration" : false
   },
   {
@@ -6182,6 +6328,8 @@
     "name" : "Заимствованные знания",
     "original_name" : "Borrowed Knowledge",
     "school" : "divination",
+    "short_description" : "Вы получаете владение навыком.",
+    "target" : "self",
     "with_concentration" : false
   },
   {
@@ -6227,6 +6375,8 @@
     "name" : "Защита от яда",
     "original_name" : "Protection from poison",
     "school" : "abjuration",
+    "short_description" : "Нейтрализует известный или случайный яд.\nЦель имеет приемущество перед отравления и урона от яда.",
+    "target" : "touch",
     "with_concentration" : false
   },
   {
@@ -6268,6 +6418,8 @@
     "name" : "Защитный ветер",
     "original_name" : "Warding wind",
     "school" : "evocation",
+    "short_description" : "Вокруг вас дует сильный ветер (20 миль\/час) с радиусом 10фт.\nГасит факела и огонь, местность становится труднопроходимой, дальнобойные атаки совершаются с помехой.",
+    "target" : "self",
     "with_concentration" : true
   },
   {
@@ -6299,13 +6451,15 @@
       "distance" : 30,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "maximilians-earthen-grasp",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Земляная хватка Максимилиана",
     "original_name" : "Maximilian's earthen grasp",
     "school" : "transmutation",
+    "short_description" : "Вы создаете Среднюю руку из земли.\nРука хватает одно существо.\nСхваченное #damage(\"2d6\", bludgeoning, saving: STR), если не проходит спас - #effect(restrained)\nДействием можно #damage(\"2d6\", bludgeoning, saving: STR).\nДействием можно переместится в другое место и схватить другое существо.",
+    "target" : "square(5, range: 30)",
     "with_concentration" : true
   },
   {
@@ -6336,13 +6490,15 @@
       "distance" : 60,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "healing-spirit",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Исцеляющий дух",
     "original_name" : "Healing spirit",
     "school" : "conjuration",
+    "short_description" : "Вы создаете исцеляющую область.\nВы можете существо входящее или начинающее свой ход в области #heal(\"1d6\").\nДух может исцелить 1 + MOD (минимум 2) раза.\n#atHigherLevels[+1d6]\n",
+    "target" : "cube(5, range: 60)",
     "with_concentration" : true
   },
   {
@@ -6383,13 +6539,15 @@
       "distance" : 120,
       "type" : "range"
     },
-    "duration" : 0,
+    "duration" : 60,
     "id" : "crown-of-madness",
     "is_ritual" : false,
     "level" : 2,
     "name" : "Корона безумия",
     "original_name" : "Crown of madness",
     "school" : "enchantment",
+    "short_description" : "Гуманоид, МУД или цель безумна.\nЦель перед перемещением должна совершить рукопашную атаку по существу которое вы выбираете.\nВ последующие ходы вы должны действием поддерживать контроль, так же цель может сделать сспас по МУД.",
+    "target" : "target(120)",
     "with_concentration" : true
   },
   {
