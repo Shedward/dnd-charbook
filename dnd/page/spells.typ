@@ -223,11 +223,33 @@
   }
 }
 
+#let targetFromSpellbook(s) = {
+  if s.target == none {
+    none
+  } else {
+    eval(
+      s.target,
+      scope: (
+        self: self,
+        touch: touch,
+        target: target,
+        point: point,
+        circle: circle,
+        square: square,
+        cube: cube,
+        sphere: sphere,
+        straightLine: straightLine
+      )
+    )
+  }
+}
+
 #let spellFromSpellbook(s, ..etc) = spell(
   s.name,
   castTime: castingTimeFromSpellbook(s.casting_time),
   castType: castTypeFromSpellbook(s),
   duration: durationFromSpellbook(s),
+  range: targetFromSpellbook(s),
   ..etc,
 )[
   #s.short_description,
