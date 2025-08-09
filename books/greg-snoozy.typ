@@ -18,6 +18,7 @@
   spellcasting: spellcasting(
     focus: "Свечка с подсвечником",
     stat: WIS,
+    rutualCasting: true,
     slots: byLevelMethod(
       (
         "1": ("1": 2),
@@ -41,14 +42,6 @@
     ),
     props: (
       (
-        caption: "Бож. канал",
-        content: byLevelMethod((
-          "1": 1,
-          "6": 2,
-          "8": 3
-        ))
-      ),
-      (
         caption: "Заг.",
         content: byLevelMethod((
           "1": 2,
@@ -56,6 +49,10 @@
           "3": 4,
           "10": 5
         ))
+      ),
+      (
+        caption: "Закл.",
+        content: none
       ),
     ),
   ),
@@ -121,6 +118,7 @@
 
   skillProficiency(perception, source: "Человек"),
   languageProficiency("Общий язык", source: "Человек"),
+  languageProficiency("Гоблинский", source: "Человек"),
 )
 
 #page(
@@ -128,7 +126,14 @@
 )[
   #dnd.page.spellcasting(greg)
 
-  #dnd.page.spellSlotsSection(greg)
+  #dnd.page.spellSlotsSection(
+    greg,
+    additional: (sym.dagger: byLevel((
+      "1": 1,
+      "6": 2,
+      "8": 3
+    )))
+  )
 
   #inputGrid(19)
 

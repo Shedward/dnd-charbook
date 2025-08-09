@@ -36,7 +36,7 @@
   ]
 }
 
-#let spellSlotsSection(character) = {
+#let spellSlotsSection(character, additional: (:)) = {
   if character.spellcasting != none and character.spellcasting.slots != none {
     let slots = method(character, c => c.spellcasting.slots)
 
@@ -55,7 +55,17 @@
                 [ *#propCap(roman(int(level)))* ]
               )
             )
-        )
+        ),
+        ..(additional.keys()
+            .map(
+              key => vstack(
+                gutter: paddings(0.5),
+
+                spellSlots(additional.at(key)),
+                [ *#propCap(key)* ]
+              )
+            )
+        ),
       )
     ]
   }
@@ -162,8 +172,32 @@
 
 // Spellbook formatters
 
+#let castingTimeFromSpellbook(m) = {
+  let withValueIfNeeded = (label) => {
+    if m.value > 1 {
+      [ #m.value #label ]
+    } else {
+      label
+    }
+  }
+  if m.type == "action" {
+    withValueIfNeeded(action)
+  } else if m.type == "bonus_action" {
+    withValueIfNeeded(bonusAction)
+  } else if m.type == "reaction" {
+    withValueIfNeeded(reaction)
+  } else if m.type == "minute" {
+    minute(m.value)
+  } else if m.type == "hour" {
+    hour(m.value)
+  } else {
+    withValueIfNeeded(m.value)
+  }
+}
+
 #let spellFromSpellbook(s, ..etc) = spell(
   s.name,
+  castTime: castingTimeFromSpellbook(s.casting_time),
   ..etc,
 )[
   #s.short_description,
