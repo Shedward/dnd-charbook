@@ -4932,7 +4932,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "порошок серебра стоимостью 25 зм, расходуемый заклинанием",
+      "material": "порошок серебра стоимостью 25 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -5185,7 +5185,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "порошок рубина на 50 зм, расходуемый заклинанием",
+      "material": "порошок рубина на 50 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -5401,7 +5401,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "кусочек медовых сот и порошок нефрита, стоящий как минимум 10 зм, расходуемые заклинанием",
+      "material": "кусочек медовых сот и порошок нефрита, стоящий как минимум 10 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -5436,7 +5436,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "золотая пыль, стоящая как минимум 25 зм, расходуемая заклинанием",
+      "material": "золотая пыль, стоящая как минимум 25 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -10240,7 +10240,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "щепотка алмазной пыли, стоящая 25 зм, которой посыпается цель, расходуемая заклинанием",
+      "material": "щепотка алмазной пыли, стоящая 25 зм, которой посыпается цель",
       "material_consumed": true,
       "material_required": true
     },
@@ -10411,7 +10411,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "благовония и растолчённый бриллиант, стоящий как минимум 200 зм, расходуемый заклинанием",
+      "material": "благовония и растолчённый бриллиант, стоящий как минимум 200 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -12448,7 +12448,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "сломанный ключ портала, расходуемый заклинанием",
+      "material": "сломанный ключ портала",
       "material_consumed": true,
       "material_required": false
     },
@@ -12758,7 +12758,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "бриллиантовая пыль, стоящая как минимум 100 зм, расходуемая заклинанием",
+      "material": "бриллиантовая пыль, стоящая как минимум 100 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -14372,7 +14372,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "бриллиантовая пыль, стоящая как минимум 100 зм, расходуемая заклинанием",
+      "material": "бриллиантовая пыль, стоящая как минимум 100 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -15470,7 +15470,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "бриллиант, стоящий как минимум 500 зм, расходуемый заклинанием",
+      "material": "бриллиант, стоящий как минимум 500 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -15560,7 +15560,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "драгоценный камень, стоящий как минимум 1 000 зм, расходуемый заклинанием",
+      "material": "драгоценный камень, стоящий как минимум 1 000 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -15995,7 +15995,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "агат, стоящий как минимум 1 000 зм, расходуемый заклинанием",
+      "material": "агат, стоящий как минимум 1 000 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -16434,7 +16434,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "кристаллический жезл стоимостью как минимум 5000 зм, расходуемый заклинанием",
+      "material": "кристаллический жезл стоимостью как минимум 5000 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -17470,7 +17470,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "инкрустированная драгоценными камнями чаша, стоящая как минимум 1000 зм, расходуемая заклинанием",
+      "material": "инкрустированная драгоценными камнями чаша, стоящая как минимум 1000 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -17976,7 +17976,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "омела, расходуемая заклинанием, которая была собрана золотым серпом под светом полной луны",
+      "material": "омела, которая была собрана золотым серпом под светом полной луны",
       "material_consumed": true,
       "material_required": false
     },
@@ -18367,7 +18367,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "бриллиант, стоящий как минимум 1 000 зм, расходуемый заклинанием",
+      "material": "бриллиант, стоящий как минимум 1 000 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -18540,7 +18540,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "смесь порошков из бриллианта, изумруда, рубина и сапфира, стоящая как минимум 5 000 зм, расходуемая заклинанием",
+      "material": "смесь порошков из бриллианта, изумруда, рубина и сапфира, стоящая как минимум 5 000 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -19545,7 +19545,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "бриллиант стоимостью не менее 500 зм, расходуемый заклинанием",
+      "material": "бриллиант стоимостью не менее 500 зм",
       "material_consumed": true,
       "material_required": true
     },
@@ -20336,7 +20336,7 @@
     ],
     "components": {
       "components": ["V", "S", "M"],
-      "material": "небольшой кусочек адамантина стоящий не менее 500 зм, расходуемый заклинанием",
+      "material": "небольшой кусочек адамантина стоящий не менее 500 зм",
       "material_consumed": true,
       "material_required": true
     },

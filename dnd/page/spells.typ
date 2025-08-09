@@ -1,5 +1,6 @@
 #import "../core/core.typ": *
 #import "../game/game.typ": *
+#import "../data/data.typ": *
 
 #let spellRow(spell) = (
   table.cell(rowspan: 2, align: horizon + center)[#spell.prep],
@@ -244,13 +245,58 @@
   }
 }
 
+#let componentsFromSpellbook(s) = {
+  s.components.components.join()
+}
+
+#let requiredComponentsFromSpellbook(s) = {
+  let isRequired = false
+  let isConsumed = false
+
+  if s.components.material_required == true {
+    isRequired = true
+  }
+  if s.components.material_consumed == true {
+    isConsumed = true
+  }
+
+  if isRequired or isConsumed {
+    [ *
+      #loc(en: " Requires ", ru: " Требует ")
+      #s.components.material + #if isRequired {
+        loc(en: " (consumed)", ru: " (расходуется)")
+      }
+      *
+    ]
+  }
+}
+
 #let spellFromSpellbook(s, ..etc) = spell(
   s.name,
   castTime: castingTimeFromSpellbook(s.casting_time),
   castType: castTypeFromSpellbook(s),
   duration: durationFromSpellbook(s),
   range: targetFromSpellbook(s),
+  components: componentsFromSpellbook(s),
   ..etc,
 )[
-  #s.short_description,
+  #s.short_description\
+  #requiredComponentsFromSpellbook(s)
 ]
+
+#let allSpellsFromSpellbook(class, subclass, lvl) = {
+  for lvl in range(lvl) [
+    #subsection[#lvl #loc(en: "Level", ru: "Уровень")]
+    #spellsTable(
+      ..(
+        spellbook().filter(
+          is_spell_for_class.with(class: "жрец", subclass: "домен сумерек")
+        ).filter(
+          is_spell_at_level.with(level: lvl)
+        ).map(
+          s => spellFromSpellbook(s, prep: preparing)
+        )
+      )
+    )
+  ]
+}

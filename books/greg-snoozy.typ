@@ -137,20 +137,7 @@
 
   #inputGrid(19)
 
-  #for lvl in range(greg.level) [
-    #subsection[#lvl Ур]
-    #dnd.page.spellsTable(
-      ..(
-        spellbook().filter(
-          is_spell_for_class.with(class: "жрец", subclass: "домен сумерек")
-        ).filter(
-          is_spell_at_level.with(level: lvl)
-        ).map(
-          s => dnd.page.spellFromSpellbook(s, prep: preparing)
-        )
-      )
-    )
-  ]
+  #dnd.page.allSpellsFromSpellbook("жрец", "домен сумерек", greg.level)
 ]
 
 #dnd.page.abilities(
