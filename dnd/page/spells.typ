@@ -263,7 +263,8 @@
   if isRequired or isConsumed {
     [ *
       #loc(en: " Requires ", ru: " Требует ")
-      #s.components.material + #if isRequired {
+      #s.components.material
+      #if isConsumed {
         loc(en: " (consumed)", ru: " (расходуется)")
       }
       *
