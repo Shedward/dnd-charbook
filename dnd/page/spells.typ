@@ -195,9 +195,24 @@
   }
 }
 
+#let castTypeFromSpellbook(m) = {
+  let castType = ()
+
+  if m.is_ritual {
+    castType.push(ritual)
+  }
+
+  if m.with_concentration {
+    castType.push(concentration)
+  }
+
+  castType.join()
+}
+
 #let spellFromSpellbook(s, ..etc) = spell(
   s.name,
   castTime: castingTimeFromSpellbook(s.casting_time),
+  castType: castTypeFromSpellbook(s),
   ..etc,
 )[
   #s.short_description,
