@@ -209,10 +209,25 @@
   castType.join()
 }
 
+#let durationFromSpellbook(m) = {
+  if m.duration == 0 {
+    instant
+  } else if m.duration < 60 {
+    round(m.duration / 6)
+  } else if m.duration < 3600 {
+    minute(m.duration / 60)
+  } else if m.duration < 86400 {
+    hour(m.duration / 3600)
+  } else {
+    day(m.duration / 86400)
+  }
+}
+
 #let spellFromSpellbook(s, ..etc) = spell(
   s.name,
   castTime: castingTimeFromSpellbook(s.casting_time),
   castType: castTypeFromSpellbook(s),
+  duration: durationFromSpellbook(s),
   ..etc,
 )[
   #s.short_description,

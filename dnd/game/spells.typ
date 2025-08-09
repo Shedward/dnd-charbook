@@ -11,6 +11,7 @@
 #let round(r) = str(r) + loc(en: [r], ru: [р])
 #let minute(m) = str(m) + loc(en: [m], ru: [мин])
 #let hour(h) = str(h) + loc(en: [h], ru: [ч])
+#let day(d) = str(d) + loc(en: [day], ru: [дн])
 #let always = sym.infinity
 
 // Cast type
