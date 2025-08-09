@@ -85,7 +85,7 @@
   ),
   speed: speed(walking: 30),
   hitDices: hitDices[k8],
-  maxHp: 22 // 8 + 3 + 5 * 2
+  maxHp: maxHp(8, 5)
 )
 
 #let byLevel(x) = byCharacterLevel(greg, x)
@@ -94,6 +94,7 @@
 
 #dnd.page.cover(
   greg.name,
+  image: image("../resources/images/greg-photo.png", width: 3cm),
 )
 
 #dnd.page.attacks

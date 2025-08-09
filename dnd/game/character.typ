@@ -202,7 +202,7 @@
   let con = statModifier(character, CON)
   if con != none and character.level != none {
     let firstLevel = firstLevelHp + con
-    let nextLevels = (nextLevelHp + calc.min(con, 1)) * (character.level - 1)
+    let nextLevels = (nextLevelHp + calc.max(con, 1)) * (character.level - 1)
     firstLevel + nextLevels
   }
 }
