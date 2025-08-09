@@ -60,9 +60,9 @@
     ]
 
     #for proficiency in proficiencies.pos() {
-      if type(proficiency) == "content" {
+      if type(proficiency) == content {
         proficiency
-      } else if type(proficiency) == "dictionary" {
+      } else if type(proficiency) == dictionary {
         [
           #if proficiency.class == tool {
             toolProficiencyBlock(proficiency)

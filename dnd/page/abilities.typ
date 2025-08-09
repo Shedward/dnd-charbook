@@ -11,18 +11,15 @@
     #if ability.source != none [
       #abilitySource(ability.source)
     ]
-    #par(
-      first-line-indent: 1.5em
-    )[
-      #ability.body
-    ]
+
+    #ability.body
   ]
 
   #columned(separator: false)[
     #for ability in abilities.pos() {
-      if type(ability) == "content" {
+      if type(ability) == content {
         ability
-      } else if type(ability) == "dictionary" {
+      } else if type(ability) == dictionary {
         [ #abilityBlock(ability)\ ]
       } else {
         panic("Not supported ability type " + type(ability))

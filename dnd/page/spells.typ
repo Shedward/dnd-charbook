@@ -159,3 +159,12 @@
     )
   ]
 }
+
+// Spellbook formatters
+
+#let spellFromSpellbook(s, ..etc) = spell(
+  s.name,
+  ..etc,
+)[
+  #s.short_description,
+]

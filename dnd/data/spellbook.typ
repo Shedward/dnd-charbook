@@ -17,6 +17,10 @@
   spell.level <= level
 }
 
+#let is_spell_at_level(spell, level: 0) = {
+  spell.level == level
+}
+
 #let spellbook() = {
   json("../../resources/data/spells.json")
 }
