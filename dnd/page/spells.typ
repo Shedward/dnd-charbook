@@ -211,7 +211,9 @@
 }
 
 #let durationFromSpellbook(m) = {
-  if m.duration == 0 {
+  if "duration" not in m {
+    none
+  } else if m.duration == 0 {
     instant
   } else if m.duration < 60 {
     round(m.duration / 6)
@@ -239,7 +241,9 @@
         square: square,
         cube: cube,
         sphere: sphere,
-        straightLine: straightLine
+        straightLine: straightLine,
+        cone: cone,
+        sight: sight
       )
     )
   }
@@ -291,7 +295,7 @@
     #spellsTable(
       ..(
         spellbook().filter(
-          is_spell_for_class.with(class: "жрец", subclass: "домен сумерек")
+          is_spell_for_class.with(class: class, subclass: subclass)
         ).filter(
           is_spell_at_level.with(level: lvl)
         ).map(

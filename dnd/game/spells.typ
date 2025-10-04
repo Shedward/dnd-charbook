@@ -105,12 +105,14 @@
 #let target(range, count: 1) = [#(rangeDescr(range))#icon("target")#countDescr(count)]
 #let point(range, count: 1) = [#(rangeDescr(range))#icon("point")#countDescr(count)]
 #let area(iconName) = (size, range: 0) => [#(rangeDescr(range))/#(size)ft#icon(iconName)]
+#let sight = loc(en: [Sight], ru: [Взгляд])
 
 #let circle = area("circle")
 #let square = area("square")
 #let cube = area("cube")
 #let sphere = area("sphere")
 #let straightLine = area("arrow-right")
+#let cone = area("cone")
 
 #let volume(size) = [#(size)ft#icon("cube")]
 
