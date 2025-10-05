@@ -13,6 +13,7 @@
 #let hour(h) = str(h) + loc(en: [h], ru: [ч])
 #let day(d) = str(d) + loc(en: [day], ru: [дн])
 #let always = sym.infinity
+#let unlimited = sym.infinity
 
 // Cast type
 #let ritual = loc(en: [R], ru: [Рит.])
@@ -113,6 +114,8 @@
 #let sphere = area("sphere")
 #let straightLine = area("arrow-right")
 #let cone = area("cone")
+#let cylinder = (radius, height, range: 0) => [#(rangeDescr(range))/#(radius)x#(height)ft#icon("cylinder")]
+#let rectangle = (x, y, z, range: 0) => [#(rangeDescr(range))/#(x)x#(y)x#(z)ft#icon("cube")]
 
 #let volume(size) = [#(size)ft#icon("cube")]
 

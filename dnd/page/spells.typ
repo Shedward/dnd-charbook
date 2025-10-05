@@ -227,7 +227,7 @@
 }
 
 #let targetFromSpellbook(s) = {
-  if s.target == none {
+  if s.at("target", default: none) == none {
     none
   } else {
     eval(
@@ -243,7 +243,10 @@
         sphere: sphere,
         straightLine: straightLine,
         cone: cone,
-        sight: sight
+        sight: sight,
+        unlimited: unlimited,
+        cylinder: cylinder,
+        rectangle: rectangle
       )
     )
   }
@@ -285,7 +288,7 @@
   components: componentsFromSpellbook(s),
   ..etc,
 )[
-  #s.short_description\
+  #s.at("short_description", default: none)\
   #requiredComponentsFromSpellbook(s)
 ]
 

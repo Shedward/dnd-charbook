@@ -7,7 +7,7 @@
 #setLocale("ru")
 
 #let emri = dnd.game.character(
-  level: 5,
+  level: 7,
   name: "Эмри",
   class: "Жрец",
   subclass: "Кузни",
@@ -84,7 +84,7 @@
   ),
   speed: speed(walking: 30),
   hitDices: hitDices[k8],
-  maxHp: 54
+  maxHp: none
 )
 
 #let byLevel(x) = byCharacterLevel(emri, x)
@@ -122,21 +122,4 @@
 ]
 
 
-#page[
-  #columns[
-    #let spells = spellbook().filter(
-      is_spell_for_class.with(class: "жрец", subclass: "домен кузни")
-    ).filter(
-      is_spell_for_level.with(level: 3)
-    )
-
-    #for s in spells [
-
-      #s.name\
-
-      #text(size: 8pt)[
-        #s.description\
-      ]
-    ]
-  ]
-]
+#dnd.page.allSpellsFromSpellbook("жрец", "домен кузни", 5)
