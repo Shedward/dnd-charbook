@@ -6,7 +6,7 @@
 #setLocale("ru")
 
 #let marek = dnd.game.character(
-  level: 7,
+  level: 8,
   name: "Марек Гривачов",
   class: "Колдун",
   subclass: "Небожитель",
@@ -79,7 +79,7 @@
     CON: 12,
     INT: 8,
     WIS: 15,
-    CHA: 18
+    CHA: 20
   ),
   skillProffs: (
     persuation,
@@ -498,7 +498,58 @@
       Из выбранной точки исходит зелёное сияние радиусом 30 футов.
       Существа, входящие в область или начинающие ход внутри #damage("4d10", radiant, saving: CON, saved: halfDamage) и одну степень истощения.
       Они начинают испускать слабый свет на 5фт и теряют преимущества от невидимости, пока длится заклинание.
-    ]
+    ],
+
+    spell(
+      "Страж веры",
+      prep: none,
+      school: evocation,
+      range: circle(10, range: 30),
+      duration: instant,
+      components: "V",
+      source: "Колдун 7ур"
+    )[
+      Из выбранной точки исходит зелёное сияние радиусом 30 футов.
+      Существа в зоне действия #damage("20", radiant, saving: DEX, saved: halfDamage)
+      Страж исчезает, когда причинит суммарно 60 урона.
+    ],
+
+    spell(
+      "Огненная стена",
+      prep: none,
+      school: evocation,
+      range: [ #rectangle(60, 20, 1, range: 120) или #cylinder(20, 20, range: 120) ],
+      duration: minute(1),
+      components: "VSM",
+      source: "Колдун 7ур"
+    )[
+      Только одна сторона стены причиняет урон.
+      Существа на расстоянии 10фт или при пересечении #damage("5d8", fire, saving: DEX, saved: halfDamage)
+    ],
+
+    spell(
+      "Очарование чудовища",
+      prep: none,
+      school: enchantment,
+      duration: hour(1),
+      components: "VS",
+      source: "Колдун 8ур"
+    )[
+      Спас по ЛОВ или очаровано
+    ],
+
+    spell(
+      "Психическое копьё Раулотима",
+      prep: none,
+      school: evocation,
+      range: target(120),
+      duration: instant,
+      components: "V",
+      source: "Колдун 8ур"
+    )[
+      Любое существо которое вы можете видеть или можете назвать по имени.
+      #damage("7d6", fire, saving: INT, saved: halfDamage) и недееспособна
+    ],
   )
 ]
 
