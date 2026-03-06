@@ -5,10 +5,9 @@
 #let spellRow(spell) = (
   table.cell(rowspan: 2, align: horizon + center)[#spell.prep],
   table.cell(rowspan: 2, align: horizon + left)[
-    #par(justify: false)[
-      #spell.name\
-      #spellCaption(spell.school)
-    ]
+    #set par(justify: false)
+    #spell.name\
+    #spellCaption(spell.school)
   ],
   table.cell(align: left)[#spell.castTime],
   spell.duration,
