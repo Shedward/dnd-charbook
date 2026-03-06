@@ -17,7 +17,7 @@
   table.cell(align: right, inset: (top: paddings(0.25)))[
     #if (spell.castType == none) [-] else [#spell.castType]
   ],
-  table.cell(colspan: 3, inset: (top: paddings(0.25)), par(spell.body))
+  table.cell(colspan: 3, inset: (top: paddings(0.25)), spell.body)
 )
 
 #let spellPropBox(content, dy: -0.5em) = {

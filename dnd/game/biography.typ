@@ -11,7 +11,8 @@
 
 #let biographySubsection(title, body) = [
   #abilitySubsection(title)
-  #par(first-line-indent: 0.5em, justify: true)[
+  #block[
+    #set par(first-line-indent: 0.5em, justify: true)
     #body
   ]
 ]

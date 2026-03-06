@@ -26,20 +26,18 @@
       ]
 
       #for action in proficiency.actions [
-        #par[
-          #table(
-            stroke: none,
-            inset: 0pt,
-            gutter: 0.75em,
-            columns: (1fr, auto),
-            [*#actionName(action.name)*],
-            mapOrNone(
-              action.dc,
-              v => actionName[dc #v]
-            ),
-            ..arrayOrNone(action.body).map(v => table.cell(colspan: 2, v))
-          )
-        ]
+        #table(
+          stroke: none,
+          inset: 0pt,
+          gutter: 0.75em,
+          columns: (1fr, auto),
+          [*#actionName(action.name)*],
+          mapOrNone(
+            action.dc,
+            v => actionName[dc #v]
+          ),
+          ..arrayOrNone(action.body).map(v => table.cell(colspan: 2, v))
+        )
       ]
 
       #for skillEffect in proficiency.skillsEffects [
