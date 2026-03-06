@@ -15,7 +15,7 @@
 
     #let toolProficiencyBlock(proficiency) = [
       #show: proficiencyBlockStyle
-
+      #v(0.8em)
       #abilityHeader(proficiency.title)\
       #if proficiency.source != none [
         #abilitySource(proficiency.source)
@@ -41,16 +41,14 @@
       ]
 
       #for skillEffect in proficiency.skillsEffects [
-        #par[
-            *#skillEffect.skills.pos().join(", ")*:
-            #skillEffect.body\
-        ]
+        *#skillEffect.skills.pos().join(", ")*:
+        #skillEffect.body\
       ]
     ]
 
     #let simpleProficiencyBlock(proficiency) = [
       #show: proficiencyBlockStyle
-
+      #v(0.8em)
       #simpleProficiencyTitle(proficiency.title)\
       #if proficiency.source != none [
         #abilitySource(proficiency.source)
