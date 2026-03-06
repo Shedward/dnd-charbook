@@ -41,10 +41,8 @@
       ]
 
       #for skillEffect in proficiency.skillsEffects [
-        #par[
-            *#skillEffect.skills.pos().join(", ")*:
-            #skillEffect.body\
-        ]
+        *#skillEffect.skills.pos().join(", ")*:
+        #skillEffect.body\
       ]
     ]
 
