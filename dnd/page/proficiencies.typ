@@ -15,7 +15,7 @@
 
     #let toolProficiencyBlock(proficiency) = [
       #show: proficiencyBlockStyle
-
+      #v(0.8em)
       #abilityHeader(proficiency.title)\
       #if proficiency.source != none [
         #abilitySource(proficiency.source)
@@ -50,7 +50,7 @@
 
     #let simpleProficiencyBlock(proficiency) = [
       #show: proficiencyBlockStyle
-
+      #v(0.8em)
       #simpleProficiencyTitle(proficiency.title)\
       #if proficiency.source != none [
         #abilitySource(proficiency.source)
