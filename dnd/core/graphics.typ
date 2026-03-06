@@ -44,18 +44,57 @@
   let topHanger = 0.125 * height
   let bottomHanger = topHanger
 
+  // path() anchor format: (point, handle-in, handle-out)
+  // curve.cubic(ctrl1, ctrl2, end) uses absolute coordinates
+  // ctrl1 = prev-point + prev-handle-out, ctrl2 = next-point + next-handle-in
+  let p0 = (xCenter, width)
+  let p1 = (xLeftRuler, yBottomRuler)
+  let p2 = (xLeftRuler, yTopRuler)
+  let p3 = (xCenter, yTopRuler)
+  let p4 = (xRightRuler, yTopRuler)
+  let p5 = (xRightRuler, yBottomRuler)
 
-  path(
-    closed: true,
+  curve(
     stroke: stroke,
-    fill: none,
-    // ---
-    ((xCenter, width), (topHanger, -topHanger), (-topHanger, -topHanger)),
-    ((xLeftRuler, yBottomRuler), (bottomHanger, bottomHanger)),
-    ((xLeftRuler, yTopRuler), (-topHanger, topHanger)),
-    ((xCenter, yTopRuler), (-topHanger, -topHanger), (topHanger, -topHanger)),
-    ((xRightRuler, yTopRuler), (-topHanger, -topHanger)),
-    ((xRightRuler, yBottomRuler), (bottomHanger, -bottomHanger))
+    fill: fill,
+    curve.move(p0),
+    // p0 handle-out: (-topHanger, -topHanger), p1 handle-in: (bottomHanger, bottomHanger)
+    curve.cubic(
+      (p0.at(0) - topHanger, p0.at(1) - topHanger),
+      (p1.at(0) + bottomHanger, p1.at(1) + bottomHanger),
+      p1
+    ),
+    // p1 has no handle-out (implicit straight), p2 handle-in: (-topHanger, topHanger)
+    curve.cubic(
+      p1,
+      (p2.at(0) - topHanger, p2.at(1) + topHanger),
+      p2
+    ),
+    // p2 has no handle-out, p3 handle-in: (-topHanger, -topHanger)
+    curve.cubic(
+      p2,
+      (p3.at(0) - topHanger, p3.at(1) - topHanger),
+      p3
+    ),
+    // p3 handle-out: (topHanger, -topHanger), p4 handle-in: (-topHanger, -topHanger)
+    curve.cubic(
+      (p3.at(0) + topHanger, p3.at(1) - topHanger),
+      (p4.at(0) - topHanger, p4.at(1) - topHanger),
+      p4
+    ),
+    // p4 has no handle-out, p5 handle-in: (bottomHanger, -bottomHanger)
+    curve.cubic(
+      p4,
+      (p5.at(0) + bottomHanger, p5.at(1) - bottomHanger),
+      p5
+    ),
+    // p5 has no handle-out, p0 handle-in: (topHanger, -topHanger)
+    curve.cubic(
+      p5,
+      (p0.at(0) + topHanger, p0.at(1) - topHanger),
+      p0
+    ),
+    curve.close(mode: "straight")
   )
 }
 
