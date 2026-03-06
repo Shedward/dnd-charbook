@@ -20,7 +20,7 @@
       if type(ability) == content {
         ability
       } else if type(ability) == dictionary {
-        [ #abilityBlock(ability)\ ]
+        block(above: 0.6em)[#abilityBlock(ability)]
       } else {
         panic("Not supported ability type " + type(ability))
       }
