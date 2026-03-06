@@ -44,18 +44,58 @@
   let topHanger = 0.125 * height
   let bottomHanger = topHanger
 
+  // path() single-handle semantics: (point, h) means handle-in=h, handle-out=-h (mirror).
+  // curve.cubic(ctrl1, ctrl2, end): ctrl1 = start + handle-out, ctrl2 = end + handle-in
+  //
+  // p0: in=(h,-h),  out=(-h,-h)  [explicit two handles]
+  // p1: in=(h,h),   out=(-h,-h)  [single handle mirrored]
+  // p2: in=(-h,h),  out=(h,-h)   [single handle mirrored]
+  // p3: in=(-h,-h), out=(h,-h)   [explicit two handles]
+  // p4: in=(-h,-h), out=(h,h)    [single handle mirrored]
+  // p5: in=(h,-h),  out=(-h,h)   [single handle mirrored]
+  let h = topHanger
+  let p0 = (xCenter, width)
+  let p1 = (xLeftRuler, yBottomRuler)
+  let p2 = (xLeftRuler, yTopRuler)
+  let p3 = (xCenter, yTopRuler)
+  let p4 = (xRightRuler, yTopRuler)
+  let p5 = (xRightRuler, yBottomRuler)
 
-  path(
-    closed: true,
+  curve(
     stroke: stroke,
-    fill: none,
-    // ---
-    ((xCenter, width), (topHanger, -topHanger), (-topHanger, -topHanger)),
-    ((xLeftRuler, yBottomRuler), (bottomHanger, bottomHanger)),
-    ((xLeftRuler, yTopRuler), (-topHanger, topHanger)),
-    ((xCenter, yTopRuler), (-topHanger, -topHanger), (topHanger, -topHanger)),
-    ((xRightRuler, yTopRuler), (-topHanger, -topHanger)),
-    ((xRightRuler, yBottomRuler), (bottomHanger, -bottomHanger))
+    fill: fill,
+    curve.move(p0),
+    curve.cubic( // p0→p1: out=(-h,-h), in=(h,h)
+      (p0.at(0) - h, p0.at(1) - h),
+      (p1.at(0) + h, p1.at(1) + h),
+      p1
+    ),
+    curve.cubic( // p1→p2: out=(-h,-h), in=(-h,h)
+      (p1.at(0) - h, p1.at(1) - h),
+      (p2.at(0) - h, p2.at(1) + h),
+      p2
+    ),
+    curve.cubic( // p2→p3: out=(h,-h), in=(-h,-h)
+      (p2.at(0) + h, p2.at(1) - h),
+      (p3.at(0) - h, p3.at(1) - h),
+      p3
+    ),
+    curve.cubic( // p3→p4: out=(h,-h), in=(-h,-h)
+      (p3.at(0) + h, p3.at(1) - h),
+      (p4.at(0) - h, p4.at(1) - h),
+      p4
+    ),
+    curve.cubic( // p4→p5: out=(h,h), in=(h,-h)
+      (p4.at(0) + h, p4.at(1) + h),
+      (p5.at(0) + h, p5.at(1) - h),
+      p5
+    ),
+    curve.cubic( // p5→p0: out=(-h,h), in=(h,-h)
+      (p5.at(0) - h, p5.at(1) + h),
+      (p0.at(0) + h, p0.at(1) - h),
+      p0
+    ),
+    curve.close(mode: "straight")
   )
 }
 

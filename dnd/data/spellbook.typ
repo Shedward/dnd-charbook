@@ -22,5 +22,5 @@
 }
 
 #let spellbook() = {
-  json("../../resources/data/spells.json")
+  json("/resources/data/spells.json")
 }

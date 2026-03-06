@@ -17,7 +17,7 @@
   table.cell(align: right, inset: (top: paddings(0.25)))[
     #if (spell.castType == none) [-] else [#spell.castType]
   ],
-  table.cell(colspan: 3, inset: (top: paddings(0.25)), par(spell.body))
+  table.cell(colspan: 3, inset: (top: paddings(0.25)), spell.body)
 )
 
 #let spellPropBox(content, dy: -0.5em) = {
@@ -293,14 +293,14 @@
 ]
 
 #let allSpellsFromSpellbook(class, subclass, lvl) = {
-  for lvl in range(lvl) [
-    #subsection[#lvl #loc(en: "Level", ru: "Уровень")]
+  for i in range(lvl) [
+    #subsection[#i #loc(en: "Level", ru: "Уровень")]
     #spellsTable(
       ..(
         spellbook().filter(
           is_spell_for_class.with(class: class, subclass: subclass)
         ).filter(
-          is_spell_at_level.with(level: lvl)
+          is_spell_at_level.with(level: i)
         ).map(
           s => spellFromSpellbook(s, prep: preparing)
         )

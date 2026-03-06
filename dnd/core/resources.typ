@@ -7,6 +7,6 @@
       args
     }
 
-    box(image("../../resources/icons/" + name + ".svg"), ..resolvedArgs)
+    box(image("/resources/icons/" + name + ".svg"), ..resolvedArgs)
   }
-}
+
