@@ -154,7 +154,7 @@
 
 #let byLevelMethod(x) = character => byCharacterLevel(character, x)
 
-#let byLevel(x) = resolveForCharacter(byLevelMethod)
+#let byLevel(x) = resolveForCharacter(byLevelMethod(x))
 
 #let atLevel(level, body) = resolveForCharacter(c => if c.level == level {
   body
