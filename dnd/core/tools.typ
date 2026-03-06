@@ -31,20 +31,6 @@
   #raw("[" + valueOrDefault(caption, "TODO") + "]")
  ]
 
- #let contentToString(content) = {
-   if content.has("text") {
-     content.text
-   } else if content.has("children") {
-     content.children.map(to-string).join("")
-   } else if content.has("body") {
-     to-string(content.body)
-   } else if content == [ ] {
-     " "
-   } else {
-     ""
-   }
- }
-
  #let matchedSize(source, data) = {
    let n = source.len();
    if data.len() == 0 {
