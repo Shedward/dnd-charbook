@@ -16,7 +16,7 @@
 
   spellcasting: spellcasting(
     stat: INT,
-    rutualCasting: true,
+    ritualCasting: true,
     slots: byLevelMethod(
       (
         "1": ("1": 2),
@@ -56,16 +56,16 @@
     WIS: 10,
     CHA: 10
   ),
-  skillProffs: (
+  skillProfs: (
     investigation,
     history,
     arcana,
     religion,
   ),
-  saveProffs: (
+  saveProfs: (
     INT, WIS
   ),
-  proffBonus: byLevelMethod(
+  profBonus: byLevelMethod(
     (
       "1": 2,
       "5": 3,

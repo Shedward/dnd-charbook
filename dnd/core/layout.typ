@@ -1,4 +1,4 @@
-#import "dimentions.typ": *
+#import "dimensions.typ": *
 #import "graphics.typ": *
 #import "styles.typ": *
 #import "tools.typ": *

@@ -1,4 +1,4 @@
-#import "dimentions.typ": *
+#import "dimensions.typ": *
 
 // Renders rectangle with corners rounded inside
 // Parameters:

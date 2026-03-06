@@ -81,16 +81,16 @@
     WIS: 15,
     CHA: 20
   ),
-  skillProffs: (
-    persuation,
+  skillProfs: (
+    persuasion,
     perception,
     history,
     nature
   ),
-  saveProffs: (
+  saveProfs: (
     WIS, CHA
   ),
-  proffBonus: byLevelMethod(
+  profBonus: byLevelMethod(
     (
       "1": 2,
       "5": 3,
@@ -633,7 +633,7 @@
   armorProficiency("Лёгкая броня", source: "Колдун 1ур"),
   savingProficiency(WIS, source: "Колдун 1ур"),
   savingProficiency(CHA, source: "Колдун 1ур"),
-  skillProficiency(persuation, source: "Колдун 1ур"),
+  skillProficiency(persuasion, source: "Колдун 1ур"),
   skillProficiency(perception, source: "Колдун 1ур"),
   skillProficiency(history, source: "Учённый-затворник"),
   skillProficiency(nature, source: "Учённый-затворник")

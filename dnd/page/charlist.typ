@@ -16,7 +16,7 @@
   skillBody(saveModifier(character, stat))
 }
 
-#let profficiencyMark(character, value, proffMethod) = {
+#let proficiencyMark(character, value, proffMethod) = {
   let proffs = method(character, proffMethod)
   if proffs != none and proffs.contains(value) {
     [+]
@@ -52,7 +52,7 @@
   ..(for stat in game.stats {
     (
       statBody[#game.saveModifier(character, stat)],
-      statCaption[#game.statName(stat)#profficiencyMark(character, stat, c => c.saveProffs)]
+      statCaption[#game.statName(stat)#proficiencyMark(character, stat, c => c.saveProfs)]
     )
   })
 )
@@ -119,7 +119,7 @@
           skillBody(game.skillModifier(character, skill.skill)),
           [
             #game.skillName(skill.skill)
-            #profficiencyMark(character, skill.skill, c => c.skillProffs)
+            #proficiencyMark(character, skill.skill, c => c.skillProfs)
           ],
           statCaption(
             fill: colors.secondary,
@@ -170,7 +170,7 @@
     healthPropBox(caption: loc(en: [Temp.], ru: [Врем.])),
     propsSeparator,
     propBox(
-      content: game.proffBonus(character),
+      content: game.profBonus(character),
       caption: loc(en: [Prf.Bonus], ru: [Бон. маст.])
     ),
     propBox(

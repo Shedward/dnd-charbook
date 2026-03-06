@@ -18,7 +18,7 @@
   spellcasting: spellcasting(
     focus: "Свечка с подсвечником",
     stat: WIS,
-    rutualCasting: true,
+    ritualCasting: true,
     slots: byLevelMethod(
       (
         "1": ("1": 2),
@@ -64,17 +64,17 @@
     WIS: 16,
     CHA: 8
   ),
-  skillProffs: (
+  skillProfs: (
     history,
     religion,
     medicine,
     insight,
     perception,
   ),
-  saveProffs: (
+  saveProfs: (
     WIS, CHA
   ),
-  proffBonus: byLevelMethod(
+  profBonus: byLevelMethod(
     (
       "1": 2,
       "5": 3,

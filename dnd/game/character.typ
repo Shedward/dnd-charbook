@@ -26,10 +26,10 @@
   spellcasting: none,
   level: 1,
   stats: none,
-  skillProffs: none,
+  skillProfs: none,
   skillExpert: (),
-  saveProffs: none,
-  proffBonus: none,
+  saveProfs: none,
+  profBonus: none,
   speed: none,
   hitDices: none,
   maxHp: none,
@@ -46,14 +46,14 @@
   spellcasting: spellcasting,
   level: level,
   stats: stats,
-  skillProffs: skillProffs,
+  skillProfs: skillProfs,
   skillExpert: skillExpert,
-  saveProffs: saveProffs,
-  proffBonus: proffBonus,
+  saveProfs: saveProfs,
+  profBonus: profBonus,
   speed: speed,
   hitDices: hitDices,
   maxHp: maxHp,
-  initialite: initiative,
+  initiative: initiative,
   baseArmorClass: baseArmorClass
 )
 
@@ -78,10 +78,10 @@
 #let medicine = "medicine"
 #let nature = "nature"
 #let perception = "perception"
-#let persuation = "persuation"
+#let persuasion = "persuasion"
 #let performance = "performance"
 #let religion = "religion"
-#let sleighOfHand = "sleighOfHand"
+#let sleightOfHand = "sleightOfHand"
 #let stealth = "stealth"
 #let survival = "survival"
 
@@ -89,7 +89,7 @@
   (skill: athletics, stat: STR),
 
   (skill: acrobatics, stat: DEX),
-  (skill: sleighOfHand, stat: DEX),
+  (skill: sleightOfHand, stat: DEX),
   (skill: stealth, stat: DEX),
 
   (skill: history, stat: INT),
@@ -107,7 +107,7 @@
   (skill: performance, stat: CHA),
   (skill: intimidation, stat: CHA),
   (skill: deception, stat: CHA),
-  (skill: persuation, stat: CHA)
+  (skill: persuasion, stat: CHA)
 )
 
 #let statForSkill(skill) = {
@@ -128,13 +128,13 @@
 
 #let spellcasting(
   focus: none,
-  rutualCasting: false,
+  ritualCasting: false,
   props: (),
   stat: none,
   slots: none
 ) = (
   focus: focus,
-  ritualCasting: rutualCasting,
+  ritualCasting: ritualCasting,
   props: props,
   stat: stat,
   slots: slots
@@ -185,8 +185,8 @@
   10 + statModifier(character, DEX)
 }
 
-#let proffBonus(character) = {
-  method(character, c => c.proffBonus)
+#let profBonus(character) = {
+  method(character, c => c.profBonus)
 }
 
 #let walkingSpeed(character) = {
@@ -208,24 +208,24 @@
 }
 
 #let saveModifier(character, stat) = {
-  let proffBonus = method(character, c => c.proffBonus)
+  let profBonus = method(character, c => c.profBonus)
   let modifier = statModifier(character, stat)
 
-  if proffBonus != none and modifier != none and character.saveProffs != none {
-    let isTrained = character.saveProffs.contains(stat)
-    modifier + if isTrained { proffBonus } else { 0 }
+  if profBonus != none and modifier != none and character.saveProfs != none {
+    let isTrained = character.saveProfs.contains(stat)
+    modifier + if isTrained { profBonus } else { 0 }
   }
 }
 
 #let skillModifier(character, skill) = {
-  let proffBonus = method(character, c => c.proffBonus)
+  let profBonus = method(character, c => c.profBonus)
   let stat = statForSkill(skill)
   let modifier = statModifier(character, stat)
 
-  if proffBonus != none and modifier != none and character.skillProffs != none {
-    let isTrained = character.skillProffs.contains(skill)
+  if profBonus != none and modifier != none and character.skillProfs != none {
+    let isTrained = character.skillProfs.contains(skill)
     let mult = if character.skillExpert.contains(skill) { 2 } else { 1 }
-    modifier + if isTrained { mult * proffBonus } else { 0 }
+    modifier + if isTrained { mult * profBonus } else { 0 }
   }
 }
 
@@ -236,22 +236,22 @@
 }
 
 #let spellAtkBonus(character) = {
-  let proffMod = proffBonus(character)
+  let profMod = profBonus(character)
   let stat = spellcastingStat(character)
   let statMod = statModifier(character, stat)
 
-  if proffMod != none and statMod != none {
-    proffMod + statMod
+  if profMod != none and statMod != none {
+    profMod + statMod
   }
 }
 
 #let spellDC(character) = {
-  let proffMod = proffBonus(character)
+  let profMod = profBonus(character)
   let stat = spellcastingStat(character)
   let statMod = statModifier(character, stat)
 
-  if proffMod != none and statMod != none {
-    8 + proffMod + statMod
+  if profMod != none and statMod != none {
+    8 + profMod + statMod
   }
 }
 
@@ -282,10 +282,10 @@
     medicine: loc(en: "Medicine", ru: "Медицина"),
     nature: loc(en: "Nature", ru: "Природа"),
     perception: loc(en: "Perception", ru: "Восприятие"),
-    persuation: loc(en: "Persuation", ru: "Убеждение"),
+    persuasion: loc(en: "Persuasion", ru: "Убеждение"),
     performance: loc(en: "Performance", ru: "Выступление"),
     religion: loc(en: "Religion", ru: "Религия"),
-    sleighOfHand: loc(en: "Sleigh of Hand", ru: "Ловкость рук"),
+    sleightOfHand: loc(en: "Sleight of Hand", ru: "Ловкость рук"),
     stealth: loc(en: "Stealch", ru: "Скрытность"),
     survival: loc(en: "Survival", ru: "Выживание")
 

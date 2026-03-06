@@ -13,7 +13,7 @@
   story: "Failed Merchant",
   spellcasting: spellcasting(
     focus: "Tools, Infusions",
-    rutualCasting: true
+    ritualCasting: true
   ),
   level: 5
 )

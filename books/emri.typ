@@ -59,7 +59,7 @@
     WIS: 16,
     CHA: 8
   ),
-  skillProffs: (
+  skillProfs: (
     athletics,
     stealth,
     perception,
@@ -70,10 +70,10 @@
   skillExpert: (
     perception
   ),
-  saveProffs: (
+  saveProfs: (
     WIS, CHA
   ),
-  proffBonus: byLevelMethod(
+  profBonus: byLevelMethod(
     (
       "1": 2,
       "5": 3,

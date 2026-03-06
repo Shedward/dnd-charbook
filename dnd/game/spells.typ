@@ -205,9 +205,9 @@
     e = e.replace("LVL", str(character.level))
   }
 
-  let proffBonus = method(character, c => c.proffBonus)
-  if proffBonus != none {
-    e = e.replace("PROF", str(proffBonus))
+  let profBonus = method(character, c => c.profBonus)
+  if profBonus != none {
+    e = e.replace("PROF", str(profBonus))
   }
 
   eval(e)
