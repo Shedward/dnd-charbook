@@ -6,7 +6,7 @@
   #let abilityBlock(ability) = [
     #set text(hyphenate: false)
     #set text(top-edge: 0.5em)
-
+    #v(0.8em)
     #abilityHeader(ability.title)\
     #if ability.source != none [
       #abilitySource(ability.source)
@@ -20,7 +20,7 @@
       if type(ability) == content {
         ability
       } else if type(ability) == dictionary {
-        block(above: 0.6em)[#abilityBlock(ability)]
+        [ #abilityBlock(ability)\ ]
       } else {
         panic("Not supported ability type " + type(ability))
       }
