@@ -293,14 +293,14 @@
 ]
 
 #let allSpellsFromSpellbook(class, subclass, lvl) = {
-  for lvl in range(lvl) [
-    #subsection[#lvl #loc(en: "Level", ru: "Уровень")]
+  for i in range(lvl) [
+    #subsection[#i #loc(en: "Level", ru: "Уровень")]
     #spellsTable(
       ..(
         spellbook().filter(
           is_spell_for_class.with(class: class, subclass: subclass)
         ).filter(
-          is_spell_at_level.with(level: lvl)
+          is_spell_at_level.with(level: i)
         ).map(
           s => spellFromSpellbook(s, prep: preparing)
         )
