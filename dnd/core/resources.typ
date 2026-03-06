@@ -9,4 +9,4 @@
 
     box(image("../../resources/icons/" + name + ".svg"), ..resolvedArgs)
   }
-}
+
