@@ -1,5 +1,5 @@
 #import "../core/core.typ": *
-#import "character.typ": stats, statName, statModifier, resolveForCharacter
+#import "character.typ": stats, statName, statModifier, spellcastingStat, resolveForCharacter
 
 // Cast time
 #let action = loc(en: [A], ru: [Де])
@@ -183,6 +183,11 @@
     e = e.replace(stat, str(statModifier(character, stat)))
   }
 
+  let spellStat = spellcastingStat(character)
+  if spellStat != none {
+    e = e.replace("MOD", str(statModifier(character, spellStat)))
+  }
+
   let evalVariance(variance) = eval(
     e.replace("variance", variance),
     scope: (
@@ -199,6 +204,11 @@
 
   for stat in stats {
     e = e.replace(stat, str(statModifier(character, stat)))
+  }
+
+  let spellStat = spellcastingStat(character)
+  if spellStat != none {
+    e = e.replace("MOD", str(statModifier(character, spellStat)))
   }
 
   if character.level != none {
