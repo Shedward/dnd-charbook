@@ -247,3 +247,41 @@
 #let heal(formula) = [
   *#loc(en: [Heal], ru: [Лечит]) #roll(formula) #loc(en: [HP], ru: [ОЗ])*
 ]
+
+// Conditions
+#let blinded = "blinded"
+#let charmed = "charmed"
+#let deafened = "deafened"
+#let frightened = "frightened"
+#let grappled = "grappled"
+#let incapacitated = "incapacitated"
+#let invisible = "invisible"
+#let paralyzed = "paralyzed"
+#let petrified = "petrified"
+#let poisoned = "poisoned"
+#let prone = "prone"
+#let restrained = "restrained"
+#let stunned = "stunned"
+#let unconscious = "unconscious"
+
+#let conditionName(c) = (
+  blinded:       loc(en: "Blinded",       ru: "Ослеплён"),
+  charmed:       loc(en: "Charmed",       ru: "Очарован"),
+  deafened:      loc(en: "Deafened",      ru: "Оглушён"),
+  frightened:    loc(en: "Frightened",    ru: "Испуган"),
+  grappled:      loc(en: "Grappled",      ru: "Схвачен"),
+  incapacitated: loc(en: "Incapacitated", ru: "Недееспособен"),
+  invisible:     loc(en: "Invisible",     ru: "Невидим"),
+  paralyzed:     loc(en: "Paralyzed",     ru: "Парализован"),
+  petrified:     loc(en: "Petrified",     ru: "Окаменел"),
+  poisoned:      loc(en: "Poisoned",      ru: "Отравлен"),
+  prone:         loc(en: "Prone",         ru: "Повален"),
+  restrained:    loc(en: "Restrained",    ru: "Обездвижен"),
+  stunned:       loc(en: "Stunned",       ru: "Оглушён"),
+  unconscious:   loc(en: "Unconscious",   ru: "Без созн."),
+).at(c)
+
+#let effect(condition, saving: none) = [
+  *#if saving != none [#statName(saving) #loc(en: [or], ru: [или])]
+  #conditionName(condition)*
+]

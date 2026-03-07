@@ -182,6 +182,12 @@
   radiant: radiant, slashing: slashing, thunder: thunder,
   STR: STR, DEX: DEX, CON: CON, INT: INT, WIS: WIS, CHA: CHA,
   halfDamage: halfDamage, noDamage: noDamage,
+  effect: effect,
+  blinded: blinded, charmed: charmed, deafened: deafened,
+  frightened: frightened, grappled: grappled, incapacitated: incapacitated,
+  invisible: invisible, paralyzed: paralyzed, petrified: petrified,
+  poisoned: poisoned, prone: prone, restrained: restrained,
+  stunned: stunned, unconscious: unconscious,
 )
 
 #let schoolFromSpellbook(s) = {
