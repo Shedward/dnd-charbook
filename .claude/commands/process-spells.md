@@ -181,8 +181,13 @@ Separate with `\` (Typst line break):
 #damage("3d6", cold, saving: CON)\ #effect(restrained, saving: CON)
 ```
 
+### Movement
+```
+#move(toYou, distance: 10)
+#move(fromYou, distance: 10, saving: STR)
+```
+
 ### NOT YET IMPLEMENTED — use prose
-- `#move(toYou, distance: 10)` — forced movement
 
 When a pattern appears 3+ times, add it to the DSL (see extension process above).
 
