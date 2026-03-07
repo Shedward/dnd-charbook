@@ -118,6 +118,7 @@ Extend the DSL when a pattern appears **3+ times** in upcoming spells and maps c
 ```
 
 Fields `casting_time`, `duration`, `components`, `classes` copied from `spells.json` as-is.
+Exception: strip ", расходуемые заклинанием" (and similar) from `components.material` — the renderer already appends "(расходуется)" when `material_consumed: true`.
 `target` translated from `spells.json`'s `distance` (see table below).
 `description` from either source.
 `body` translated compact form (see DSL below).
@@ -141,6 +142,14 @@ Formula tokens: `STR` `DEX` `CON` `INT` `WIS` `CHA` (stat modifiers), `MOD` (spe
 ```
 #heal("1d8+WIS")
 ```
+
+### Inline formula value
+```
+#formula("MOD")
+#formula("PROF")
+#formula("WIS")
+```
+Evaluates and displays a formula token as a number. Use when a spell grants a numeric bonus equal to a stat modifier (e.g. temp HP = MOD, bonus = PROF).
 
 ### Conditions
 ```

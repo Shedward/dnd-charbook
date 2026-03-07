@@ -2679,7 +2679,7 @@
         "S",
         "M"
       ],
-      "material": "святая вода или порошок серебра и железа, расходуемые заклинанием",
+      "material": "святая вода или порошок серебра и железа",
       "material_required": false,
       "material_consumed": true
     },
@@ -3097,6 +3097,462 @@
     ],
     "description": "Дальнобойная атака заклинанием: 2к8 урона ядом при попадании. ТЕЛ спасбросок или отравлен до конца следующего хода.",
     "body": "#damage(\"2d8\", poison, ranged: true) При попадании — ТЕЛ спасбросок или #effect(poisoned) до конца следующего хода.\\ #atHigherLevels[+1к8 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "disguise-self",
+    "name": "Маскировка",
+    "original_name": "Disguise self",
+    "level": 1,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен обмана"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "сумрачный охотник"
+      }
+    ],
+    "description": "Меняет вашу внешность (±30 см роста, телосложение, снаряжение) на 1 час без смены набора конечностей. Физическое взаимодействие или INT (Расследование) против Сл раскрывает иллюзию.",
+    "body": "Меняет внешность (±30 см, телосложение, снаряжение — без смены конечностей). Физический контакт или INT (Расследование) против Сл раскрывает иллюзию.",
+    "review": false
+  },
+  {
+    "id": "hunters-mark",
+    "name": "Метка охотника",
+    "original_name": "Hunter's mark",
+    "level": 1,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(90)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва мести"
+      }
+    ],
+    "description": "Метка цели: +1к6 урона оружием по ней. Преимущество на МДР (Восприятие/Выживание) для слежки. При смерти цели — переместить метку бонусным действием.",
+    "body": "Метка цели: +1к6 к урону оружием. Преимущество на МДР (Восприятие/Выживание) для слежки. При смерти цели — переместить метку бонусным действием.\\ #atHigherLevels[Слот 3–4: концентрация 8 ч. Слот 5+: 24 ч.]",
+    "review": false
+  },
+  {
+    "id": "inflict-wounds",
+    "name": "Нанесение ран",
+    "original_name": "Inflict wounds",
+    "level": 1,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятвопреступник"
+      },
+      {
+        "class": "чародей",
+        "subclass": "божественная душа"
+      }
+    ],
+    "description": "Рукопашная атака заклинанием: 3к10 урона некротической энергией при попадании.",
+    "body": "#damage(\"3d10\", necrotic)\\ #atHigherLevels[+1к10 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "guiding-bolt",
+    "name": "Направляющий снаряд",
+    "original_name": "Guiding bolt",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 6.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг звёзд"
+      },
+      {
+        "class": "колдун",
+        "subclass": "небожитель"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва славы"
+      }
+    ],
+    "description": "Дальнобойная атака заклинанием: 4к6 урона излучением. Следующая атака по цели до конца вашего хода совершается с преимуществом.",
+    "body": "#damage(\"4d6\", radiant, ranged: true) Следующая атака по цели до конца вашего хода — с преимуществом.\\ #atHigherLevels[+1к6 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "illusory-script",
+    "name": "Невидимое письмо",
+    "original_name": "Illusory script",
+    "level": 1,
+    "school": "illusion",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 864000.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "S",
+        "M"
+      ],
+      "material": "свинцовые чернила, стоящие как минимум 10 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Письмена читаются нормально только указанными вами существами. Для остальных — нечитаемый язык. Истинное зрение раскрывает. Рассеивание уничтожает оба.",
+    "body": "Письмена выглядят нормально для избранных, для остальных — нечитаемый язык (10 дней). Истинное зрение раскрывает. Рассеивание уничтожает письмо.",
+    "review": false
+  },
+  {
+    "id": "unseen-servant",
+    "name": "Невидимый слуга",
+    "original_name": "Unseen servant",
+    "level": 1,
+    "school": "conjuration",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "часть тетивы и кусочек дерева",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Невидимый слуга (КД 10, 1 хп, Сил 2). Бонусным действием: переместить на 15 фт и манипулировать предметом. Не атакует. Оканчивается при уходе >60 фт.",
+    "body": "Невидимый слуга (КД 10, 1 хп, Сил 2). Бонусным действием: переместить на 15 фт и манипулировать предметом. Не атакует. Оканчивается при уходе >60 фт.",
+    "review": false
+  },
+  {
+    "id": "detect-poison-and-disease",
+    "name": "Обнаружение болезней и яда",
+    "original_name": "Detect poison and disease",
+    "level": 1,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "лист тиса",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Чувствуете присутствие, местонахождение и тип ядов, ядовитых существ и болезней в 30 фт. Проницает большинство барьеров.",
+    "body": "Чувствуете присутствие и тип ядов, ядовитых существ и болезней в 30 фт. Проницает большинство барьеров.",
+    "review": false
+  },
+  {
+    "id": "detect-evil-and-good",
+    "name": "Обнаружение зла и добра",
+    "original_name": "Detect evil and good",
+    "level": 1,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "колдун",
+        "subclass": "гений"
+      }
+    ],
+    "description": "Чувствуете присутствие и местонахождение Аберраций, Исчадий, Небожителей, Нежити, Фей и Элементалей в 30 фт. Также: освящённые/оскверненные места и предметы.",
+    "body": "Чувствуете присутствие Аберраций, Исчадий, Небожителей, Нежити, Фей и Элементалей в 30 фт. Также освящённые/оскверненные места. Проницает большинство барьеров.",
+    "review": false
+  },
+  {
+    "id": "detect-magic",
+    "name": "Обнаружение магии",
+    "original_name": "Detect magic",
+    "level": 1,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен магии"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва смотрителей"
+      }
+    ],
+    "description": "Чувствуете присутствие магии в 30 фт. Действием — видите ауру и школу магии видимых предметов/существ. Проницает большинство барьеров.",
+    "body": "Чувствуете присутствие магии в 30 фт. Действием — видите ауру и школу магии. Проницает большинство барьеров.",
+    "review": false
+  },
+  {
+    "id": "burning-hands",
+    "name": "Огненные ладони",
+    "original_name": "Burning hands",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "cone(15)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг дикого огня"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен света"
+      },
+      {
+        "class": "колдун",
+        "subclass": "гений"
+      },
+      {
+        "class": "колдун",
+        "subclass": "исчадие"
+      },
+      {
+        "class": "монах",
+        "subclass": "путь солнечной души"
+      },
+      {
+        "class": "монах",
+        "subclass": "путь четырёх стихий"
+      }
+    ],
+    "description": "ДЛВ спасбросок: 3к6 огня при провале, половина при успехе. Поджигает горючие предметы.",
+    "body": "#damage(\"3d6\", fire, saving: DEX, saved: halfDamage) В конусе 15 фт. Поджигает горючие предметы.\\ #atHigherLevels[+1к6 за слот выше 1-го]",
     "review": false
   }
 ]
