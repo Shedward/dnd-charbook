@@ -170,6 +170,31 @@
   ]
 }
 
+// Processed spellbook formatters
+
+#let spellBodyDSLScope = (
+  damage: damage,
+  heal: heal,
+  atHigherLevels: atHigherLevels,
+  acid: acid, bludgeoning: bludgeoning, frost: frost, fire: fire,
+  force: force, lightning: lightning, necrotic: necrotic,
+  piercing: piercing, poison: poison, psychic: psychic,
+  radiant: radiant, slashing: slashing, thunder: thunder,
+  STR: STR, DEX: DEX, CON: CON, INT: INT, WIS: WIS, CHA: CHA,
+  halfDamage: halfDamage, noDamage: noDamage,
+)
+
+#let schoolFromSpellbook(s) = {
+  let schools = (
+    abjuration: abjuration, conjuration: conjuration,
+    divination: divination, enchantment: enchantment,
+    evocation: evocation, illusion: illusion,
+    necromancy: necromancy, transmutation: transmutation,
+  )
+  let key = s.at("school", default: none)
+  if key != none { schools.at(key, default: none) }
+}
+
 // Spellbook formatters
 
 #let castingTimeFromSpellbook(m) = {
@@ -280,6 +305,7 @@
 
 #let spellFromSpellbook(s, ..etc) = spell(
   s.name,
+  school: schoolFromSpellbook(s),
   castTime: castingTimeFromSpellbook(s.casting_time),
   castType: castTypeFromSpellbook(s),
   duration: durationFromSpellbook(s),
@@ -287,7 +313,11 @@
   components: componentsFromSpellbook(s),
   ..etc,
 )[
-  #s.at("short_description", default: none)\
+  #if "body" in s {
+    eval(s.body, scope: spellBodyDSLScope, mode: "markup")
+  } else {
+    s.at("short_description", default: none)
+  }
   #requiredComponentsFromSpellbook(s)
 ]
 
