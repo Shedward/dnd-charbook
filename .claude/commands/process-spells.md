@@ -75,6 +75,14 @@ Fix any DSL eval errors before reporting.
 For each spell: name, `body`, `review` flag.
 Summarise: N processed, M flagged for review, any DSL gaps noticed.
 
+### When a new schema/rendering rule is discovered
+
+If a fix changes how a field should be stored (e.g. stripping redundant text from `material`):
+1. Apply the fix to already-processed spells with a targeted `jq` patch
+2. Verify with a query that no instances remain
+3. Document the rule in the relevant section of this skill
+4. Apply the rule to all subsequent batches
+
 ---
 
 ## DSL extension
