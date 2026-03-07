@@ -190,6 +190,7 @@
   stunned: stunned, unconscious: unconscious,
   advantage: advantage, disadvantage: disadvantage,
   attack: attack,
+  resist: resist, weakness: weakness,
 )
 
 #let schoolFromSpellbook(s) = {

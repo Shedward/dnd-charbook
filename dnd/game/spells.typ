@@ -302,3 +302,12 @@
 #let disadvantage(on) = [
   *#loc(en: [Disadv.], ru: [Помеха]): #rollTargetName(on)*
 ]
+
+// Resistance / vulnerability
+#let resist(damageType) = [
+  *#loc(en: [Resist.], ru: [Сопр.]): #damageTypeShortName(damageType)*
+]
+
+#let weakness(damageType) = [
+  *#loc(en: [Vuln.], ru: [Уязв.]): #damageTypeShortName(damageType)*
+]
