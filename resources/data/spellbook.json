@@ -1415,5 +1415,865 @@
     "description": "Рукопашная атака заклинанием. При попадании — 1к6 колющего, существо не больше Большого притягивается на 10 фт.\nУрон увеличивается на 1к6 на уровнях 5, 11, 17.",
     "body": "#damage(\"1d6\", piercing)\\ #move(toYou, distance: 10) (существа до Большого включительно).\\ #atHigherLevels[+1к6 на уровнях 5, 11 и 17]",
     "review": false
+  },
+  {
+    "id": "light",
+    "name": "Свет",
+    "original_name": "Light",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "M"
+      ],
+      "material": "светлячок или фосфоресцирующий мох",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен света"
+      },
+      {
+        "class": "колдун",
+        "subclass": "небожитель"
+      }
+    ],
+    "description": "Вы касаетесь одного предмета, длина которого ни по одному из измерений не превышает 10 футов. Пока заклинание активно, предмет испускает яркий свет в радиусе 20 футов и тусклый свет в пределах ещё 20 футов. Если вы нацелились на предмет, несомый или носимый враждебным существом, оно должно преуспеть в спасброске Ловкости, чтобы увернуться.",
+    "body": "#light(bright: 20, dim: 20) На предмете (1 час). Если предмет несёт враг — спасбросок Ловкости.",
+    "review": false
+  },
+  {
+    "id": "guidance",
+    "name": "Указание",
+    "original_name": "Guidance",
+    "level": 0,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "бард",
+        "subclass": "коллегия духов"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг звёзд"
+      }
+    ],
+    "description": "Цель добавляет 1к4 к одной проверке характеристики на свой выбор (до или после броска). После этого заклинание оканчивается.",
+    "body": "Цель добавляет 1к4 к одной проверке характеристики (до или после броска). Одноразовое.",
+    "review": false
+  },
+  {
+    "id": "spare-the-dying",
+    "name": "Уход за умирающим",
+    "original_name": "Spare the dying",
+    "level": 0,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен упокоения"
+      },
+      {
+        "class": "колдун",
+        "subclass": "бессмертный"
+      }
+    ],
+    "description": "Вы касаетесь живого существа, у которого 0 хитов. Оно становится стабилизированным. Это заклинание не оказывает никакого эффекта на Нежить и Конструктов.",
+    "body": "Стабилизирует существо с 0 хп. Не действует на Нежить и Конструктов.",
+    "review": false
+  },
+  {
+    "id": "prestidigitation",
+    "name": "Фокусы",
+    "original_name": "Prestidigitation",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(10)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "воин",
+        "subclass": "мистический лучник"
+      }
+    ],
+    "description": "Один из эффектов на выбор: мгновенный сенсорный эффект; зажечь/потушить огонь; почистить/запачкать предмет до 1 куб. фт; нагреть/охладить/придать вкус материи на 1 час; создать цвет, метку или символ на поверхности на 1 час; создать безделушку или иллюзию до конца следующего хода. До 3 длительных эффектов одновременно.",
+    "body": "Один из эффектов: сенсорный; огонь вкл/выкл; чистить/пачкать предмет до 1 куб. фт; нагрев/вкус на 1 час; метка на 1 час; безделушка до конца хода. До 3 длительных одновременно.",
+    "review": false
+  },
+  {
+    "id": "shape-water",
+    "name": "Формование воды",
+    "original_name": "Shape water",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Один из эффектов с водой в кубе 5 фт: переместить на 5 фт; придать форму и двигать (1 час); изменить цвет/прозрачность (1 час); заморозить (1 час, без существ). До 2 длительных эффектов одновременно.",
+    "body": "Один из эффектов с водой (куб 5 фт): сдвинуть на 5 фт; придать форму (1 час); изменить цвет/прозрачность (1 час); заморозить (1 час, без существ). До 2 длительных.",
+    "review": false
+  },
+  {
+    "id": "thaumaturgy",
+    "name": "Чудотворство",
+    "original_name": "Thaumaturgy",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "наездник на дрейке"
+      },
+      {
+        "class": "варвар",
+        "subclass": "путь великана"
+      }
+    ],
+    "description": "Один из эффектов на выбор: усилить голос втрое (1 мин); изменить пламя (1 мин); дрожь пола (1 мин); мгновенный звук; открыть/закрыть незапертое окно или дверь; изменить вид глаз (1 мин). До 3 длительных эффектов одновременно.",
+    "body": "Один из эффектов: громкий голос; изменить пламя; дрожь пола; звук; открыть/закрыть дверь/окно; изменить вид глаз — до 1 мин. До 3 длительных одновременно.",
+    "review": false
+  },
+  {
+    "id": "gust",
+    "name": "Шквал",
+    "original_name": "Gust",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Один из эффектов: существо до Среднего — СИЛ спасбросок или отталкивается на 5 фт; переместить предмет до 2 кг на 10 фт; безвредный ветровой эффект.",
+    "body": "#move(fromYou, distance: 5, saving: STR) (существа до Среднего). Или сдвинуть предмет до 2 кг на 10 фт. Или безвредный эффект ветра.",
+    "review": false
+  },
+  {
+    "id": "shocking-grasp",
+    "name": "Электрошок",
+    "original_name": "Shocking grasp",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Рукопашная атака заклинанием. Преимущество, если цель в металлическом доспехе. При попадании — 1к8 урона электричеством, цель не может использовать реакции до начала своего следующего хода.",
+    "body": "#damage(\"1d8\", lightning) Преимущество против металлического доспеха. При попадании цель теряет реакции до начала своего хода.\\ #atHigherLevels[+1к8 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "poison-spray",
+    "name": "Ядовитые брызги",
+    "original_name": "Poison spray",
+    "level": 0,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(10)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Существо должно преуспеть в спасброске Телосложения, иначе получит 1к12 урона ядом.",
+    "body": "#damage(\"1d12\", poison, saving: CON)\\ #atHigherLevels[+1к12 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "hellish-rebuke",
+    "name": "Адское возмездие",
+    "original_name": "Hellish rebuke",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "reaction",
+      "value": 1,
+      "condition": "когда вы получаете урон от существа, находящегося в пределах 60 футов от вас и видимого вами"
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятвопреступник"
+      }
+    ],
+    "description": "Существо, причинившее вам урон, должно совершить спасбросок Ловкости. При провале — 2к10 урона огнём, при успехе — половина.",
+    "body": "#damage(\"2d10\", fire, saving: DEX, saved: halfDamage)\\ #atHigherLevels[+1к10 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "silent-image",
+    "name": "Безмолвный образ",
+    "original_name": "Silent image",
+    "level": 1,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусок овечьей шерсти",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Визуальная иллюзия (куб 15 фт) в видимой точке. Можно перемещать действием. Физическое взаимодействие или INT (Расследование) против Сл заклинаний раскрывает иллюзию.",
+    "body": "Визуальная иллюзия в кубе 15 фт. Можно перемещать действием. Физический контакт или INT (Расследование) против Сл раскрывает иллюзию.",
+    "review": false
+  },
+  {
+    "id": "bless",
+    "name": "Благословение",
+    "original_name": "Bless",
+    "level": 1,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "капля святой воды",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен жизни"
+      },
+      {
+        "class": "чародей",
+        "subclass": "божественная душа"
+      }
+    ],
+    "description": "До 3 существ добавляют 1к4 к броскам атаки и спасброскам.",
+    "body": "До 3 существ добавляют 1к4 к броскам атаки и спасброскам.\\ #atHigherLevels[+1 существо за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "divine-favor",
+    "name": "Божественное благоволение",
+    "original_name": "Divine favor",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен войны"
+      }
+    ],
+    "description": "Ваши атаки оружием наносят при попадании дополнительно 1к4 урона излучением.",
+    "body": "Атаки оружием наносят дополнительно #damage(\"1d4\", radiant).",
+    "review": false
+  },
+  {
+    "id": "witch-bolt",
+    "name": "Ведьмин снаряд",
+    "original_name": "Witch bolt",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "веточка дерева, в которое ударила молния",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Дальнобойная атака заклинанием: 1к12 урона электричеством. Пока активно — каждый ход действием: авт. 1к12 цели. Оканчивается при выходе из дальности или полном укрытии.",
+    "body": "#damage(\"1d12\", lightning, ranged: true) При попадании: каждый ход действием — авт. 1к12. Оканчивается при выходе из дальности или полном укрытии.\\ #atHigherLevels[+1к12 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "thunderwave",
+    "name": "Волна грома",
+    "original_name": "Thunderwave",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "cube(15)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен бури"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "артиллерист"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "бронник"
+      },
+      {
+        "class": "колдун",
+        "subclass": "бездонный"
+      },
+      {
+        "class": "колдун",
+        "subclass": "гений"
+      },
+      {
+        "class": "монах",
+        "subclass": "путь четырёх стихий"
+      }
+    ],
+    "description": "ТЕЛ спасбросок: 2к8 звука, при провале — толчок на 10 фт. При успехе — половина урона, толчка нет. Незакреплённые предметы толкаются автоматически. Слышен на 300 фт.",
+    "body": "#damage(\"2d8\", thunder, saving: CON, saved: halfDamage) При провале #move(fromYou, distance: 10). Незакреплённые предметы толкаются авт. Слышен на 300 фт.\\ #atHigherLevels[+1к8 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "magic-missile",
+    "name": "Волшебная стрела",
+    "original_name": "Magic missile",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен магии"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "бронник"
+      }
+    ],
+    "description": "3 дротика (авт. попадание), каждый — 1к4+1 урона силовым полем. Можно распределять по целям.",
+    "body": "3 дротика (авт. попадание), каждый — #damage(\"1d4+1\", force). Можно распределять по целям.\\ #atHigherLevels[+1 дротик за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "jims-magic-missile",
+    "name": "Волшебная стрела Джима",
+    "original_name": "Jims Magic Missile",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        null
+      ],
+      "material": "1 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "3 дальнобойные атаки заклинанием, каждая — 2к4 урона силовым полем. Крит = 5к4. Если любой бросок = 1 — все промахиваются, вы получаете 1 урона за дротик.",
+    "body": "3 дальнобойные атаки заклинанием, каждая — #damage(\"2d4\", force). Крит: 5к4. Любая атака = 1: все промах, вы получаете 1 урона силовым полем за дротик.\\ #atHigherLevels[+1 дротик и +1 зм за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "compelled-duel",
+    "name": "Вызов на дуэль",
+    "original_name": "Compelled duel",
+    "level": 1,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва короны"
+      }
+    ],
+    "description": "МДР спасбросок. При провале: атаки по всем кроме вас — с помехой; МДР спасбросок при попытке уйти >30 фт. Оканчивается при атаке другого существа, нанесении урона союзником или уходе >30 фт.",
+    "body": "МДР спасбросок. При провале: атаки не по вам — с помехой; МДР при движении >30 фт. Оканчивается при атаке другого или уходе >30 фт.",
+    "review": false
+  },
+  {
+    "id": "cause-fear",
+    "name": "Вызов страха",
+    "original_name": "Cause fear",
+    "level": 1,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "МДР спасбросок или цель испугана. Повтор спасброска в конце каждого хода. Иммунитет: Конструкты и Нежить.",
+    "body": "#effect(frightened, saving: WIS) Повтор МДР в конце каждого хода. Иммунитет: Конструкты, Нежить.\\ #atHigherLevels[+1 цель за слот выше 1-го (в 30 фт друг от друга)]",
+    "review": false
+  },
+  {
+    "id": "heroism",
+    "name": "Героизм",
+    "original_name": "Heroism",
+    "level": 1,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен мира"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен порядка"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "боевой кузнец"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва славы"
+      }
+    ],
+    "description": "Цель получает иммунитет к испугу и в начале каждого хода — врем. хп = MOD заклинательной характеристики.",
+    "body": "Иммунитет к испугу. В начале каждого хода — врем. хп = #formula(\"MOD\").\\\\ #atHigherLevels[+1 существо за слот выше 1-го]",
+    "review": false
   }
 ]

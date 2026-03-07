@@ -175,6 +175,7 @@
 #let spellBodyDSLScope = (
   damage: damage,
   heal: heal,
+  formula: formula,
   atHigherLevels: atHigherLevels,
   acid: acid, bludgeoning: bludgeoning, cold: cold, frost: frost, fire: fire,
   force: force, lightning: lightning, necrotic: necrotic,
