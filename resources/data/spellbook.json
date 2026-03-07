@@ -605,5 +605,815 @@
     "description": "Выберите область земли или камня, видимую в пределах дистанции и помещающуюся в куб с длиной ребра 5 футов. Вы можете управлять ей одним из нижеперечисленных способов:\nЕсли вы нацелились на область рыхлой земли, вы можете мгновенно извлечь её и переместить на расстояние до 5 футов по земле.\nВы можете создавать узоры или цвета на поверхности земли или камня. Эффект действует 1 час.\nВы можете сделать область труднопроходимой или нормальной. Эффект действует 1 час.\nНе более 2 длительных эффектов одновременно.",
     "body": "Утилита: переместить рыхлую землю (5 фт), создать узоры/цвет (1 час) или изменить проходимость местности (1 час). Не более 2 длительных эффектов.",
     "review": true
+  },
+  {
+    "id": "ray-of-frost",
+    "name": "Луч холода",
+    "original_name": "Ray of frost",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Холодный сине-белый луч устремляется к существу, находящемуся в пределах дистанции. Совершите по цели дальнобойную атаку заклинанием. При попадании она получает урон холодом 1к8, а скорость до начала вашего следующего хода уменьшается на 10 футов.\nУрон от заклинания увеличивается на 1к8, когда вы достигаете 5-го уровня (2к8), 11-го уровня (3к8) и 17-го уровня (4к8).",
+    "body": "#damage(\"1d8\", cold, ranged: true) Скорость цели −10 фт до следующего хода.\\ #atHigherLevels[+1к8 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "minor-illusion",
+    "name": "Малая иллюзия",
+    "original_name": "Minor illusion",
+    "level": 0,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "S",
+        "M"
+      ],
+      "material": "кусок овечьей шерсти",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "монах",
+        "subclass": "путь тени"
+      }
+    ],
+    "description": "Вы создаёте звук или образ предмета в пределах дистанции на 1 минуту. Звук: любой от шёпота до крика. Образ: куб 5 фт, без физического взаимодействия. Проверка Интеллекта (Расследование) против СЛ заклинаний раскрывает иллюзию.",
+    "body": "Создаёт звук (любой громкости) или образ предмета (куб 5 фт, без тактильного эффекта) на 1 мин. Проверка Инт (Расследование) против СЛ раскрывает.",
+    "review": false
+  },
+  {
+    "id": "true-strike",
+    "name": "Меткий удар",
+    "original_name": "True strike",
+    "level": 0,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Ваша магия даёт краткое понимание защиты цели. В своём следующем ходу вы совершаете с преимуществом первый бросок атаки по цели, при условии, что заклинание к тому моменту не окончится.",
+    "body": "#advantage(attack) на первый бросок атаки по цели в следующем ходу.",
+    "review": false
+  },
+  {
+    "id": "eldritch-blast",
+    "name": "Мистический заряд",
+    "original_name": "Eldritch blast",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "К существу устремляется луч потрескивающей энергии. Совершите дальнобойную атаку заклинанием. При попадании цель получает 1к10 урона силовым полем.\nДва луча на 5-м уровне, три на 11-м, четыре на 17-м. Каждый луч — отдельный бросок атаки.",
+    "body": "#damage(\"1d10\", force, ranged: true)\\ #atHigherLevels[2 луча ур. 5 / 3 ур. 11 / 4 ур. 17 — каждый отдельный бросок атаки]",
+    "review": false
+  },
+  {
+    "id": "infestation",
+    "name": "Нашествие",
+    "original_name": "Infestation",
+    "level": 0,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "живая блоха",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Паразиты обволакивают одно существо в пределах дистанции. Цель должна преуспеть в спасброске Телосложения, иначе получит 1к6 урона ядом и переместится на 5 футов в случайном направлении (к4: 1=север, 2=юг, 3=восток, 4=запад). Перемещение не провоцирует атаки.\nУрон увеличивается на 1к6 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d6\", poison, saving: CON) При провале — движение 5 фт в случайном направлении (1к4).\\ #atHigherLevels[+1к6 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "frostbite",
+    "name": "Обморожение",
+    "original_name": "Frostbite",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Сильный холод окружает одно существо в пределах дистанции. Цель должна совершить спасбросок Телосложения. При провале получает 1к6 урона холодом и совершает с помехой следующий бросок атаки оружием до конца своего следующего хода.\nУрон увеличивается на 1к6 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d6\", cold, saving: CON)\\ #disadvantage(attack) на следующий бросок атаки оружием цели.\\ #atHigherLevels[+1к6 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "fire-bolt",
+    "name": "Огненный снаряд",
+    "original_name": "Fire bolt",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Вы кидаете сгусток огня в существо или предмет. Совершите дальнобойную атаку заклинанием. При попадании цель получает 1к10 урона огнём. Горючие предметы воспламеняются.\nУрон увеличивается на 1к10 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d10\", fire, ranged: true) Горючие предметы воспламеняются.\\ #atHigherLevels[+1к10 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "primal-savagery",
+    "name": "Первобытная дикость",
+    "original_name": "Primal savagery",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Вы направляете первобытную магию, затачивающую ваши зубы или ногти. Совершите рукопашную атаку заклинанием против одного существа в пределах 5 футов. При попадании цель получает 1к10 урона кислотой.\nУрон увеличивается на 1к10 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d10\", acid)\\ #atHigherLevels[+1к10 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "dancing-lights",
+    "name": "Пляшущие огоньки",
+    "original_name": "Dancing lights",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочек фосфора, гнилушка или светлячок",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "До 4 огоньков размером с факел в пределах 120 фт, каждый излучает тусклый свет 10 фт. Можно объединить в человекоподобную фигуру. Перемещение бонусным действием на 60 фт.",
+    "body": "#light(bright: 0, dim: 10) × 4 (или фигура). Перемещение бонусным действием на 60 фт.",
+    "review": false
+  },
+  {
+    "id": "toll-the-dead",
+    "name": "Погребальный звон",
+    "original_name": "Toll the dead",
+    "level": 0,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Цель должна преуспеть в спасброске Мудрости, иначе получит 1к8 некротического урона. Если хиты цели не полные — 1к12 вместо 1к8.\nУрон увеличивается на одну кость на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d8\", necrotic, saving: WIS) 1к12 если у цели неполные ОЗ.\\ #atHigherLevels[+1к8 (или 1к12) на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "mending",
+    "name": "Починка",
+    "original_name": "Mending",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "два магнетита",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Чинит одно повреждение или разрыв (не больше 1 фута) на предмете без следов. Может физически починить магический предмет или Конструкта, но не восстанавливает магию.",
+    "body": "Чинит разрыв или повреждение не более 1 фута на предмете. Работает на магических предметах и Конструктах (только физически).",
+    "review": false
+  },
+  {
+    "id": "thunderclap",
+    "name": "Раскат грома",
+    "original_name": "Thunderclap",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(5)",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Оглушительный раскат грома, слышимый на 100 футов. Все существа кроме вас в пределах 5 футов должны совершить спасбросок Телосложения. При провале — 1к6 урона звуком.\nУрон увеличивается на 1к6 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d6\", thunder, saving: CON) Все существа в 5 фт. Слышен на 100 фт.\\ #atHigherLevels[+1к6 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "mind-sliver",
+    "name": "Расщепление разума",
+    "original_name": "Mind sliver",
+    "level": 0,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 6.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "чародей",
+        "subclass": "аберрантный разум"
+      }
+    ],
+    "description": "Цель совершает спасбросок Интеллекта. При провале получает 1к6 урона психической энергией и вычитает 1к4 из следующего спасброска до конца вашего следующего хода.\nУрон увеличивается на 1к6 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d6\", psychic, saving: INT) При провале цель вычитает 1к4 из следующего спасброска.\\ #atHigherLevels[+1к6 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "sacred-flame",
+    "name": "Священное пламя",
+    "original_name": "Sacred flame",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун",
+        "subclass": "небожитель"
+      },
+      {
+        "class": "чародей",
+        "subclass": "лунное чародейство"
+      }
+    ],
+    "description": "Цель совершает спасбросок Ловкости. При провале получает 1к8 урона излучением. Укрытие не даёт преимущества на этот спасбросок.\nУрон увеличивается на 1к8 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d8\", radiant, saving: DEX) Укрытие не даёт преимущества на спасбросок.\\ #atHigherLevels[+1к8 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "word-of-radiance",
+    "name": "Слово сияния",
+    "original_name": "Word of radiance",
+    "level": 0,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(5)",
+    "components": {
+      "components": [
+        "V",
+        "M"
+      ],
+      "material": "священный символ",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Каждое выбранное существо в пределах 5 фт совершает спасбросок Телосложения. При провале получает 1к6 урона излучением.\nУрон увеличивается на 1к6 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d6\", radiant, saving: CON) Все выбранные цели в 5 фт.\\ #atHigherLevels[+1к6 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "message",
+    "name": "Сообщение",
+    "original_name": "Message",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 6.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочек медной проволоки",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Шёпот целевому существу, которое слышит только его. Цель может ответить шёпотом. Проходит сквозь препятствия (кроме камня 1 фут, металла 1 дюйм, свинца, дерева 3 фута или магической тишины).",
+    "body": "Шёпот существу в 120 фт, слышимый только им. Оно может ответить. Огибает углы, проходит сквозь большинство препятствий.",
+    "review": false
+  },
+  {
+    "id": "resistance",
+    "name": "Сопротивление",
+    "original_name": "Resistance",
+    "level": 0,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "крошечный плащ",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      }
+    ],
+    "description": "Цель может добавить 1к4 к одному спасброску на свой выбор (до или после броска). После использования заклинание оканчивается.",
+    "body": "Цель добавляет 1к4 к одному спасброску (до или после броска). Одноразовое.",
+    "review": false
+  },
+  {
+    "id": "create-bonfire",
+    "name": "Сотворение костра",
+    "original_name": "Create bonfire",
+    "level": 0,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Костёр в кубе 5 фт. Существа при входе или в конце хода совершают спасбросок Ловкости — при провале 1к8 огня. Поджигает горючие предметы.\nУрон увеличивается на 1к8 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d8\", fire, saving: DEX) Зона куб 5 фт. Проверка при входе и в конце хода. Поджигает предметы.\\ #atHigherLevels[+1к8 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "produce-flame",
+    "name": "Сотворение пламени",
+    "original_name": "Produce flame",
+    "level": 0,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Пламя в ладони 10 мин, не вредит вам. Яркий свет 10 фт, тусклый ещё 10 фт. Можно метнуть в существо в 30 фт — дальнобойная атака заклинанием, 1к8 огня, после чего заклинание оканчивается.\nУрон увеличивается на 1к8 на уровнях 5, 11, 17.",
+    "body": "#light(bright: 10, dim: 10) в ладони (10 мин). Бросок — #damage(\"1d8\", fire, ranged: true) (30 фт, оканчивает заклинание).\\ #atHigherLevels[+1к8 на уровнях 5, 11 и 17]",
+    "review": false
+  },
+  {
+    "id": "thorn-whip",
+    "name": "Терновый кнут",
+    "original_name": "Thorn whip",
+    "level": 0,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "стебель растения с шипами",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      }
+    ],
+    "description": "Рукопашная атака заклинанием. При попадании — 1к6 колющего, существо не больше Большого притягивается на 10 фт.\nУрон увеличивается на 1к6 на уровнях 5, 11, 17.",
+    "body": "#damage(\"1d6\", piercing)\\ #move(toYou, distance: 10) (существа до Большого включительно).\\ #atHigherLevels[+1к6 на уровнях 5, 11 и 17]",
+    "review": false
   }
 ]
