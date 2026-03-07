@@ -31,6 +31,7 @@
 
 #let acid = "acid"
 #let bludgeoning = "bludgeoning"
+#let cold = "cold"
 #let frost = "frost"
 #let fire = "fire"
 #let force = "force"
@@ -47,6 +48,7 @@
   (
       acid: loc(en: "Acid", ru: "Кислотный"),
       bludgeoning: loc(en: "Bludgeoning", ru: "Дробящий"),
+      cold: loc(en: "Cold", ru: "Холодом"),
       frost: loc(en: "Frost", ru: "Холодом"),
       fire: loc(en: "Fire", ru: "Огнем"),
       force: loc(en: "Force", ru: "Силовой"),
@@ -65,6 +67,7 @@
   (
       acid: loc(en: "acid", ru: "кисл."),
       bludgeoning: loc(en: "bludg.", ru: "дроб."),
+      cold: loc(en: "cold", ru: "хол."),
       frost: loc(en: "frost", ru: "хол."),
       fire: loc(en: "fire", ru: "огн."),
       force: loc(en: "force", ru: "сил."),

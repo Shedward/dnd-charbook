@@ -99,6 +99,7 @@ Extend the DSL when a pattern appears **3+ times** in upcoming spells and maps c
   "is_ritual": false,
   "with_concentration": false,
   "casting_time": { "type": "action", "value": 1, "condition": null },
+  "duration": 0.0,
   "target": "target(60)",
   "components": {
     "components": ["V", "S"],
@@ -113,7 +114,7 @@ Extend the DSL when a pattern appears **3+ times** in upcoming spells and maps c
 }
 ```
 
-Fields `casting_time`, `components`, `classes` copied from `spells.json` as-is.
+Fields `casting_time`, `duration`, `components`, `classes` copied from `spells.json` as-is.
 `target` translated from `spells.json`'s `distance` (see table below).
 `description` from either source.
 `body` translated compact form (see DSL below).

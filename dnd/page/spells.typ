@@ -176,7 +176,7 @@
   damage: damage,
   heal: heal,
   atHigherLevels: atHigherLevels,
-  acid: acid, bludgeoning: bludgeoning, frost: frost, fire: fire,
+  acid: acid, bludgeoning: bludgeoning, cold: cold, frost: frost, fire: fire,
   force: force, lightning: lightning, necrotic: necrotic,
   piercing: piercing, poison: poison, psychic: psychic,
   radiant: radiant, slashing: slashing, thunder: thunder,
