@@ -62,8 +62,11 @@ If spellbook.json does not exist yet, create it as `[<record1>, ...]`.
 ### Step 5 — Verify build
 
 ```bash
-typst compile books/spellbook-test.typ --root . build/spellbook-test.pdf
+typst compile books/spellbook-preview.typ --root . build/spellbook-preview.pdf
 ```
+
+`spellbook-preview.typ` renders only the last 10 spells — use this to check the current batch.
+`spellbook-test.typ` renders all spells — use this for full regression after DSL changes.
 
 Fix any DSL eval errors before reporting.
 
