@@ -197,6 +197,13 @@ When a pattern appears 3+ times, add it to the DSL (see extension process above)
 
 ---
 
+## Typst markup pitfalls
+
+- **`if/else` must be on one line** — in markup mode, `#if cond [...]\nelse [...]` renders `else` as literal text. Always write `#if cond [...] else [...]` on a single line.
+- **Escape quotes in body strings** — inner double quotes must be `\"`, e.g. `#damage(\"1d6\", fire)`.
+
+---
+
 ## Translation rules
 
 1. Strip all flavor text — keep only mechanical effects
