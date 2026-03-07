@@ -192,6 +192,7 @@
   attack: attack,
   resist: resist, weakness: weakness,
   light: light,
+  move: move, toYou: toYou, fromYou: fromYou,
 )
 
 #let schoolFromSpellbook(s) = {

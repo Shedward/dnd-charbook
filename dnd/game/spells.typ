@@ -316,3 +316,14 @@
 #let light(bright: 0, dim: 0) = [
   *#loc(en: [Light], ru: [Свет]): #bright/#dim #loc(en: [ft], ru: [фт])*
 ]
+
+// Forced movement
+#let toYou = "toYou"
+#let fromYou = "fromYou"
+
+#let move(direction, distance: 0, saving: none) = [
+  *#if saving != none [#statName(saving) #loc(en: [or], ru: [или])]
+  #if direction == toYou [#loc(en: [Pull], ru: [Притяг.])]
+  else [#loc(en: [Push], ru: [Оттал.])]
+  #distance #loc(en: [ft], ru: [фт])*
+]
