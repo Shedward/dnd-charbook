@@ -2657,5 +2657,446 @@
     "description": "МДР спасбросок или цель падает ничком, становится недееспособной и не может встать. Инт. 4 и ниже: иммунитет. Повтор МДР в конце хода или при уроне (с преимуществом).",
     "body": "МДР спасбросок или #effect(prone) + #effect(incapacitated) — не может встать. Инт. ≤ 4: иммунитет. Повтор МДР в конце хода или при уроне (с преим.).",
     "review": false
+  },
+  {
+    "id": "protection-from-evil-and-good",
+    "name": "Защита от зла и добра",
+    "original_name": "Protection from evil and good",
+    "level": 1,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "святая вода или порошок серебра и железа, расходуемые заклинанием",
+      "material_required": false,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва преданности"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "странник горизонта"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "убийца монстров"
+      },
+      {
+        "class": "чародей",
+        "subclass": "божественная душа"
+      },
+      {
+        "class": "чародей",
+        "subclass": "заводная душа"
+      }
+    ],
+    "description": "Аберрации, Исчадия, Небожители, Нежить, Феи и Элементали атакуют цель с помехой. Цель не может быть очарована, испугана или одержима ими. Существующие эффекты: повтор спасбросков с преимуществом.",
+    "body": "#disadvantage(attack) от Аберраций, Исчадий, Небожителей, Нежити, Фей и Элементалей. Иммунитет к очарованию, испугу и одержимости ими. Преимущество на спасброски от уже действующих эффектов.",
+    "review": false
+  },
+  {
+    "id": "beast-bond",
+    "name": "Звериные узы",
+    "original_name": "Beast bond",
+    "level": 1,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочек меха, завёрнутого в ткань",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Телепатическая связь с дружественным Зверем (Инт. 3 и ниже). Зверь понимает ваши сообщения, отвечает образами. Зверь атакует с преимуществом существ в 5 фт от вас.",
+    "body": "Телепатическая связь с дружественным Зверем (Инт. 3 и ниже). Зверь понимает вас, отвечает образами. Преимущество на атаки по существам в 5 фт от вас.",
+    "review": false
+  },
+  {
+    "id": "distort-value",
+    "name": "Искажение цены",
+    "original_name": "Distort Value",
+    "level": 1,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 28800.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Предмет до 1 фута кажется вдвое дороже или вдвое дешевле (8 часов). INT (Расследование) против Сл раскрывает правду.",
+    "body": "Предмет до 1 фута выглядит вдвое дороже или вдвое дешевле (8 часов). INT (Расследование) против Сл раскрывает правду.\\ #atHigherLevels[+1 фут к размеру предмета за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "silvery-barbs",
+    "name": "Искусная острота",
+    "original_name": "Silvery barbs",
+    "level": 1,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "reaction",
+      "value": 1,
+      "condition": "когда видимое вами в пределах 60 футов от вас существо преуспевает в броске атаки, проверке характеристики или спасброске"
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Существо, преуспевшее в броске, повторяет к20 и берёт меньший результат. Затем другое существо (или вы) получает преимущество на следующий бросок к20 в течение 1 мин.",
+    "body": "Реакция: существо повторяет к20 и берёт меньшее. Другое существо (или вы) — преимущество на следующий бросок атаки, проверку или спасбросок в течение 1 мин.",
+    "review": false
+  },
+  {
+    "id": "catapult",
+    "name": "Катапульта",
+    "original_name": "Catapult",
+    "level": 1,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Предмет 0,5–2 кг пролетает до 90 фт. При попадании в существо: ДЛВ спасбросок, при провале — 3к8 дробящего предмету и цели.",
+    "body": "Предмет 0,5–2 кг пролетает до 90 фт. ДЛВ спасбросок при попадании в существо, при провале — #damage(\"3d8\", bludgeoning).\\ #atHigherLevels[+2 кг и +1к8 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "ice-knife",
+    "name": "Ледяной кинжал",
+    "original_name": "Ice knife",
+    "level": 1,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "S",
+        "M"
+      ],
+      "material": "капля воды или кусочек льда",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Дальнобойная атака: 1к10 колющего при попадании. Затем взрыв: все в 5 фт — ДЛВ спасбросок или 2к6 холодом.",
+    "body": "#damage(\"1d10\", piercing, ranged: true) При попадании. Затем взрыв: все в 5 фт — #damage(\"2d6\", cold, saving: DEX).\\ #atHigherLevels[+1к6 хол. за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "frost-fingers",
+    "name": "Ледяные пальцы",
+    "original_name": "Frost fingers",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "cone(15)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "ТЕЛ спасбросок: 2к8 урона холодом при провале, половина при успехе. Замораживает немагические жидкости в области.",
+    "body": "#damage(\"2d8\", cold, saving: CON, saved: halfDamage) В конусе 15 фт. Замораживает немагические жидкости в области.\\ #atHigherLevels[+1к8 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "healing-word",
+    "name": "Лечащее слово",
+    "original_name": "Healing word",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "алхимик"
+      }
+    ],
+    "description": "Существо в 60 фт восстанавливает 1к4 + MOD хп. Не действует на Нежить и Конструктов.",
+    "body": "#heal(\"1d4+MOD\") Не действует на Нежить и Конструктов.\\ #atHigherLevels[+1к4 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "cure-wounds",
+    "name": "Лечение ран",
+    "original_name": "Cure wounds",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг дикого огня"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен жизни"
+      },
+      {
+        "class": "колдун",
+        "subclass": "небожитель"
+      },
+      {
+        "class": "чародей",
+        "subclass": "божественная душа"
+      }
+    ],
+    "description": "Существо восстанавливает 1к8 + MOD хп. Не действует на Нежить и Конструктов.",
+    "body": "#heal(\"1d8+MOD\") Не действует на Нежить и Конструктов.\\ #atHigherLevels[+1к8 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "ray-of-sickness",
+    "name": "Луч болезни",
+    "original_name": "Ray of sickness",
+    "level": 1,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен смерти"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "алхимик"
+      },
+      {
+        "class": "колдун",
+        "subclass": "бессмертный"
+      },
+      {
+        "class": "чародей",
+        "subclass": "лунное чародейство"
+      }
+    ],
+    "description": "Дальнобойная атака заклинанием: 2к8 урона ядом при попадании. ТЕЛ спасбросок или отравлен до конца следующего хода.",
+    "body": "#damage(\"2d8\", poison, ranged: true) При попадании — ТЕЛ спасбросок или #effect(poisoned) до конца следующего хода.\\ #atHigherLevels[+1к8 за слот выше 1-го]",
+    "review": false
   }
 ]
