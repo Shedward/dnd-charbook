@@ -188,6 +188,8 @@
   invisible: invisible, paralyzed: paralyzed, petrified: petrified,
   poisoned: poisoned, prone: prone, restrained: restrained,
   stunned: stunned, unconscious: unconscious,
+  advantage: advantage, disadvantage: disadvantage,
+  attack: attack,
 )
 
 #let schoolFromSpellbook(s) = {

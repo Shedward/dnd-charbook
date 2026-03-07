@@ -285,3 +285,20 @@
   *#if saving != none [#statName(saving) #loc(en: [or], ru: [или])]
   #conditionName(condition)*
 ]
+
+// Advantage / disadvantage
+#let attack = "attack"
+
+#let rollTargetName(t) = if t == attack {
+  loc(en: "Attack", ru: "Атака")
+} else {
+  statName(t)
+}
+
+#let advantage(on) = [
+  *#loc(en: [Adv.], ru: [Преим.]): #rollTargetName(on)*
+]
+
+#let disadvantage(on) = [
+  *#loc(en: [Disadv.], ru: [Помеха]): #rollTargetName(on)*
+]
