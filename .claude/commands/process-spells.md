@@ -138,6 +138,34 @@ Formula tokens: `STR` `DEX` `CON` `INT` `WIS` `CHA` (stat modifiers), `MOD` (spe
 #heal("1d8+WIS")
 ```
 
+### Conditions
+```
+#effect(charmed, saving: WIS)
+#effect(frightened)
+```
+Valid conditions: `blinded` `charmed` `deafened` `frightened` `grappled` `incapacitated`
+`invisible` `paralyzed` `petrified` `poisoned` `prone` `restrained` `stunned` `unconscious`
+
+### Advantage / disadvantage
+```
+#advantage(STR)
+#advantage(attack)
+#disadvantage(DEX)
+```
+Valid targets: any stat token or `attack`.
+
+### Resistance / vulnerability
+```
+#resist(fire)
+#weakness(piercing)
+```
+
+### Light
+```
+#light(bright: 20, dim: 20)
+#light(bright: 0, dim: 10)
+```
+
 ### At higher levels
 ```
 #atHigherLevels[+1к6 за слот выше 1-го]
@@ -150,18 +178,13 @@ DSL and prose mix freely: `До 3 камней. При попадании — #d
 ### Combining effects
 Separate with `\` (Typst line break):
 ```
-#damage("3d6", cold, saving: CON)\ #damage("2d6", cold)
+#damage("3d6", cold, saving: CON)\ #effect(restrained, saving: CON)
 ```
 
 ### NOT YET IMPLEMENTED — use prose
-The following are planned but not yet in `spellBodyDSLScope`. Use prose until they are added:
-- `#effect(charmed, saving: WIS)` — conditions
-- `#advantage(STR)` / `#disadvantage(attack)` — advantage/disadvantage
-- `#resist(fire)` / `#weakness(piercing)` — resistance/vulnerability
-- `#light(bright: 20, dim: 20)` — light emission
 - `#move(toYou, distance: 10)` — forced movement
 
-When one of these patterns appears 3+ times, add it to the DSL (see extension process above).
+When a pattern appears 3+ times, add it to the DSL (see extension process above).
 
 ---
 
