@@ -326,7 +326,6 @@
 
 #let move(direction, distance: 0, saving: none) = [
   *#if saving != none [#statName(saving) #loc(en: [or], ru: [или])]
-  #if direction == toYou [#loc(en: [Pull], ru: [Притяг.])]
-  else [#loc(en: [Push], ru: [Оттал.])]
+  #if direction == toYou [#loc(en: [Pull], ru: [Притяг.])] else [#loc(en: [Push], ru: [Оттал.])]
   #distance #loc(en: [ft], ru: [фт])*
 ]
