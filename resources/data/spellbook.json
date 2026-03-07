@@ -3554,5 +3554,669 @@
     "description": "ДЛВ спасбросок: 3к6 огня при провале, половина при успехе. Поджигает горючие предметы.",
     "body": "#damage(\"3d6\", fire, saving: DEX, saved: halfDamage) В конусе 15 фт. Поджигает горючие предметы.\\ #atHigherLevels[+1к6 за слот выше 1-го]",
     "review": false
+  },
+  {
+    "id": "faerie-fire",
+    "name": "Огонь фей",
+    "original_name": "Faerie fire",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен света"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен сумерек"
+      },
+      {
+        "class": "колдун",
+        "subclass": "архифея"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "хранитель роя"
+      }
+    ],
+    "description": "Объекты и существа в 20-фт кубе в пределах 60 фт окутываются огнём. Невидимые существа тоже освещаются. Атаки по освещённым целям — с преимуществом; цели не могут воспользоваться невидимостью.",
+    "body": "Освещает всех в 20-фт кубе. Атаки по освещённым — с преимуществом; невидимость не работает.",
+    "review": false
+  },
+  {
+    "id": "identify",
+    "name": "Опознание",
+    "original_name": "Identify",
+    "level": 1,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "жемчужина, стоящая как минимум 100 зм, и перо совы",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен знаний"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен кузни"
+      }
+    ],
+    "description": "Узнаёте свойства магического предмета или заклинания, наложенного на существо (включая как использовать, зарядки, настройка).",
+    "body": "Узнаёте свойства магического предмета или активных заклинаний на существе.",
+    "review": false
+  },
+  {
+    "id": "entangle",
+    "name": "Опутывание",
+    "original_name": "Entangle",
+    "level": 1,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(90)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Трава и лоза опутывают существ в 20-фт квадрате. СИЛ спасбросок или обездвижены. В начале хода — новый спасбросок. Область — труднопроходимая местность.",
+    "body": "#effect(restrained, saving: STR) В 20-фт квадрате. В начале каждого хода — новый спасбросок. Область — труднопроходимая местность.",
+    "review": false
+  },
+  {
+    "id": "ensnaring-strike",
+    "name": "Опутывающий удар",
+    "original_name": "Ensnaring strike",
+    "level": 1,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва древних"
+      }
+    ],
+    "description": "При следующем попадании оружием: СИЛ спасбросок или цель обездвижена лозами. В начале хода цели — 1к6 колющего и новый спасбросок для освобождения.",
+    "body": "#effect(restrained, saving: STR) При следующем попадании. В начале хода цели: 1к6 колющего, повтор спасброска.\\ #atHigherLevels[+1к6 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "charm-person",
+    "name": "Очарование личности",
+    "original_name": "Charm person",
+    "level": 1,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен обмана"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "странник фей"
+      }
+    ],
+    "description": "Гуманоид: МДР спасбросок или очарован на 1 час. Воспринимает вас как дружелюбного знакомого. При атаке на цель — заклинание оканчивается.",
+    "body": "#effect(charmed, saving: WIS) Цель видит вас дружелюбным знакомым. При атаке заклинание оканчивается.\\ #atHigherLevels[+1 цель за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "purify-food-and-drink",
+    "name": "Очищение пищи и питья",
+    "original_name": "Purify food and drink",
+    "level": 1,
+    "school": "transmutation",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(10)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Очищает еду и воду в сфере 5 фт от яда и болезней.",
+    "body": "Очищает еду и воду в сфере 5 фт от яда и болезней.",
+    "review": false
+  },
+  {
+    "id": "feather-fall",
+    "name": "Падение пёрышком",
+    "original_name": "Feather fall",
+    "level": 1,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "reaction",
+      "value": 1,
+      "condition": "когда вы или существо в пределах 60 футов от вас падаете"
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "M"
+      ],
+      "material": "небольшое перо или кусочек пуха",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "До 5 падающих существ в пределах 60 фт снижают скорость падения до 60 фт/раунд и не получают урона от падения.",
+    "body": "До 5 существ: скорость падения 60 фт/раунд, урон от падения отсутствует.",
+    "review": false
+  },
+  {
+    "id": "searing-smite",
+    "name": "Палящая кара",
+    "original_name": "Searing smite",
+    "level": 1,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен кузни"
+      }
+    ],
+    "description": "При следующем попадании оружием: +1к6 огня, цель воспламеняется. В начале хода цели: 1к6 огня и КОН спасбросок — провал: продолжает гореть; успех: заклинание оканчивается.",
+    "body": "При попадании: +1к6 огня, КОН спасбросок или воспламеняется. В начале хода: 1к6 огня и повтор спасброска.\\ #atHigherLevels[+1к6 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "absorb-elements",
+    "name": "Поглощение стихий",
+    "original_name": "Absorb elements",
+    "level": 1,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "reaction",
+      "value": 1,
+      "condition": "когда вы получаете урон звуком, кислотой, огнём, холодом или электричеством"
+    },
+    "duration": 6.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Реакция на стихийный урон. Сопротивление к этому типу урона до конца хода. Первая рукопашная атака в следующем ходу: +1к6 урона того же типа.",
+    "body": "Реакция: сопротивление к стихийному урону до конца хода. Первая рукопашная атака в следующем ходу: +1к6 этого типа.\\ #atHigherLevels[+1к6 за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "find-familiar",
+    "name": "Поиск фамильяра",
+    "original_name": "Find familiar",
+    "level": 1,
+    "school": "conjuration",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(10)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "стоящие 10 зм уголь, благовония и травы, сжигаемые в огне в латунной жаровне",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Призывает фамильяра в облике зверя. Видите его глазами. Через него — заклинания касания. Можно отпустить во внепространственный карман и призвать снова.",
+    "body": "Призывает фамильяра. Видите его глазами. Через него — заклинания касания. Можно временно отпустить и призвать снова.",
+    "review": false
+  },
+  {
+    "id": "comprehend-languages",
+    "name": "Понимание языков",
+    "original_name": "Comprehend languages",
+    "level": 1,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "щепотка сажи и соли",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Понимаете любой устный язык, который слышите, и письменный язык, которого касаетесь (1 ч). Говорить не можете.",
+    "body": "Понимаете любой устный и письменный язык в течение 1 часа. Говорить не можете.",
+    "review": false
+  },
+  {
+    "id": "bane",
+    "name": "Порча",
+    "original_name": "Bane",
+    "level": 1,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "капля крови",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен упокоения"
+      },
+      {
+        "class": "колдун",
+        "subclass": "нежить"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва мести"
+      },
+      {
+        "class": "чародей",
+        "subclass": "божественная душа"
+      }
+    ],
+    "description": "До 3 целей в пределах 30 фт: СХА спасбросок или −1к4 к броскам атаки и спасброскам.",
+    "body": "До 3 целей: СХА спасбросок или −1к4 к броскам атаки и спасброскам.\\ #atHigherLevels[+1 цель за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "expeditious-retreat",
+    "name": "Поспешное отступление",
+    "original_name": "Expeditious retreat",
+    "level": 1,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Бонусным действием каждый ход можно совершать Рывок.",
+    "body": "Бонусным действием каждый ход: совершаете Рывок.",
+    "review": false
+  },
+  {
+    "id": "command",
+    "name": "Приказ",
+    "original_name": "Command",
+    "level": 1,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 6.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен знаний"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен порядка"
+      },
+      {
+        "class": "колдун",
+        "subclass": "исчадие"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва короны"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва покорения"
+      }
+    ],
+    "description": "МДР спасбросок или цель выполняет однословный приказ 1 раунд. Нечисть и непонимающие языка — невосприимчивы.",
+    "body": "МДР спасбросок или цель выполняет однословный приказ 1 раунд.\\ #atHigherLevels[+1 цель за слот выше 1-го]",
+    "review": false
+  },
+  {
+    "id": "jump",
+    "name": "Прыжок",
+    "original_name": "Jump",
+    "level": 1,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "задняя лапка кузнечика",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Дальность прыжка цели утраивается на 1 минуту.",
+    "body": "Дальность прыжка цели утраивается на 1 минуту.",
+    "review": false
   }
 ]
