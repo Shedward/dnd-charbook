@@ -191,6 +191,7 @@
   advantage: advantage, disadvantage: disadvantage,
   attack: attack,
   resist: resist, weakness: weakness,
+  light: light,
 )
 
 #let schoolFromSpellbook(s) = {

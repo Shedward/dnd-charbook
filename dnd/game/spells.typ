@@ -311,3 +311,8 @@
 #let weakness(damageType) = [
   *#loc(en: [Vuln.], ru: [Уязв.]): #damageTypeShortName(damageType)*
 ]
+
+// Light
+#let light(bright: 0, dim: 0) = [
+  *#loc(en: [Light], ru: [Свет]): #bright/#dim #loc(en: [ft], ru: [фт])*
+]
