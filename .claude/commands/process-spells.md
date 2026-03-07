@@ -15,8 +15,11 @@ allowed-tools: Read, Write, Edit, Bash
 
 ## Batch size
 
-Default: process **10 spells per invocation** unless the user specifies otherwise.
-Reduce to 3–5 for high-level spells with complex mechanics.
+- Levels 0–2: **15 spells** per invocation
+- Levels 3–4: **10 spells**
+- Levels 5+: **5 spells** (complex mechanics)
+
+Unless the user specifies otherwise.
 
 ---
 
@@ -36,11 +39,12 @@ Take the first N IDs from source that are not in output.
 
 ### Step 2 — Read the batch (parallel)
 
-For each target ID, read both sources in parallel:
+Read only `spells.json` — it contains Russian descriptions and all mechanical fields:
 ```bash
 jq '.[] | select(.id == "TARGET_ID")' /Users/shed/Projects/dnd-soup/spells.json
-jq '.[] | select(.id == "TARGET_ID")' /Users/shed/Projects/dnd-soup/text_spells.json
 ```
+
+Only read `text_spells.json` when `spells.json` is missing data you need.
 
 ### Step 3 — Translate each spell
 
@@ -125,8 +129,18 @@ Extend the DSL when a pattern appears **3+ times** in upcoming spells and maps c
 }
 ```
 
-Fields `casting_time`, `duration`, `components`, `classes` copied from `spells.json` as-is.
-Exception: strip ", расходуемые заклинанием" (and similar) from `components.material` — the renderer already appends "(расходуется)" when `material_consumed: true`.
+Fields `casting_time`, `components`, `classes` copied from `spells.json` as-is.
+
+**`duration`** — copy from `spells.json` except:
+- If `with_concentration: true` and `spells.json` has `duration: 0.0`, read the actual max from `text_spells.json`'s `duration` string and convert:
+  - "вплоть до 1 раунда" → `6.0`
+  - "вплоть до 1 минуты" → `60.0`
+  - "вплоть до 10 минут" → `600.0`
+  - "вплоть до 1 часа" → `3600.0`
+  - "вплоть до 8 часов" → `28800.0`
+  - "вплоть до 24 часов" → `86400.0`
+
+**`components.material`** — strip ", расходуемые заклинанием" (and similar) — the renderer already appends "(расходуется)" when `material_consumed: true`.
 `target` translated from `spells.json`'s `distance` (see table below).
 `description` from either source.
 `body` translated compact form (see DSL below).
