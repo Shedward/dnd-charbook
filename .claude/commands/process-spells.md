@@ -37,14 +37,14 @@ jq '[.[].id]' /Users/shed/Projects/dnd-charbook/resources/data/spellbook.json 2>
 
 Take the first N IDs from source that are not in output.
 
-### Step 2 — Read the batch (parallel)
+### Step 2 — Read the batch
 
-Read only `spells.json` — it contains Russian descriptions and all mechanical fields:
+Read all fields in one query — **include `classes`** or you'll need a second patch pass:
 ```bash
-jq '.[] | select(.id == "TARGET_ID")' /Users/shed/Projects/dnd-soup/spells.json
+jq '.[] | select(.id | IN("id1","id2",...)) | {id, level, school, is_ritual, with_concentration, duration, distance, casting_time, components, classes, description}' /Users/shed/Projects/dnd-soup/spells.json
 ```
 
-Only read `text_spells.json` when `spells.json` is missing data you need.
+Only read `text_spells.json` when needed (concentration spell with `duration: 0.0` → look up actual duration).
 
 ### Step 3 — Translate each spell
 
@@ -132,6 +132,7 @@ Extend the DSL when a pattern appears **3+ times** in upcoming spells and maps c
 Fields `casting_time`, `components`, `classes` copied from `spells.json` as-is.
 
 **`duration`** — copy from `spells.json` except:
+- If `spells.json` has `duration: null` — the spell is permanent until dispelled. Keep `null`; the renderer shows "Пост." (permanent).
 - If `with_concentration: true` and `spells.json` has `duration: 0.0`, read the actual max from `text_spells.json`'s `duration` string and convert:
   - "вплоть до 1 раунда" → `6.0`
   - "вплоть до 1 минуты" → `60.0`
@@ -210,6 +211,16 @@ Valid targets: any stat token or `attack`.
 One or two sentences, mechanics only, no flavor. Russian language.
 DSL and prose mix freely: `До 3 камней. При попадании — #damage("1d6+MOD", bludgeoning, ranged: true).`
 
+**Stat abbreviations in prose** — use Russian short forms:
+| English | Russian prose |
+|---------|--------------|
+| STR | СИЛ |
+| DEX | ЛОВ |
+| CON | КОН |
+| INT | ИНТ |
+| WIS | МДР |
+| CHA | **ХАР** (not СХА) |
+
 ### Combining effects
 Separate with `\` (Typst line break):
 ```
@@ -265,6 +276,7 @@ Most damage cantrips scale identically (+1dX at levels 5, 11, 17):
 | `{"type":"touch"}` | `"touch"` |
 | `{"type":"self"}` | `"self"` |
 | `{"type":"self","shape":{"type":"radius","size":N}}` | `"circle(N)"` |
+| `{"type":"self","shape":{"type":"cone","size":N}}` | `"cone(N)"` |
 | range + sphere | `"sphere(R, range: N)"` |
 | range + cone | `"cone(S, range: N)"` |
 | range + cube | `"cube(S, range: N)"` |
