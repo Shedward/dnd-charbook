@@ -11,6 +11,9 @@ allowed-tools: Read, Write, Edit, Bash
 - Output: `/Users/shed/Projects/dnd-charbook/resources/data/spellbook.json`
 - Test book: `books/spellbook-test.typ` → `build/spellbook-test.pdf`
 
+## Scripts (pre-approved — no confirmation needed)
+All live in `scripts/` relative to the project root.
+
 ---
 
 ## Batch size
@@ -28,23 +31,23 @@ Unless the user specifies otherwise.
 ### Step 1 — Find next unprocessed batch
 
 ```bash
-# All source IDs (no bodies)
-jq '[.[].id]' /Users/shed/Projects/dnd-soup/spells.json
-
-# Already processed IDs
-jq '[.[].id]' /Users/shed/Projects/dnd-charbook/resources/data/spellbook.json 2>/dev/null || echo "[]"
+scripts/spells-pending.sh <N>
 ```
 
-Take the first N IDs from source that are not in output.
+Returns a JSON array of the first N unprocessed spell IDs.
 
 ### Step 2 — Read the batch
 
-Read all fields in one query — **include `classes`** or you'll need a second patch pass:
 ```bash
-jq '.[] | select(.id | IN("id1","id2",...)) | {id, level, school, is_ritual, with_concentration, duration, distance, casting_time, components, classes, description}' /Users/shed/Projects/dnd-soup/spells.json
+scripts/spells-read.sh <id1> <id2> ...
 ```
 
-Only read `text_spells.json` when needed (concentration spell with `duration: 0.0` → look up actual duration).
+Returns a JSON array with all fields needed: `id`, `level`, `school`, `is_ritual`, `with_concentration`, `duration`, `distance`, `casting_time`, `components`, `classes`, `description`.
+
+When `duration: 0.0` needs verification, read the Russian text source:
+```bash
+scripts/spells-read.sh --text <id1> <id2> ...
+```
 
 ### Step 3 — Translate each spell
 
@@ -55,22 +58,20 @@ Apply schema and DSL rules below. Classify complexity as you go:
 
 ### Step 4 — Append batch to spellbook.json
 
-Append all records at once:
 ```bash
-jq '. + [<record1>, <record2>, ...]' /Users/shed/Projects/dnd-charbook/resources/data/spellbook.json > /tmp/sb.json \
-  && mv /tmp/sb.json /Users/shed/Projects/dnd-charbook/resources/data/spellbook.json
+scripts/spells-append.sh '<json-array>'
 ```
 
-If spellbook.json does not exist yet, create it as `[<record1>, ...]`.
+Pass all new records as a single JSON array argument. Creates the file if it doesn't exist; writes atomically.
 
 ### Step 5 — Verify build
 
 ```bash
-typst compile books/spellbook-preview.typ --root . build/spellbook-preview.pdf
+scripts/spells-preview.sh
 ```
 
-`spellbook-preview.typ` renders only the last 10 spells — use this to check the current batch.
-`spellbook-test.typ` renders all spells — use this for full regression after DSL changes.
+Renders only the last 10 spells — use this to check the current batch.
+For full regression after DSL changes: `scripts/spells-preview.sh --full`
 
 Fix any DSL eval errors before reporting.
 
@@ -97,7 +98,7 @@ Extend the DSL when a pattern appears **3+ times** in upcoming spells and maps c
 1. Add the function to `dnd/game/spells.typ`
 2. Add it to `spellBodyDSLScope` in `dnd/page/spells.typ`
 3. Add it to the DSL vocabulary section below
-4. Run `./scripts/buildAll.sh` — must be clean
+4. Run `scripts/spells-preview.sh --full` — must be clean
 5. Go back and fix any `review: true` spells the new function unblocks
 
 ---
