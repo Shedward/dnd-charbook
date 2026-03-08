@@ -5494,5 +5494,653 @@
     "description": "Запирает дверь, окно, ворота или сундук. Вы и указанные существа открывают нормально. СЛ взлома/выламывания +10. Пароль в 5 фт подавляет на 1 мин; «Открывание» — на 10 мин.",
     "body": "Запирает проход или ёмкость навсегда. СЛ взлома/выламывания +10. Пароль подавляет на 1 мин, «Открывание» — на 10 мин.",
     "review": false
+  },
+  {
+    "id": "phantasmal-force",
+    "name": "Фантомная сила",
+    "original_name": "Phantasmal force",
+    "level": 2,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусок овечьей шерсти",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "колдун",
+        "subclass": "архифея"
+      },
+      {
+        "class": "колдун",
+        "subclass": "Великий Древний"
+      },
+      {
+        "class": "колдун",
+        "subclass": "гений"
+      },
+      {
+        "class": "колдун",
+        "subclass": "нежить"
+      }
+    ],
+    "description": "ИНТ спасбросок или цель воспринимает иллюзию (куб 10 фт) как реальную. 1к6 психического за раунд при нахождении рядом с «опасной» иллюзией. Действие + ИНТ Расследование против Сл — развеивает.",
+    "body": "ИНТ спасбросок или иллюзия (куб 10 фт) воспринимается как реальная. 1к6 психического за раунд рядом с «опасностью». Действие + ИНТ Расследование против Сл — развеивает.",
+    "review": false
+  },
+  {
+    "id": "augury",
+    "name": "Предзнаменование",
+    "original_name": "Augury",
+    "level": 2,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "особые палочки, костяшки или фигурки с отметинами, стоящие как минимум 25 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен знаний"
+      }
+    ],
+    "description": "Знамение о результатах действий в ближайшие 30 мин: Благо/Горе/Оба/Ничто. Повтор без отдыха: +25% вероятность случайного ответа.",
+    "body": "Знамение о действиях в ближайшие 30 мин: Благо, Горе, Оба или Ничто. Повтор без отдыха: +25% к шансу случайного ответа.",
+    "review": false
+  },
+  {
+    "id": "blindnessdeafness",
+    "name": "Слепота/Глухота",
+    "original_name": "Blindness/Deafness",
+    "level": 2,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг спор"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен смерти"
+      },
+      {
+        "class": "колдун",
+        "subclass": "бессмертный"
+      },
+      {
+        "class": "колдун",
+        "subclass": "исчадие"
+      },
+      {
+        "class": "колдун",
+        "subclass": "нежить"
+      },
+      {
+        "class": "чародей",
+        "subclass": "лунное чародейство"
+      }
+    ],
+    "description": "КОН спасбросок или ослеплён/оглохён (на выбор). В конце каждого хода — повтор спасброска.",
+    "body": "КОН спасбросок или ослеплён/оглохён (на выбор). В конце хода — повтор спасброска.\\ #atHigherLevels[+1 цель за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "flame-blade",
+    "name": "Огненный клинок",
+    "original_name": "Flame blade",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "лист сумаха",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Создаёт огненный клинок (скимитар). Действием: рукопашная атака заклинанием — 3к6 огня. Испускает яркий свет 10 фт, тусклый 10 фт.",
+    "body": "Создаёт огненный клинок. Действием: рукопашная атака — #damage(\"3d6\", fire)\\ #light(bright: 10, dim: 10)\\ #atHigherLevels[+1к6 за каждые 2 слота выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "shatter",
+    "name": "Дребезги",
+    "original_name": "Shatter",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочек слюды",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен бури"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "артиллерист"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "бронник"
+      },
+      {
+        "class": "монах",
+        "subclass": "путь четырёх стихий"
+      }
+    ],
+    "description": "КОН спасбросок: 3к8 звука в сфере 10 фт, половина при успехе. Неорганические существа — с помехой. Неволшебные объекты тоже получают урон.",
+    "body": "#damage(\"3d8\", thunder, saving: CON, saved: halfDamage) В сфере 10 фт. Неорганические существа — с помехой. Неволшебные объекты уязвимы.\\ #atHigherLevels[+1к8 за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "barkskin",
+    "name": "Дубовая кожа",
+    "original_name": "Barkskin",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "пригоршня дубовой коры",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг земли"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен природы"
+      }
+    ],
+    "description": "КД цели не может быть ниже 16 (вне зависимости от брони).",
+    "body": "КД цели не может быть ниже 16.",
+    "review": false
+  },
+  {
+    "id": "dragons-breath",
+    "name": "Дыхание дракона",
+    "original_name": "Dragon's breath",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "острый перец",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Цель может действием выдыхать конус 15 фт выбранного типа (кислота/огонь/холод/электричество/яд). ЛОВ спасбросок: 3к6, половина при успехе.",
+    "body": "Цель может действием выдыхать конус 15 фт — ЛОВ спасбросок: 3к6 (тип на выбор при накладывании), половина при успехе.\\ #atHigherLevels[+1к6 за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "beast-sense",
+    "name": "Чувства зверя",
+    "original_name": "Beast sense",
+    "level": 2,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Действием: смотрите и слышите через согласного Зверя. Ослеплены и оглохшие для себя в это время. Пользуетесь его особыми чувствами.",
+    "body": "Действием: смотрите и слышите через Зверя. Слепы и глухи для себя в это время. Пользуетесь его особыми чувствами.",
+    "review": false
+  },
+  {
+    "id": "cordon-of-arrows",
+    "name": "Заграждение стрел",
+    "original_name": "Cordon of arrows",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 28800.0,
+    "target": "target(5)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "как минимум четыре стрелы или арбалетных болта",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "4 стрелы в земле. При первом входе/конце хода в 30 фт: ЛОВ спасбросок или 1к6 колющего (стрела исчезает). 8 часов.",
+    "body": "4 стрелы в земле (8 ч). Первый вход/конец хода в 30 фт: ЛОВ спасбросок или 1к6 колющего (стрела исчезает).\\ #atHigherLevels[+2 боеприпаса за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "borrowed-knowledge",
+    "name": "Заёмные знания",
+    "original_name": "Borrowed knowledge",
+    "level": 2,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "книга стоимостью не менее 25 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Получаете владение одним навыком, которым не владеете, на 1 час.",
+    "body": "Получаете владение одним навыком, которым не владеете, на 1 час.",
+    "review": false
+  },
+  {
+    "id": "protection-from-poison",
+    "name": "Защита от яда",
+    "original_name": "Protection from poison",
+    "level": 2,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Нейтрализует один яд. Преимущество на спасброски от отравления. Сопротивление урону ядом.",
+    "body": "Нейтрализует один яд. Преимущество на спасброски от отравления.\\ #resist(poison)",
+    "review": false
+  },
+  {
+    "id": "warding-wind",
+    "name": "Защитный ветер",
+    "original_name": "Warding wind",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Ветер в 10-фт радиусе (движется с вами). Все оглохшие. Труднопроходимо для остальных. Помеха на дальнобойные атаки. Гасит факелы. Блокирует газы и туман.",
+    "body": "Ветер в 10-фт радиусе (движется с вами). Все оглохшие. Труднопроходимо для остальных. Помеха на дальнобойные атаки. Гасит факелы. Блокирует газы.",
+    "review": false
+  },
+  {
+    "id": "maximilians-earthen-grasp",
+    "name": "Земная хватка Максимилиана",
+    "original_name": "Maximilian's earthen grasp",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "миниатюрная рука из глины",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Рука из земли: СИЛ спасбросок или 2к6 дробящего + обездвижен. Действием: сдавить — СИЛ спасбросок: 2к6 или половина. Освобождение: действие + СИЛ проверка против Сл.",
+    "body": "#damage(\"2d6\", bludgeoning, saving: STR) + #effect(restrained, saving: STR) Действием: сдавить — СИЛ спасбросок: 2к6 или половина. Освобождение: СИЛ проверка против Сл.",
+    "review": false
+  },
+  {
+    "id": "healing-spirit",
+    "name": "Исцеляющий дух",
+    "original_name": "Healing spirit",
+    "level": 2,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Дух в кубе 5 фт: 1к6 исцеления при первом входе/начале хода (не Нежить/Конструкты). Всего 1+МХ исцелений. Бонусным действием: переместить на 30 фт.",
+    "body": "#heal(\"1d6\") при первом входе/начале хода в кубе 5 фт. Не действует на Нежить/Конструктов. Всего #formula(\"MOD+1\") исцелений. Бонусным действием: перемещение на 30 фт.\\ #atHigherLevels[+1к6 за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "branding-smite",
+    "name": "Кара сияния",
+    "original_name": "Branding smite",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "боевой кузнец"
+      },
+      {
+        "class": "колдун",
+        "subclass": "ведьмовской клинок"
+      }
+    ],
+    "description": "При следующем попадании: +2к6 излучения. Цель становится видимой, испускает тусклый свет 5 фт, не может стать невидимой.",
+    "body": "При следующем попадании: #damage(\"2d6\", radiant) Цель становится видимой, не может стать невидимой (тусклый свет 5 фт).\\ #atHigherLevels[+1к6 за слот выше 2-го]",
+    "review": false
   }
 ]
