@@ -247,8 +247,8 @@
 }
 
 #let durationFromSpellbook(m) = {
-  if "duration" not in m {
-    none
+  if "duration" not in m or m.duration == none {
+    permanent
   } else if m.duration == 0 {
     instant
   } else if m.duration < 60 {

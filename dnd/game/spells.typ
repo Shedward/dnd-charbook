@@ -8,6 +8,7 @@
 
 // Durations
 #let instant = loc(en: [Inst.], ru: [Момен.])
+#let permanent = loc(en: [Perm.], ru: [Пост.])
 #let round(r) = str(r) + loc(en: [r], ru: [р])
 #let minute(m) = str(m) + loc(en: [m], ru: [мин])
 #let hour(h) = str(h) + loc(en: [h], ru: [ч])
