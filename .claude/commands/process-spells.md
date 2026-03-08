@@ -133,13 +133,16 @@ Fields `casting_time`, `components`, `classes` copied from `spells.json` as-is.
 
 **`duration`** — copy from `spells.json` except:
 - If `spells.json` has `duration: null` — the spell is permanent until dispelled. Keep `null`; the renderer shows "Пост." (permanent).
-- If `with_concentration: true` and `spells.json` has `duration: 0.0`, read the actual max from `text_spells.json`'s `duration` string and convert:
-  - "вплоть до 1 раунда" → `6.0`
-  - "вплоть до 1 минуты" → `60.0`
-  - "вплоть до 10 минут" → `600.0`
-  - "вплоть до 1 часа" → `3600.0`
-  - "вплоть до 8 часов" → `28800.0`
-  - "вплоть до 24 часов" → `86400.0`
+- If `spells.json` has `duration: 0.0` — always verify against `text_spells.json`'s `duration` string. `0.0` can mean instant **or** a real duration that was not encoded (happens for both concentration and non-concentration spells, e.g. animal-messenger has `0.0` but text says "24 часа" → `86400.0`).
+  - If `with_concentration: true`, text will read "Концентрация, вплоть до X" — use the X.
+  - If `with_concentration: false` and text says "Мгновенная" → keep `0.0` (instant).
+  - Conversion table:
+    - "вплоть до 1 раунда" → `6.0`
+    - "вплоть до 1 минуты" → `60.0`
+    - "вплоть до 10 минут" → `600.0`
+    - "вплоть до 1 часа" → `3600.0`
+    - "вплоть до 8 часов" → `28800.0`
+    - "вплоть до 24 часов" / "24 часа" → `86400.0`
 
 **`components.material`** — strip ", расходуемые заклинанием" (and similar) — the renderer already appends "(расходуется)" when `material_consumed: true`.
 `target` translated from `spells.json`'s `distance` (see table below).
