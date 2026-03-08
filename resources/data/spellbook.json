@@ -6836,5 +6836,655 @@
     "description": "Сфера 15 фт. СХА спасбросок или не может умышленно лгать. Вы знаете кто провалил. Цель знает о заклинании.",
     "body": "Сфера 15 фт. ХАР спасбросок или не может умышленно лгать. Вы знаете кто провалил. Цель знает о заклинании.",
     "review": false
+  },
+  {
+    "id": "detect-thoughts",
+    "name": "Обнаружение мыслей",
+    "original_name": "Detect thoughts",
+    "level": 2,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "медная монетка",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "колдун",
+        "subclass": "Великий Древний"
+      },
+      {
+        "class": "чародей",
+        "subclass": "аберрантный разум"
+      }
+    ],
+    "description": "Читаете поверхностные мысли существа в 30 фт. Действием: углубиться — МДР спасбросок или получаете доступ к глубоким мыслям; при успехе заклинание оканчивается. Также обнаруживает присутствие мыслящих существ через барьеры.",
+    "body": "Знаете поверхностные мысли существа в 30 фт. Действием: углубиться — МДР спасбросок или глубокие мысли/эмоции; при успехе — заклинание оканчивается. Также обнаруживает мыслящих существ через большинство барьеров.",
+    "review": false
+  },
+  {
+    "id": "knock",
+    "name": "Открывание",
+    "original_name": "Knock",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Открывает один замок, засов или магическую блокировку (Волшебный замок — подавляется на 10 мин). Слышен стук на 300 фт.",
+    "body": "Открывает один замок, засов или заклинившую дверь. Подавляет Волшебный замок на 10 мин. Стук слышен на 300 фт.",
+    "review": false
+  },
+  {
+    "id": "mirror-image",
+    "name": "Зеркальное отображение",
+    "original_name": "Mirror image",
+    "level": 2,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг земли"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен обмана"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "бронник"
+      }
+    ],
+    "description": "3 иллюзорные копии. При каждой атаке по вам: к20 — 6+ (3 копии), 8+ (2), 11+ (1) — атака попадает по копии вместо вас. КД копии 10+МЛО. При попадании копия уничтожается.",
+    "body": "3 иллюзорные копии. При атаке по вам: к20 — 6+/8+/11+ (3/2/1 копии) — атака попадает по копии (КД 10+МЛО). Не работает при слепом зрении или истинном зрении.",
+    "review": false
+  },
+  {
+    "id": "warding-bond",
+    "name": "Защитная связь",
+    "original_name": "Warding bond",
+    "level": 2,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "пара платиновых колец, каждое из которых стоит как минимум 50 зм, которые вы с целью должны носить всю длительность заклинания",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен мира"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "боевой кузнец"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва короны"
+      }
+    ],
+    "description": "Цель в 60 фт: +1 к КД и спасброскам, сопротивление всем типам урона. При получении урона целью — вы тоже получаете этот урон. Оканчивается при расстоянии >60 фт или ваших хитах = 0.",
+    "body": "Цель в 60 фт: +1 КД и спасброски, сопр. всем урону. Вы получаете тот же урон, что и цель. Оканчивается при >60 фт или ваших хитах = 0.",
+    "review": true
+  },
+  {
+    "id": "scorching-ray",
+    "name": "Огненная стрела",
+    "original_name": "Scorching ray",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг дикого огня"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен света"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "артиллерист"
+      },
+      {
+        "class": "колдун",
+        "subclass": "гений"
+      },
+      {
+        "class": "колдун",
+        "subclass": "исчадие"
+      }
+    ],
+    "description": "3 огненных луча (можно на разные цели). Каждый — дальнобойная атака заклинанием: 2к6 огня.",
+    "body": "3 дальнобойных атаки (можно по разным целям): #damage(\"2d6\", fire, ranged: true) каждая.\\ #atHigherLevels[+1 луч за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "spider-climb",
+    "name": "Паучье лазание",
+    "original_name": "Spider climb",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "капля битума и паук",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг земли"
+      }
+    ],
+    "description": "Цель может лазать по стенам и потолку (руки свободны). Скорость лазания = скорость ходьбы.",
+    "body": "Цель может лазать по вертикальным поверхностям и потолку. Скорость лазания = скорость ходьбы.",
+    "review": false
+  },
+  {
+    "id": "web",
+    "name": "Паутина",
+    "original_name": "Web",
+    "level": 2,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочек паутины",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг земли"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "хранитель роя"
+      }
+    ],
+    "description": "Куб 20 фт паутины. Труднопроходимая местность. ЛОВ спасбросок при входе/начале хода или обездвижен. Выбраться: СИЛ проверка против Сл. Паутина огнеопасна: 2к4 огня за раунд.",
+    "body": "#effect(restrained, saving: DEX) Куб 20 фт. Выбраться: СИЛ проверка против Сл. Труднопроходимо. Огонь уничтожает (2к4 огня за раунд существам в огне).",
+    "review": false
+  },
+  {
+    "id": "aganazzars-scorcher",
+    "name": "Огненная полоса Аганаззара",
+    "original_name": "Aganazzar's scorcher",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "чешуйка красного дракона",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Линия огня 30 фт × 5 фт. ЛОВ спасбросок: 3к8 огня, половина при успехе.",
+    "body": "#damage(\"3d8\", fire, saving: DEX, saved: halfDamage) Линия 30 фт × 5 фт.\\ #atHigherLevels[+1к8 за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "pyrotechnics",
+    "name": "Пиротехника",
+    "original_name": "Pyrotechnics",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Тушит немагический огонь в кубе 5 фт. Затем: «Дымовая завеса» — сильно заслонённая сфера 20 фт (1 мин); или «Фейерверк» — КОН спасбросок или ослеплён до конца следующего хода (10 фт).",
+    "body": "Тушит огонь (куб 5 фт), затем на выбор: дымовая завеса (сфера 20 фт, сильно заслонённая, 1 мин) или фейерверк (КОН спасбросок или ослеплён до след. хода, 10 фт).",
+    "review": false
+  },
+  {
+    "id": "gift-of-gab",
+    "name": "Дар красноречия",
+    "original_name": "Gift of gab",
+    "level": 2,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "reaction",
+      "value": 1,
+      "condition": "когда вы говорите с другим существом"
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "А 2 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Существа в 5 фт забывают ваши слова за последние 6 секунд и «помнят» вместо них слова, произнесённые как вербальный компонент.",
+    "body": "Существа в 5 фт забывают ваши слова за последние 6 секунд; «помнят» произнесённый вербальный компонент.",
+    "review": false
+  },
+  {
+    "id": "aid",
+    "name": "Помощь",
+    "original_name": "Aid",
+    "level": 2,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 28800.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "полоска белой ткани",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен мира"
+      },
+      {
+        "class": "чародей",
+        "subclass": "заводная душа"
+      }
+    ],
+    "description": "До 3 существ: +5 к максимуму и текущим хитам на 8 часов.",
+    "body": "До 3 существ: +5 к максимуму и текущим хитам на 8 часов.\\ #atHigherLevels[+5 хп за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "locate-animals-or-plants",
+    "name": "Поиск животных и растений",
+    "original_name": "Locate animals or plants",
+    "level": 2,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочек меха ищейки",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Узнаёте направление и расстояние до ближайшего существа или растения названного вида в пределах 5 миль.",
+    "body": "Узнаёте направление и расстояние до ближайшего существа/растения названного вида в пределах 5 миль.",
+    "review": false
+  },
+  {
+    "id": "find-traps",
+    "name": "Поиск ловушек",
+    "original_name": "Find traps",
+    "level": 2,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Чувствуете присутствие ловушек в поле зрения в пределах 120 фт. Знаете общий характер опасности, но не точное местоположение.",
+    "body": "Чувствуете присутствие ловушек в поле зрения в 120 фт. Знаете общий характер опасности, но не точное местоположение.",
+    "review": false
+  },
+  {
+    "id": "locate-object",
+    "name": "Поиск предмета",
+    "original_name": "Locate object",
+    "level": 2,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "раздвоенная веточка",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Чувствуете направление к предмету в пределах 1000 фт (конкретный или ближайший вида). Блокируется свинцом.",
+    "body": "Чувствуете направление к конкретному или ближайшему предмету вида в пределах 1000 фт. Блокируется свинцом.",
+    "review": false
+  },
+  {
+    "id": "find-steed",
+    "name": "Поиск скакуна",
+    "original_name": "Find steed",
+    "level": 2,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Призывает верного разумного скакуна (ИНТ минимум 6). Инстинктивная связь, заклинания на вас — на скакуна тоже. При хитах = 0 — исчезает. Повторное заклинание — тот же скакун с полными хитами.",
+    "body": "Призывает разумного скакуна (ИНТ 6+). Ваши заклинания на себя — на скакуна тоже. Телепатическая связь на 1 милю. При хитах = 0 исчезает; повторное заклинание призывает того же.",
+    "review": false
   }
 ]
