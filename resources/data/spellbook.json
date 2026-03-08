@@ -6142,5 +6142,699 @@
     "description": "При следующем попадании: +2к6 излучения. Цель становится видимой, испускает тусклый свет 5 фт, не может стать невидимой.",
     "body": "При следующем попадании: #damage(\"2d6\", radiant) Цель становится видимой, не может стать невидимой (тусклый свет 5 фт).\\ #atHigherLevels[+1к6 за слот выше 2-го]",
     "review": false
+  },
+  {
+    "id": "crown-of-madness",
+    "name": "Венец безумия",
+    "original_name": "Crown of madness",
+    "level": 2,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятвопреступник"
+      }
+    ],
+    "description": "МДР спасбросок или гуманоид очарован. Очарованная цель действием атакует указанное вами существо перед перемещением. Каждый ход вы должны тратить действие для поддержания контроля. МДР спасбросок в конце хода цели — развеивает.",
+    "body": "МДР спасбросок или гуманоид очарован. Цель действием атакует указанное вами существо. Каждый ход: ваше действие для поддержания. МДР спасбросок цели в конце хода — развеивает.",
+    "review": false
+  },
+  {
+    "id": "levitate",
+    "name": "Левитация",
+    "original_name": "Levitate",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "либо маленькая кожаная петля, либо кусочек золотой проволоки, согнутый в форме кубка с длинной ножкой",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "КОН спасбросок (несогласное) или поднимается на 20 фт и зависает. Двигаться можно только отталкиваясь от поверхностей. Действием: изменить высоту на 20 фт.",
+    "body": "КОН спасбросок (несогласное) или поднимается на 20 фт и зависает. Двигаться — только от поверхностей. Действием: изменить высоту на 20 фт.",
+    "review": false
+  },
+  {
+    "id": "moonbeam",
+    "name": "Лунный луч",
+    "original_name": "Moonbeam",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "несколько семечек лунносемянника и кусочек опалесцирующего полевого шпата",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен сумерек"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва древних"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва смотрителей"
+      }
+    ],
+    "description": "Цилиндр радиусом 5 фт, высотой 40 фт. КОН спасбросок при входе/начале хода: 2к10 излучения, половина при успехе. Перевёртыши — с помехой, при провале принимают истинный облик. Действием: переместить луч на 60 фт.",
+    "body": "#damage(\"2d10\", radiant, saving: CON, saved: halfDamage) Цилиндр радиусом 5 фт. Перевёртыши — с помехой, при провале принимают истинный облик. Действием: переместить луч на 60 фт.\\ #atHigherLevels[+1к10 за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "ray-of-enfeeblement",
+    "name": "Луч истощения",
+    "original_name": "Ray of enfeeblement",
+    "level": 2,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен смерти"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен упокоения"
+      }
+    ],
+    "description": "Дальнобойная атака: при попадании цель наносит только половину урона атаками оружием на СИЛ. КОН спасбросок в конце хода — развеивает.",
+    "body": "Дальнобойная атака: при попадании — половина урона атаками оружием на СИЛ. КОН спасбросок в конце хода цели — развеивает.",
+    "review": false
+  },
+  {
+    "id": "magic-weapon",
+    "name": "Магическое оружие",
+    "original_name": "Magic weapon",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен войны"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен кузни"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен магии"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва славы"
+      }
+    ],
+    "description": "Немагическое оружие становится магическим +1 к атаке и урону.",
+    "body": "Немагическое оружие становится магическим +1 к атаке и урону.\\ #atHigherLevels[Ячейка 4+: +2. Ячейка 6+: +3]",
+    "review": false
+  },
+  {
+    "id": "lesser-restoration",
+    "name": "Малое восстановление",
+    "original_name": "Lesser restoration",
+    "level": 2,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен жизни"
+      },
+      {
+        "class": "колдун",
+        "subclass": "небожитель"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва преданности"
+      },
+      {
+        "class": "чародей",
+        "subclass": "заводная душа"
+      },
+      {
+        "class": "чародей",
+        "subclass": "лунное чародейство"
+      }
+    ],
+    "description": "Снимает одну болезнь или одно состояние: слепота, глухота, паралич или отравление.",
+    "body": "Снимает одну болезнь или одно состояние: слепота, глухота, паралич или отравление.",
+    "review": false
+  },
+  {
+    "id": "melfs-acid-arrow",
+    "name": "Кислотная стрела Мельфа",
+    "original_name": "Melf's acid arrow",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(90)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "порошок из листьев ревеня и желудок гадюки",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг земли"
+      },
+      {
+        "class": "изобретатель",
+        "subclass": "алхимик"
+      }
+    ],
+    "description": "Дальнобойная атака: при попадании 4к4 кислоты сразу + 2к4 кислоты в конце следующего хода. При промахе — 2к4 сразу, без отсроченного.",
+    "body": "Дальнобойная атака: 4к4 кислоты сразу + 2к4 в конце следующего хода. При промахе — 2к4 сразу.\\ #atHigherLevels[+1к4 к обоим за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "prayer-of-healing",
+    "name": "Молитва исцеления",
+    "original_name": "Prayer of healing",
+    "level": 2,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "До 6 существ в 30 фт: 2к8+МХ исцеления. Не действует на Нежить и Конструктов.",
+    "body": "До 6 существ: #heal(\"2d8+MOD\") Не действует на Нежить и Конструктов.\\ #atHigherLevels[+1к8 за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "nathairs-mischief",
+    "name": "Озорство Натаира",
+    "original_name": "Nathair's mischief",
+    "level": 2,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "M"
+      ],
+      "material": "кусочек корочки яблочного пирога",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "20-фт куб. В начале хода бросьте к4: 1—МДР/очарован, 2—ЛОВ/ослеплён, 3—МДР/недееспособен+случайное движение, 4—труднопроходимая местность. Куб можно переместить на 10 фт.",
+    "body": "20-фт куб. В начале хода к4: 1—МДР/очарован, 2—ЛОВ/ослеплён, 3—МДР/недееспособен (случайное движение), 4—труднопроходимая местность. Куб можно переместить на 10 фт.",
+    "review": true
+  },
+  {
+    "id": "skywrite",
+    "name": "Письмо облаками",
+    "original_name": "Skywrite",
+    "level": 2,
+    "school": "transmutation",
+    "is_ritual": true,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "sight",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      }
+    ],
+    "description": "Пишет до 10 слов в небе облаками на 1 час. Сильный ветер может рассеять досрочно.",
+    "body": "Пишет до 10 слов в небе облаками. Сильный ветер рассеивает досрочно.",
+    "review": false
+  },
+  {
+    "id": "invisibility",
+    "name": "Невидимость",
+    "original_name": "Invisibility",
+    "level": 2,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "ресница в смоле",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг земли"
+      }
+    ],
+    "description": "Цель и её вещи невидимы. Оканчивается при атаке или наложении заклинания.",
+    "body": "#effect(invisible) Цель и её вещи. Оканчивается при атаке или наложении заклинания.\\ #atHigherLevels[+1 цель за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "gentle-repose",
+    "name": "Вечный покой",
+    "original_name": "Gentle repose",
+    "level": 2,
+    "school": "necromancy",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 864000.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "щепотка соли и по одной медной монетке на каждый глаз трупа, которые должны оставаться там все время, пока активно заклинание",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "друид",
+        "subclass": "круг спор"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен упокоения"
+      }
+    ],
+    "description": "Труп не разлагается и не может стать Нежитью на 10 дней. Дни под заклинанием не учитываются в сроке для воскрешения.",
+    "body": "Труп не разлагается, не может стать Нежитью. Дни под заклинанием не учитываются в сроке воскрешения.",
+    "review": false
+  },
+  {
+    "id": "nystuls-magic-aura",
+    "name": "Магическая аура Нистула",
+    "original_name": "Nystul's magic aura",
+    "level": 2,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "небольшой лоскут шелка",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен магии"
+      }
+    ],
+    "description": "«Ложная аура»: меняет ауру цели для обнаружения магии (школа, наличие). «Маскировка»: меняет определяемый вид/мировоззрение. Ежедневное накладывание 30 дней — эффект перманентен.",
+    "body": "До двух эффектов: «Ложная аура» — меняет ауру для обнаружения магии; «Маскировка» — меняет определяемый вид существа. Ежедневно 30 дней — эффект перманентен.",
+    "review": false
+  },
+  {
+    "id": "cloud-of-daggers",
+    "name": "Облако кинжалов",
+    "original_name": "Cloud of daggers",
+    "level": 2,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "осколок стекла",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Куб 5 фт из кинжалов. При первом входе/начале хода: 4к4 рубящего (автоматически).",
+    "body": "Куб 5 фт из кинжалов. При первом входе/начале хода: 4к4 рубящего.\\ #atHigherLevels[+2к4 за слот выше 2-го]",
+    "review": false
+  },
+  {
+    "id": "zone-of-truth",
+    "name": "Зона правды",
+    "original_name": "Zone of truth",
+    "level": 2,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "жрец",
+        "subclass": "домен порядка"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва короны"
+      },
+      {
+        "class": "паладин",
+        "subclass": "клятва преданности"
+      },
+      {
+        "class": "следопыт",
+        "subclass": "убийца монстров"
+      }
+    ],
+    "description": "Сфера 15 фт. СХА спасбросок или не может умышленно лгать. Вы знаете кто провалил. Цель знает о заклинании.",
+    "body": "Сфера 15 фт. СХА спасбросок или не может умышленно лгать. Вы знаете кто провалил. Цель знает о заклинании.",
+    "review": false
   }
 ]
