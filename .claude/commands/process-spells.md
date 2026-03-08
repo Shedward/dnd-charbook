@@ -220,9 +220,9 @@ DSL and prose mix freely: `До 3 камней. При попадании — #d
 |---------|--------------|
 | STR | СИЛ |
 | DEX | ЛОВ |
-| CON | КОН |
+| CON | ТЕЛ |
 | INT | ИНТ |
-| WIS | МДР |
+| WIS | МУД |
 | CHA | **ХАР** (not СХА) |
 
 ### Combining effects
