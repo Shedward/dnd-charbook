@@ -205,10 +205,11 @@ Valid conditions: `blinded` `charmed` `deafened` `frightened` `grappled` `incapa
 ```
 Valid targets: any stat token or `attack`.
 
-### Resistance / vulnerability
+### Resistance / vulnerability / immunity
 ```
 #resist(fire)
 #weakness(piercing)
+#immune(fire)
 ```
 
 ### Light

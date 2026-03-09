@@ -317,6 +317,10 @@
   *#loc(en: [Vuln.], ru: [Уязв.]): #damageTypeShortName(damageType)*
 ]
 
+#let immune(damageType) = [
+  *#loc(en: [Immune], ru: [Иммун.]): #damageTypeShortName(damageType)*
+]
+
 // Light
 #let light(bright: 0, dim: 0) = [
   *#loc(en: [Light], ru: [Свет]): #bright/#dim #loc(en: [ft], ru: [фт])*

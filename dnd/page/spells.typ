@@ -191,7 +191,7 @@
   stunned: stunned, unconscious: unconscious,
   advantage: advantage, disadvantage: disadvantage,
   attack: attack,
-  resist: resist, weakness: weakness,
+  resist: resist, weakness: weakness, immune: immune,
   light: light,
   move: move, toYou: toYou, fromYou: fromYou,
   target: target, touch: touch, self: self, point: point, sight: sight, unlimited: unlimited,
