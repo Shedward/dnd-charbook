@@ -47,7 +47,7 @@ scripts/spells-read.sh --text id1 id2 ...
 ### Step 4 — Review each spell
 
 Compare `body` against the full description. Apply the style checklist below.
-Set `"proofread": true` on every spell regardless of whether it was changed.
+Set `"proofread": true` and `"review": false` on every spell regardless of whether it was changed.
 
 ### Step 4.5 — Optional: check how a body renders
 
@@ -57,19 +57,34 @@ When uncertain how a body actually looks rendered:
 scripts/spells-render-body.sh 'body string here'
 ```
 
-Outputs a plain-text line of what will appear in the spell table.
+Outputs a plain-text Russian line showing what will appear in the spell table.
+Useful for catching missing `\\` separators and structure issues.
 
-### Step 5 — Write updated batch to `/tmp/proofread-batch.json`
+### Step 5 — Apply all changes via jq
 
-Use the `Write` tool (not Bash) to avoid shell-quoting issues with escaped quotes inside body strings.
-
-### Step 6 — Update spellbook.json
+Use `jq --arg` to patch spellbook.json directly — no temp file or `spells-update.sh` needed:
 
 ```bash
-scripts/spells-update.sh "$(cat /tmp/proofread-batch.json)"
+TMP=$(mktemp)
+jq \
+  --arg spell1_body 'new body for spell1' \
+  --arg spell2_body 'new body for spell2' \
+  'map(
+    if .id == "spell1" then . + {"body": $spell1_body, "review": false, "proofread": true}
+    elif .id == "spell2" then . + {"body": $spell2_body, "review": false, "proofread": true}
+    elif (.id | IN("spell3","spell4","spell5")) then . + {"review": false, "proofread": true}
+    else . end
+  )' resources/data/spellbook.json > "$TMP" && mv "$TMP" resources/data/spellbook.json
 ```
 
-### Step 7 — Verify build
+**Escaping rules for `--arg` values (bash single quotes):**
+- Single-quoted strings in bash preserve `\` and `"` literally — no escaping needed
+- A Typst line break `\` in the body becomes a literal `\` in the `--arg` value; jq JSON-encodes it as `\\` automatically
+- Inner `"` in DSL calls (e.g. `#damage("1d6", ...)`) are preserved as-is in single quotes
+
+**Group unchanged spells** into a single `IN(...)` branch — avoids repeating `.+ {"review": false, "proofread": true}` per spell.
+
+### Step 6 — Verify build
 
 ```bash
 scripts/spells-preview.sh --full
@@ -77,12 +92,12 @@ scripts/spells-preview.sh --full
 
 Fix any DSL eval errors before committing.
 
-### Step 8 — Report
+### Step 7 — Report
 
 List each changed spell: name + what was fixed.
 Summary line: "N reviewed, M changed."
 
-### Step 9 — Commit
+### Step 8 — Commit
 
 ```bash
 git add resources/data/spellbook.json
@@ -95,7 +110,7 @@ git commit -m "Proofread spells batch N: level X (first-id through last-id)"
 
 Apply to every spell. Check each point:
 
-1. **Coverage** — `body` contains all mechanically important details from the description. Nothing skippable for actual play omitted.
+1. **Coverage** — `body` contains all mechanically important details from the description. Nothing relevant for actual play omitted.
 
 2. **No duplication of visible fields** — Do NOT restate: casting time, duration, range/area, component letters. These are shown in other columns.
    - Exception: early-termination conditions are fine ("ends if caster moves >60 фт").
@@ -119,7 +134,20 @@ Apply to every spell. Check each point:
    - Prose exceptions/conditions last
    - `#atHigherLevels[…]` always last
 
-9. **`review` flag** — always set to `false`. Proofreading is the final review pass; the flag is no longer needed after this.
+9. **`review` flag** — always set to `false`. Proofreading is the final pass.
+
+---
+
+## Common issues found in early batches
+
+- **Missing `\\` separator** between a DSL macro and following prose (e.g. `#damage(...)\ Цель не может...`)
+- **Stray punctuation** before `\\` (e.g. `. \` — remove the period)
+- **`review: true` spells** that were just utility/choose-one cantrips — all cleared during proofread
+- **Weather prediction duration** in druidcraft-style bodies was labeled "(1 раунд)" — should be "на следующие 24 ч"
+- **Missing key conditions** on the spell (e.g. "цель должна вас слышать" for vicious-mockery, "не враждебного" for friends)
+- **Obscure words**: "тактильного" → "физического", "триггер" → describe the trigger in Russian
+- **Arrow `→` character** in body text — avoid, use prose instead
+- **Level scaling in prose** should use МУД/СИЛ/etc. not MOD when written as prose text (MOD is only for inside `#damage("...+MOD", ...)`)
 
 ---
 
@@ -146,14 +174,6 @@ Shapes: #circle(N) #sphere(N, range: M) #cube(N) #cone(N) #cylinder(r,h) #rectan
 Stat tokens: `STR` `DEX` `CON` `INT` `WIS` `CHA` `MOD` `PROF` `LVL`
 Damage types: `acid` `bludgeoning` `cold` `fire` `force` `lightning` `necrotic` `piercing` `poison` `psychic` `radiant` `slashing` `thunder`
 Conditions: `blinded` `charmed` `deafened` `frightened` `grappled` `incapacitated` `invisible` `paralyzed` `petrified` `poisoned` `prone` `restrained` `stunned` `unconscious`
-
----
-
-## Typst markup pitfalls
-
-- **Line breaks**: `\\` (double backslash) in a JSON string, which means `\\\\` if you need to write it in a Bash here-doc. Use the `Write` tool to avoid this.
-- **Escaped quotes in body**: inner double quotes must be `\"` in the JSON string.
-- **`if/else` must be on one line** in markup mode.
 
 ---
 
