@@ -19875,5 +19875,176 @@
     "description": "",
     "body": "Труднопроходимая область. ЛОВ спасбросок каждый ход или #effect(prone). Концентрирующиеся существа — ТЕЛ спасбросок или сбой. Трещины: ЛОВ или падение (1к10×10 фт). Здания: 50 дробящего/ход; при разрушении — ЛОВ или #damage(\"5d6\", bludgeoning) + завал (СЛ 20 СИЛ).",
     "review": false
+  },
+  {
+    "id": "illusory-dragon",
+    "name": "Иллюзорный дракон",
+    "original_name": "Illusory dragon",
+    "level": 8,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "При появлении — МУД спасбросок или #effect(frightened) на 1 мин. Доп. действие: движение 60 фт + дыхание #cone(60) — 7к6 (выбр. тип, ИНТ или half).",
+    "review": false
+  },
+  {
+    "id": "maze",
+    "name": "Лабиринт",
+    "original_name": "Maze",
+    "level": 8,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "Изгоняет существо в демиплан-лабиринт на 10 мин. Действием — ИНТ Сл 20 для выхода (минотавры и гористо автоматически успевают).",
+    "review": false
+  },
+  {
+    "id": "mighty-fortress",
+    "name": "Могучая крепость",
+    "original_name": "Mighty fortress",
+    "level": 8,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "sight",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "бриллиант стоимостью не менее 500 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "Создаёт каменную крепость 120×120 фт с цитаделью, 4 башнями и 100 слугами на 7 дней. Ежедневное накладывание в одном месте в течение года — постоянная.",
+    "review": false
+  },
+  {
+    "id": "glibness",
+    "name": "Находчивость",
+    "original_name": "Glibness",
+    "level": 8,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "На 1 ч — проверки ХАР можно заменить результатом «15»; детекция лжи показывает вас искренним.",
+    "review": false
+  },
+  {
+    "id": "maddening-darkness",
+    "name": "Одуряющая тьма",
+    "original_name": "Maddening darkness",
+    "level": 8,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "sphere(60, range: 150)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "капля смолы, смешанная с каплей ртути",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "Магическая тьма (непробиваемая тёмным зрением). Каждый ход в сфере — #damage(\"8d8\", psychic, saving: WIS, saved: halfDamage).",
+    "review": false
   }
 ]
