@@ -20046,5 +20046,201 @@
     "description": "",
     "body": "Магическая тьма (непробиваемая тёмным зрением). Каждый ход в сфере — #damage(\"8d8\", psychic, saving: WIS, saved: halfDamage).",
     "review": false
+  },
+  {
+    "id": "dominate-monster",
+    "name": "Подчинение чудовища",
+    "original_name": "Dominate monster",
+    "level": 8,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "МУД спасбросок или #effect(charmed). Телепатические команды; действием — полный контроль до конца следующего хода. При уроне — новый МУД спасбросок. #atHigherLevels[9-й слот: до 8 ч]",
+    "review": false
+  },
+  {
+    "id": "animal-shapes",
+    "name": "Превращение в животных",
+    "original_name": "Animal shapes",
+    "level": 8,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "",
+    "body": "Любое количество согласных существ (30 фт) → Зверь Б или меньше (КО ≤ 4) на 24 ч. При 0 ОЗ — возврат в исходный облик; избыточный урон переносится.",
+    "review": false
+  },
+  {
+    "id": "antimagic-field",
+    "name": "Преграда магии",
+    "original_name": "Antimagic Field",
+    "level": 8,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "circle(10)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "щепотка толчёного железа или железная стружка",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "",
+    "body": "Сфера 10 фт вокруг вас подавляет всю магию (заклинания, предметы, призывы), движется с вами. Нельзя рассеять рассеиванием магии.",
+    "review": false
+  },
+  {
+    "id": "feeblemind",
+    "name": "Слабоумие",
+    "original_name": "Feeblemind",
+    "level": 8,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(150)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "пригоршня глиняных, хрустальных, стеклянных или минеральных шариков",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "#damage(\"4d6\", psychic)\\ ИНТ спасбросок; провал — ИНТ/ХАР = 1, не может накладывать заклинания и общаться. Спасбросок раз в 30 дней.",
+    "review": false
+  },
+  {
+    "id": "power-word-stun",
+    "name": "Слово силы: ошеломление",
+    "original_name": "Power word stun",
+    "level": 8,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "Существо ≤ 150 ОЗ → #effect(stunned). ТЕЛ спасбросок в конце каждого хода для снятия.",
+    "review": false
   }
 ]
