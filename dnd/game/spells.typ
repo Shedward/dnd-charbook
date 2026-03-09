@@ -113,6 +113,7 @@
 #let sight = loc(en: [Sight], ru: [Взгляд])
 
 #let circle = area("circle")
+#let ring = area("circle")   // TODO: add ring icon
 #let square = area("square")
 #let cube = area("cube")
 #let sphere = area("sphere")

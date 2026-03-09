@@ -194,6 +194,9 @@
   resist: resist, weakness: weakness,
   light: light,
   move: move, toYou: toYou, fromYou: fromYou,
+  target: target, touch: touch, self: self, point: point, sight: sight, unlimited: unlimited,
+  circle: circle, ring: ring, square: square, cube: cube, sphere: sphere,
+  straightLine: straightLine, cone: cone, cylinder: cylinder, rectangle: rectangle,
 )
 
 #let schoolFromSpellbook(s) = {
@@ -274,6 +277,7 @@
         target: target,
         point: point,
         circle: circle,
+        ring: ring,
         square: square,
         cube: cube,
         sphere: sphere,

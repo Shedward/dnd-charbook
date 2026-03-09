@@ -222,6 +222,26 @@ Valid targets: any stat token or `attack`.
 #atHigherLevels[+1к6 за слот выше 1-го]
 ```
 
+### Shapes (in body or target)
+Use to inline geometric areas. Same functions work in both `target` and `body` fields.
+```
+#circle(20)
+#ring(20)           // circle icon for now — TODO: dedicated ring icon
+#cube(15)
+#sphere(10, range: 60)
+#cone(15)
+#cylinder(5, 40)
+#rectangle(60, 20, 1)
+#straightLine(30)
+```
+All accept an optional `range:` named parameter: `#sphere(20, range: 150)`.
+
+**When to use in body** — shapes in the body that are *not* already shown in the `target` column, or secondary shapes (e.g. a wall that can also form a ring):
+```
+#rectangle(60, 20, 1) или #ring(20).
+```
+**When to omit from body** — if the `target` field already shows the same shape, don't repeat it in the body.
+
 ### Plain prose fallback
 One or two sentences, mechanics only, no flavor. Russian language.
 DSL and prose mix freely: `До 3 камней. При попадании — #damage("1d6+MOD", bludgeoning, ranged: true).`
@@ -295,10 +315,16 @@ Most damage cantrips scale identically (+1dX at levels 5, 11, 17):
 | range + sphere | `"sphere(R, range: N)"` |
 | range + cone | `"cone(S, range: N)"` |
 | range + cube | `"cube(S, range: N)"` |
+| range + cylinder | `"cylinder(radius, height, range: N)"` |
+| range + rectangle (wall/line) | `"rectangle(x, y, z, range: N)"` |
+| self + radius (moves with caster) | `"circle(N)"` |
+| ring (radius) | `"ring(N, range: N)"` |
 | sight | `"sight"` |
 | unlimited | `"unlimited"` |
 
-Eval'd with: `target`, `point`, `circle`, `sphere`, `cone`, `cube`, `cylinder`, `rectangle`, `touch`, `self`, `sight`, `unlimited` in scope.
+**Use `target(N)` only for single-target spells.** For any area-of-effect, use the matching shape function.
+
+Eval'd with: `target`, `point`, `circle`, `ring`, `square`, `sphere`, `cone`, `cube`, `cylinder`, `rectangle`, `straightLine`, `touch`, `self`, `sight`, `unlimited` in scope.
 
 ---
 
