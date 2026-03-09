@@ -276,5 +276,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 10 | flaming-sphere → wither-and-bloom (lvl 2) | 200 | 505 | 40% |
 | 11 | hold-person → catnap (lvl 2–3) | 220 | 505 | 44% |
 | 12 | spirit-guardians → motivational-speech (lvl 3) | 240 | 505 | 48% |
+| 13 | nondetection → summon-lesser-demons (lvl 3) | 260 | 505 | 51% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
