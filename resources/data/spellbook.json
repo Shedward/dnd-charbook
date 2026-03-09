@@ -15012,5 +15012,1426 @@
     "description": "Цель совершает спасбросок Ловкости: провал — 8к6 огня + воспламенена; успех — половина, не воспламенена. Горящая цель в конце каждого хода повторяет ЛОВ спасбросок: провал — 4к6 огня; успех — заклинание оканчивается. Испускает яркий свет 30 фт и тусклый ещё 30 фт. Немагическими средствами не погасить.",
     "body": "#damage(\"8d6\", fire, saving: DEX, saved: halfDamage)\\ При провале — воспламенена: конец каждого хода ЛОВ или 4к6 огня (успех — конец заклинания). #light(bright: 30, dim: 30)",
     "review": false
+  },
+  {
+    "id": "wall-of-stone",
+    "name": "Каменная стена",
+    "original_name": "Wall of Stone",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "небольшой кусочек гранита",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "монах"
+      }
+    ],
+    "description": "Появляется немагическая каменная стена из 10 плит 10×10 фт (6 дюймов/15 см) или 10×20 фт (3 дюйма/7,5 см). Плиты должны соседствовать. Существо в пространстве стены — ЛОВ спасбросок или вытолкнуто; окружённое — ЛОВ или остаётся заперто. КД плиты 15, 30 хитов за 1 дюйм толщины. Если концентрация сохраняется всё время — стена становится постоянной.",
+    "body": "Стена из 10 плит 10×10 фт (15 см) или 10×20 фт (7,5 см). Существо в пространстве — ЛОВ или вытолкнуто. КД плиты 15, 30 хитов/дюйм. Концентрация до конца — стена постоянная.",
+    "review": false
+  },
+  {
+    "id": "cone-of-cold",
+    "name": "Конус холода",
+    "original_name": "Cone of Cold",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "cone(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "небольшой кристаллический или стеклянный конус",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "монах"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Из ваших рук вырывается волна холода в 60-футовом конусе. Все существа в конусе — ТЕЛ спасбросок: провал — 8к8 холодом, успех — половина. Убитые замерзают статуями до оттаивания.\nНа больших уровнях. Урон +1к8 за слот выше 5-го.",
+    "body": "#damage(\"8d8\", cold, saving: CON, saved: halfDamage)\\ #atHigherLevels[+1к8 за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "circle-of-power",
+    "name": "Круг силы",
+    "original_name": "Circle of Power",
+    "level": 5,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "circle(30)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Сфера 30 фт радиусом с центром на вас перемещается вместе с вами. Все дружественные существа в ней (включая вас) получают преимущество к спасброскам от заклинаний и магических эффектов. Когда такое существо преуспевает в спасброске против эффекта «только половина урона», оно не получает урона вообще.",
+    "body": "Дружественные существа в 30 фт: преимущество к спасброскам от заклинаний и магии. Успешный спасбросок против эффекта «половина урона» — урон не получают.",
+    "review": false
+  },
+  {
+    "id": "teleportation-circle",
+    "name": "Круг телепортации",
+    "original_name": "Teleportation Circle",
+    "level": 5,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 6.0,
+    "target": "target(10)",
+    "components": {
+      "components": [
+        "V",
+        "M"
+      ],
+      "material": "редкие мелки и чернила с основой из драгоценных камней стоимостью 50 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Вы рисуете на полу круг диаметром 10 фт, связанный с известным вам постоянным кругом телепортации на том же плане. Мерцающий портал открывается до конца вашего следующего хода. Все, кто входит в портал, появляются в пределах 5 фт от места назначения. Накладывая заклинание ежедневно в одном месте в течение года, вы создаёте там постоянный круг.",
+    "body": "Портал к известному постоянному кругу телепортации на том же плане (открыт до конца вашего следующего хода). Входящие появляются в 5 фт от места назначения.",
+    "review": false
+  },
+  {
+    "id": "rarys-telepathic-bond",
+    "name": "Ментальная связь Рэри",
+    "original_name": "Rary's Telepathic Bond",
+    "level": 5,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочки яичной скорлупы двух разных видов существ",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "До 8 согласных существ (ИНТ ≥ 3) в пределах 30 фт получают телепатическую связь на 1 час. Они могут общаться на любом расстоянии в пределах одного плана существования без общего языка.",
+    "body": "До 8 согласных существ (ИНТ ≥ 3) в 30 фт: телепатическая связь на 1 час, любое расстояние в пределах одного плана, без общего языка.",
+    "review": false
+  },
+  {
+    "id": "mass-cure-wounds",
+    "name": "Множественное лечение ран",
+    "original_name": "Mass Cure Wounds",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "sphere(30, range: 60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      }
+    ],
+    "description": "Волна целительной энергии исходит из точки в пределах дистанции. До 6 существ в сфере 30 фт восстанавливают 3к8 + модификатор вашей базовой характеристики хитов. Нет эффекта на нежить и конструктов.\nНа больших уровнях. +1к8 за слот выше 5-го.",
+    "body": "До 6 существ в сфере 30 фт: #heal(\"3d8+MOD\")\\ #atHigherLevels[+1к8 за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "scrying",
+    "name": "Наблюдение",
+    "original_name": "Scrying",
+    "level": 5,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "фокусировка стоимостью не менее 1000 зм (хрустальный шар, серебряное зеркало или чаша со святой водой)",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "МУД спасбросок цели, модифицированный знакомством (через посредников +5, лично +0, хорошо −5) и связью (образ −2, вещь −4, часть тела −10). Провал — невидимый сенсор в 10 фт от цели: вы видите и слышите через него до 10 минут. Альтернатива — нацеливание на известное место.",
+    "body": "МУД спасбросок (модификатор зависит от знакомства и связи): провал — невидимый сенсор следует за целью в 10 фт (вы видите и слышите). Альтернатива: нацельтесь на известное место.",
+    "review": false
+  },
+  {
+    "id": "insect-plague",
+    "name": "Нашествие насекомых",
+    "original_name": "Insect Plague",
+    "level": 5,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "sphere(20, range: 300)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "несколько крупинок сахара, немного зёрнышек и капля жира",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Рой кусачей саранчи заполняет сферу 20 фт в пределах дистанции. Труднопроходимая местность, слабо заслонена. При появлении и в начале/конце каждого хода в сфере — ТЕЛ спасбросок: провал — 4к10 колющего, успех — половина.\nНа больших уровнях. +1к10 за слот выше 5-го.",
+    "body": "#damage(\"4d10\", piercing, saving: CON, saved: halfDamage)\\ #atHigherLevels[+1к10 за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "flame-strike",
+    "name": "Небесный огонь",
+    "original_name": "Flame Strike",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "sphere(10, range: 60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "щепотка серы",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Вертикальная колонна пламени в цилиндре 10 фт радиусом, 40 фт высотой. ЛОВ спасбросок: провал — 4к6 излучением + 4к6 огня, успех — половина.\nНа больших уровнях. +1к6 к излучению или огню (на выбор) за слот выше 5-го.",
+    "body": "ЛОВ спасбросок: провал — 4к6 урона излучением + 4к6 огня, успех — половина.\\ #atHigherLevels[+1к6 к излучению или огню (на выбор) за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "enervation",
+    "name": "Обессиливание",
+    "original_name": "Enervation",
+    "level": 5,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "ЛОВ спасбросок: успех — 2к8 некротического, конец заклинания; провал — 4к8 некротического, каждый ход действием ещё 4к8 некротического цели. Вы восстанавливаете хиты = половине нанесённого урона. Заклинание оканчивается, если используете действие иначе или цель вне дистанции/за укрытием.\nНа больших уровнях. +1к8 за слот выше 5-го.",
+    "body": "ЛОВ спасбросок: успех — 2к8 некротического (конец); провал — 4к8 некротического, каждый ход действием ещё 4к8 (вы восстанавливаете ½ нанесённого урона).\\ #atHigherLevels[+1к8 за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "geas",
+    "name": "Обет",
+    "original_name": "Geas",
+    "level": 5,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 2592000.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "МУД спасбросок: провал — цель очарована на 30 дней и получает 5к10 психического урона каждый раз, когда действует вопреки вашей команде (не чаще 1 раза в день). Снимается снятием проклятия, высшим восстановлением или исполнением желаний.\nНа больших уровнях. 7–8-й уровень: 1 год; 9-й уровень: действует до рассеивания.",
+    "body": "МУД спасбросок: провал — очарован на 30 дней; нарушение команды — 5к10 психического (≤1 раза в день).\\ #atHigherLevels[1 год на 7–8-м уровне; вечно на 9-м]",
+    "review": false
+  },
+  {
+    "id": "cloudkill",
+    "name": "Облако смерти",
+    "original_name": "Cloudkill",
+    "level": 5,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "sphere(20, range: 120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Сфера ядовитого тумана радиусом 20 фт, сильно заслонённая. ТЕЛ спасбросок при входе/начале хода: провал — 5к8 ядом, успех — половина (даже без дыхания). В начале каждого вашего хода сфера перемещается на 10 фт от вас.\nНа больших уровнях. +1к8 за слот выше 5-го.",
+    "body": "#damage(\"5d8\", poison, saving: CON, saved: halfDamage)\\ Сфера движется на 10 фт от вас каждый ход. Сильно заслонённая местность.\\ #atHigherLevels[+1к8 за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "commune",
+    "name": "Общение",
+    "original_name": "Commune",
+    "level": 5,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "благовоние и флакон святой или нечестивой воды",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Вы связываетесь со своим божеством и задаёте до 3 вопросов с ответом «да/нет», получая правдивые ответы (возможен ответ «неясно»). Если накладываете повторно до длительного отдыха — накопительный шанс 25% за каждое повторное накладывание не получить ответ.",
+    "body": "До 3 вопросов «да/нет» своему божеству — правдивые ответы (возможен «неясно»). Повторные накладывания до длительного отдыха: +25% шанс не получить ответ.",
+    "review": false
+  },
+  {
+    "id": "commune-with-nature",
+    "name": "Общение с природой",
+    "original_name": "Commune with Nature",
+    "level": 5,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "следопыт"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Вы получаете знание о 3 фактах об окружающей территории: 3 мили на открытом воздухе, 300 фт под землёй. Категории: местность/водоёмы, растения/животные/существа, мощные исчадия/небожители/нежить/феи/элементали, влияние других планов, строения. Не работает в городах и подземельях с конструкциями.",
+    "body": "Узнайте 3 факта о территории в радиусе 3 миль (300 фт под землёй): местность, живые существа, мощные потусторонние, влияние планов, строения.",
+    "review": false
+  },
+  {
+    "id": "raise-dead",
+    "name": "Оживление",
+    "original_name": "Raise Dead",
+    "level": 5,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "бриллиант стоимостью не менее 500 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "изобретатель"
+      }
+    ],
+    "description": "Оживляет существо, мёртвое не более 10 дней (если душа согласна), с 1 хитом. Нейтрализует яды и немагические болезни. Не восстанавливает части тела. Не работает на нежить. Цель получает штраф -4 ко всем броскам атаки, спасброскам и проверкам характеристик; -1 за каждый длительный отдых до исчезновения.",
+    "body": "Оживляет мёртвое ≤10 дней существо (душа согласна) с 1 хитом. Нейтрализует яды и немагические болезни. Не восстанавливает части тела. Штраф −4 ко всем броскам (−1 за каждый длительный отдых).",
+    "review": false
+  },
+  {
+    "id": "animate-objects",
+    "name": "Оживление вещей",
+    "original_name": "Animate Objects",
+    "level": 5,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "изобретатель"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "До 10 немагических предметов в пределах дистанции оживают (Средний = 2, Большой = 4, Огромный = 8 предметов). Бонусным действием командуйте в пределах 500 фт. Характеристики по размеру (Крошечный: КД 18, 20 хитов, +8 к атаке, 1к4+4; Огромный: КД 10, 80 хитов, +8 к атаке, 2к12+4).\nНа больших уровнях. +2 предмета за слот выше 5-го.",
+    "body": "До 10 немагических предметов оживают под вашим контролем (бонусным действием, до 500 фт). Характеристики зависят от размера (Крошечный: КД 18, 20 хп; Огромный: КД 10, 80 хп).\\ #atHigherLevels[+2 предмета за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "planar-binding",
+    "name": "Планарные узы",
+    "original_name": "Planar Binding",
+    "level": 5,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "драгоценный камень стоимостью не менее 1000 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Исчадие, небожитель, фея или элементаль в пределах дистанции должны совершить ХАР спасбросок. При провале существо обязано служить вам 24 часа. Выполняет инструкции буквально; враждебное существо ищет лазейки.\nНа больших уровнях. 6-й: 10 дней; 7-й: 30 дней; 8-й: 180 дней; 9-й: год и один день.",
+    "body": "ХАР спасбросок: провал — исчадие/небожитель/фея/элементаль подчиняется вашим командам 24 часа.\\ #atHigherLevels[10 дней (6-й), 30 дней (7-й), 180 дней (8-й), год+день (9-й)]",
+    "review": false
+  },
+  {
+    "id": "danse-macabre",
+    "name": "Пляска смерти",
+    "original_name": "Danse Macabre",
+    "level": 5,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "До 5 Маленьких или Средних трупов в пределах дистанции встают как зомби или скелеты (на ваш выбор) с бонусом +МОД к атаке и урону. Бонусным действием командуйте в пределах 60 фт. Когда заклинание оканчивается — снова трупы.\nНа больших уровнях. +2 трупа за слот выше 5-го.",
+    "body": "До 5 Маленьких/Средних трупов встают как зомби или скелеты с +МОД к атаке и урону. Бонусным действием командуйте в 60 фт.\\ #atHigherLevels[+2 трупа за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "dominate-person",
+    "name": "Подчинение личности",
+    "original_name": "Dominate Person",
+    "level": 5,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Гуманоид совершает МУД спасбросок (с преимуществом в бою). Провал — очарован: выполняет телепатические команды. Действием — полный контроль до конца вашего следующего хода (включая реакции). Новый МУД спасбросок при получении урона.\nНа больших уровнях. 6-й: 10 мин; 7-й: 1 час; 8-й+: 8 часов.",
+    "body": "МУД спасбросок (преимущество в бою): провал — Гуманоид очарован, выполняет телепатические команды. Действием — полный контроль до конца вашего следующего хода. Новый спасбросок при уроне.\\ #atHigherLevels[10 мин (6-й), 1 час (7-й), 8 часов (8-й+)]",
+    "review": false
+  },
+  {
+    "id": "negative-energy-flood",
+    "name": "Поток негативной энергии",
+    "original_name": "Negative Energy Flood",
+    "level": 5,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "сломанная кость и квадрат чёрного шелка",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Не-нежить: ТЕЛ спасбросок — провал 5к12 некротического, успех половина; убитая цель встаёт зомби в начале вашего следующего хода. Нежить: вместо спасброска получает временные хиты = половине броска 5к12.",
+    "body": "Не-нежить: #damage(\"5d12\", necrotic, saving: CON, saved: halfDamage); убитая цель встаёт зомби в следующем ходу.\\ Нежить: получает ½ от 5к12 временных хитов.",
+    "review": false
+  },
+  {
+    "id": "antilife-shell",
+    "name": "Преграда жизни",
+    "original_name": "Antilife Shell",
+    "level": 5,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "circle(10)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Барьер радиусом 10 фт движется с вами. Живые существа (кроме Нежити и Конструктов) не могут пройти сквозь барьер. Дальнобойные атаки и заклинания через барьер возможны. Если вы перемещаетесь так, что существо вынуждено пройти сквозь барьер — заклинание оканчивается.",
+    "body": "Барьер 10 фт блокирует вход живых существ (кроме Нежити и Конструктов). Дальнобойные атаки и заклинания сквозь него возможны. Перемещение в существо — конец заклинания.",
+    "review": false
+  },
+  {
+    "id": "transmute-rock",
+    "name": "Преобразование камня",
+    "original_name": "Transmute Rock",
+    "level": 5,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": null,
+    "target": "cube(40, range: 120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "глина и вода",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "изобретатель"
+      }
+    ],
+    "description": "Куб 40 фт в пределах дистанции. Два режима:\nКамень в грязь: труднопроходимо (4 фт/фт). СИЛ спасбросок или опутан (действием — свободен). Обвал потолка: ЛОВ или 4к8 дробящего.\nГрязь в камень: ЛОВ спасбросок или опутан в застывшем камне (выход: проверка СИЛ СЛ 20 или 25 урона камню; КД 15, 25 хитов).",
+    "body": "Куб 40 фт: Камень→Грязь — труднопроходимо (4 фт/фт), СИЛ или опутан; обвал потолка — ЛОВ или 4к8 дробящего.\\ Грязь→Камень — ЛОВ или опутан в скале (СИЛ СЛ 20 или 25 урона для выхода).",
+    "review": false
+  },
+  {
+    "id": "summon-draconic-spirit",
+    "name": "Призыв духа дракона",
+    "original_name": "Summon Draconic Spirit",
+    "level": 5,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "предмет с выгравированным изображением дракона стоимостью не менее 500 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Призывает духа дракона в пределах 60 фт. Выберите род: цветной, самоцветный или металлический. Дружелюбен, получает вашу инициативу, ходит после вас, выполняет вербальные команды.\nНа больших уровнях. Характеристики улучшаются согласно блоку статистики.",
+    "body": "Призывает духа дракона (цветной, самоцветный или металлический). Дружелюбен, ходит после вас, выполняет вербальные команды.\\ #atHigherLevels[Характеристики улучшаются согласно блоку статистики]",
+    "review": false
+  },
+  {
+    "id": "summon-celestial",
+    "name": "Призыв духа небожителя",
+    "original_name": "Summon Celestial",
+    "level": 5,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(90)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "золотой реликварий стоимостью не менее 500 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Призывает духа небожителя в пределах 90 фт. Выберите тип: мститель или защитник. Дружелюбен, получает вашу инициативу, ходит после вас, выполняет вербальные команды.\nНа больших уровнях. Характеристики улучшаются согласно блоку статистики.",
+    "body": "Призывает духа небожителя (мститель или защитник). Дружелюбен, ходит после вас, выполняет вербальные команды.\\ #atHigherLevels[Характеристики улучшаются согласно блоку статистики]",
+    "review": false
+  },
+  {
+    "id": "conjure-volley",
+    "name": "Призыв залпа",
+    "original_name": "Conjure Volley",
+    "level": 5,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "sphere(40, range: 150)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "метательное оружие или один боеприпас",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Сотни снарядов падают в цилиндре радиусом 40 фт и высотой 20 фт с центром на выбранной точке. ЛОВ спасбросок: провал — 8к8 урона, успех — половина. Вид урона = тип использованного оружия/боеприпаса.",
+    "body": "ЛОВ спасбросок в цилиндре 40 фт радиусом: провал — 8к8 урона (вид = тип оружия/боеприпаса), успех — половина.",
+    "review": false
+  },
+  {
+    "id": "conjure-elemental",
+    "name": "Призыв элементаля",
+    "original_name": "Conjure Elemental",
+    "level": 5,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(90)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "вода и песок для водяного, горящее благовоние для воздушного, мягкая глина для земляного или сера и фосфор для огненного",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Призывает элементаля с ПО ≤5 из источника стихии в пределах 10 фт от вас. Дружелюбен, ходит в вашу инициативу, выполняет команды. При потере концентрации — теряет управление, становится враждебным и действует сам до 1 часа.\nНа больших уровнях. ПО +1 за слот выше 5-го.",
+    "body": "Призывает элементаля с ПО ≤5 из ближайшего источника стихии. Дружелюбен; при потере концентрации — становится враждебным и действует сам до 1 часа.\\ #atHigherLevels[ПО +1 за слот выше 5-го]",
+    "review": false
+  },
+  {
+    "id": "seeming",
+    "name": "Притворство",
+    "original_name": "Seeming",
+    "level": 5,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 28800.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "следопыт"
+      }
+    ],
+    "description": "Меняет облик любого числа видимых существ на 8 часов (несогласная цель: ХАР спасбросок). Можно менять внешность, одежду, снаряжение, рост ±1 фт, телосложение. Физическое прикосновение выявляет иллюзию. Проверка ИНТ (Расследование) против вашей СЛ раскрывает обман.",
+    "body": "Меняет облик любого числа видимых существ на 8 часов (несогласная: ХАР спасбросок). Проверка ИНТ (Расследование) против СЛ раскрывает иллюзию.",
+    "review": false
+  },
+  {
+    "id": "awaken",
+    "name": "Пробуждение разума",
+    "original_name": "Awaken",
+    "level": 5,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 8,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "агат стоимостью не менее 1000 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Зверь или Растение (≤Огромный, ИНТ ≤3) получает ИНТ 10 и способность говорить на одном известном вам языке. Растение также получает движение и чувства. Пробуждённое существо очаровано вами 30 дней (или пока не получит урон от вас/союзников).",
+    "body": "Зверь или Растение (≤Огромный, ИНТ ≤3) получает ИНТ 10 и один ваш язык. Очарован вами 30 дней.",
+    "review": false
+  },
+  {
+    "id": "destructive-wave",
+    "name": "Разрушительная волна",
+    "original_name": "Destructive Wave",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "circle(30)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "паладин"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Волна энергии исходит от вас. Выбранные существа в 30 фт совершают ТЕЛ спасбросок. Провал — 5к6 урона звуком + 5к6 излучением или некротическим (на выбор) + сбит с ног. Успех — половина, не сбит.",
+    "body": "ТЕЛ спасбросок: провал — 5к6 звуком + 5к6 излучением или некротическим (на выбор) + сбит с ног; успех — половина, не сбит.",
+    "review": false
+  },
+  {
+    "id": "dawn",
+    "name": "Рассвет",
+    "original_name": "Dawn",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "sphere(30, range: 60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кулон солнечных лучей стоимостью не менее 100 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Цилиндр 30 фт радиусом и 40 фт высотой наполняется ярким солнечным светом. ТЕЛ спасбросок при появлении и в конце каждого хода внутри: провал — 4к10 излучением, успех — половина. Бонусным действием перемещайте цилиндр до 60 фт (если вы в пределах 60 фт от него).",
+    "body": "#damage(\"4d10\", radiant, saving: CON, saved: halfDamage) при появлении и конце хода в цилиндре 30 фт (яркий солнечный свет). Бонусным действием перемещайте цилиндр до 60 фт.",
+    "review": false
+  },
+  {
+    "id": "dispel-evil-and-good",
+    "name": "Рассеивание зла и добра",
+    "original_name": "Dispel evil and good",
+    "level": 5,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "святая вода или порошок серебра и железа",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Вас окружает мерцающая энергия, защищающая от Нежити, Фей и существ, происходящих не с Материального плана. Пока заклинание активно, Исчадия, Небожители, Нежить, Феи и Элементали совершают по вам броски атаки с помехой. Вы можете закончить заклинание преждевременно, выбрав один из представленных ниже вариантов:\nИзгнание\n. Вы совершаете действием рукопашную атаку заклинанием по Исчадию, Небожителю, Нежити, Фее или Элементалю в пределах досягаемости. При попадании вы пытаетесь изгнать существо на его родной план. Существо должно преуспеть в спасброске Харизмы, иначе оно будет отправлено на свой родной план (если только оно уже не находится там). Нежить отправляется в Царство Теней, а Феи — в Страну Фей.\nПоломка чар\n. Вы касаетесь действием существа, до которого можете дотянуться, и которое\nочаровано\n,\nиспугано\nили одержимо Исчадием, Небожителем, Нежитью, Феей или Элементалем. Это существо перестаёт быть\nочарованным\n,\nиспуганным\nили одержимым такими существами.",
+    "body": "Исчадия, Небожители, Нежить, Феи и Элементали совершают броски атаки по вам с помехой. Действием завершить заклинание досрочно: *Изгнание* — рукопашная атака заклинанием, существо проходит спасбросок ХАР или отправляется на родной план; *Поломка чар* — касание снимает очарование/испуг/одержимость от таких существ.",
+    "review": false
+  },
+  {
+    "id": "reincarnate",
+    "name": "Реинкарнация",
+    "original_name": "Reincarnate",
+    "level": 5,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "редкие масла и мази, стоящие как минимум 1 000 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Вы касаетесь мёртвого Гуманоида или части мёртвого Гуманоида. Если это существо мертво не более 10 дней, заклинание формирует для него новое взрослое тело и зовёт душу занять его. Если душа цели не свободна или не хочет новое тело, заклинание проваливается.\nНовое тело для существа создаёт магия, и раса существа может измениться. Мастер бросает к100 и сверяется с таблицей, чтобы определить, в каком теле будет жить существо, либо же выбирает тело самостоятельно.\nРеинкарнировавшее существо помнит свою прошлую жизнь и переживания. Оно сохраняет все способности, бывшие в прежнем теле, но раса меняется на новую, изменяя расовые особенности.",
+    "body": "Возрождает мёртвого гуманоида (умершего не более 10 дней) в новом взрослом теле. Раса определяется броском к100 по таблице. Существо помнит прошлую жизнь и сохраняет все способности, меняя расовые черты.",
+    "review": false
+  },
+  {
+    "id": "contact-other-plane",
+    "name": "Связь с иным миром",
+    "original_name": "Contact other plane",
+    "level": 5,
+    "school": "divination",
+    "is_ritual": true,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Вы мысленно связываетесь с полубогом, духом давно умершего мудреца или другой таинственной сущностью с другого плана существования. Контакт с иномировой сущностью может ослабить или даже повредить ваш рассудок. Накладывая это заклинание, вы совершаете спасбросок Интеллекта Сл 15. При провале вы получаете урон психической энергией 6к6 и становитесь безумным до окончания продолжительного отдыха. Будучи безумным, вы не можете совершать действия, не можете понимать речь других существ, не можете читать и можете только неразборчиво бормотать. Заклинание\nвысшее восстановление [greater restoration]\n, наложенное на вас, оканчивает этот эффект.\nПри успешном спасброске вы можете задать сущности до пяти вопросов. Вы должны задать вопросы до того как окончится заклинание. На все вопросы Мастер отвечает односложно, например, «да», «нет», «может быть», «никогда» или «не ясно» (если сущность не знает ответ). Если односложный ответ может ввести в заблуждение, Мастер может произнести короткую фразу.",
+    "body": "Спасбросок ИНТ Сл 15: при провале — 6к6 урона психической энергией и безумие до долгого отдыха (действия невозможны, речь несвязна). При успехе — до 5 вопросов с односложными ответами (да/нет/может быть/не ясно).",
+    "review": false
+  },
+  {
+    "id": "hallow",
+    "name": "Святилище",
+    "original_name": "Hallow",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 24,
+      "condition": null
+    },
+    "duration": null,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "травы, масла и благовония, стоящие как минимум 1 000 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун",
+        "subclass": "исчадие"
+      }
+    ],
+    "description": "Вы касаетесь точки и наполняете область вокруг неё святой (или нечестивой) силой. Радиус области может быть до 60 футов, и заклинание проваливается, если в этот радиус попадает область, уже находящаяся под действием заклинания\nсвятилище\n.\nНаполненная область подвергается следующим эффектам:\nВо-первых\n, Исчадия, Небожители, Нежить, Феи и Элементали не могут войти в эту область, и не могут делать существ, находящихся внутри, очарованными, испуганными и одержимыми. Все существа, очарованные, испуганные или одержимые такими существами, перестают быть очарованными, испуганными и одержимыми, входя в эту область. Вы можете исключить из эффекта один или несколько видов существ.\nВо-вторых\n, вы можете привязать к области дополнительный эффект. Выберите один эффект из прилагающегося списка, или выберите эффект, предложенный Мастером. Некоторые из этих эффектов применяются к существам, находящимся в области; вы можете указать, будет ли он применяться ко всем существам, существам, служащим определенному божеству или лидеру, или существам определенного вида. Когда существо, попадающее под действие эффекта, входит в область заклинания впервые за ход или начинает там ход, оно может совершить спасбросок Харизмы. В случае успеха существо игнорирует дополнительный эффект, пока не покинет эту область.\nЭффекты: Вечный покой (мертвецы не восстают), Вмешательство в телепортацию, Дневной свет, Тьма, Тишина, Защита от энергии, Уязвимость энергии, Страх, Храбрость, Языки.",
+    "body": "Освящает область радиусом до 60 фт навсегда. Исчадия/Небожители/Нежить/Феи/Элементали не входят в область и не могут очаровывать/пугать/одерживать существ внутри. Дополнительно: один эффект на выбор (свет/тьма, тишина, страх/храбрость, защита/уязвимость к урону, запрет телепортации, языки, вечный покой для мёртвых).",
+    "review": false
+  },
+  {
+    "id": "holy-weapon",
+    "name": "Священное оружие",
+    "original_name": "Holy weapon",
+    "level": 5,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "паладин"
+      }
+    ],
+    "description": "Вы наполняете оружие, которого касаетесь, святой силой. Пока заклинание активно, оружие излучает\nяркий свет\nв пределах 30 футов и\nтусклый свет\nв пределах\nещё 30 футов. Кроме того, атаки, совершенные этим оружием, наносят дополнительно 2к8 урона излучением при попадании. Если оружие ещё не является магическим, оно становится таковым на время действия заклинания.\nБонусным действием вы можете отменить это заклинание и создать вспышку света, исходящую из оружия. Каждое существо по вашему выбору, которое вы видите в пределах 30 футов от оружия, должно совершить спасбросок Телосложения. При неудачном спасброске существо получает 4к8 урона излучением, и становится\nослеплённым\nна 1 минуту.\nПри успешном спасброске существо получает половину урона и не ослепляется. В конце каждого своего хода ослеплённое существо может повторить спасбросок Телосложения, оканчивая эффект на себе при успехе.",
+    "body": "Оружие светит (#light(bright: 30, dim: 30)) и наносит +#damage(\"2d8\", radiant) при попадании. Бонусным действием завершить заклинание: #damage(\"4d8\", radiant, saving: CON, saved: halfDamage) по видимым существам в 30 фт, при провале — #effect(blinded) на 1 мин.",
+    "review": false
   }
 ]

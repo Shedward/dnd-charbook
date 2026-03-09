@@ -80,6 +80,17 @@ Fix any DSL eval errors before reporting.
 For each spell: name, `body`, `review` flag.
 Summarise: N processed, M flagged for review, any DSL gaps noticed.
 
+### Step 6.5 — Commit
+
+After a clean build, commit the batch:
+
+```bash
+git add resources/data/spellbook.json
+git commit -m "Process spells batch N: M level-X spells (first-id through last-id)"
+```
+
+Use the same message style as recent commits (see `git log --oneline -5`).
+
 ### When a new schema/rendering rule is discovered
 
 If a fix changes how a field should be stored (e.g. stripping redundant text from `material`):
