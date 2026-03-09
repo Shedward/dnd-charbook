@@ -20984,5 +20984,186 @@
     "description": "",
     "body": "Вы и до 8 сущ. (10 фт) проецируются в Астральный план. Тела — suspended animation. Серебряная нить = связь с телом; обрыв = смерть. Завершается действием, dispel или при 0 ОЗ.",
     "review": false
+  },
+  {
+    "id": "psychic-scream",
+    "name": "Психический крик",
+    "original_name": "Psychic scream",
+    "level": 9,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(90)",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "барды"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "#damage(\"14d6\", psychic, saving: INT, saved: halfDamage)\\ При провале — #effect(stunned) (ИНТ в конце хода). До 10 целей с ИНТ ≥ 3.",
+    "review": false
+  },
+  {
+    "id": "prismatic-wall",
+    "name": "Призматическая стена",
+    "original_name": "Prismatic wall",
+    "level": 9,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "Стена 90×30 фт или сфера д.30 фт (10 мин). В 20 фт — ТЕЛ или #effect(blinded) 1 мин. 7 слоёв: каждый — ЛОВ, 10к6 (огонь/кислота/электр./яд/холод) или опутан→окаменел или ослеплён→изгнание. Dispel magic (1–5 уровень слоя) снимает слои по одному.",
+    "review": false
+  },
+  {
+    "id": "power-word-heal",
+    "name": "Слово власти: Исцеление",
+    "original_name": "Power word heal",
+    "level": 9,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      }
+    ],
+    "description": "",
+    "body": "Восстанавливает все ОЗ. #cure(frightened) #cure(charmed) #cure(stunned) #cure(paralyzed). Лёжащий встаёт реакцией.",
+    "review": false
+  },
+  {
+    "id": "power-word-kill",
+    "name": "Слово власти: Смерть",
+    "original_name": "Power word kill",
+    "level": 9,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "Существо с ≤ 100 ОЗ умирает мгновенно.",
+    "review": false
+  },
+  {
+    "id": "weird",
+    "name": "Жуть",
+    "original_name": "Weird",
+    "level": 9,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "sphere(30, range: 120)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "МУД спасбросок или #effect(frightened). В конце каждого хода — МУД или #damage(\"4d10\", psychic); при успехе — заклинание для этого существа оканчивается.",
+    "review": false
   }
 ]
