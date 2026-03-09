@@ -20242,5 +20242,185 @@
     "description": "",
     "body": "Существо ≤ 150 ОЗ → #effect(stunned). ТЕЛ спасбросок в конце каждого хода для снятия.",
     "review": false
+  },
+  {
+    "id": "mind-blank",
+    "name": "Сокрытие разума",
+    "original_name": "Mind blank",
+    "level": 8,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "#immune(psychic)\\ #immuneEffect(charmed). Иммунитет к прорицанию и чтению мыслей/эмоций на 24 ч.",
+    "review": false
+  },
+  {
+    "id": "sunburst",
+    "name": "Солнечный ожог",
+    "original_name": "Sunburst",
+    "level": 8,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "sphere(60, range: 150)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "огонь и кусочек солнечного камня",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "",
+    "body": "#damage(\"12d6\", radiant, saving: CON, saved: halfDamage)\\ При провале — #effect(blinded) на 1 мин (ТЕЛ в конце хода). Нежить/Слизи — с помехой.",
+    "review": false
+  },
+  {
+    "id": "telepathy",
+    "name": "Телепатия",
+    "original_name": "Telepathy",
+    "level": 8,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "unlimited",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "два переплетённых серебряных кольца",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "Телепатическая связь со знакомым согласным существом (тот же план) на 24 ч. Взаимный обмен мыслями, образами, звуками.",
+    "review": false
+  },
+  {
+    "id": "abi-dalzims-horrid-wilting",
+    "name": "Ужасное увядание Аби-Далзима",
+    "original_name": "Abi-Dalzim's horrid wilting",
+    "level": 8,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "cube(30, range: 150)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кусочек губки",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "#damage(\"12d8\", necrotic, saving: CON, saved: halfDamage). Конструкты/Нежить — иммунны; Растения/Водные элементали — помеха.",
+    "review": false
+  },
+  {
+    "id": "tsunami",
+    "name": "Цунами",
+    "original_name": "Tsunami",
+    "level": 8,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 36.0,
+    "target": "sight",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "",
+    "body": "Стена 300×300×50 фт. При появлении — СИЛ или 6к10 дробящего (half). Каждый ход: двигается 50 фт + 5к10 СИЛ или дробящий (−1к10/раунд). Движение внутри — СИЛ (Атлетика) vs Сл заклинания.",
+    "review": false
   }
 ]
