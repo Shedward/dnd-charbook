@@ -17834,5 +17834,188 @@
     "description": "Вы создаёте разряд молнии, которая дугой бьёт цель, выбранную и видимую вами в пределах дистанции. Затем три разряда перепрыгивают с неё на другие цели, которых может быть не больше трёх, каждая из которых должна находиться в пределах 30 футов от первой цели. Цель должна совершить спасбросок Ловкости, получая 10к8 урона электричеством при провале или половину этого урона в случае успеха.\nНа больших уровнях: за каждый уровень ячейки выше 6-го из первой цели бьёт дополнительный разряд.",
     "body": "#damage(\"10d8\", lightning, saving: DEX, saved: halfDamage)\\ Перепрыгивает ещё на 3 цели в 30 фт.\\ #atHigherLevels[+1 цель за слот выше 6-го]",
     "review": false
+  },
+  {
+    "id": "find-the-path",
+    "name": "Поиск пути",
+    "original_name": "Find the path",
+    "level": 6,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "набор инструментов для ворожбы стоящий 100 зм, а также предмет из места, которое вы хотите найти",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Это заклинание позволяет найти кратчайший и самый прямой путь к определённому месту, знакомому вам, находящемуся на том же плане существования. Пока заклинание активно, вы знаете направление и расстояние до цели и автоматически выбираете кратчайший путь на каждой развилке.",
+    "body": "Указывает кратчайший путь к известному месту на том же плане. Вы всегда знаете направление и расстояние до цели.",
+    "review": false
+  },
+  {
+    "id": "heal",
+    "name": "Полное исцеление",
+    "original_name": "Heal",
+    "level": 6,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Выберите существо, видимое в пределах дистанции. Поток положительной энергии омывает его, восстанавливая 70 хитов. Это заклинание также отменяет слепоту, глухоту и все болезни, действующие на цель. Не оказывает эффекта на Конструктов и Нежить.\nНа больших уровнях: +10 хитов за каждый уровень ячейки выше шестого.",
+    "body": "Лечит 70 ОЗ, снимает слепоту, глухоту и болезни. Не действует на конструктов и нежить.\\ #atHigherLevels[+10 ОЗ за слот выше 6-го]",
+    "review": false
+  },
+  {
+    "id": "harm",
+    "name": "Поражение",
+    "original_name": "Harm",
+    "level": 6,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Цель должна совершить спасбросок Телосложения. При провале она получает 14к6 урона некротической энергией или половину этого урона при успехе. Урон не может опустить хиты ниже 1. При провале максимум хитов уменьшается на полученный урон на 1 час.",
+    "body": "#damage(\"14d6\", necrotic, saving: CON, saved: halfDamage)\\ Не опускает ОЗ ниже 1. При провале: максимум ОЗ −урон на 1 ч.",
+    "review": false
+  },
+  {
+    "id": "tashas-otherworldly-guise",
+    "name": "Потусторонний облик Таши",
+    "original_name": "Tasha's Otherworldly Guise",
+    "level": 6,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "предмет с выгравированным символом Внешних планов стоимостью не менее 500 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Нижние планы: иммунитет к огню и яду, иммунитет к «Отравлен». Верхние планы: иммунитет к излучению и некротике, иммунитет к «Очарован». В обоих случаях: полёт 40 фт, +2 КД, атаки оружием магические, 2 атаки за Атаку.",
+    "body": "Нижние планы: иммунитет к огню, яду и «Отравлен». Верхние планы: иммунитет к излучению, некротике и «Очарован». Полёт 40 фт, +2 КД, атаки магические, 2 атаки за Атаку.",
+    "review": false
+  },
+  {
+    "id": "contingency",
+    "name": "Предосторожность",
+    "original_name": "Contingency",
+    "level": 6,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 864000.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "ваша статуэтка из слоновой кости, украшенная драгоценными камнями и стоящая как минимум 1500 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Выберите заклинание 5-го уровня или ниже с временем накладывания «1 действие», нацеливающееся на вас. Накладывается вместе с Предосторожностью, но вступает в силу при первом срабатывании заданного условия, нацеливаясь только на вас.",
+    "body": "Заготавливает заклинание ≤5 ур. с условием-триггером. При первом срабатывании вступает в силу, нацеливаясь только на вас.",
+    "review": false
   }
 ]
