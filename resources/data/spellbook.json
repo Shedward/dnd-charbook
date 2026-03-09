@@ -20795,5 +20795,194 @@
     "description": "",
     "body": "До 10 существ → Зверь (МУД спасбросок для несогласных, КО ≤ КО/½ур. цели). ОЗ нового облика = врем. ОЗ; при истощении врем. ОЗ — возврат.",
     "review": false
+  },
+  {
+    "id": "invulnerability",
+    "name": "Неуязвимость",
+    "original_name": "Invulnerability",
+    "level": 9,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "небольшой кусочек адамантина стоящий не менее 500 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "Иммунитет ко всему урону на 10 мин.",
+    "review": false
+  },
+  {
+    "id": "time-stop",
+    "name": "Остановка времени",
+    "original_name": "Time stop",
+    "level": 9,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "1к4+1 дополнительных хода. Оканчивается при воздействии на других существ или перемещении >1000 фт.",
+    "review": false
+  },
+  {
+    "id": "shapechange",
+    "name": "Полное превращение",
+    "original_name": "Shapechange",
+    "level": 9,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "нефритовый обруч, стоящий как минимум 1 500 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "",
+    "body": "Принимаете облик любого существа (КО ≤ уровню, не Конструкт/Нежить). Сохраняете ИНТ/МУД/ХАР и умения класса. Действием — новый облик в течение заклинания.",
+    "review": false
+  },
+  {
+    "id": "foresight",
+    "name": "Предвидение",
+    "original_name": "Foresight",
+    "level": 9,
+    "school": "divination",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 28800.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "перо колибри",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "Нельзя застать врасплох. Преимущество на атаки, все проверки и спасброски на 8 ч. Атаки по цели — с помехой.",
+    "review": false
+  },
+  {
+    "id": "astral-projection",
+    "name": "Проекция в астрал",
+    "original_name": "Astral projection",
+    "level": 9,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": null,
+    "target": "target(10)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "гиацинт (≥1000 зм) и брусок серебра с орнаментом (≥100 зм) на каждое существо",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "Вы и до 8 сущ. (10 фт) проецируются в Астральный план. Тела — suspended animation. Серебряная нить = связь с телом; обрыв = смерть. Завершается действием, dispel или при 0 ОЗ.",
+    "review": false
   }
 ]
