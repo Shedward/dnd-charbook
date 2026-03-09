@@ -19300,5 +19300,199 @@
     "description": "Цилиндр 10 фт × 30 фт. ЛОВ спасбросок: 10к6 дробящим (половина при успехе). Большое и меньше при провале — СИЛ или опутан (5 фт вверх каждый ход). Выход: действие, СИЛ/ЛОВ против СЛ. Действием — переместить на 30 фт.",
     "body": "#damage(\"10d6\", bludgeoning, saving: DEX, saved: halfDamage)\\ Большое−: СИЛ или #effect(restrained) (+5 фт вверх/ход). Выход: действие СИЛ/ЛОВ. Действием — переместить 30 фт.",
     "review": false
+  },
+  {
+    "id": "dream-of-the-blue-veil",
+    "name": "Сон синей вуали",
+    "original_name": "Dream of the Blue Veil",
+    "level": 7,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 21600.0,
+    "target": "target(20)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "магический предмет или согласное существо из мира назначения",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "До 9 существ в 20 фт #effect(unconscious) на 6 ч. При полной длительности — телепортация на другой Материальный план. Прерывается при уроне (цель — только она не переносится; заклинатель — все остаются).",
+    "body": "До 9 существ (в 20 фт) #effect(unconscious) на 6 ч. При полной длительности — телепортация на другой мир (Материальный план). Прерывается от урона.",
+    "review": false
+  },
+  {
+    "id": "create-magen",
+    "name": "Сотворение магена",
+    "original_name": "Create magen",
+    "level": 7,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "флакон ртути стоимостью 500 зм, человеческая кукла в натуральную величину, и замысловатый хрустальный жезл стоимостью не менее 1500 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Создаёт магена из куклы. Ваш макс. ОЗ снижается на КО магена (мин. 1). Только Исполнение желаний восстанавливает. Маген подчиняется командам.",
+    "body": "Создаёт магена. Ваш макс. ОЗ −КО магена (мин. 1, только Исполнение желаний восстанавливает). Подчиняется командам.",
+    "review": false
+  },
+  {
+    "id": "mirage-arcane",
+    "name": "Таинственный мираж",
+    "original_name": "Mirage arcane",
+    "level": 7,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 864000.0,
+    "target": "sight",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Меняет облик 1 кв. мили местности (вид, звук, запах, ощущение) на 10 дней. Может создавать/убирать труднопроходимую местность. Истинное зрение видит сквозь, но физически взаимодействует.",
+    "body": "Меняет облик 1 кв. мили (10 дней): может делать/снимать труднопроходимую местность. Истинное зрение видит сквозь, но взаимодействие реально.",
+    "review": false
+  },
+  {
+    "id": "teleport",
+    "name": "Телепортация",
+    "original_name": "Teleport",
+    "level": 7,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(10)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Телепортирует себя и до 8 существ (или предмет) на этом плане. Точность зависит от знакомства с местом: Пост. круг/Связанный предмет — всегда точно; Очень знакомое — ~75%; Описанное — ~57%; Ложное — только Промах (3к10 силовым + новый бросок).",
+    "body": "Телепортирует себя и до 8 существ (или предмет) на одном плане. Точность: Пост. круг — всегда; Оч. знакомое — ~75%; Описанное — ~57%; Ложное — только Промах (#damage(\"3d10\", force) и новый бросок).",
+    "review": false
+  },
+  {
+    "id": "forcecage",
+    "name": "Узилище",
+    "original_name": "Forcecage",
+    "level": 7,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "cube(20, range: 100)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "порошок рубина, стоящий 1 500 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "Невидимая силовая тюрьма: клетка 20 фт или коробка 10 фт. Выход только телепортацией (ХАР спасбросок). Нельзя рассеять Рассеиванием магии.",
+    "body": "Невидимая тюрьма: клетка 20 фт или коробка 10 фт. Выход только магией — ХАР спасбросок. Нельзя рассеять.",
+    "review": false
   }
 ]
