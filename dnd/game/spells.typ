@@ -349,7 +349,7 @@
 #let burrowing = "burrowing"
 #let walking = "walking"
 
-#let spellSpeed(value, ..rest) = {
+#let speed(value, ..rest) = {
   let movType = rest.pos().at(0, default: walking)
   let val = if type(value) == int or type(value) == float {
     [#value #loc(en: [ft], ru: [фт])]
