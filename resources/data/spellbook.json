@@ -17460,5 +17460,205 @@
     "description": "Пока действует заклинание: дальнобойные атаки оружием по вам совершаются с помехой; скорость полёта 60 футов. Действием: создать область ураганного ветра в кубе 15 фт с центром в точке в 60 фт — ТЕЛ или 2к10 дробящего (половина при успехе); Большой и меньший при провале — отталкивает на 10 фт.",
     "body": "#disadvantage(attack)\\ Скорость полёта 60 фт. Действием: #cube(15, range: 60) — ТЕЛ или #damage(\"2d10\", bludgeoning, saved: halfDamage); Большой и меньший при провале — #move(fromYou, distance: 10).",
     "review": false
+  },
+  {
+    "id": "investiture-of-stone",
+    "name": "Облачение камня",
+    "original_name": "Investiture of stone",
+    "level": 6,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Кусочки камня покрывают ваше тело: сопротивление дробящему, колющему и рубящему урону от немагического оружия; передвижение по труднопроходимой местности из земли/камня без штрафа; проход сквозь твёрдую землю/камень (нельзя заканчивать внутри — иначе оглушены до конца следующего хода). Действием: землетрясение в 15 фт — ЛОВ или сбиты с ног.",
+    "body": "#resist(bludgeoning)\\ #resist(piercing)\\ #resist(slashing) (немагические). Проход сквозь землю/камень (нельзя заканчивать внутри — иначе #effect(stunned)). Действием: #circle(15) — ЛОВ или #effect(prone).",
+    "review": false
+  },
+  {
+    "id": "investiture-of-ice",
+    "name": "Облачение льда",
+    "original_name": "Investiture of ice",
+    "level": 6,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Ваше тело покрывается инеем: иммунитет к холоду, сопротивление огню; передвижение по льду/снегу без штрафа; #circle(10) вокруг вас — труднопроходима для других (движется с вами). Действием: конус 15 фт — ТЕЛ, 4к6 холод (половина при успехе); при провале — скорость ÷2 до начала вашего хода.",
+    "body": "Иммунитет к холоду. #resist(fire)\\ #circle(10) вокруг вас — труднопроходима для других. Действием: #cone(15) — ТЕЛ: #damage(\"4d6\", cold, saving: CON, saved: halfDamage); провал — скорость ÷2 до начала вашего хода.",
+    "review": false
+  },
+  {
+    "id": "investiture-of-flame",
+    "name": "Облачение огня",
+    "original_name": "Investiture of flame",
+    "level": 6,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Ваше тело охватывают языки пламени: иммунитет к огню, сопротивление холоду; яркий свет 30 фт и тусклый 30 фт; существа в 5 фт при входе/конце хода получают 1к10 огня. Действием: линия 15×5 фт — ЛОВ, 4к8 огонь (половина при успехе).",
+    "body": "Иммунитет к огню. #resist(cold)\\ #light(bright: 30, dim: 30)\\ Существа в 5 фт при входе/конце хода: 1к10 огня. Действием: #rectangle(15, 5, 5) — ЛОВ: #damage(\"4d8\", fire, saving: DEX, saved: halfDamage).",
+    "review": false
+  },
+  {
+    "id": "flesh-to-stone",
+    "name": "Окаменение",
+    "original_name": "Flesh to stone",
+    "level": 6,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "щепотка извести, воды и земли",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "ТЕЛ спасбросок: провал — опутан; успех — нет эффекта. Опутанный: ТЕЛ в конце каждого хода (3 провала — окаменевший до конца заклинания; 3 успеха — заклинание оканчивается). Полная концентрация — окаменение постоянное.",
+    "body": "ТЕЛ спасбросок: провал — #effect(restrained). Опутанный: ТЕЛ в конце хода (3 провала — #effect(petrified) до конца заклинания; 3 успеха — снятие). Полная концентрация → окаменение постоянное.",
+    "review": false
+  },
+  {
+    "id": "otilukes-freezing-sphere",
+    "name": "Отилюков ледяной шар",
+    "original_name": "Otiluke's Freezing Sphere",
+    "level": 6,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "sphere(60, range: 300)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "маленький хрустальный шар",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Шарик холодной энергии взрывается в точке в пределах дистанции. Все существа в сфере: ТЕЛ или 10к6 холода (половина при успехе). Замораживает воду на 6 дюймов в квадрате 30 фт (скованные существа: проверка СИЛ для освобождения). Альтернативно: удержать как шарик (бросок до 40 фт или из пращи, взрыв при попадании или через 1 мин).",
+    "body": "#damage(\"10d6\", cold, saving: CON, saved: halfDamage)\\ Замораживает воду в #square(30). Альтернативно: удержать как шарик (взрыв при броске ≤40 фт/из пращи или через 1 мин). #atHigherLevels[+1к6 за слот выше 6-го]",
+    "review": false
   }
 ]
