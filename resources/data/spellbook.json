@@ -18386,5 +18386,180 @@
     "description": "Только ночью. До трёх трупов Гуманоидов → упыри под контролем. Бонусное действие — команды (120 фт). Контроль 24 часа, требует повторного наложения для продления. На больших уровнях: более сильные или многочисленные существа.",
     "body": "Только ночью. До 3 трупов → упыри под контролем (б/д команды, 120 фт). Контроль 24 ч, требует повторного наложения.\\ #atHigherLevels[7: 4 упыря; 8: 5 упырей/2 вурдалака/умертвия; 9: 6 упырей/3 вурдалака/умертвия/2 мумии]",
     "review": false
+  },
+  {
+    "id": "blade-barrier",
+    "name": "Стена клинков",
+    "original_name": "Blade barrier",
+    "level": 6,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "rectangle(100, 20, 5, range: 90)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Вертикальная стена из крутящихся клинков. Прямая 100×20×5 фт или кольцо диаметром 60 фт × 20 фт × 5 фт. Укрытие ¾, труднопроходимая местность. При входе/начале хода в стене: ЛОВ спасбросок, 6к10 рубящего (половина при успехе).",
+    "body": "#damage(\"6d10\", slashing, saving: DEX, saved: halfDamage)\\ Укрытие ¾, труднопроходимая. Или кольцо диам. 60 фт × 20 фт.",
+    "review": false
+  },
+  {
+    "id": "guards-and-wards",
+    "name": "Стражи",
+    "original_name": "Guards and wards",
+    "level": 6,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "горящее благовоние, немного серы и масла, завязанная узлом тетива, немного крови бурого увальня и маленький серебряный жезл, стоящий как минимум 10 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Охраняет 2500 кв. фт здания на 24 ч: двери заперты (Волшебный замок), коридоры — густой туман (50% дезориентация), лестницы — Паутина. Дополнительный эффект на выбор: огоньки, волшебные уста, зловонное облако, порыв ветра или внушение. Пароль или союзники невосприимчивы.",
+    "body": "Охраняет 2500 кв. фт (24 ч): двери заперты, коридоры — туман (50% дезориентация), лестницы — Паутина. +1 эффект на выбор (огоньки/уста/облако/ветер/внушение). Пароль = иммунитет.",
+    "review": false
+  },
+  {
+    "id": "globe-of-invulnerability",
+    "name": "Сфера неуязвимости",
+    "original_name": "Globe of invulnerability",
+    "level": 6,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "circle(10)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "стеклянная или кристаллическая бусина, рассыпающаяся, когда заклинание заканчивается",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Барьер радиусом 10 фт. Все заклинания 5-го уровня и ниже, наложенные снаружи, не могут подействовать на существ и предметы внутри. На больших уровнях: +1 уровень блокировки за слот выше 6-го.",
+    "body": "Барьер блокирует заклинания 5-го уровня и ниже, наложенные снаружи.\\ #atHigherLevels[блокирует на 1 уровень выше за слот выше 6-го]",
+    "review": false
+  },
+  {
+    "id": "wall-of-thorns",
+    "name": "Терновая стена",
+    "original_name": "Wall of thorns",
+    "level": 6,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "rectangle(60, 10, 5, range: 120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "пригоршня шипов",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Стена кустов. Прямая 60×10×5 фт или кольцо диаметром 20 фт × 20 фт × 5 фт. Блокирует обзор. При появлении: ЛОВ спасбросок, 7к8 колющего. Проход: 4 фт за 1 фт, 7к8 рубящего при входе/конце хода. На больших уровнях: +1к8 к обоим видам.",
+    "body": "При появлении — #damage(\"7d8\", piercing, saving: DEX, saved: halfDamage)\\ Проход (4 фт/фт) — #damage(\"7d8\", slashing, saving: DEX, saved: halfDamage). Блокирует обзор. Или кольцо диам. 20 фт × 20 фт.\\ #atHigherLevels[+1к8 к обоим видам за слот выше 6-го]",
+    "review": false
+  },
+  {
+    "id": "tensers-transformation",
+    "name": "Трансформация Тензера",
+    "original_name": "Tenser's transformation",
+    "level": 6,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "несколько волосков быка",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Нельзя накладывать заклинания. +50 врем. ОЗ, преимущество на атаки оружием, +2к12 силовым при попадании, владение всем оружием/бронёй/щитами и спасбросками СИЛ/ТЕЛ, 2 атаки за действие Атака. По окончании: ТЕЛ СЛ 15 или 1 степень истощения.",
+    "body": "Нельзя накладывать заклинания. +50 врем. ОЗ, #advantage(attack) оружием, +2к12 силовым при попадании, влад. всем оружием/бронёй/щитами и спасбросками СИЛ/ТЕЛ, 2 атаки. По окончании: ТЕЛ СЛ 15 или 1 степень истощения.",
+    "review": false
   }
 ]
