@@ -18741,5 +18741,195 @@
     "description": "Слепое зрение 30 фт (видит невидимых). Скорость полёта 60 фт. Бонусное действие: дыхание в конусе 60 фт — ЛОВ спасбросок, 6к8 силовым (половина при успехе).",
     "body": "Слепое зрение 30 фт (видит невидимых). #speed(60, flying). Б/д — #damage(\"6d8\", force, saving: DEX, saved: halfDamage) в #cone(60).",
     "review": false
+  },
+  {
+    "id": "delayed-blast-fireball",
+    "name": "Замедленный огненный шар",
+    "original_name": "Delayed blast fireball",
+    "level": 7,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "sphere(20, range: 150)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "крошечный шарик из гуано летучей мыши и серы",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Шарик размещается в пределах дистанции. Взрывается при потере концентрации или по вашему выбору. Базовый урон 12к6 огнём, +1к6 в конце каждого хода. ЛОВ спасбросок (сфера 20 фт). При касании шарика — ЛОВ спасбросок или мгновенный взрыв. На больших уровнях: +1к6 базового урона за слот выше 7-го.",
+    "body": "#damage(\"12d6\", fire, saving: DEX, saved: halfDamage)\\ +1к6 за каждый ход ожидания. Взрыв при потере концентрации или по выбору.\\ #atHigherLevels[+1к6 базового за слот выше 7-го]",
+    "review": false
+  },
+  {
+    "id": "symbol",
+    "name": "Знак",
+    "original_name": "Symbol",
+    "level": 7,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": null,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "ртуть, фосфор и толчёные алмаз с опалом, общей стоимостью как минимум 1 000 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "Ловушка на поверхности или предмете. Срабатывает по условию (сфера 60 фт, 10 мин). Эффект на выбор: Безнадёжность (ХАР), Безумие (ИНТ), Боль (ТЕЛ, недееспособен), Ошеломление (МУД), Разногласие (ТЕЛ), Смерть (ТЕЛ, 10к10 некр.), Сон (МУД, без сознания), Страх (МУД, испуган).",
+    "body": "Ловушка-знак, срабатывает по условию (сфера 60 фт). Эффект на выбор: Безнадёжность (ХАР), Безумие (ИНТ), Боль (ТЕЛ, #effect(incapacitated)), #effect(stunned, saving: WIS) (Ошеломление), Разногласие (ТЕЛ), #damage(\"10d10\", necrotic, saving: CON, saved: halfDamage) (Смерть), #effect(unconscious, saving: WIS) (Сон), #effect(frightened, saving: WIS) (Страх).",
+    "review": false
+  },
+  {
+    "id": "reverse-gravity",
+    "name": "Изменение тяготения",
+    "original_name": "Reverse gravity",
+    "level": 7,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "cylinder(50, 100, range: 100)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "магнетит и железные опилки",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Обращает гравитацию в цилиндре 50 фт × 100 фт. Несекреплённые существа и предметы падают вверх. ЛОВ спасбросок — схватиться за закреплённый предмет. Урон от столкновения с потолком = урон от падения. По окончании — падают вниз.",
+    "body": "ЛОВ спасбросок или падение вверх. Урон от столкновения с потолком = урон от падения. По окончании — падают вниз.",
+    "review": false
+  },
+  {
+    "id": "sequester",
+    "name": "Изоляция",
+    "original_name": "Sequester",
+    "level": 7,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": null,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "смесь порошков из бриллианта, изумруда, рубина и сапфира, стоящая как минимум 5 000 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Согласное существо или предмет → #effect(invisible), невидим для Прорицания и его сенсоров. Существо: приостановленная жизнь (не стареет). Заканчивается при выполнении условия или при получении урона.",
+    "body": "#effect(invisible) + невидим для Прорицания. Существо: приостановленная жизнь. Оканчивается по условию или при уроне.",
+    "review": false
+  },
+  {
+    "id": "crown-of-stars",
+    "name": "Корона звёзд",
+    "original_name": "Crown of stars",
+    "level": 7,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "7 звёздных частиц. Б/д — дальн. атака закл. (120 фт): #damage(\"4d12\", radiant, ranged: true). #light(bright: 30, dim: 30) при ≥4 частицах, тусклый 30 фт при <4. На больших уровнях: +2 частицы за слот выше 7-го.",
+    "body": "7 частиц. Б/д — дальн. атака закл. (120 фт): #damage(\"4d12\", radiant, ranged: true).\\ #light(bright: 30, dim: 30) при ≥4 частицах.\\ #atHigherLevels[+2 частицы за слот выше 7-го]",
+    "review": false
   }
 ]
