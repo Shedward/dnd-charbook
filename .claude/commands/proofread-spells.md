@@ -38,11 +38,7 @@ If it returns `[]` — all spells are done.
 jq '[.[] | select(.id | IN("id1","id2",...))]' resources/data/spellbook.json
 ```
 
-### Step 3 — Read original Russian descriptions
-
-```bash
-scripts/spells-read.sh --text id1 id2 ...
-```
+The `description` field is now always populated (filled in bulk from `text_spells.json`). Use it directly — no need for a separate `--text` read unless the description looks wrong or truncated.
 
 ### Step 4 — Review each spell
 
@@ -59,6 +55,9 @@ scripts/spells-render-body.sh 'body string here'
 
 Outputs a plain-text Russian line showing what will appear in the spell table.
 Useful for catching missing `\\` separators and structure issues.
+
+**Reading the output** — damage type abbreviations used: псих. некр. огн. кисл. хол. элект. яд. сил. грм. изл. дроб. кол. руб.
+Saving throws show as e.g. `МУД или`. Movement shows as e.g. `СИЛ или Притяг. 10 фт`. Scaling shows as `Выс. ур.: …`
 
 ### Step 5 — Apply all changes via jq
 
@@ -148,6 +147,9 @@ Apply to every spell. Check each point:
 - **Obscure words**: "тактильного" → "физического", "триггер" → describe the trigger in Russian
 - **Arrow `→` character** in body text — avoid, use prose instead
 - **Level scaling in prose** should use МУД/СИЛ/etc. not MOD when written as prose text (MOD is only for inside `#damage("...+MOD", ...)`)
+- **Cantrip scaling** should always use `#atHigherLevels[+1кX на уровнях 5, 11 и 17]`, not inline prose. Weapon-attack cantrips (booming-blade, green-flame-blade) with complex multi-value scaling are the exception — use prose inside `#atHigherLevels[…]`
+- **Weapon attack spells** — lead with "Рукопашная атака оружием." not the damage macro; the attack roll is separate from the damage DSL
+- **Step 3 is now optional** — `description` is populated in all records. Only fall back to `scripts/spells-read.sh --text id …` if a description looks wrong or incomplete
 
 ---
 
