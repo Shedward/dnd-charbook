@@ -334,13 +334,37 @@
 // Curing conditions / diseases
 #let disease = "disease"
 #let cureName(c) = if c == disease {
-  loc(en: "disease", ru: "болезнь")
+  loc(en: "disease", ru: "Болезнь")
 } else {
   conditionName(c)
 }
 #let cure(..items) = [
   *#loc(en: [Cures], ru: [Снимает]): #items.pos().map(cureName).join[, ]*
 ]
+
+// Movement speed
+#let flying = "flying"
+#let swimming = "swimming"
+#let climbing = "climbing"
+#let burrowing = "burrowing"
+#let walking = "walking"
+
+#let spellSpeed(value, ..rest) = {
+  let movType = rest.pos().at(0, default: walking)
+  let val = if type(value) == int or type(value) == float {
+    [#value #loc(en: [ft], ru: [фт])]
+  } else {
+    [#value]
+  }
+  let label = (
+    flying:   loc(en: "Fly",    ru: "Полёт"),
+    swimming: loc(en: "Swim",   ru: "Плавание"),
+    climbing: loc(en: "Climb",  ru: "Лазание"),
+    burrowing: loc(en: "Burrow", ru: "Рытьё"),
+    walking:  loc(en: "Speed",  ru: "Скорость"),
+  ).at(movType)
+  [*#label: #val*]
+}
 
 // Light
 #let light(bright: 0, dim: 0) = [

@@ -280,6 +280,16 @@ Separate with `\` (Typst line break):
 #move(fromYou, distance: 10, saving: STR)
 ```
 
+### Movement speed
+```
+#speed(40, flying)
+#speed(30, swimming)
+#speed(20, climbing)
+#speed(-10)
+#speed("+10")
+```
+Second positional arg is the movement type token: `flying`, `swimming`, `climbing`, `burrowing`. Omit for base walking speed. Integer values auto-append "фт"; strings display as-is (for modifiers like "+10", "÷2").
+
 ### NOT YET IMPLEMENTED — use prose
 
 When a pattern appears 3+ times, add it to the DSL (see extension process above).

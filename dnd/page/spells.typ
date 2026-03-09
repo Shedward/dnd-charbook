@@ -1,5 +1,6 @@
 #import "../core/core.typ": *
 #import "../game/game.typ": *
+#import "../game/spells.typ": spellSpeed
 #import "../data/data.typ": *
 
 #let spellRow(spell) = (
@@ -194,6 +195,7 @@
   resist: resist, weakness: weakness, immune: immune, immuneEffect: immuneEffect,
   cure: cure, disease: disease,
   light: light,
+  speed: spellSpeed, flying: flying, swimming: swimming, climbing: climbing, burrowing: burrowing,
   move: move, toYou: toYou, fromYou: fromYou,
   target: target, touch: touch, self: self, point: point, sight: sight, unlimited: unlimited,
   circle: circle, ring: ring, square: square, cube: cube, sphere: sphere,
