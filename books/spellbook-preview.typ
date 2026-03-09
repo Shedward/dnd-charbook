@@ -14,9 +14,10 @@
 )
 #setCharacter(testChar)
 
-// Show only the last 10 processed spells
+// Show only the current batch (count passed via --input count=N, default 5)
+#let count = int(sys.inputs.at("count", default: "5"))
 #let sb = dnd.data.spellbook()
-#let batch = sb.slice(sb.len() - 10)
+#let batch = sb.slice(sb.len() - count)
 
 = Предпросмотр партии
 

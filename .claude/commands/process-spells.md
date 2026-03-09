@@ -67,10 +67,10 @@ Pass all new records as a single JSON array argument. Creates the file if it doe
 ### Step 5 — Verify build
 
 ```bash
-scripts/spells-preview.sh
+scripts/spells-preview.sh <N>
 ```
 
-Renders only the last 10 spells — use this to check the current batch.
+Pass the batch size so only the current batch is shown (5 / 10 / 15 matching the batch size rule above).
 For full regression after DSL changes: `scripts/spells-preview.sh --full`
 
 Fix any DSL eval errors before reporting.
