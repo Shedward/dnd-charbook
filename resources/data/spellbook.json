@@ -19113,5 +19113,192 @@
     "description": "Призывает Небожителя КО ≤ 4. Дружественен, подчиняется командам. На больших уровнях: 9-й уровень → КО ≤ 5.",
     "body": "Призывает Небожителя КО ≤ 4. Дружественен, подчиняется командам.\\ #atHigherLevels[9-й уровень: КО ≤ 5]",
     "review": false
+  },
+  {
+    "id": "project-image",
+    "name": "Проекция",
+    "original_name": "Project image",
+    "level": 7,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "unlimited",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "ваша небольшая копия, изготовленная из материала, стоящего не менее 5 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Иллюзорная копия себя (до 500 миль, в ранее виденном месте). Можно говорить, двигаться (действие). Видеть/слышать её чувствами (б/д переключение). Пока используете её чувства — #effect(blinded) и #effect(deafened) для себя. Разрушается от урона.",
+    "body": "Иллюзорная копия в ранее виденном месте (500 миль). Действие — переместить/говорить. Б/д — переключить чувства (пока активно — #effect(blinded) и #effect(deafened) для вас). Разрушается от урона.",
+    "review": false
+  },
+  {
+    "id": "prismatic-spray",
+    "name": "Радужные брызги",
+    "original_name": "Prismatic spray",
+    "level": 7,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "cone(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      }
+    ],
+    "description": "ЛОВ спасбросок. 1к8 за цель: 1-5 — 10к6 огонь/кисл./элект./яд/холод; 6 — опутан (3 провала ТЕЛ → окаменел); 7 — ослеплён (МУД → изгнание на план); 8 — два луча.",
+    "body": "ЛОВ спасбросок, 1к8 за цель: 1–5 #damage(\"10d6\", fire, saving: DEX, saved: halfDamage) (огонь/кисл./элект./яд/холод); 6 #effect(restrained) (3 провала ТЕЛ → #effect(petrified)); 7 #effect(blinded) (МУД или изгнание); 8 — два луча.",
+    "review": false
+  },
+  {
+    "id": "regenerate",
+    "name": "Регенерация",
+    "original_name": "Regenerate",
+    "level": 7,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "молитвенный барабан и святая вода",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Немедленно: 4к8+15 ОЗ. Затем +1 ОЗ в начале каждого хода (1 ч). Потерянные части тела восстанавливаются через 2 мин.",
+    "body": "#heal(\"4d8+15\")\\ +1 ОЗ в начале каждого хода. Потерянные части тела — через 2 мин.",
+    "review": false
+  },
+  {
+    "id": "power-word-pain",
+    "name": "Слово силы: боль",
+    "original_name": "Power word pain",
+    "level": 7,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Только цели с ≤100 ОЗ (без иммунитета к Очарованию). Скорость ≤10 фт, помеха атакам, проверкам, спасброскам (кроме ТЕЛ). При заклинании — ТЕЛ спасбросок. ТЕЛ в конце хода — снять эффект.",
+    "body": "Только ≤100 ОЗ (без имм. к Очарованию). Скорость ≤10 фт.\\ #disadvantage(attack) + помеха проверкам/спасброскам (кроме ТЕЛ). При закл. — ТЕЛ или тратится. ТЕЛ в конце хода — снять.",
+    "review": false
+  },
+  {
+    "id": "whirlwind",
+    "name": "Смерч",
+    "original_name": "Whirlwind",
+    "level": 7,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "cylinder(10, 30, range: 300)",
+    "components": {
+      "components": [
+        "S",
+        "M"
+      ],
+      "material": "соломинка",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "Цилиндр 10 фт × 30 фт. ЛОВ спасбросок: 10к6 дробящим (половина при успехе). Большое и меньше при провале — СИЛ или опутан (5 фт вверх каждый ход). Выход: действие, СИЛ/ЛОВ против СЛ. Действием — переместить на 30 фт.",
+    "body": "#damage(\"10d6\", bludgeoning, saving: DEX, saved: halfDamage)\\ Большое−: СИЛ или #effect(restrained) (+5 фт вверх/ход). Выход: действие СИЛ/ЛОВ. Действием — переместить 30 фт.",
+    "review": false
   }
 ]
