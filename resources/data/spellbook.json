@@ -18931,5 +18931,187 @@
     "description": "7 звёздных частиц. Б/д — дальн. атака закл. (120 фт): #damage(\"4d12\", radiant, ranged: true). #light(bright: 30, dim: 30) при ≥4 частицах, тусклый 30 фт при <4. На больших уровнях: +2 частицы за слот выше 7-го.",
     "body": "7 частиц. Б/д — дальн. атака закл. (120 фт): #damage(\"4d12\", radiant, ranged: true).\\ #light(bright: 30, dim: 30) при ≥4 частицах.\\ #atHigherLevels[+2 частицы за слот выше 7-го]",
     "review": false
+  },
+  {
+    "id": "mordenkainens-sword",
+    "name": "Меч Морденкайнена",
+    "original_name": "Mordenkainen's sword",
+    "level": 7,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "миниатюрный платиновый меч с рукояткой и навершием из меди и цинка, стоящий 250 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Силовой меч паря в пределах дистанции. Рукопашная атака закл. (5 фт): 3к10 силовым. Б/д — переместить на 20 фт, повторить атаку.",
+    "body": "Рукопашная атака закл. (в 5 фт от меча): #damage(\"3d10\", force)\\ Б/д — переместить на 20 фт, повторить атаку.",
+    "review": false
+  },
+  {
+    "id": "fire-storm",
+    "name": "Огненная буря",
+    "original_name": "Fire storm",
+    "level": 7,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "cube(10, range: 150)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "До 10 смежных кубов 10 фт в пределах 150 фт. ЛОВ спасбросок: 7к10 огня (половина при успехе).",
+    "body": "#damage(\"7d10\", fire, saving: DEX, saved: halfDamage)\\ До 10 смежных кубов 10 фт (по вашему выбору).",
+    "review": false
+  },
+  {
+    "id": "finger-of-death",
+    "name": "Перст смерти",
+    "original_name": "Finger of death",
+    "level": 7,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "ТЕЛ спасбросок: 7к8+30 некротическим (половина при успехе). Убитый Гуманоид → зомби под вечным командованием.",
+    "body": "#damage(\"7d8+30\", necrotic, saving: CON, saved: halfDamage)\\ Убитый Гуманоид → зомби под командованием.",
+    "review": false
+  },
+  {
+    "id": "simulacrum",
+    "name": "Подобие",
+    "original_name": "Simulacrum",
+    "level": 7,
+    "school": "illusion",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 12,
+      "condition": null
+    },
+    "duration": null,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "снег или лёд в количестве, достаточном для создания точной копии существа, немного волос, обрезков ногтей или других частей тела этого существа, и толчёный рубин стоимостью 1500 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "Ледяная копия Зверя/Гуманоида: полные характеристики, ½ ОЗ, нет снаряжения, считается Конструктом. Подчиняется командам. Не повышает уровень, не восстанавливает ячейки. Ремонт: 100 зм/ОЗ. Только одна копия одновременно.",
+    "body": "Ледяная копия (Зверь/Гуманоид): ½ ОЗ, нет снаряжения, Конструкт. Подчиняется командам. Не повышает уровень, не восстанавливает ячейки. Ремонт: 100 зм/ОЗ. Только одна.",
+    "review": false
+  },
+  {
+    "id": "conjure-celestial",
+    "name": "Призыв небожителя",
+    "original_name": "Conjure celestial",
+    "level": 7,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(90)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "Призывает Небожителя КО ≤ 4. Дружественен, подчиняется командам. На больших уровнях: 9-й уровень → КО ≤ 5.",
+    "body": "Призывает Небожителя КО ≤ 4. Дружественен, подчиняется командам.\\ #atHigherLevels[9-й уровень: КО ≤ 5]",
+    "review": false
   }
 ]
