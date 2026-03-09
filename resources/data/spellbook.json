@@ -19687,5 +19687,193 @@
     "description": "",
     "body": "Выбранные существа в 30 фт: атаки по ним с помехой, спасброски с преимуществом. Если Исчадие/Нежить попадает рукопашной — ТЕЛ спасбросок или #effect(blinded) до конца заклинания.",
     "review": false
+  },
+  {
+    "id": "control-weather",
+    "name": "Власть над погодой",
+    "original_name": "Control weather",
+    "level": 8,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "minute",
+      "value": 10,
+      "condition": null
+    },
+    "duration": 28800.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "горящее благовоние и кусочки земли и дерева, смешанные с водой",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "",
+    "body": "Управляет погодой в радиусе 5 миль: изменяет осадки, температуру или ветер на одну ступень (1к4×10 мин на вступление). Только на открытом воздухе.",
+    "review": false
+  },
+  {
+    "id": "incendiary-cloud",
+    "name": "Воспламеняющаяся туча",
+    "original_name": "Incendiary cloud",
+    "level": 8,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "sphere(20, range: 150)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "",
+    "body": "#damage(\"10d8\", fire, saving: DEX, saved: halfDamage) при входе/конце хода. Облако перемещается на 10 фт от вас каждый ход.",
+    "review": false
+  },
+  {
+    "id": "clone",
+    "name": "Двойник",
+    "original_name": "Clone",
+    "level": 8,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "алмаз, стоящий как минимум 1000 зм, и как минимум 1 кубический дюйм (16 кубических сантиметров) плоти клонируемого существа",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      }
+    ],
+    "description": "",
+    "body": "Выращивает клон существа за 120 дней. При смерти оригинала его душа переходит в клон. Тело оригинала инертно и не подлежит оживлению.",
+    "review": false
+  },
+  {
+    "id": "demiplane",
+    "name": "Демиплан",
+    "original_name": "Demiplane",
+    "level": 8,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "Создаёт дверь на поверхности в демиплан (комната 30×30×30 фт) на 1 ч. При окончании существа внутри остаются заперты. При повторном накладывании можно соединить с прежним демипланом.",
+    "review": false
+  },
+  {
+    "id": "earthquake",
+    "name": "Землетрясение",
+    "original_name": "Earthquake",
+    "level": 8,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "circle(100, range: 500)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "щепотка земли, кусочек камня и комочек глины",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "Труднопроходимая область. ЛОВ спасбросок каждый ход или #effect(prone). Концентрирующиеся существа — ТЕЛ спасбросок или сбой. Трещины: ЛОВ или падение (1к10×10 фт). Здания: 50 дробящего/ход; при разрушении — ЛОВ или #damage(\"5d6\", bludgeoning) + завал (СЛ 20 СИЛ).",
+    "review": false
   }
 ]
