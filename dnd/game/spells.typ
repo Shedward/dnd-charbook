@@ -314,21 +314,21 @@
   *#loc(en: [Disadv.], ru: [Помеха]): #rollTargetName(on)*
 ]
 
-// Resistance / vulnerability
-#let resist(damageType) = [
-  *#loc(en: [Resist.], ru: [Сопр.]): #damageTypeShortName(damageType)*
+// Resistance / vulnerability / immunity
+#let resist(..types) = [
+  *#loc(en: [Resist.], ru: [Сопр.]): #types.pos().map(damageTypeShortName).join[, ]*
 ]
 
-#let weakness(damageType) = [
-  *#loc(en: [Vuln.], ru: [Уязв.]): #damageTypeShortName(damageType)*
+#let weakness(..types) = [
+  *#loc(en: [Vuln.], ru: [Уязв.]): #types.pos().map(damageTypeShortName).join[, ]*
 ]
 
-#let immune(damageType) = [
-  *#loc(en: [Immune], ru: [Иммун.]): #damageTypeShortName(damageType)*
+#let immune(..types) = [
+  *#loc(en: [Immune], ru: [Иммун.]): #types.pos().map(damageTypeShortName).join[, ]*
 ]
 
-#let immuneEffect(condition) = [
-  *#loc(en: [Immune], ru: [Иммун.]): #conditionName(condition)*
+#let immuneEffect(..conditions) = [
+  *#loc(en: [Immune], ru: [Иммун.]): #conditions.pos().map(conditionName).join[, ]*
 ]
 
 // Curing conditions / diseases
@@ -338,8 +338,8 @@
 } else {
   conditionName(c)
 }
-#let cure(conditionOrDisease) = [
-  *#loc(en: [Cures], ru: [Снимает]): #cureName(conditionOrDisease)*
+#let cure(..items) = [
+  *#loc(en: [Cures], ru: [Снимает]): #items.pos().map(cureName).join[, ]*
 ]
 
 // Light
