@@ -139,7 +139,8 @@ Apply to every spell. Check each point:
 
 ## Common issues found in early batches
 
-- **Missing `\\` separator** between a DSL macro and following prose (e.g. `#damage(...)\ Цель не может...`)
+- **Missing `\\` separator** between a DSL macro and following prose (e.g. `#damage(...)\ Цель не может...`) — the most common issue
+- **Secondary effects of a failed save** — use `#disadvantage(attack)` / `#effect(...)` with a "При провале —" prose prefix, not raw prose for the whole thing: `#damage(..., saving: CON)\ При провале — #disadvantage(attack) на следующую атаку оружием.`
 - **Stray punctuation** before `\\` (e.g. `. \` — remove the period)
 - **`review: true` spells** that were just utility/choose-one cantrips — all cleared during proofread
 - **Weather prediction duration** in druidcraft-style bodies was labeled "(1 раунд)" — should be "на следующие 24 ч"
