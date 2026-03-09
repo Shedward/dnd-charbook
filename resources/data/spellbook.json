@@ -20422,5 +20422,190 @@
     "description": "",
     "body": "Стена 300×300×50 фт. При появлении — СИЛ или 6к10 дробящего (half). Каждый ход: двигается 50 фт + 5к10 СИЛ или дробящий (−1к10/раунд). Движение внутри — СИЛ (Атлетика) vs Сл заклинания.",
     "review": false
+  },
+  {
+    "id": "gate",
+    "name": "Врата",
+    "original_name": "Gate",
+    "level": 9,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "бриллиант, стоящий как минимум 5 000 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "Создаёт портал диаметром 5–20 фт на другой план на 1 мин. Можно назвать имя существа — оно втягивается через портал (контроль над ним не предоставляется).",
+    "review": false
+  },
+  {
+    "id": "storm-of-vengeance",
+    "name": "Гроза гнева",
+    "original_name": "Storm of vengeance",
+    "level": 9,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "sight",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "друид"
+      }
+    ],
+    "description": "",
+    "body": "Тучи р.360 фт (до 5000 фт высота). Р.1: ТЕЛ или 2к6 грома + #effect(deafened) 5 мин. Р.2: 1к6 кислот. авто. Р.3: 6 молний — ЛОВ или 10к6 элект. (half). Р.4: 2к6 дроб. авто. Р.5–10: 1к6 холод, труднопроходимо, нет дальн. атак.",
+    "review": false
+  },
+  {
+    "id": "imprisonment",
+    "name": "Заточение",
+    "original_name": "Imprisonment",
+    "level": 9,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "minute",
+      "value": 1,
+      "condition": null
+    },
+    "duration": null,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "рисунок или резная статуэтка, изображающая цель, и особый компонент (≥500 зм × КХ цели)",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "МУД спасбросок или постоянное заточение (форма на выбор: под землёй, уменьшение в камне, демиплан, сон, цепи). Освобождает рассеивание магии 9-го уровня.",
+    "review": false
+  },
+  {
+    "id": "wish",
+    "name": "Исполнение желаний",
+    "original_name": "Wish",
+    "level": 9,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "Дублирует заклинание ≤8 уровня (без компонентов). Или: предмет 25000 зм; лечение 20 сущ. (+ greater restoration); сопротивление / иммунитет 10 сущ.; отмена события. Нестандартное желание: ослабление (1к10 некр./слот + СИЛ→3 + 33% навсегда).",
+    "review": false
+  },
+  {
+    "id": "true-resurrection",
+    "name": "Истинное воскрешение",
+    "original_name": "True resurrection",
+    "level": 9,
+    "school": "necromancy",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "немного святой воды и бриллианты, стоящие как минимум 25 000 зм",
+      "material_required": true,
+      "material_consumed": true
+    },
+    "classes": [
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "",
+    "body": "Воскрешает существо (мёртвое ≤200 лет, не от старости) с полными ОЗ. Снимает болезни, яды, проклятия. Восстанавливает части тела. Может создать новое тело по имени.",
+    "review": false
   }
 ]
