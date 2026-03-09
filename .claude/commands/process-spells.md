@@ -180,6 +180,15 @@ Formula tokens: `STR` `DEX` `CON` `INT` `WIS` `CHA` (stat modifiers), `MOD` (spe
 ```
 #heal("1d8+WIS")
 ```
+Flat values (e.g. `#heal("70")`) also work — no variance range shown when there are no dice.
+
+### Curing conditions / diseases
+```
+#cure(blinded)
+#cure(disease)
+```
+Same condition tokens as `#effect`. Use `disease` constant for disease removal.
+`#cure` is for removing conditions; `#immuneEffect` is for granting immunity to them.
 
 ### Inline formula value
 ```

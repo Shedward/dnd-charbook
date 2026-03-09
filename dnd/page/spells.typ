@@ -192,6 +192,7 @@
   advantage: advantage, disadvantage: disadvantage,
   attack: attack,
   resist: resist, weakness: weakness, immune: immune, immuneEffect: immuneEffect,
+  cure: cure, disease: disease,
   light: light,
   move: move, toYou: toYou, fromYou: fromYou,
   target: target, touch: touch, self: self, point: point, sight: sight, unlimited: unlimited,

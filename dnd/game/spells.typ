@@ -201,7 +201,13 @@
     )
   )
 
-  [#formula #caption[(#evalVariance("min") - #evalVariance("max"))]]
+  let minVal = evalVariance("min")
+  let maxVal = evalVariance("max")
+  if minVal == maxVal {
+    [#formula]
+  } else {
+    [#formula #caption[(#minVal - #maxVal)]]
+  }
 }
 
 #let characterFormula(character, formula) = {
@@ -323,6 +329,17 @@
 
 #let immuneEffect(condition) = [
   *#loc(en: [Immune], ru: [Иммун.]): #conditionName(condition)*
+]
+
+// Curing conditions / diseases
+#let disease = "disease"
+#let cureName(c) = if c == disease {
+  loc(en: "disease", ru: "болезнь")
+} else {
+  conditionName(c)
+}
+#let cure(conditionOrDisease) = [
+  *#loc(en: [Cures], ru: [Снимает]): #cureName(conditionOrDisease)*
 ]
 
 // Light
