@@ -35,17 +35,19 @@ If it returns `[]` — all spells are done.
 ### Step 2 — Read current records from spellbook.json
 
 ```bash
-jq '[.[] | select(.id | IN("id1","id2",...))]' resources/data/spellbook.json
+jq '[.[] | select(.id | IN("id1","id2",...))] | map({id, target, body, description})' resources/data/spellbook.json
 ```
 
-The `description` field is now always populated (filled in bulk from `text_spells.json`). Use it directly — no need for a separate `--text` read unless the description looks wrong or truncated.
+Always fetch `target` alongside `body` and `description` — you need `target` to know what's already shown in the target column (and therefore what NOT to duplicate in `body`).
 
-### Step 4 — Review each spell
+The `description` field is always populated. Only fall back to `scripts/spells-read.sh --text id …` if a description looks wrong or truncated.
 
-Compare `body` against the full description. Apply the style checklist below.
+### Step 3 — Review each spell
+
+Compare `body` against the full description and the `target` field. Apply the style checklist and common-issues list below.
 Set `"proofread": true` and `"review": false` on every spell regardless of whether it was changed.
 
-### Step 4.5 — Optional: check how a body renders
+### Step 3.5 — Optional: check how a body renders
 
 When uncertain how a body actually looks rendered:
 
@@ -54,14 +56,14 @@ scripts/spells-render-body.sh 'body string here'
 ```
 
 Outputs a plain-text Russian line showing what will appear in the spell table.
-Useful for catching missing `\\` separators and structure issues.
+Useful for catching missing `\` separators and structure issues.
 
-**Reading the output** — damage type abbreviations used: псих. некр. огн. кисл. хол. элект. яд. сил. грм. изл. дроб. кол. руб.
+**Reading the output** — damage type abbreviations: псих. некр. огн. кисл. хол. элект. яд. сил. грм. изл. дроб. кол. руб.
 Saving throws show as e.g. `МУД или`. Movement shows as e.g. `СИЛ или Притяг. 10 фт`. Scaling shows as `Выс. ур.: …`
 
-### Step 5 — Apply all changes via jq
+### Step 4 — Apply all changes via jq
 
-Use `jq --arg` to patch spellbook.json directly — no temp file or `spells-update.sh` needed:
+Use `jq --arg` to patch spellbook.json directly:
 
 ```bash
 TMP=$(mktemp)
@@ -77,13 +79,13 @@ jq \
 ```
 
 **Escaping rules for `--arg` values (bash single quotes):**
-- Single-quoted strings in bash preserve `\` and `"` literally — no escaping needed
-- A Typst line break `\` in the body becomes a literal `\` in the `--arg` value; jq JSON-encodes it as `\\` automatically
-- Inner `"` in DSL calls (e.g. `#damage("1d6", ...)`) are preserved as-is in single quotes
+- Single-quoted strings preserve `\` and `"` literally — no escaping needed
+- A Typst line break `\` becomes a literal `\` in the value; jq JSON-encodes it as `\\` automatically
+- Inner `"` in DSL calls (e.g. `#damage("1d6", ...)`) are preserved as-is
 
 **Group unchanged spells** into a single `IN(...)` branch — avoids repeating `.+ {"review": false, "proofread": true}` per spell.
 
-### Step 6 — Verify build
+### Step 5 — Verify build
 
 ```bash
 scripts/spells-preview.sh --full
@@ -91,12 +93,12 @@ scripts/spells-preview.sh --full
 
 Fix any DSL eval errors before committing.
 
-### Step 7 — Report
+### Step 6 — Report
 
 List each changed spell: name + what was fixed.
 Summary line: "N reviewed, M changed."
 
-### Step 8 — Commit
+### Step 7 — Commit
 
 ```bash
 git add resources/data/spellbook.json
@@ -112,45 +114,117 @@ Apply to every spell. Check each point:
 1. **Coverage** — `body` contains all mechanically important details from the description. Nothing relevant for actual play omitted.
 
 2. **No duplication of visible fields** — Do NOT restate: casting time, duration, range/area, component letters. These are shown in other columns.
-   - Exception: early-termination conditions are fine ("ends if caster moves >60 фт").
+   - Exception: early-termination conditions are fine ("оканчивается при выходе из купола").
+   - Exception: target count or key qualifier ("до 6 существ") can stay if it's not visible elsewhere.
 
-3. **No internal repetition** — each mechanical fact stated exactly once.
+3. **No duplication of the `target` field** — if the `target` field already encodes the shape (e.g. `cylinder(40, 20, range: 150)`, `circle(15)`, `cube(20, range: 60)`), do NOT restate that shape in `body`. If `target` is just `target(N)` (a single point), the area shape IS useful in `body` (e.g. "Куб 40 фт").
 
-4. **Readable lists** — multiple distinct options must use `\\` line breaks, not a comma-run-on sentence.
+4. **No internal repetition** — each mechanical fact stated exactly once.
 
-5. **Length** — 1–3 lines max. Cut all flavor text. Cut re-statements of other fields.
+5. **Readable lists** — multiple distinct options must use `\` line breaks, not a comma-run-on sentence.
 
-6. **Abbreviations** — use only clear universal ones:
+6. **Length** — 1–3 lines max. Cut all flavor text. Cut re-statements of other fields.
+
+7. **Abbreviations** — use only clear universal ones:
    - Stats: СИЛ ЛОВ ТЕЛ ИНТ МУД ХАР
    - Common: ОЗ КД фт мин ч к4 к6 к8 к10 к12 к20
+   - Spacing: always "10 фт" (space before фт), "р. 10 фт" (space after р.)
    - Avoid anything a player might not immediately recognize
 
-7. **Language** — all prose must be Russian. DSL tokens inside `#macro(…)` are exempt (they render to icons/labels, not raw text).
+8. **Language** — all prose must be Russian. DSL tokens inside `#macro(…)` are exempt (they render to icons/labels, not raw text).
 
-8. **Coherent structure** — consistent order across all spells:
+9. **Coherent structure** — consistent order across all spells:
    - DSL macro for the primary effect first (`#damage`, `#heal`, `#effect`)
    - Secondary effects after
    - Prose exceptions/conditions last
    - `#atHigherLevels[…]` always last
 
-9. **`review` flag** — always set to `false`. Proofreading is the final pass.
+10. **`review` flag** — always set to `false`. Proofreading is the final pass.
 
 ---
 
-## Common issues found in early batches
+## Common issues (found across batches 1–12)
 
-- **Missing `\\` separator** between a DSL macro and following prose (e.g. `#damage(...)\ Цель не может...`) — the most common issue
-- **Secondary effects of a failed save** — use `#disadvantage(attack)` / `#effect(...)` with a "При провале —" prose prefix, not raw prose for the whole thing: `#damage(..., saving: CON)\ При провале — #disadvantage(attack) на следующую атаку оружием.`
-- **Stray punctuation** before `\\` (e.g. `. \` — remove the period)
-- **`review: true` spells** that were just utility/choose-one cantrips — all cleared during proofread
-- **Weather prediction duration** in druidcraft-style bodies was labeled "(1 раунд)" — should be "на следующие 24 ч"
-- **Missing key conditions** on the spell (e.g. "цель должна вас слышать" for vicious-mockery, "не враждебного" for friends)
-- **Obscure words**: "тактильного" → "физического", "триггер" → describe the trigger in Russian
-- **Arrow `→` character** in body text — avoid, use prose instead
-- **Level scaling in prose** should use МУД/СИЛ/etc. not MOD when written as prose text (MOD is only for inside `#damage("...+MOD", ...)`)
-- **Cantrip scaling** should always use `#atHigherLevels[+1кX на уровнях 5, 11 и 17]`, not inline prose. Weapon-attack cantrips (booming-blade, green-flame-blade) with complex multi-value scaling are the exception — use prose inside `#atHigherLevels[…]`
-- **Weapon attack spells** — lead with "Рукопашная атака оружием." not the damage macro; the attack roll is separate from the damage DSL
-- **Step 3 is now optional** — `description` is populated in all records. Only fall back to `scripts/spells-read.sh --text id …` if a description looks wrong or incomplete
+### Separators
+
+- **Missing `\` between a DSL macro and following prose** — the most common issue.
+  `#damage("3d8", radiant, saving: WIS)\ Тип — некрот. если заклинатель злой.`
+- **Missing `\` before `#atHigherLevels`** — must always have `\` before it when preceded by anything.
+- **Stray punctuation before `\`** — remove trailing period/comma: `. \` → ` \`.
+- **Inline short qualifiers are OK without `\`** — a short qualifier that directly modifies the preceding macro doesn't need `\`: `#advantage(attack) на следующую атаку` is fine on one line. The `\` rule applies to new sentences or distinct effects.
+
+### Saving throws
+
+- **`saved: noDamage` vs `saved: halfDamage`** — DSL default is `halfDamage`. Most spells deal NO damage on a successful save, so explicitly write `saved: noDamage`. Only use `saved: halfDamage` when the description explicitly says "половина при успехе" or "half on a success".
+- **Secondary effects of a failed save** — use DSL macros with a "При провале —" prose prefix:
+  `#damage("2d6", cold, saving: CON, saved: noDamage)\ При провале — #effect(restrained, saving: CON)`
+  Do NOT restate the saving throw stat in the "При провале" prose if it's identical to the preceding `saving:`.
+
+### Symbols to avoid
+
+- **`≤` / `≥`** — avoid Unicode comparators; use prose instead:
+  - "≤3 ур." → "3-го ур. и ниже"
+  - "≥4 ур." → "4-го ур. и выше"
+  - "≤1 атаки" → "не более 1 атаки"
+- **Arrow `→`** — avoid; use prose instead.
+
+### Duplication / coverage
+
+- **Duration duplication** — if body says "на 8 ч" or "на X мин" matching the duration field exactly, remove it. Exception: early-termination conditions ("оканчивается при выходе") are fine.
+- **Aura radius** — if `target` is `circle(N)`, the radius is already shown; remove "Аура р. N фт" from body. If `target` is `self` or `touch` and the spell creates an aura, the radius IS useful in body.
+- **Missing key conditions** — common omissions:
+  - "цель должна вас слышать" (vicious-mockery, motivational-speech, etc.)
+  - "не враждебного" (friends)
+  - Alignment-dependent damage type (spirit-guardians: "некрот. если заклинатель злой")
+
+### Prose style
+
+- **"Тяжело заслоняет" is wrong** — correct term is "сильно заслонённая местность" (heavily obscured).
+- **"молния" vs "электричество"** — for the lightning damage type in prose, use "электричество" (matches source descriptions), not "молния" (which is the spell name).
+- **Obscure words**: "тактильного" → "физического", "триггер" → describe the trigger in Russian.
+- **Level scaling in prose** — use МУД/СИЛ/etc., not MOD. MOD is only valid inside `#damage("...+MOD", ...)`.
+- **Prose before macro is cleaner** when prose qualifies how many targets receive an effect:
+  "До 6 существ: #heal(\"1d4+MOD\")" — not "#heal(\"1d4+MOD\") до 6 существ".
+
+### DSL structure
+
+- **`+#damage(...)` syntax** — do NOT prefix with `+`; just use `#damage(...)` — context makes "additional" clear.
+- **Cantrip scaling** — always `#atHigherLevels[+1кX на уровнях 5, 11 и 17]`, not inline prose. Exception: weapon-attack cantrips with complex multi-value scaling (booming-blade, green-flame-blade) — use prose inside `#atHigherLevels[…]`.
+- **Weapon attack spells** — lead with "Рукопашная атака оружием." not the damage macro; the attack roll is separate from the damage DSL.
+- **`review: true` spells** — set to `false` during proofread (final pass). Only leave `true` if there is a genuine unresolved mechanical question.
+- **Weather prediction** in druidcraft-style spells: "(1 раунд)" → "на следующие 24 ч".
+
+---
+
+## DSL behavior notes
+
+### Variadic functions
+`#resist(bludgeoning, piercing, slashing)` — comma-separated, renders as "Сопр.: дроб., кол., руб."
+`#immune(type1, type2)`, `#weakness(type1, type2)` — same pattern.
+`#cure(disease, blinded, poisoned)` — renders as "Снимает: Болезнь, Ослеплён, Отравлен". Use `disease` constant for disease removal.
+
+### Optional saving throw
+`#effect(prone, saving: DEX)` — shows condition icon + DEX save indicator.
+`#effect(prone)` — works fine with no save (automatic effect, no save indicator shown).
+`#move(fromYou, distance: 10)` — works without `saving:` (automatic push, no save shown).
+`#move(fromYou, distance: 10, saving: STR)` — shows STR save.
+
+### `#effect` saving throw stat in area spells
+Area spells that impose prone on entry (sleet-storm, etc.) use `#effect(prone, saving: DEX)` — always check that the correct stat is specified.
+
+### `#damage` defaults
+Default `saved:` is `halfDamage` — must write `saved: noDamage` explicitly for the majority of spells.
+Default `ranged:` is false — write `ranged: true` for ranged attacks.
+
+### `#speed` with string value
+`#speed(40, flying)` — integer appends "фт" automatically.
+`#speed("÷2")` or `#speed("+10")` — string displays as-is (for speed modifiers, halving, etc.).
+
+### `#formula("TOKEN")`
+Renders a formula token as a computed number. Use when a spell grants a numeric bonus equal to a stat modifier (e.g. temp HP = MOD → `#formula("MOD") врем. ОЗ`).
+
+### Shapes in body vs target
+Shapes (`#circle`, `#cube`, `#cone`, etc.) work inline in `body` for secondary areas not already shown in `target`. Do NOT repeat a shape that's already encoded in the `target` field.
 
 ---
 
@@ -161,10 +235,10 @@ All tokens available in `body`:
 ```
 #damage("Xd6", type, saving: STAT, saved: halfDamage/noDamage, ranged: true)
 #heal("Xd8+WIS")
-#cure(condition)
+#cure(condition, ...)
 #effect(condition, saving: STAT)
-#immune(damageType)   #immuneEffect(condition)
-#resist(type)   #weakness(type)
+#immune(damageType, ...)   #immuneEffect(condition, ...)
+#resist(type, ...)   #weakness(type, ...)
 #advantage(STAT/attack)   #disadvantage(STAT/attack)
 #speed(N, flying/swimming/climbing/burrowing)
 #light(bright: N, dim: N)
@@ -183,5 +257,24 @@ Conditions: `blinded` `charmed` `deafened` `frightened` `grappled` `incapacitate
 ## Progress check
 
 ```bash
-jq '[.[] | select(.proofread != true)] | length' resources/data/spellbook.json
+jq '[.[] | select(.proofread == false or .proofread == null)] | length' resources/data/spellbook.json
 ```
+
+## Progress log
+
+| Batch | Spells | Done | Total | % |
+|-------|--------|------|-------|---|
+| 1 | acid-splash → infestation (cantrips) | 20 | 505 | 4% |
+| 2 | frostbite → shape-water (cantrips) | 40 | 505 | 8% |
+| 3 | thaumaturgy → armor-of-agathys (lvl 0–1) | 60 | 505 | 12% |
+| 4 | mage-armor → illusory-script (lvl 1) | 80 | 505 | 16% |
+| 5 | unseen-servant → jump (lvl 1) | 100 | 505 | 20% |
+| 6 | false-life → shield (lvl 1) | 120 | 505 | 24% |
+| 7 | shield-of-faith → borrowed-knowledge (lvl 1–2) | 140 | 505 | 28% |
+| 8 | protection-from-poison → zone-of-truth (lvl 2) | 160 | 505 | 32% |
+| 9 | detect-thoughts → tashas-mind-whip (lvl 2) | 180 | 505 | 36% |
+| 10 | flaming-sphere → wither-and-bloom (lvl 2) | 200 | 505 | 40% |
+| 11 | hold-person → catnap (lvl 2–3) | 220 | 505 | 44% |
+| 12 | spirit-guardians → motivational-speech (lvl 3) | 240 | 505 | 48% |
+
+_Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
