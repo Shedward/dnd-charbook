@@ -210,7 +210,9 @@ Valid targets: any stat token or `attack`.
 #resist(fire)
 #weakness(piercing)
 #immune(fire)
+#immuneEffect(poisoned)
 ```
+Use `#immune` for damage type immunity, `#immuneEffect` for condition immunity.
 
 ### Light
 ```

@@ -321,6 +321,10 @@
   *#loc(en: [Immune], ru: [Иммун.]): #damageTypeShortName(damageType)*
 ]
 
+#let immuneEffect(condition) = [
+  *#loc(en: [Immune], ru: [Иммун.]): #conditionName(condition)*
+]
+
 // Light
 #let light(bright: 0, dim: 0) = [
   *#loc(en: [Light], ru: [Свет]): #bright/#dim #loc(en: [ft], ru: [фт])*
