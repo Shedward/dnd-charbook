@@ -20607,5 +20607,193 @@
     "description": "",
     "body": "Воскрешает существо (мёртвое ≤200 лет, не от старости) с полными ОЗ. Снимает болезни, яды, проклятия. Восстанавливает части тела. Может создать новое тело по имени.",
     "review": false
+  },
+  {
+    "id": "true-polymorph",
+    "name": "Истинное превращение",
+    "original_name": "True polymorph",
+    "level": 9,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "капля ртути, немного гуммиарабика и клуб дыма",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      }
+    ],
+    "description": "",
+    "body": "МУД спасбросок для несогласных. Режимы: сущ.→сущ. (КО ≤ КО/ур. цели); предмет→сущ. (КО ≤ 9, дружеств.); сущ.→предмет. При полной 1 ч концентрации — постоянное.",
+    "review": false
+  },
+  {
+    "id": "blade-of-disaster",
+    "name": "Клинок разрушения",
+    "original_name": "Blade of Disaster",
+    "level": 9,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "bonus_action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "2 рукопашных атаки заклинанием, #damage(\"4d12\", force, ranged: true) (крит 18–20 → 12к12). Бонусное действие: переместить 30 фт + снова 2 атаки.",
+    "review": false
+  },
+  {
+    "id": "meteor-swarm",
+    "name": "Метеоритный дождь",
+    "original_name": "Meteor swarm",
+    "level": 9,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "sight",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "4 метеора в разных точках. Каждый — #sphere(40): ЛОВ или 20к6 огнём + 20к6 дробящего (half). При попадании под несколько взрывов — урон один раз.",
+    "review": false
+  },
+  {
+    "id": "mass-heal",
+    "name": "Множественное полное исцеление",
+    "original_name": "Mass heal",
+    "level": 9,
+    "school": "evocation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "",
+    "body": "Суммарно 700 ОЗ (60 фт, распределяется).\\  #cure(blinded) #cure(deafened) #cure(disease). Нежить/Конструкты — без эффекта.",
+    "review": false
+  },
+  {
+    "id": "mass-polymorph",
+    "name": "Множественное превращение",
+    "original_name": "Mass polymorph",
+    "level": 9,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 3600.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "кокон гусеницы",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "До 10 существ → Зверь (МУД спасбросок для несогласных, КО ≤ КО/½ур. цели). ОЗ нового облика = врем. ОЗ; при истощении врем. ОЗ — возврат.",
+    "review": false
   }
 ]
