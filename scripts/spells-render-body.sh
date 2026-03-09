@@ -13,8 +13,8 @@ typst compile books/body-preview.typ --root . \
   --input "body=$BODY" \
   --format html "$TMP_HTML" 2>/dev/null
 
-# Strip HTML tags, collapse whitespace
-sed 's/<[^>]*>//g' "$TMP_HTML" \
+# Replace tags with spaces, collapse whitespace
+sed 's/<[^>]*>/ /g' "$TMP_HTML" \
   | tr -s ' \t\n' ' ' \
   | sed 's/^ //; s/ $//'
 echo

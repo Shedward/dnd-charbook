@@ -119,7 +119,7 @@ Apply to every spell. Check each point:
    - Prose exceptions/conditions last
    - `#atHigherLevels[…]` always last
 
-9. **`review` flag** — if `review: true` and the spell is now fully handled, clear it. If still genuinely ambiguous, keep it and note why in the report.
+9. **`review` flag** — always set to `false`. Proofreading is the final review pass; the flag is no longer needed after this.
 
 ---
 

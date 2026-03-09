@@ -2,6 +2,8 @@
 #import "../dnd/game/game.typ": *
 #import "../dnd/page/spells.typ": spellBodyDSLScope
 
+#setLocale("ru")
+
 // Minimal character context so DSL functions that reference MOD/PROF/LVL work
 #let previewChar = character(
   name: "Preview",
