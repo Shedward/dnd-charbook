@@ -19494,5 +19494,198 @@
     "description": "Невидимая силовая тюрьма: клетка 20 фт или коробка 10 фт. Выход только телепортацией (ХАР спасбросок). Нельзя рассеять Рассеиванием магии.",
     "body": "Невидимая тюрьма: клетка 20 фт или коробка 10 фт. Выход только магией — ХАР спасбросок. Нельзя рассеять.",
     "review": false
+  },
+  {
+    "id": "plane-shift",
+    "name": "Уход в иной мир",
+    "original_name": "Plane shift",
+    "level": 7,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 0.0,
+    "target": "touch",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "раздвоенный металлический прут, стоящий как минимум 250 зм, настроенный на конкретный план существования",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "друид"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "Транспорт: до 9 существ на другой план. Или рукопашная атака заклинанием — ХАР спасбросок, иначе изгнание на указанный план (случайная точка).",
+    "review": false
+  },
+  {
+    "id": "temple-of-the-gods",
+    "name": "Храм богов",
+    "original_name": "Temple of the gods",
+    "level": 7,
+    "school": "conjuration",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 86400.0,
+    "target": "target(120)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "святой символ стоимостью не менее 5 зм",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "",
+    "body": "Создаёт куб до 120 фт (храм) на 24 ч. Выбранные виды (Исчадия/Небожители/Нежить/Феи/Элементали): ХАР спасбросок или не войти 24 ч; внутри — помеха −к4 к20. Лечение заклинанием внутри: +МУД доп. ОЗ. Неуязвим к рассеиванию магии.",
+    "review": false
+  },
+  {
+    "id": "etherealness",
+    "name": "Эфирность",
+    "original_name": "Etherealness",
+    "level": 7,
+    "school": "transmutation",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 28800.0,
+    "target": "self",
+    "components": {
+      "components": [
+        "V",
+        "S"
+      ],
+      "material": null,
+      "material_required": null,
+      "material_consumed": null
+    },
+    "classes": [
+      {
+        "class": "бард"
+      },
+      {
+        "class": "волшебник"
+      },
+      {
+        "class": "жрец"
+      },
+      {
+        "class": "колдун"
+      },
+      {
+        "class": "чародей"
+      }
+    ],
+    "description": "",
+    "body": "Вы перемещаетесь на Пограничный Эфир на 8 ч: проходите сквозь предметы, видите 60 фт серым, недосягаемы для существ на других планах. При возврате в занятое место — смещение + урон силовым полем 2×фт. #atHigherLevels[+3 цели за каждый слот выше 7-го]",
+    "review": false
+  },
+  {
+    "id": "antipathysympathy",
+    "name": "Антипатия/симпатия",
+    "original_name": "Antipathy/sympathy",
+    "level": 8,
+    "school": "enchantment",
+    "is_ritual": false,
+    "with_concentration": false,
+    "casting_time": {
+      "type": "hour",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 864000.0,
+    "target": "target(60)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "пропитанный уксусом кусок квасцов для эффекта антипатии или капля мёда для эффекта симпатии",
+      "material_required": false,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "бард"
+      }
+    ],
+    "description": "",
+    "body": "Выберите режим для выбранного вида существ (МУД спасбросок): Антипатия — #effect(frightened) пока видят цель/в 60 фт; Симпатия — вынуждены двигаться к цели. Спасбросок раз в 24 ч для снятия.",
+    "review": false
+  },
+  {
+    "id": "holy-aura",
+    "name": "Аура святости",
+    "original_name": "Holy aura",
+    "level": 8,
+    "school": "abjuration",
+    "is_ritual": false,
+    "with_concentration": true,
+    "casting_time": {
+      "type": "action",
+      "value": 1,
+      "condition": null
+    },
+    "duration": 60.0,
+    "target": "circle(30)",
+    "components": {
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "крошечный контейнер, стоящий как минимум 1 000 зм, хранящий священную реликвию",
+      "material_required": true,
+      "material_consumed": false
+    },
+    "classes": [
+      {
+        "class": "жрец"
+      }
+    ],
+    "description": "",
+    "body": "Выбранные существа в 30 фт: атаки по ним с помехой, спасброски с преимуществом. Если Исчадие/Нежить попадает рукопашной — ТЕЛ спасбросок или #effect(blinded) до конца заклинания.",
+    "review": false
   }
 ]
