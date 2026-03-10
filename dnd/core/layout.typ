@@ -175,9 +175,7 @@
   let gridBox(body) = box(width: width, height: lines * lineHeight, body)
   let gridLine(y) = line(start: (0%, y), length: 100%, stroke: strokes.hairline)
 
-  if lines == auto {
-    todo("Not implemented")
-  } else if lines == 0 {
+  if lines == 0 {
     none
   } else if lines == 1 {
     gridBox[
