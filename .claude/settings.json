@@ -1,0 +1,11 @@
+{
+  "allowedTools": [
+    "Bash(scripts/spells-pending.sh*)",
+    "Bash(scripts/spells-read.sh*)",
+    "Bash(scripts/spells-append.sh*)",
+    "Bash(scripts/spells-preview.sh*)",
+    "Bash(scripts/spells-pending-proofread.sh*)",
+    "Bash(scripts/spells-update.sh*)",
+    "Bash(scripts/spells-render-body.sh*)"
+  ]
+}

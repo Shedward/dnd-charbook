@@ -1,5 +1,5 @@
 #import "../core/core.typ": *
-#import "character.typ": stats, statName, statModifier, resolveForCharacter
+#import "character.typ": stats, statName, statModifier, spellcastingStat, resolveForCharacter
 
 // Cast time
 #let action = loc(en: [A], ru: [Де])
@@ -8,6 +8,7 @@
 
 // Durations
 #let instant = loc(en: [Inst.], ru: [Момен.])
+#let permanent = loc(en: [Perm.], ru: [Пост.])
 #let round(r) = str(r) + loc(en: [r], ru: [р])
 #let minute(m) = str(m) + loc(en: [m], ru: [мин])
 #let hour(h) = str(h) + loc(en: [h], ru: [ч])
@@ -31,6 +32,7 @@
 
 #let acid = "acid"
 #let bludgeoning = "bludgeoning"
+#let cold = "cold"
 #let frost = "frost"
 #let fire = "fire"
 #let force = "force"
@@ -47,6 +49,7 @@
   (
       acid: loc(en: "Acid", ru: "Кислотный"),
       bludgeoning: loc(en: "Bludgeoning", ru: "Дробящий"),
+      cold: loc(en: "Cold", ru: "Холодом"),
       frost: loc(en: "Frost", ru: "Холодом"),
       fire: loc(en: "Fire", ru: "Огнем"),
       force: loc(en: "Force", ru: "Силовой"),
@@ -65,6 +68,7 @@
   (
       acid: loc(en: "acid", ru: "кисл."),
       bludgeoning: loc(en: "bludg.", ru: "дроб."),
+      cold: loc(en: "cold", ru: "хол."),
       frost: loc(en: "frost", ru: "хол."),
       fire: loc(en: "fire", ru: "огн."),
       force: loc(en: "force", ru: "сил."),
@@ -109,6 +113,7 @@
 #let sight = loc(en: [Sight], ru: [Взгляд])
 
 #let circle = area("circle")
+#let ring = area("circle")   // TODO: add ring icon
 #let square = area("square")
 #let cube = area("cube")
 #let sphere = area("sphere")
@@ -183,6 +188,11 @@
     e = e.replace(stat, str(statModifier(character, stat)))
   }
 
+  let spellStat = spellcastingStat(character)
+  if spellStat != none {
+    e = e.replace("MOD", str(statModifier(character, spellStat)))
+  }
+
   let evalVariance(variance) = eval(
     e.replace("variance", variance),
     scope: (
@@ -191,7 +201,13 @@
     )
   )
 
-  [#formula #caption[(#evalVariance("min") - #evalVariance("max"))]]
+  let minVal = evalVariance("min")
+  let maxVal = evalVariance("max")
+  if minVal == maxVal {
+    [#formula]
+  } else {
+    [#formula #caption[(#minVal - #maxVal)]]
+  }
 }
 
 #let characterFormula(character, formula) = {
@@ -199,6 +215,11 @@
 
   for stat in stats {
     e = e.replace(stat, str(statModifier(character, stat)))
+  }
+
+  let spellStat = spellcastingStat(character)
+  if spellStat != none {
+    e = e.replace("MOD", str(statModifier(character, spellStat)))
   }
 
   if character.level != none {
@@ -228,7 +249,11 @@
     #loc(en: [Ranged], ru: [Дальн.]),
   ]
   #if saving != none [
-    #statName(saving) #loc(en: [or], ru: [или])
+    #statName(saving)
+    #if saved == halfDamage {
+      [(½)]
+    }
+    #loc(en: [or], ru: [или])
   ]
   #roll(formula) #damageTypeShortName(damageType)
   *
@@ -236,4 +261,126 @@
 
 #let heal(formula) = [
   *#loc(en: [Heal], ru: [Лечит]) #roll(formula) #loc(en: [HP], ru: [ОЗ])*
+]
+
+// Conditions
+#let blinded = "blinded"
+#let charmed = "charmed"
+#let deafened = "deafened"
+#let frightened = "frightened"
+#let grappled = "grappled"
+#let incapacitated = "incapacitated"
+#let invisible = "invisible"
+#let paralyzed = "paralyzed"
+#let petrified = "petrified"
+#let poisoned = "poisoned"
+#let prone = "prone"
+#let restrained = "restrained"
+#let stunned = "stunned"
+#let unconscious = "unconscious"
+
+#let conditionName(c) = (
+  blinded:       loc(en: "Blinded",       ru: "Ослеплён"),
+  charmed:       loc(en: "Charmed",       ru: "Очарован"),
+  deafened:      loc(en: "Deafened",      ru: "Оглушён"),
+  frightened:    loc(en: "Frightened",    ru: "Испуган"),
+  grappled:      loc(en: "Grappled",      ru: "Схвачен"),
+  incapacitated: loc(en: "Incapacitated", ru: "Недееспособен"),
+  invisible:     loc(en: "Invisible",     ru: "Невидим"),
+  paralyzed:     loc(en: "Paralyzed",     ru: "Парализован"),
+  petrified:     loc(en: "Petrified",     ru: "Окаменел"),
+  poisoned:      loc(en: "Poisoned",      ru: "Отравлен"),
+  prone:         loc(en: "Prone",         ru: "Повален"),
+  restrained:    loc(en: "Restrained",    ru: "Обездвижен"),
+  stunned:       loc(en: "Stunned",       ru: "Оглушён"),
+  unconscious:   loc(en: "Unconscious",   ru: "Без созн."),
+).at(c)
+
+#let effect(condition, saving: none) = [
+  *#if saving != none [#statName(saving) #loc(en: [or], ru: [или])]
+  #conditionName(condition)*
+]
+
+// Advantage / disadvantage
+#let attack = "attack"
+
+#let rollTargetName(t) = if t == attack {
+  loc(en: "Attack", ru: "Атака")
+} else {
+  statName(t)
+}
+
+#let advantage(on) = [
+  *#loc(en: [Adv.], ru: [Преим.]): #rollTargetName(on)*
+]
+
+#let disadvantage(on) = [
+  *#loc(en: [Disadv.], ru: [Помеха]): #rollTargetName(on)*
+]
+
+// Resistance / vulnerability / immunity
+#let resist(..types) = [
+  *#loc(en: [Resist.], ru: [Сопр.]): #types.pos().map(damageTypeShortName).join[, ]*
+]
+
+#let weakness(..types) = [
+  *#loc(en: [Vuln.], ru: [Уязв.]): #types.pos().map(damageTypeShortName).join[, ]*
+]
+
+#let immune(..types) = [
+  *#loc(en: [Immune], ru: [Иммун.]): #types.pos().map(damageTypeShortName).join[, ]*
+]
+
+#let immuneEffect(..conditions) = [
+  *#loc(en: [Immune], ru: [Иммун.]): #conditions.pos().map(conditionName).join[, ]*
+]
+
+// Curing conditions / diseases
+#let disease = "disease"
+#let cureName(c) = if c == disease {
+  loc(en: "disease", ru: "Болезнь")
+} else {
+  conditionName(c)
+}
+#let cure(..items) = [
+  *#loc(en: [Cures], ru: [Снимает]): #items.pos().map(cureName).join[, ]*
+]
+
+// Movement speed
+#let flying = "flying"
+#let swimming = "swimming"
+#let climbing = "climbing"
+#let burrowing = "burrowing"
+#let walking = "walking"
+
+#let speed(value, ..rest) = {
+  let movType = rest.pos().at(0, default: walking)
+  let val = if type(value) == int or type(value) == float {
+    [#value #loc(en: [ft], ru: [фт])]
+  } else {
+    [#value]
+  }
+  let label = (
+    flying:   loc(en: "Fly",    ru: "Полёт"),
+    swimming: loc(en: "Swim",   ru: "Плавание"),
+    climbing: loc(en: "Climb",  ru: "Лазание"),
+    burrowing: loc(en: "Burrow", ru: "Рытьё"),
+    walking:  loc(en: "Speed",  ru: "Скорость"),
+  ).at(movType)
+  [*#label: #val*]
+}
+
+// Light
+#let light(bright: 0, dim: 0) = [
+  *#loc(en: [Light], ru: [Свет]): #bright/#dim #loc(en: [ft], ru: [фт])*
+]
+
+// Forced movement
+#let toYou = "toYou"
+#let fromYou = "fromYou"
+
+#let move(direction, distance: 0, saving: none) = [
+  *#if saving != none [#statName(saving) #loc(en: [or], ru: [или])]
+  #if direction == toYou [#loc(en: [Pull], ru: [Притяг.])] else [#loc(en: [Push], ru: [Оттал.])]
+  #distance #loc(en: [ft], ru: [фт])*
 ]

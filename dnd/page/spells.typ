@@ -1,5 +1,6 @@
 #import "../core/core.typ": *
 #import "../game/game.typ": *
+#import "../game/spells.typ": *
 #import "../data/data.typ": *
 
 #let spellRow(spell) = (
@@ -170,6 +171,48 @@
   ]
 }
 
+// Processed spellbook formatters
+
+#let spellBodyDSLScope = (
+  damage: damage,
+  heal: heal,
+  formula: formula,
+  atHigherLevels: atHigherLevels,
+  acid: acid, bludgeoning: bludgeoning, cold: cold, frost: frost, fire: fire,
+  force: force, lightning: lightning, necrotic: necrotic,
+  piercing: piercing, poison: poison, psychic: psychic,
+  radiant: radiant, slashing: slashing, thunder: thunder,
+  STR: STR, DEX: DEX, CON: CON, INT: INT, WIS: WIS, CHA: CHA,
+  halfDamage: halfDamage, noDamage: noDamage,
+  effect: effect,
+  blinded: blinded, charmed: charmed, deafened: deafened,
+  frightened: frightened, grappled: grappled, incapacitated: incapacitated,
+  invisible: invisible, paralyzed: paralyzed, petrified: petrified,
+  poisoned: poisoned, prone: prone, restrained: restrained,
+  stunned: stunned, unconscious: unconscious,
+  advantage: advantage, disadvantage: disadvantage,
+  attack: attack,
+  resist: resist, weakness: weakness, immune: immune, immuneEffect: immuneEffect,
+  cure: cure, disease: disease,
+  light: light,
+  speed: speed, flying: flying, swimming: swimming, climbing: climbing, burrowing: burrowing,
+  move: move, toYou: toYou, fromYou: fromYou,
+  target: target, touch: touch, self: self, point: point, sight: sight, unlimited: unlimited,
+  circle: circle, ring: ring, square: square, cube: cube, sphere: sphere,
+  straightLine: straightLine, cone: cone, cylinder: cylinder, rectangle: rectangle,
+)
+
+#let schoolFromSpellbook(s) = {
+  let schools = (
+    abjuration: abjuration, conjuration: conjuration,
+    divination: divination, enchantment: enchantment,
+    evocation: evocation, illusion: illusion,
+    necromancy: necromancy, transmutation: transmutation,
+  )
+  let key = s.at("school", default: none)
+  if key != none { schools.at(key, default: none) }
+}
+
 // Spellbook formatters
 
 #let castingTimeFromSpellbook(m) = {
@@ -210,8 +253,8 @@
 }
 
 #let durationFromSpellbook(m) = {
-  if "duration" not in m {
-    none
+  if "duration" not in m or m.duration == none {
+    permanent
   } else if m.duration == 0 {
     instant
   } else if m.duration < 60 {
@@ -237,6 +280,7 @@
         target: target,
         point: point,
         circle: circle,
+        ring: ring,
         square: square,
         cube: cube,
         sphere: sphere,
@@ -280,6 +324,7 @@
 
 #let spellFromSpellbook(s, ..etc) = spell(
   s.name,
+  school: schoolFromSpellbook(s),
   castTime: castingTimeFromSpellbook(s.casting_time),
   castType: castTypeFromSpellbook(s),
   duration: durationFromSpellbook(s),
@@ -287,9 +332,28 @@
   components: componentsFromSpellbook(s),
   ..etc,
 )[
-  #s.at("short_description", default: none)\
+  #if "body" in s {
+    eval(s.body, scope: spellBodyDSLScope, mode: "markup")
+  } else {
+    s.at("short_description", default: none)
+  }
   #requiredComponentsFromSpellbook(s)
 ]
+
+#let allSpells() = {
+  for i in range(10) [
+    #subsection[#i #loc(en: "Level", ru: "Уровень")]
+    #spellsTable(
+      ..(
+        spellbook().filter(
+          is_spell_at_level.with(level: i)
+        ).map(
+          s => spellFromSpellbook(s, prep: preparing)
+        )
+      )
+    )
+  ]
+}
 
 #let allSpellsFromSpellbook(class, subclass, lvl) = {
   for i in range(lvl) [
