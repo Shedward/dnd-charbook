@@ -249,7 +249,11 @@
     #loc(en: [Ranged], ru: [Дальн.]),
   ]
   #if saving != none [
-    #statName(saving) #loc(en: [or], ru: [или])
+    #statName(saving)
+    #if saved == halfDamage {
+      [(½)]
+    }
+    #loc(en: [or], ru: [или])
   ]
   #roll(formula) #damageTypeShortName(damageType)
   *

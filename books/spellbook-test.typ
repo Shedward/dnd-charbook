@@ -17,4 +17,4 @@
 
 = Тест Заклинаний
 
-#dnd.page.spellsSection(..dnd.data.spellbook().map(dnd.page.spellFromSpellbook))
+#dnd.page.allSpells()

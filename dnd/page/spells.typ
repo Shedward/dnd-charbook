@@ -340,6 +340,21 @@
   #requiredComponentsFromSpellbook(s)
 ]
 
+#let allSpells() = {
+  for i in range(10) [
+    #subsection[#i #loc(en: "Level", ru: "Уровень")]
+    #spellsTable(
+      ..(
+        spellbook().filter(
+          is_spell_at_level.with(level: i)
+        ).map(
+          s => spellFromSpellbook(s, prep: preparing)
+        )
+      )
+    )
+  ]
+}
+
 #let allSpellsFromSpellbook(class, subclass, lvl) = {
   for i in range(lvl) [
     #subsection[#i #loc(en: "Level", ru: "Уровень")]
