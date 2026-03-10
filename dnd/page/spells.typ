@@ -334,8 +334,6 @@
 )[
   #if "body" in s {
     eval(s.body, scope: spellBodyDSLScope, mode: "markup")
-  } else {
-    s.at("short_description", default: none)
   }
   #requiredComponentsFromSpellbook(s)
 ]
