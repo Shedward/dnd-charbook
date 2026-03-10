@@ -1,6 +1,5 @@
 #import "../core/core.typ": *
 #import "../game/game.typ": *
-#import "../game/spells.typ": *
 #import "../data/data.typ": *
 
 #let spellRow(spell) = (

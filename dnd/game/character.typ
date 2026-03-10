@@ -114,7 +114,7 @@
   skills.filter(i => i.skill == skill).first().stat
 }
 
-#let speed(
+#let movementSpeed(
   walking: none,
   flying: none,
   swimming: none,

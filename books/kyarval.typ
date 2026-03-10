@@ -41,7 +41,7 @@
       "17": 6
     )
   ),
-  speed: speed(walking: 30),
+  speed: movementSpeed(walking: 30),
   hitDices: hitDices[к12],
   maxHp: "54",
   baseArmorClass: (c) => 10 + statModifier(c, DEX) + statModifier(c, CON)

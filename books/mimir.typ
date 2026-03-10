@@ -74,7 +74,7 @@
       "17": 6
     )
   ),
-  speed: speed(walking: 30),
+  speed: movementSpeed(walking: 30),
   hitDices: hitDices[k6],
   maxHp: maxHp(6, 4)
 )
