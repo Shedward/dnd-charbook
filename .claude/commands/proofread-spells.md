@@ -281,5 +281,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 15 | sickening-radiance → arcane-eye (lvl 4) | 300 | 505 | 59% |
 | 16 | hallucinatory-terrain → compulsion (lvl 4) | 320 | 505 | 63% |
 | 17 | elemental-bane → contagion (lvl 4–5) | 340 | 505 | 67% |
+| 18 | legend-lore → raise-dead (lvl 5) | 360 | 505 | 71% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
