@@ -287,5 +287,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 21 | arcane-gate → contingency (lvl 6) | 420 | 505 | 83% |
 | 22 | summon-fiend → draconic-transformation (lvl 6–7) | 440 | 505 | 87% |
 | 23 | delayed-blast-fireball → forcecage (lvl 7) | 460 | 505 | 91% |
+| 24 | plane-shift → power-word-stun (lvl 7–8) | 480 | 505 | 95% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
