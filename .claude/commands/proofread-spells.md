@@ -288,5 +288,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 22 | summon-fiend → draconic-transformation (lvl 6–7) | 440 | 505 | 87% |
 | 23 | delayed-blast-fireball → forcecage (lvl 7) | 460 | 505 | 91% |
 | 24 | plane-shift → power-word-stun (lvl 7–8) | 480 | 505 | 95% |
+| 25 | mind-blank → weird (lvl 8–9) | 505 | 505 | 100% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
