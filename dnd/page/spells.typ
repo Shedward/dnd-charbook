@@ -1,6 +1,5 @@
 #import "../core/core.typ": *
 #import "../game/game.typ": *
-#import "../game/spells.typ": *
 #import "../data/data.typ": *
 
 #let spellRow(spell) = (
@@ -334,8 +333,6 @@
 )[
   #if "body" in s {
     eval(s.body, scope: spellBodyDSLScope, mode: "markup")
-  } else {
-    s.at("short_description", default: none)
   }
   #requiredComponentsFromSpellbook(s)
 ]

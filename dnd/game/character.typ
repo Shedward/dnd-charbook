@@ -114,7 +114,7 @@
   skills.filter(i => i.skill == skill).first().stat
 }
 
-#let speed(
+#let movementSpeed(
   walking: none,
   flying: none,
   swimming: none,
@@ -286,7 +286,7 @@
     performance: loc(en: "Performance", ru: "Выступление"),
     religion: loc(en: "Religion", ru: "Религия"),
     sleightOfHand: loc(en: "Sleight of Hand", ru: "Ловкость рук"),
-    stealth: loc(en: "Stealch", ru: "Скрытность"),
+    stealth: loc(en: "Stealth", ru: "Скрытность"),
     survival: loc(en: "Survival", ru: "Выживание")
 
   ).at(skill)

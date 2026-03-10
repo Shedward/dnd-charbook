@@ -71,4 +71,56 @@ Each file in `books/` follows this structure:
 
 **Formulas:** `roll("2d6+STR")` and `formula("PROF+DEX")` evaluate expressions using the current character's stats. `STR`, `DEX`, `CON`, `INT`, `WIS`, `CHA`, `PROF`, and `LVL` are substituted automatically.
 
-**Resources:** Icons are in `resources/icons/`, spell data in `resources/data/spells.json`.
+**Resources:** Icons are in `resources/icons/`, spell data in `resources/data/spellbook.json`.
+
+### Spellbook
+
+Spell data lives in `resources/data/spellbook.json` (505 spells). Each record has:
+
+```json
+{
+  "id": "fireball",
+  "name": "Огненный шар",
+  "original_name": "Fireball",
+  "level": 3,
+  "school": "evocation",
+  "is_ritual": false,
+  "with_concentration": false,
+  "casting_time": { "type": "action", "value": 1, "condition": null },
+  "duration": 0.0,
+  "target": "sphere(20, range: 150)",
+  "components": { "components": ["V","S","M"], "material": "...", "material_required": true, "material_consumed": false },
+  "classes": [{ "class": "wizard" }],
+  "body": "#damage(\"8d6\", fire, saving: DEX, saved: halfDamage)\\ #atHigherLevels[+1к6 за слот выше 3-го]"
+}
+```
+
+`duration` is seconds as a float (`0.0` = instant, `null` = permanent). `target` is a DSL string evaluated in the same scope as `body`.
+
+### Spell body DSL
+
+`body` is evaluated via `eval(s.body, scope: spellBodyDSLScope, mode: "markup")` in `dnd/page/spells.typ`. Available functions:
+
+```
+#damage("Xd6", type, saving: STAT, saved: halfDamage/noDamage, ranged: true)
+#heal("Xd8+MOD")
+#cure(condition, ...)          — removes conditions; use disease constant for disease removal
+#effect(condition, saving: STAT)
+#immune(type, ...)             — damage type immunity
+#immuneEffect(condition, ...)  — condition immunity
+#resist(type, ...)
+#weakness(type, ...)
+#advantage(STAT/attack)   #disadvantage(STAT/attack)
+#speed(N, flying/swimming/climbing/burrowing)   — spell movement speed effect
+#move(toYou/fromYou, distance: N, saving: STAT)
+#light(bright: N, dim: N)
+#formula("TOKEN")              — renders a stat/formula token as a number
+#atHigherLevels[text]          — always last, always preceded by \
+Shapes: #circle(N) #sphere(N, range: M) #cube(N) #cone(N) #cylinder(r,h) #rectangle(x,y,z) #straightLine(N)
+```
+
+Stat tokens: `STR DEX CON INT WIS CHA MOD PROF LVL`
+Damage types: `acid bludgeoning cold fire force lightning necrotic piercing poison psychic radiant slashing thunder`
+Conditions: `blinded charmed deafened frightened grappled incapacitated invisible paralyzed petrified poisoned prone restrained stunned unconscious`
+
+Use `/create-spell` to generate a new spell record following all DSL and style rules.
