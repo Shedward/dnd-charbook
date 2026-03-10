@@ -284,5 +284,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 18 | legend-lore → raise-dead (lvl 5) | 360 | 505 | 71% |
 | 19 | animate-objects → holy-weapon (lvl 5) | 380 | 505 | 75% |
 | 20 | wall-of-force → wall-of-ice (lvl 5–6) | 400 | 505 | 79% |
+| 21 | arcane-gate → contingency (lvl 6) | 420 | 505 | 83% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
