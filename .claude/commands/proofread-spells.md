@@ -279,5 +279,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 13 | nondetection → summon-lesser-demons (lvl 3) | 260 | 505 | 51% |
 | 14 | vampiric-touch → aura-of-purity (lvl 3) | 280 | 505 | 55% |
 | 15 | sickening-radiance → arcane-eye (lvl 4) | 300 | 505 | 59% |
+| 16 | hallucinatory-terrain → compulsion (lvl 4) | 320 | 505 | 63% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
