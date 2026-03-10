@@ -278,5 +278,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 12 | spirit-guardians → motivational-speech (lvl 3) | 240 | 505 | 48% |
 | 13 | nondetection → summon-lesser-demons (lvl 3) | 260 | 505 | 51% |
 | 14 | vampiric-touch → aura-of-purity (lvl 3) | 280 | 505 | 55% |
+| 15 | sickening-radiance → arcane-eye (lvl 4) | 300 | 505 | 59% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
