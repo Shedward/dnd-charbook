@@ -286,5 +286,6 @@ jq '[.[] | select(.proofread == false or .proofread == null)] | length' resource
 | 20 | wall-of-force → wall-of-ice (lvl 5–6) | 400 | 505 | 79% |
 | 21 | arcane-gate → contingency (lvl 6) | 420 | 505 | 83% |
 | 22 | summon-fiend → draconic-transformation (lvl 6–7) | 440 | 505 | 87% |
+| 23 | delayed-blast-fireball → forcecage (lvl 7) | 460 | 505 | 91% |
 
 _Update after each batch: add a row with batch number, first–last spell id, running done count, and %._
