@@ -72,10 +72,10 @@
   rows: (auto, auto),
   gutter: paddings(1),
   // ---
-  propCap(loc(en: [Destiny P.], ru: [Оч. судьб.])), propCap(loc(en: [Ins], ru: [Вдох.])),
+  propCap(loc("ui.charlist.destinypoints")), propCap(loc("ui.charlist.inspiration")),
   checkboxes(3), checkboxes(1),
-  deathSavesCheckboxes(loc(en: [Sc.], ru: [Успех])),
-  deathSavesCheckboxes(loc(en: [Fl.], ru: [Пров.]))
+  deathSavesCheckboxes(loc("ui.charlist.success")),
+  deathSavesCheckboxes(loc("ui.charlist.failure"))
 )
 
 #let rollsCaption(caption: none, body) = figure(
@@ -90,11 +90,11 @@
   gutter: paddings(0.5),
   inset: paddings(0.5),
   // ---
-  rollsCaption(caption: loc(en: [Saving roll], ru: [Спасброски]))[
+  rollsCaption(caption: loc("ui.charlist.savingroll"))[
     #savingRolls(character)
   ],
   line(length: 100%, angle: 90deg, stroke: strokes.hairline),
-  rollsCaption(caption: loc(en: [Death saves], ru: [Проверки на смерть]))[
+  rollsCaption(caption: loc("ui.charlist.deathsaves"))[
     #deathSaves()
   ]
 )
@@ -143,7 +143,7 @@
     // ---
     propBox(
       content: game.initiativeModifier(character),
-      caption: loc(en: [Initiative], ru: [Иниц.])
+      caption: loc("ui.charlist.initiative")
     ),
     badge(
       width: 4mm,
@@ -152,30 +152,30 @@
     )[
       #propBox(
         shape: shield, dy: -0.25em,
-        caption: loc(en: [AC], ru: [КБ])
+        caption: loc("ui.charlist.ac")
       )
     ],
     propsSeparator,
     healthPropBox(
       content: method(character, c => c.maxHp),
-      caption: loc(en: [Max], ru: [Макс])
+      caption: loc("ui.charlist.max")
     ),
     badge(
       width: 60%,
       height: 4mm,
       content: method(character, c => c.hitDices)
     )[
-      #healthPropBox(caption: loc(en: [Cur.], ru: [Тек.]))
+      #healthPropBox(caption: loc("ui.charlist.current"))
     ],
-    healthPropBox(caption: loc(en: [Temp.], ru: [Врем.])),
+    healthPropBox(caption: loc("ui.charlist.temporary")),
     propsSeparator,
     propBox(
       content: game.profBonus(character),
-      caption: loc(en: [Prf.Bonus], ru: [Бон. маст.])
+      caption: loc("ui.charlist.profbonus")
     ),
     propBox(
       content: game.walkingSpeed(character),
-      caption: loc(en: [Movement], ru: [Скорость])
+      caption: loc("ui.charlist.movement")
     )
   )
 ]
@@ -203,7 +203,7 @@
       #pad(paddings(1))[
         #propBox(
           content: character.level,
-          caption: loc(en: [Level], ru: [Уровень])
+          caption: loc("ui.charlist.level")
         )
       ]
     ],

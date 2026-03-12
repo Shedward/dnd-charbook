@@ -46,12 +46,12 @@
 ]
 
 #let magicItemsTable = inventoryTable(
-  header: (loc(en: [Atn], ru: [Нас.]), loc(en: [Magic Item], ru: [Маг. предметы]), loc(en: [Val], ru: [Цен.])),
+  header: (loc("ui.inventory.attuned"), loc("ui.inventory.magicitem"), loc("ui.inventory.value")),
   columns: (paddings(2.5), 1fr, paddings(3))
 )
 
 #let itemsTable = inventoryTable(
-  header: (loc(en: [E], ru: [Эк]), loc(en: [Item], ru: [Предмет]), loc(en: [C.], ru: [Кол.]), loc(en: [W.], ru: [Вес])),
+  header: (loc("ui.inventory.equipped"), loc("ui.inventory.item"), loc("ui.inventory.count"), loc("ui.inventory.weight")),
   columns: (paddings(2.5), 1fr, paddings(3), paddings(3))
 )
 
@@ -60,10 +60,10 @@
   insets: (x: paddings(2), y: paddings(1)),
   {
     let coins = (
-      loc(en: "PP", ru: "пм"),
-      loc(en: "GP", ru: "зм"),
-      loc(en: "SP", ru: "см"),
-      loc(en: "CP", ru: "мм")
+      loc("ui.inventory.platinum"),
+      loc("ui.inventory.gold"),
+      loc("ui.inventory.silver"),
+      loc("ui.inventory.copper")
     )
 
     grid(
@@ -80,7 +80,7 @@
 
 #let inventory = [
   #page(
-    header: section(loc(en: [Inventory], ru: [Интентарь]))
+    header: section(loc("ui.pages.inventory"))
   )[
     #inventoryDoubleColumnGrid(
       magicItemsTable,
@@ -96,7 +96,7 @@
         itemsTable,
         itemsTable
       ),
-      subsection(loc(en: [Money], ru: [Деньги])),
+      subsection(loc("ui.inventory.money")),
       moneyInput
     )
   ]

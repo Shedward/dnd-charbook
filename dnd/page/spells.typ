@@ -41,7 +41,7 @@
     let slots = method(character, c => c.spellcasting.slots)
 
     framed(fitting: expand-h)[
-      #propCap(loc(en: [Slots], ru: [Ячейки]))
+      #propCap(loc("ui.spells.slots"))
       #hstack(
         size: (auto,),
         align: horizon,
@@ -76,15 +76,15 @@
   (
     (
       content: statModifier(character, spellcastingStat(character)),
-      caption: [#loc(en: [Ability], ru: [Навык]) - #statName(spellcastingStat(character))]
+      caption: [#loc("ui.spells.ability") - #statName(spellcastingStat(character))]
     ),
     (
       content: spellAtkBonus(character),
-      caption: loc(en: [Atk Bonus], ru: [Атк. Бонус])
+      caption: loc("ui.spells.atkbonus")
     ),
     (
       content: spellDC(character),
-      caption: loc(en: [Save DC], ru: [Спас. слож.])
+      caption: loc("ui.spells.savedc")
     )
   )
   + character.spellcasting.props.map(p => {
@@ -107,10 +107,10 @@
         character.spellcasting.focus,
         grid.cell(rowspan: 2)[
           #if character.spellcasting.ritualCasting [
-            #loc(en: "Ritual Casting", ru: "Ритуальн. Закл.")
+            #loc("ui.spells.ritualcasting")
           ]
         ],
-        propCap(loc(en: [Class], ru: [Класс])), propCap(loc(en: [Focus], ru: [Фокус]))
+        propCap(loc("ui.spells.class")), propCap(loc("ui.spells.focus"))
       ),
       grid(
         columns: (1fr,) * propBox.len(),
@@ -134,12 +134,12 @@
     ),
     inset: paddings(0.75),
 
-    table.cell(align: center, tableHeader(loc(en: [Pr.], ru: [Подг]))),
-    tableHeader(loc(en: [Name], ru: [Название])),
-    table.cell(align: center, tableHeader(loc(en: [Time], ru: [Время]))),
-    tableHeader(loc(en: [Dur], ru: [Длит.])),
-    tableHeader(loc(en: [Range], ru: [Даль.])),
-    tableHeader(loc(en: [Comp.], ru: [Компон.])),
+    table.cell(align: center, tableHeader(loc("ui.spells.prepared"))),
+    tableHeader(loc("ui.common.name")),
+    table.cell(align: center, tableHeader(loc("ui.spells.time"))),
+    tableHeader(loc("ui.spells.duration")),
+    tableHeader(loc("ui.spells.range")),
+    tableHeader(loc("ui.spells.components")),
 
     ..(spells.pos().map(spellRow).flatten()),
   )
@@ -282,10 +282,10 @@
 
   if isRequired or isConsumed {
     [ *
-      #loc(en: " Requires ", ru: " Требует ")
+      #loc("ui.spells.requires")
       #s.components.material
       #if isConsumed {
-        loc(en: " (consumed)", ru: " (расходуется)")
+        loc("ui.spells.consumed")
       }
       *
     ]
@@ -310,7 +310,7 @@
 
 #let allSpells() = {
   for i in range(10) [
-    #subsection[#i #loc(en: "Level", ru: "Уровень")]
+    #subsection[#i #loc("spell.level.label")]
     #spellsTable(
       ..(
         spellbook().filter(
@@ -325,7 +325,7 @@
 
 #let allSpellsFromSpellbook(class, subclass, lvl) = {
   for i in range(lvl) [
-    #subsection[#i #loc(en: "Level", ru: "Уровень")]
+    #subsection[#i #loc("spell.level.label")]
     #spellsTable(
       ..(
         spellbook().filter(

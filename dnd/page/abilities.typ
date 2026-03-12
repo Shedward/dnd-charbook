@@ -1,6 +1,6 @@
 #import "../core/core.typ": *
 
-#let abilities(title: loc(en: [Abilities], ru: [Умения]), ..abilities) = page(
+#let abilities(title: loc("ui.pages.abilities"), ..abilities) = page(
   header: section(title)
 )[
   #let abilityBlock(ability) = [
