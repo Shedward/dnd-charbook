@@ -55,20 +55,12 @@
       ]
     ]
 
-    #for proficiency in proficiencies.pos() {
-      if type(proficiency) == content {
-        proficiency
-      } else if type(proficiency) == dictionary {
-        [
-          #if proficiency.class == tool {
-            toolProficiencyBlock(proficiency)
-          } else {
-            simpleProficiencyBlock(proficiency)
-          }\
-        ]
+    #renderItems(proficiencies.pos(), proficiency => [
+      #if proficiency.class == tool {
+        toolProficiencyBlock(proficiency)
       } else {
-        panic("Not supported proficiency type " + type(proficiency))
-      }
-    }
+        simpleProficiencyBlock(proficiency)
+      }\
+    ])
   ]
 ]

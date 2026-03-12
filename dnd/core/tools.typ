@@ -58,6 +58,18 @@
    }
  }
 
+ #let renderItems(items, render) = {
+   for item in items {
+     if type(item) == content {
+       item
+     } else if type(item) == dictionary {
+       render(item)
+     } else {
+       panic("Unsupported item type: " + type(item))
+     }
+   }
+ }
+
  #let switchInt(value, cases) = {
    let keys = cases.keys().map(int).filter(c => c <= value)
    if keys.len() > 0 {
