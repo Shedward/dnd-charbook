@@ -172,35 +172,6 @@
 
 // Processed spellbook formatters
 
-#let spellBodyDSLScope = (
-  damage: damage,
-  heal: heal,
-  formula: formula,
-  atHigherLevels: atHigherLevels,
-  acid: acid, bludgeoning: bludgeoning, cold: cold, frost: frost, fire: fire,
-  force: force, lightning: lightning, necrotic: necrotic,
-  piercing: piercing, poison: poison, psychic: psychic,
-  radiant: radiant, slashing: slashing, thunder: thunder,
-  STR: STR, DEX: DEX, CON: CON, INT: INT, WIS: WIS, CHA: CHA,
-  halfDamage: halfDamage, noDamage: noDamage,
-  effect: effect,
-  blinded: blinded, charmed: charmed, deafened: deafened,
-  frightened: frightened, grappled: grappled, incapacitated: incapacitated,
-  invisible: invisible, paralyzed: paralyzed, petrified: petrified,
-  poisoned: poisoned, prone: prone, restrained: restrained,
-  stunned: stunned, unconscious: unconscious,
-  advantage: advantage, disadvantage: disadvantage,
-  attack: attack,
-  resist: resist, weakness: weakness, immune: immune, immuneEffect: immuneEffect,
-  cure: cure, disease: disease,
-  light: light,
-  speed: speed, flying: flying, swimming: swimming, climbing: climbing, burrowing: burrowing,
-  move: move, toYou: toYou, fromYou: fromYou,
-  target: target, touch: touch, self: self, point: point, sight: sight, unlimited: unlimited,
-  circle: circle, ring: ring, square: square, cube: cube, sphere: sphere,
-  straightLine: straightLine, cone: cone, cylinder: cylinder, rectangle: rectangle,
-)
-
 #let schoolFromSpellbook(s) = {
   let schools = (
     abjuration: abjuration, conjuration: conjuration,
