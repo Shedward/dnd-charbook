@@ -17,19 +17,19 @@
       columns: (1fr, 1fr, 1fr),
       rows: paddings(2),
       stroke: none,
-      headerCell(colspan: 2, loc(en: [Name], ru: [Название])), headerCell(loc(en: [Damage], ru: [Урон])),
+      headerCell(colspan: 2, loc("ui.common.name")), headerCell(loc("ui.attacks.damage")),
       emptyCell(colspan: 2), vline(1), emptyCell(),
       grid.hline(stroke: (thickness: strokes.hairline, dash: "dashed")),
       emptyCell(colspan: 2), vline(2), emptyCell(),
 
-      headerCell(loc(en: [Range], ru: [Дальность])), headerCell(loc(en: [Atk. bonus], ru: [Бонус атак.])), headerCell(loc(en: [Type], ru: [Тип])),
+      headerCell(loc("ui.attacks.range")), headerCell(loc("ui.attacks.atkbonus")), headerCell(loc("ui.attacks.type")),
       emptyCell(), vline(4), emptyCell(), vline(4), emptyCell(),
       ..((hline, emptyCell(colspan: 3)) * lines),
     )
   ]
 
   page(
-    header: section(loc(en: [Attacks], ru: [Атаки]))
+    header: section(loc("ui.pages.attacks"))
   )[
     #grid(
       columns: (1fr, 1fr),

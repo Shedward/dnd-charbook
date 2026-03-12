@@ -17,11 +17,11 @@
         columns: (1fr),
         rows: paddings(2),
         stroke: innerRowStrokes(),
-        headerCell(loc(en: [Goal:], ru: [Цель])), emptyCell,
+        headerCell(loc("ui.quests.goal")), emptyCell,
         ..((emptyCell,) * goalLines),
-        headerCell(loc(en: [From:], ru: [От:])),
+        headerCell(loc("ui.quests.from")),
         ..((emptyCell,) * fromLines),
-        headerCell(loc(en: [Reward:], ru: [Награда:])), emptyCell,
+        headerCell(loc("ui.quests.reward")), emptyCell,
         ..((emptyCell,) * rewardLines)
       )
     ]
@@ -50,7 +50,7 @@
   ]
 
   page(
-    header: section(loc(en: [Quests], ru: [Задания]))
+    header: section(loc("ui.pages.quests"))
   )[
     #grid(
       columns: (1fr, 1fr),
