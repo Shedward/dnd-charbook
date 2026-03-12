@@ -42,14 +42,31 @@
  }
 
  #let method(o, f, default: (o) => none) = {
-   if o == none or f(o) == none {
+   if o == none {
      none
-   } else if type(f(o)) == function {
-     f(o)(o)
-   } else if f(o) == auto {
-     default(o)
    } else {
-     f(o)
+     let result = f(o)
+     if result == none {
+       none
+     } else if type(result) == function {
+       result(o)
+     } else if result == auto {
+       default(o)
+     } else {
+       result
+     }
+   }
+ }
+
+ #let renderItems(items, render) = {
+   for item in items {
+     if type(item) == content {
+       item
+     } else if type(item) == dictionary {
+       render(item)
+     } else {
+       panic("Unsupported item type: " + type(item))
+     }
    }
  }
 
