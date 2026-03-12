@@ -1,6 +1,6 @@
 #import "../core/core.typ": *
 #import "spellConstants.typ": *
-#import "character.typ": stats, statName, statModifier, spellcastingStat, resolveForCharacter, STR, DEX, CON, INT, WIS, CHA
+#import "character.typ": *
 
 #let atHigherLevels(body) = emph(loc(en: [(Lvl~up:~#body)], ru: [Выс.~ур.:~#body]))
 
