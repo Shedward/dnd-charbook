@@ -1,33 +1,33 @@
 #import "../core/core.typ": *
 
 // Cast time
-#let action = loc(en: [A], ru: [Де])
-#let bonusAction = loc(en: [B], ru: [Бо])
-#let reaction = loc(en: [Re], ru: [Ре])
+#let action = loc("spell.casttime.action")
+#let bonusAction = loc("spell.casttime.bonus")
+#let reaction = loc("spell.casttime.reaction")
 
 // Durations
-#let instant = loc(en: [Inst.], ru: [Момен.])
-#let permanent = loc(en: [Perm.], ru: [Пост.])
-#let round(r) = str(r) + loc(en: [r], ru: [р])
-#let minute(m) = str(m) + loc(en: [m], ru: [мин])
-#let hour(h) = str(h) + loc(en: [h], ru: [ч])
-#let day(d) = str(d) + loc(en: [day], ru: [дн])
+#let instant = loc("spell.duration.instant")
+#let permanent = loc("spell.duration.permanent")
+#let round(r) = [#r#loc("spell.duration.suffix.round")]
+#let minute(m) = [#m#loc("spell.duration.suffix.minute")]
+#let hour(h) = [#h#loc("spell.duration.suffix.hour")]
+#let day(d) = [#d#loc("spell.duration.suffix.day")]
 #let always = sym.infinity
 #let unlimited = sym.infinity
 
 // Cast type
-#let ritual = loc(en: [R], ru: [Рит.])
-#let concentration = loc(en: [C], ru: [Кон.])
+#let ritual = loc("spell.casttype.ritual")
+#let concentration = loc("spell.casttype.concentration")
 
 // School
-#let abjuration = loc(en: "Abjuration", ru: "Ограждение")
-#let conjuration = loc(en: "Conjuration", ru: "Вызов")
-#let necromancy = loc(en: "Necromancy", ru: "Некромантия")
-#let evocation = loc(en: "Evocation", ru: "Воплощение")
-#let transmutation = loc(en: "Transmutation", ru: "Преобразование")
-#let divination = loc(en: "Divination", ru: "Прорицание")
-#let enchantment = loc(en: "Enchantment", ru: "Очарование")
-#let illusion = loc(en: "Illusion", ru: "Иллюзия")
+#let abjuration = loc("spell.school.abjuration")
+#let conjuration = loc("spell.school.conjuration")
+#let necromancy = loc("spell.school.necromancy")
+#let evocation = loc("spell.school.evocation")
+#let transmutation = loc("spell.school.transmutation")
+#let divination = loc("spell.school.divination")
+#let enchantment = loc("spell.school.enchantment")
+#let illusion = loc("spell.school.illusion")
 
 // Damage types
 #let acid = "acid"
@@ -45,43 +45,8 @@
 #let slashing = "slashing"
 #let thunder = "thunder"
 
-#let damageTypeName(type) = {
-  (
-      acid: loc(en: "Acid", ru: "Кислотный"),
-      bludgeoning: loc(en: "Bludgeoning", ru: "Дробящий"),
-      cold: loc(en: "Cold", ru: "Холодом"),
-      frost: loc(en: "Frost", ru: "Холодом"),
-      fire: loc(en: "Fire", ru: "Огнем"),
-      force: loc(en: "Force", ru: "Силовой"),
-      lightning: loc(en: "Lightning", ru: "Электричеством"),
-      necrotic: loc(en: "Necrotic", ru: "Некротический"),
-      piercing: loc(en: "Piercing", ru: "Колющий"),
-      poison: loc(en: "Poison", ru: "Ядом"),
-      psychic: loc(en: "Psychic", ru: "Психический"),
-      radiant: loc(en: "Radiant", ru: "Лучистый"),
-      slashing: loc(en: "Slashing", ru: "Рубящий"),
-      thunder: loc(en: "Thunder", ru: "Звуковой"),
-  ).at(type)
-}
-
-#let damageTypeShortName(type) = {
-  (
-      acid: loc(en: "acid", ru: "кисл."),
-      bludgeoning: loc(en: "bludg.", ru: "дроб."),
-      cold: loc(en: "cold", ru: "хол."),
-      frost: loc(en: "frost", ru: "хол."),
-      fire: loc(en: "fire", ru: "огн."),
-      force: loc(en: "force", ru: "сил."),
-      lightning: loc(en: "light.", ru: "элект."),
-      necrotic: loc(en: "necro.", ru: "некр."),
-      piercing: loc(en: "pierc.", ru: "кол."),
-      poison: loc(en: "pois.", ru: "отрав."),
-      psychic: loc(en: "psych.", ru: "псих."),
-      radiant: loc(en: "rad.", ru: "луч."),
-      slashing: loc(en: "slash.", ru: "руб."),
-      thunder: loc(en: "thund.", ru: "звук."),
-  ).at(type)
-}
+#let damageTypeName(type) = loc("spell.damage." + type)
+#let damageTypeShortName(type) = loc("spell.damage.short." + type)
 
 // Preparation
 #let alwaysPrepared = sym.infinity
@@ -90,17 +55,17 @@
 }
 #let freePreparation(body, count: 1) = [
   #body\
-  #spellCaption[#count #loc(en: "free", ru: "бесп.")]
+  #spellCaption[#count #loc("spell.slot.free")]
 ]
 
 // Range
-#let self = loc(en: [Self], ru: [Себя])
-#let touch = loc(en: [Touch], ru: [Касание])
+#let self = loc("spell.range.self")
+#let touch = loc("spell.range.touch")
 
 #let rangeDescr(range) = if (range == 0) [
   #self
 ] else [
-  #(range)#loc(en: "ft", ru: "фт")
+  #(range)#loc("spell.unit.feet")
 ]
 
 #let countDescr(count) = if (count>1) [#sym.times#count] else []
@@ -110,7 +75,7 @@
 #let target(range, count: 1) = [#(rangeDescr(range))#icon("target")#countDescr(count)]
 #let point(range, count: 1) = [#(rangeDescr(range))#icon("point")#countDescr(count)]
 #let area(iconName) = (size, range: 0) => [#(rangeDescr(range))/#(size)ft#icon(iconName)]
-#let sight = loc(en: [Sight], ru: [Взгляд])
+#let sight = loc("spell.range.sight")
 
 #let circle = area("circle")
 #let ring = area("ring")
@@ -130,7 +95,7 @@
 #let story = [Story]
 
 #let cantrip = (
-  name: subsection(loc(en: [Cantrip], ru: [Заговор])),
+  name: subsection(loc("spell.level.cantrip")),
   slots: none
 )
 
@@ -140,7 +105,7 @@
   level,
   slots: none
 ) = (
-  name: subsection(loc(en: [Level #level], ru: [Уровень #roman(level)])),
+  name: subsection(loc("spell.level.numbered", subs: (arabic: str(level), roman: roman(level)))),
   slots: if slots != none { spellSlots(slots) }
 )
 
@@ -184,22 +149,7 @@
 #let stunned = "stunned"
 #let unconscious = "unconscious"
 
-#let conditionName(c) = (
-  blinded:       loc(en: "Blinded",       ru: "Ослеплён"),
-  charmed:       loc(en: "Charmed",       ru: "Очарован"),
-  deafened:      loc(en: "Deafened",      ru: "Оглушён"),
-  frightened:    loc(en: "Frightened",    ru: "Испуган"),
-  grappled:      loc(en: "Grappled",      ru: "Схвачен"),
-  incapacitated: loc(en: "Incapacitated", ru: "Недееспособен"),
-  invisible:     loc(en: "Invisible",     ru: "Невидим"),
-  paralyzed:     loc(en: "Paralyzed",     ru: "Парализован"),
-  petrified:     loc(en: "Petrified",     ru: "Окаменел"),
-  poisoned:      loc(en: "Poisoned",      ru: "Отравлен"),
-  prone:         loc(en: "Prone",         ru: "Повален"),
-  restrained:    loc(en: "Restrained",    ru: "Обездвижен"),
-  stunned:       loc(en: "Stunned",       ru: "Оглушён"),
-  unconscious:   loc(en: "Unconscious",   ru: "Без созн."),
-).at(c)
+#let conditionName(c) = loc("spell.condition." + c)
 
 // Damage save results
 #let noDamage = "noDamage"
@@ -221,8 +171,4 @@
 
 // Conditions / diseases
 #let disease = "disease"
-#let cureName(c) = if c == disease {
-  loc(en: "disease", ru: "Болезнь")
-} else {
-  conditionName(c)
-}
+#let cureName(c) = loc("spell.condition." + c)
