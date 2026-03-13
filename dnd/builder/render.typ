@@ -17,8 +17,8 @@
     page.cover(char.name, ..cover)
   }
 
-  page.charlist(char)
   page.attacks
+  page.charlist(char)
   page.inventory
 
   let charSpells = char.at("spells", default: none)

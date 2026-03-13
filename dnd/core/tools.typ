@@ -41,6 +41,8 @@
    }
  }
 
+ // Resolve a character field: if the field is a function (e.g. byLevelMethod),
+ // call it with the character; if auto, use `default`; if none, return none.
  #let method(o, f, default: (o) => none) = {
    if o == none {
      none

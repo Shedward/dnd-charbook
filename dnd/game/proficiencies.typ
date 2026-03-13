@@ -71,7 +71,7 @@
 
 #let savingProficiency(savingStat, source: none) = (
   class: stat,
-  title: [Спас. по #statName(savingStat)],
+  title: core.loc("ui.proficiency.saving", subs: (stat: statName(savingStat))),
   source: source
 )
 

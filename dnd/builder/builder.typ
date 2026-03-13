@@ -1,10 +1,14 @@
 #import "../game/game.typ": *
+#import "../data/data.typ": spellbook
+#import "../page/spells.typ": spellFromSpellbook
 #import "render.typ": charbook
 
 #let _normalizeArray(v) = if v == none { () } else { v }
 
 #let build(..mutations) = {
+  assert(mutations.pos().len() > 0, message: "build() requires introduce() as first argument")
   let result = mutations.pos().fold(none, (s, mut) => mut(s))
+  assert(type(result) == dictionary, message: "build() first argument must be introduce()")
   let (currentSource: _, ..char) = result
   char
 }
@@ -65,6 +69,11 @@
 #let setLevel(n) = (state) => (..state, level: n)
 
 #let setSpellcasting(sc) = (state) => (..state, spellcasting: sc)
+
+#let addHP(amount) = (state) => {
+  let current = if state.maxHp == none { 0 } else { state.maxHp }
+  (..state, maxHp: current + amount)
+}
 
 // Stats
 
@@ -130,6 +139,14 @@
     spells.cantrips = spells.cantrips + (patched,)
   }
   (..state, spells: spells)
+}
+
+#let addSpellFromSpellbook(id, ..etc) = (state) => {
+  let matches = spellbook().filter(s => s.id == id)
+  assert(matches.len() > 0, message: "spell not found in spellbook: " + id)
+  let entry = matches.first()
+  let level = if entry.level == 0 { cantrip } else { entry.level }
+  addSpell(level, spellFromSpellbook(entry, ..etc))(state)
 }
 
 #let removeSpell(name) = (state) => {

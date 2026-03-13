@@ -15,7 +15,6 @@
     stats: (STR: 8, DEX: 14, CON: 12, INT: 10, WIS: 13, CHA: 18),
     speed: movementSpeed(walking: 30),
     hitDices: hitDices[k8],
-    maxHp: maxHp(8, 5),
     profBonus: byLevelMethod((
       "1": 2,
       "5": 3,
@@ -38,6 +37,7 @@
   ),
 
   upgrade("Колдун 1ур",
+    addHP(9),
     addSkillProfs(persuasion, deception),
     addSaveProfs(WIS, CHA),
     addProficiency(armorProficiency("Лёгкая броня")),
@@ -51,64 +51,40 @@
 
       $"Сл. сп." = 8 + "Бон. маст." + "ХАР"$
     ],
-    addSpell(cantrip, spell(
-      "Мистический заряд",
-      prep: none,
-      school: evocation,
-      duration: instant,
-      range: target(120),
-      components: "VS",
-    )[
-      #damage("1d10", force, ranged: true)
-    ]),
-    addSpell(1, spell(
-      "Порча",
-      prep: none,
-      school: enchantment,
-      duration: hour(1),
-      range: target(90),
-      castType: concentration,
-      components: "VSM",
-    )[
-      Помеха на выбранную характеристику. Дополнительный #damage("1d6", necrotic) при попадании.
-    ]),
+    addSpellFromSpellbook("eldritch-blast"),
+    addSpellFromSpellbook("hex"),
   ),
 
   upgrade("Колдун 2ур",
+    addHP(6),
     addAbility("Воззвание: Мучительный взрыв")[
       Добавьте #damage("CHA", force) к урону Мистического заряда.
     ],
   ),
 
+  upgrade("Колдун 3ур",
+    addHP(6),
+  ),
+
   upgrade("Колдун 4ур — ASI",
+    addHP(6),
     setLevel(4),
     addStatBonus(CHA, 2),
   ),
 
   upgrade("Небожитель 1ур",
-    addSpell(cantrip, spell(
-      "Свет",
-      prep: none,
-      school: evocation,
-      duration: hour(1),
-      range: touch,
-      components: "VS",
-    )[
-      Предмет испускает яркий свет 20фт и тусклый 20фт.
-    ]),
-    addSpell(1, spell(
-      "Лечение ран",
-      prep: none,
-      school: evocation,
-      duration: instant,
-      range: touch,
-      components: "VS",
-    )[
-      #heal("1d8 + CHA")
-    ]),
+    addSpellFromSpellbook("light"),
+    addSpellFromSpellbook("cure-wounds"),
     addAbility("Лечащий свет")[
       У вас есть кости лечения. Бонусным действием потратьте кости, чтобы вылечить существо в 60 футах.
     ],
+  ),
+
+  upgrade("Колдун 5ур",
+    addHP(6),
+    setLevel(5),
+    addSpellFromSpellbook("acid-splash"),
+    addSpellFromSpellbook("fireball"),
   ),
 
   upgrade("Событие: Спасение гоблинки",
@@ -116,6 +92,10 @@
       Вы получаете +1 КД.
     ],
   ),
+
+  upgrade("Конец события: Спасение гоблинки",
+    removeAbility("Настоящий друг"),
+  )
 )
 
 #charbook(char,

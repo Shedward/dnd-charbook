@@ -33,7 +33,6 @@
 #let acid = "acid"
 #let bludgeoning = "bludgeoning"
 #let cold = "cold"
-#let frost = "frost"
 #let fire = "fire"
 #let force = "force"
 #let lightning = "lightning"

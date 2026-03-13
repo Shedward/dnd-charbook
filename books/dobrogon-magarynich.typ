@@ -3,6 +3,8 @@
 
 #show: dnd.core.charbook
 
+#setLocale("en")
+
 #let dobrogon = dnd.game.character(
   name: "Dobrogon Magarynich",
   class: "Artificer",

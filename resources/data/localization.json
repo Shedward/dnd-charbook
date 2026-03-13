@@ -91,10 +91,6 @@
     "en": "Cold",
     "ru": "Холодом"
   },
-  "spell.damage.frost": {
-    "en": "Frost",
-    "ru": "Холодом"
-  },
   "spell.damage.fire": {
     "en": "Fire",
     "ru": "Огнем"
@@ -146,10 +142,6 @@
   },
   "spell.damage.short.cold": {
     "en": "cold",
-    "ru": "хол."
-  },
-  "spell.damage.short.frost": {
-    "en": "frost",
     "ru": "хол."
   },
   "spell.damage.short.fire": {
@@ -497,7 +489,7 @@
   },
   "ui.pages.inventory": {
     "en": "Inventory",
-    "ru": "Интентарь"
+    "ru": "Инвентарь"
   },
   "ui.pages.quests": {
     "en": "Quests",
@@ -510,6 +502,11 @@
   "ui.pages.spells": {
     "en": "Spells",
     "ru": "Заклинания"
+  },
+
+  "ui.proficiency.saving": {
+    "en": "Save: {stat}",
+    "ru": "Спас. по {stat}"
   },
 
   "ui.spells.slots": {
