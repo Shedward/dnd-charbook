@@ -35,7 +35,7 @@ All reusable code lives under `dnd/`, which is split into four modules re-export
 - **`dnd/core/`** — Layout primitives, styling, graphics utilities, localization (`loc`), dimensions, and resource helpers. Import as `dnd.core.*`.
 - **`dnd/game/`** — D&D data model: `character()` constructor, stat/skill constants and calculations (modifiers, spell DC, proficiency bonus), spell definitions and helper functions, abilities, proficiencies, and biography structures.
 - **`dnd/page/`** — Page layout components that compose game data into rendered pages: cover, attacks, spells, abilities, proficiencies, inventory, quests, biography, and character list pages.
-- **`dnd/data/`** — Data loading (wraps `resources/data/spells.json`) and spellbook filtering utilities.
+- **`dnd/data/`** — Data loading (wraps `resources/data/spellbook.json`) and spellbook filtering utilities.
 
 ### Character book pattern
 
@@ -72,6 +72,8 @@ Each file in `books/` follows this structure:
 **Formulas:** `roll("2d6+STR")` and `formula("PROF+DEX")` evaluate expressions using the current character's stats. `STR`, `DEX`, `CON`, `INT`, `WIS`, `CHA`, `PROF`, and `LVL` are substituted automatically.
 
 **Resources:** Icons are in `resources/icons/`, spell data in `resources/data/spellbook.json`.
+
+**Resource paths:** Use `/resources/...` (root-relative) not `../../resources/...`. Typst resolves `/` from `--root .` which is the project root. Relative paths break if file depth changes.
 
 ### Spellbook
 
@@ -124,3 +126,11 @@ Damage types: `acid bludgeoning cold fire force lightning necrotic piercing pois
 Conditions: `blinded charmed deafened frightened grappled incapacitated invisible paralyzed petrified poisoned prone restrained stunned unconscious`
 
 Use `/create-spell` to generate a new spell record following all DSL and style rules.
+
+### Typst gotchas
+
+**Spacing:** Use `#v(X)` at the start of block content for entry gaps — Typst suppresses leading vertical space at the top of a column/page, so the first entry gets no gap automatically. Avoid `block(above: X)` as a drop-in replacement: if you also remove a trailing `\`, you silently lose spacing (`\` after a block contributes ~line-height of vertical space).
+
+**Paragraph wrapping:** Never wrap block content in `par()` — it generates "parbreak/block may not occur inside of a paragraph" warnings (one call can produce 20+). Use `block[#set par(...) #body]` to apply paragraph settings, or `#set par(...)` directly inside table cell content.
+
+**Checking warnings:** `tail -10` hides most build warnings. Always check: `./scripts/buildAll.sh 2>&1 | grep -i warning`
