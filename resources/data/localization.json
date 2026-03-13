@@ -507,6 +507,10 @@
     "en": "Biography",
     "ru": "Биография"
   },
+  "ui.pages.spells": {
+    "en": "Spells",
+    "ru": "Заклинания"
+  },
 
   "ui.spells.slots": {
     "en": "Slots",

@@ -339,3 +339,39 @@
     )
   ]
 }
+
+// Auto-renders all spell sections from a builder character dict.
+// Renders: spellcasting header, slot tracker, cantrips, then each spell level
+// in ascending order. Content flows across pages automatically.
+#let spellPages(char) = {
+  let charSpells = char.at("spells", default: none)
+  if charSpells == none { return }
+
+  let hasSpells = (
+    charSpells.cantrips.len() > 0
+    or charSpells.byLevel.values().any(list => list.len() > 0)
+  )
+  if not hasSpells { return }
+
+  set page(header: section(loc("ui.pages.spells")))
+  pagebreak()
+
+  spellcasting(char)
+  spellSlotsSection(char)
+
+  if charSpells.cantrips.len() > 0 {
+    spellsSection(level: cantrip, ..charSpells.cantrips)
+  }
+
+  let resolvedSlots = method(char, c => c.spellcasting.slots)
+
+  for lvl in charSpells.byLevel.keys().map(int).sorted() {
+    let spellList = charSpells.byLevel.at(str(lvl))
+    if spellList.len() > 0 {
+      let slots = if resolvedSlots != none {
+        resolvedSlots.at(str(lvl), default: none)
+      }
+      spellsSection(level: spellLevel(lvl, slots: slots), ..spellList)
+    }
+  }
+}
