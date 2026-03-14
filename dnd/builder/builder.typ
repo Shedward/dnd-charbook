@@ -27,7 +27,7 @@
   skillProfs: none,
   skillExpert: (),
   saveProfs: none,
-  profBonus: none,
+  profBonus: _standardProfBonus,
   speed: none,
   hitDices: none,
   maxHp: none,

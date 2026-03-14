@@ -15,13 +15,6 @@
     stats: (STR: 8, DEX: 14, CON: 12, INT: 10, WIS: 13, CHA: 18),
     speed: movementSpeed(walking: 30),
     hitDices: hitDices[k8],
-    profBonus: byLevelMethod((
-      "1": 2,
-      "5": 3,
-      "9": 4,
-      "13": 5,
-      "17": 6,
-    )),
     spellcasting: spellcasting(
       stat: CHA,
       focus: "Гримуар",
