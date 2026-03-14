@@ -132,6 +132,8 @@
 
   upgrade("Жрец 1ур (тест addClassSpells)",
     addClassSpells("жрец", cantrip),
+    addClassSpells("жрец", 1),
+    addClassSpells("жрец", 2),
   ),
 
   upgrade("Событие: Спасение гоблинки",
