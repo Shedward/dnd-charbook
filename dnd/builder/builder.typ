@@ -86,7 +86,21 @@
 
 #let levelUp() = (state) => (..state, level: state.level + 1)
 
-#let setBiography(body) = (state) => (..state, biography: body)
+#let setBiography(
+  backstory: none,
+  traits: (),
+  bonds: (),
+  ideals: (),
+  goals: (),
+  flaws: (),
+) = (state) => (..state, biography: (
+  backstory: backstory,
+  traits: traits,
+  bonds: bonds,
+  ideals: ideals,
+  goals: goals,
+  flaws: flaws,
+))
 
 #let setCover(..args) = (state) => (..state, cover: args.named())
 

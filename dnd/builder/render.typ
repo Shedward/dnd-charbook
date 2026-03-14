@@ -1,4 +1,5 @@
 #import "../core/core.typ"
+#import "../core/loc.typ": loc
 #import "../game/game.typ": *
 #import "../page/page.typ"
 
@@ -46,7 +47,31 @@
 
   let bio = if biography != none { biography } else { char.at("biography", default: none) }
   if bio != none {
-    bio
+    if type(bio) == dictionary {
+      let _section(key, items) = if items.len() > 0 {
+        biographySection(loc(key))[
+          #for item in items { biographySubsection(item.at(0), item.at(1)) }
+        ]
+      }
+      let traits = bio.at("traits", default: ())
+      let bonds = bio.at("bonds", default: ())
+      let ideals = bio.at("ideals", default: ())
+      let goals = bio.at("goals", default: ())
+      let flaws = bio.at("flaws", default: ())
+      if bio.backstory != none { page.backstory(bio.backstory) }
+      if (traits + bonds + ideals + goals + flaws).len() > 0 {
+        page.personality[
+          #_section("ui.biography.traits", traits)
+          #_section("ui.biography.bonds", bonds)
+          #_section("ui.biography.ideals", ideals)
+          #colbreak()
+          #_section("ui.biography.goals", goals)
+          #_section("ui.biography.flaws", flaws)
+        ]
+      }
+    } else {
+      bio
+    }
   }
 
   page.quests
