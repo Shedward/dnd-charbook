@@ -2,22 +2,37 @@
 #import "../game/game.typ": *
 #import "../data/data.typ": *
 
-#let spellRow(spell) = (
-  table.cell(rowspan: 2, align: horizon + center)[#spell.prep],
-  table.cell(rowspan: 2, align: horizon + left)[
-    #set par(justify: false)
-    #spell.name\
-    #spellCaption(spell.school)
-  ],
-  table.cell(align: left)[#spell.castTime],
-  spell.duration,
-  spell.range,
-  spell.components,
-  table.cell(align: right, inset: (top: paddings(0.25)))[
-    #if (spell.castType == none) [-] else [#spell.castType]
-  ],
-  table.cell(colspan: 3, inset: (top: paddings(0.25)), spell.body)
-)
+#let spellColumns = (9mm, 20mm, 8mm, 1fr, 1fr, 9mm)
+
+#let spellBlock(spell) = block(
+  breakable: false,
+  width: 100%,
+  above: 0pt,
+  below: 0pt,
+  inset: 0pt,
+  spacing: 0pt,
+)[
+  #line(length: 100%, stroke: strokes.hairline)
+  #grid(
+    columns: spellColumns,
+    align: top + left,
+    inset: (top: paddings(0), bottom: paddings(1), left: paddings(0.5), right: paddings(0.5)),
+    grid.cell(rowspan: 2, align: horizon + center)[#spell.prep],
+    grid.cell(rowspan: 2, align: horizon + left)[
+      #set par(justify: false)
+      #spell.name\
+      #spellCaption(spell.school)
+    ],
+    grid.cell(align: left)[#spell.castTime],
+    spell.duration,
+    spell.range,
+    spell.components,
+    grid.cell(align: right, inset: (top: paddings(0.25)))[
+      #if (spell.castType == none) [-] else [#spell.castType]
+    ],
+    grid.cell(colspan: 3, inset: (top: paddings(0.25)), spell.body),
+  )
+]
 
 #let spellPropBox(content, dy: -0.5em) = {
   box(height: 15mm)[
@@ -125,24 +140,20 @@
   show: spellBody
   set text(hyphenate: false)
 
-  table(
-    columns: (9mm, 20mm, 8mm, 1fr, 1fr, 1fr),
+  grid(
+    columns: spellColumns,
     align: top + left,
-    stroke: (x, y) => (
-      top: if (y > 0 and calc.rem(y, 2) == 1) { strokes.hairline } else { 0pt },
-      bottom: none
-    ),
     inset: paddings(0.75),
-
-    table.cell(align: center, tableHeader(loc("ui.spells.prepared"))),
+    grid.cell(align: center, tableHeader(loc("ui.spells.prepared"))),
     tableHeader(loc("ui.common.name")),
-    table.cell(align: center, tableHeader(loc("ui.spells.time"))),
+    grid.cell(align: center, tableHeader(loc("ui.spells.time"))),
     tableHeader(loc("ui.spells.duration")),
     tableHeader(loc("ui.spells.range")),
     tableHeader(loc("ui.spells.components")),
-
-    ..(spells.pos().map(spellRow).flatten()),
   )
+  for spell in spells.pos() {
+    spellBlock(spell)
+  }
 }
 
 #let spellsSection(
@@ -160,7 +171,7 @@
       ),
     )
   }
-  framed(fitting: expand-h, insets: (x: paddings(1), y: paddings(0.5)))[
+  [
     #grid(
       columns: 1,
       inset: paddings(1),
@@ -292,21 +303,24 @@
   }
 }
 
-#let spellFromSpellbook(s, ..etc) = spell(
-  s.name,
-  school: schoolFromSpellbook(s),
-  castTime: castingTimeFromSpellbook(s.casting_time),
-  castType: castTypeFromSpellbook(s),
-  duration: durationFromSpellbook(s),
-  range: targetFromSpellbook(s),
-  components: componentsFromSpellbook(s),
-  ..etc,
-)[
-  #if "body" in s {
-    eval(s.body, scope: spellBodyDSLScope, mode: "markup")
-  }
-  #requiredComponentsFromSpellbook(s)
-]
+#let spellFromSpellbook(s, ..etc) = {
+  let sp = spell(
+    s.name,
+    school: schoolFromSpellbook(s),
+    castTime: castingTimeFromSpellbook(s.casting_time),
+    castType: castTypeFromSpellbook(s),
+    duration: durationFromSpellbook(s),
+    range: targetFromSpellbook(s),
+    components: componentsFromSpellbook(s),
+    ..etc,
+  )[
+    #if "body" in s {
+      eval(s.body, scope: spellBodyDSLScope, mode: "markup")
+    }
+    #requiredComponentsFromSpellbook(s)
+  ]
+  (id: s.id, ..sp)
+}
 
 #let allSpells() = {
   for i in range(10) [
@@ -338,4 +352,32 @@
       )
     )
   ]
+}
+
+#let spellPages(char) = {
+  let charSpells = char.at("spells", default: none)
+  if charSpells == none { return }
+
+  let hasSpells = (
+    charSpells.cantrips.len() > 0
+    or charSpells.byLevel.values().any(list => list.len() > 0)
+  )
+  if not hasSpells { return }
+
+  set page(header: section(loc("ui.pages.spells")))
+  pagebreak()
+
+  spellcasting(char)
+  spellSlotsSection(char)
+
+  if charSpells.cantrips.len() > 0 {
+    spellsSection(level: cantrip, ..charSpells.cantrips)
+  }
+
+  for lvl in charSpells.byLevel.keys().map(int).sorted() {
+    let spellList = charSpells.byLevel.at(str(lvl))
+    if spellList.len() > 0 {
+      spellsSection(level: spellLevel(lvl), ..spellList)
+    }
+  }
 }

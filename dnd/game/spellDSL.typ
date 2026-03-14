@@ -167,7 +167,7 @@
   heal: heal,
   formula: formula,
   atHigherLevels: atHigherLevels,
-  acid: acid, bludgeoning: bludgeoning, cold: cold, frost: frost, fire: fire,
+  acid: acid, bludgeoning: bludgeoning, cold: cold, frost: cold, fire: fire,
   force: force, lightning: lightning, necrotic: necrotic,
   piercing: piercing, poison: poison, psychic: psychic,
   radiant: radiant, slashing: slashing, thunder: thunder,

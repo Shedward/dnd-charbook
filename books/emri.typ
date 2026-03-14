@@ -73,15 +73,6 @@
   saveProfs: (
     WIS, CHA
   ),
-  profBonus: byLevelMethod(
-    (
-      "1": 2,
-      "5": 3,
-      "9": 4,
-      "13": 5,
-      "17": 6
-    )
-  ),
   speed: movementSpeed(walking: 30),
   hitDices: hitDices[k8],
   maxHp: none
@@ -122,4 +113,4 @@
 ]
 
 
-#dnd.page.allSpellsFromSpellbook("жрец", "домен кузни", 5)
+#dnd.page.allSpellsFromSpellbook("жрец", "домен кузни", 7)

@@ -15,48 +15,6 @@
   fn(currentCharacter)
 }
 
-#let character(
-  name: none,
-  class: none,
-  subclass: none,
-  race: none,
-  type: none,
-  alignment: none,
-  story: none,
-  spellcasting: none,
-  level: 1,
-  stats: none,
-  skillProfs: none,
-  skillExpert: (),
-  saveProfs: none,
-  profBonus: none,
-  speed: none,
-  hitDices: none,
-  maxHp: none,
-  initiative: none,
-  baseArmorClass: auto,
-) = (
-  name: name,
-  class: class,
-  subclass: subclass,
-  race: race,
-  type: type,
-  alignment: alignment,
-  story: story,
-  spellcasting: spellcasting,
-  level: level,
-  stats: stats,
-  skillProfs: skillProfs,
-  skillExpert: skillExpert,
-  saveProfs: saveProfs,
-  profBonus: profBonus,
-  speed: speed,
-  hitDices: hitDices,
-  maxHp: maxHp,
-  initiative: initiative,
-  baseArmorClass: baseArmorClass
-)
-
 #let STR = "STR"
 #let DEX = "DEX"
 #let CON = "CON"
@@ -153,6 +111,50 @@
 }
 
 #let byLevelMethod(x) = character => byCharacterLevel(character, x)
+
+#let _standardProfBonus = byLevelMethod(("1": 2, "5": 3, "9": 4, "13": 5, "17": 6))
+
+#let character(
+  name: none,
+  class: none,
+  subclass: none,
+  race: none,
+  type: none,
+  alignment: none,
+  story: none,
+  spellcasting: none,
+  level: 1,
+  stats: none,
+  skillProfs: none,
+  skillExpert: (),
+  saveProfs: none,
+  profBonus: _standardProfBonus,
+  speed: none,
+  hitDices: none,
+  maxHp: none,
+  initiative: none,
+  baseArmorClass: auto,
+) = (
+  name: name,
+  class: class,
+  subclass: subclass,
+  race: race,
+  type: type,
+  alignment: alignment,
+  story: story,
+  spellcasting: spellcasting,
+  level: level,
+  stats: stats,
+  skillProfs: skillProfs,
+  skillExpert: skillExpert,
+  saveProfs: saveProfs,
+  profBonus: profBonus,
+  speed: speed,
+  hitDices: hitDices,
+  maxHp: maxHp,
+  initiative: initiative,
+  baseArmorClass: baseArmorClass
+)
 
 #let byLevel(x) = resolveForCharacter(byLevelMethod(x))
 

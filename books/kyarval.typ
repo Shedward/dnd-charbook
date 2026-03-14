@@ -32,15 +32,6 @@
   saveProfs: (
     STR, CON
   ),
-  profBonus: byLevelMethod(
-    (
-      "1": 2,
-      "5": 3,
-      "9": 4,
-      "13": 5,
-      "17": 6
-    )
-  ),
   speed: movementSpeed(walking: 30),
   hitDices: hitDices[к12],
   maxHp: "54",
@@ -69,7 +60,7 @@
 
     15фт конус, #dc("8 + CON + PROF")
 
-    #damage(byLevel(("1": "2d6", "6": "3d6", "11": "4d6", "16": "5d6")), frost, saving: CON)
+    #damage(byLevel(("1": "2d6", "6": "3d6", "11": "4d6", "16": "5d6")), cold, saving: CON)
   ],
 
   ability("Странник", source: "Чужеземец")[
