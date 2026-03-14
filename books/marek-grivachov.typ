@@ -105,6 +105,7 @@
 
     addProficiency(languageProficiency("Общий")),
     addProficiency(languageProficiency("Эльфийский")),
+    addSkillProfs(animalHandling),
 
     addAbility("Черта: Адепт Таинств")[
       +1 воззвание
@@ -167,7 +168,7 @@
 
     addAbility("Лечащий свет")[
       У вас есть кости лечения.
-      #abilityCountSlot[#formula("LVL")d6]
+      #abilityCountSlot[#formula("LVL + 1")d6]
       Бонусным действием потратьте кости, чтобы вылечить существо в 60 футах.
     ],
   ),
@@ -193,6 +194,8 @@
 
     removeSpellById("cause-fear"),
     addSpellById("suggestion"),
+
+    addSpellById("darkness"),
 
     removeAbility("Воззвание:\nЖивотная речь"),
     removeSpellById("speak-with-animals"),
@@ -225,7 +228,6 @@
     addStatBonus(CHA, 2),
 
     addSpellById("friends"),
-    addSpellById("darkness"),
     addSpellById("shatter"),
   ),
 
