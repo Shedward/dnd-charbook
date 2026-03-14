@@ -278,7 +278,6 @@
     addStatBonus(CHA, 2),
 
     addSpellById("fly"),
-    addSpellById("fire-bolt"),
   ),
 )
 
