@@ -67,7 +67,14 @@
 // Scalar
 
 #let setLevel(n) = (state) => (..state, level: n)
-
+#let setClass(name) = (state) => (..state, class: name)
+#let setSubclass(name) = (state) => (..state, subclass: name)
+#let setRace(name) = (state) => (..state, race: name)
+#let setType(name) = (state) => (..state, type: name)
+#let setAlignment(name) = (state) => (..state, alignment: name)
+#let setStory(name) = (state) => (..state, story: name)
+#let setSpeed(speed) = (state) => (..state, speed: speed)
+#let setHitDice(hd) = (state) => (..state, hitDices: hd)
 #let setSpellcasting(sc) = (state) => (..state, spellcasting: sc)
 
 #let addHP(amount) = (state) => {
