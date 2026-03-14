@@ -178,6 +178,16 @@
   addSpell(level, spellFromSpellbook(entry, ..etc))(state)
 }
 
+#let addClassSpells(class, level) = (state) => {
+  let spellLevel = if type(level) == int { level } else { 0 }
+  spellbook()
+    .filter(s => s.level == spellLevel and s.classes.any(c => c.class == class))
+    .fold(state, (s, entry) => {
+      let slotLevel = if entry.level == 0 { cantrip } else { entry.level }
+      addSpell(slotLevel, spellFromSpellbook(entry))(s)
+    })
+}
+
 #let removeSpell(name) = (state) => {
   let spells = state.spells
   spells.cantrips = spells.cantrips.filter(s => s.name != name)

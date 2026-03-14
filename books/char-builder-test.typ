@@ -130,6 +130,10 @@
     ],
   ),
 
+  upgrade("Жрец 1ур (тест addClassSpells)",
+    addClassSpells("жрец", cantrip),
+  ),
+
   upgrade("Событие: Спасение гоблинки",
     addAbility("Настоящий друг")[
       Вы получаете +1 КД.
