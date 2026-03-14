@@ -8,6 +8,13 @@
     stats: (STR: 8, DEX: 14, CON: 12, INT: 10, WIS: 13, CHA: 18),
   ),
 
+  setBiography[
+    #dnd.page.backstory[
+      Тест-персонаж для проверки builder API.
+      Здесь должна быть предыстория персонажа.
+    ]
+  ],
+
   upgrade("Человек",
     setRace("Человек"),
     setType("Гуманоид"),
@@ -122,12 +129,4 @@
   ),
 )
 
-#charbook(char,
-  locale: "ru",
-  biography: [
-    #dnd.page.backstory[
-      Тест-персонаж для проверки builder API.
-      Здесь должна быть предыстория персонажа.
-    ]
-  ],
-)
+#charbook(char, locale: "ru")

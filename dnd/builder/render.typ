@@ -42,8 +42,9 @@
     page.proficiencies(..proficiencies)
   }
 
-  if biography != none {
-    biography
+  let bio = if biography != none { biography } else { char.at("biography", default: none) }
+  if bio != none {
+    bio
   }
 
   for _ in range(quests) {
