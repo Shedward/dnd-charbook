@@ -56,6 +56,7 @@
   abilities: (),
   proficiencies: (),
   spells: (cantrips: (), byLevel: (:)),
+  cover: none,
   biography: none,
   currentSource: none,
 )
@@ -86,6 +87,8 @@
 #let levelUp() = (state) => (..state, level: state.level + 1)
 
 #let setBiography(body) = (state) => (..state, biography: body)
+
+#let setCover(..args) = (state) => (..state, cover: args.named())
 
 // Stats
 

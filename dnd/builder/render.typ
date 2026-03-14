@@ -7,14 +7,16 @@
   locale: "ru",
   cover: none,
   biography: none,
-  quests: 0,
 ) = {
   show: core.charbook
   core.setLocale(locale)
   setCharacter(char)
 
-  if cover != none {
-    page.cover(char.name, ..cover)
+  let coverArgs = if cover != none { cover } else { char.at("cover", default: none) }
+  if coverArgs != none {
+    page.cover(char.name, ..coverArgs)
+  } else {
+    page.cover(char.name, title: char.class, subtitle: char.subclass)
   }
 
   page.attacks
@@ -47,7 +49,6 @@
     bio
   }
 
-  for _ in range(quests) {
-    page.quests
-  }
+  page.quests
+  page.quests
 }
