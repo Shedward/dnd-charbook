@@ -1,6 +1,6 @@
-#import "../dnd/dnd.typ"
-#import "../dnd/game/game.typ": *
-#import "../dnd/page/spells.typ": spellBodyDSLScope
+#import "../../dnd/dnd.typ"
+#import "../../dnd/game/game.typ": *
+#import "../../dnd/page/spells.typ": spellBodyDSLScope
 
 #setLocale("ru")
 

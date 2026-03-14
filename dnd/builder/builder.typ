@@ -170,7 +170,7 @@
   (..state, spells: spells)
 }
 
-#let addSpellFromSpellbook(id, ..etc) = (state) => {
+#let addSpellById(id, ..etc) = (state) => {
   let matches = spellbook().filter(s => s.id == id)
   assert(matches.len() > 0, message: "spell not found in spellbook: " + id)
   let entry = matches.first()
@@ -188,11 +188,12 @@
     })
 }
 
-#let removeSpell(name) = (state) => {
+#let removeSpellById(id) = (state) => {
   let spells = state.spells
-  spells.cantrips = spells.cantrips.filter(s => s.name != name)
+  let notId = s => s.at("id", default: none) != id
+  spells.cantrips = spells.cantrips.filter(notId)
   for (lvl, spellList) in spells.byLevel {
-    spells.byLevel.insert(lvl, spellList.filter(s => s.name != name))
+    spells.byLevel.insert(lvl, spellList.filter(notId))
   }
   (..state, spells: spells)
 }

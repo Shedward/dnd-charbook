@@ -2,7 +2,7 @@
 #import "../game/game.typ": *
 #import "../data/data.typ": *
 
-#let spellColumns = (9mm, 20mm, 8mm, 1fr, 1fr, 1fr)
+#let spellColumns = (9mm, 20mm, 8mm, 1fr, 1fr, 9mm)
 
 #let spellBlock(spell) = block(
   breakable: false,
@@ -303,21 +303,24 @@
   }
 }
 
-#let spellFromSpellbook(s, ..etc) = spell(
-  s.name,
-  school: schoolFromSpellbook(s),
-  castTime: castingTimeFromSpellbook(s.casting_time),
-  castType: castTypeFromSpellbook(s),
-  duration: durationFromSpellbook(s),
-  range: targetFromSpellbook(s),
-  components: componentsFromSpellbook(s),
-  ..etc,
-)[
-  #if "body" in s {
-    eval(s.body, scope: spellBodyDSLScope, mode: "markup")
-  }
-  #requiredComponentsFromSpellbook(s)
-]
+#let spellFromSpellbook(s, ..etc) = {
+  let sp = spell(
+    s.name,
+    school: schoolFromSpellbook(s),
+    castTime: castingTimeFromSpellbook(s.casting_time),
+    castType: castTypeFromSpellbook(s),
+    duration: durationFromSpellbook(s),
+    range: targetFromSpellbook(s),
+    components: componentsFromSpellbook(s),
+    ..etc,
+  )[
+    #if "body" in s {
+      eval(s.body, scope: spellBodyDSLScope, mode: "markup")
+    }
+    #requiredComponentsFromSpellbook(s)
+  ]
+  (id: s.id, ..sp)
+}
 
 #let allSpells() = {
   for i in range(10) [

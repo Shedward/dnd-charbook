@@ -113,4 +113,4 @@
 ]
 
 
-#dnd.page.allSpellsFromSpellbook("жрец", "домен кузни", 5)
+#dnd.page.allSpellsFromSpellbook("жрец", "домен кузни", 7)

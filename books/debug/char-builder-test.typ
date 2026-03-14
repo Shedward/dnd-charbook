@@ -1,6 +1,6 @@
-#import "../dnd/dnd.typ"
-#import "../dnd/game/game.typ": *
-#import "../dnd/builder/builder.typ": *
+#import "../../dnd/dnd.typ"
+#import "../../dnd/game/game.typ": *
+#import "../../dnd/builder/builder.typ": *
 
 #let char = build(
   introduce(
@@ -80,14 +80,14 @@
 
       $"Сл. сп." = 8 + "Бон. маст." + "ХАР"$
     ],
-    addSpellFromSpellbook("eldritch-blast"),
-    addSpellFromSpellbook("hex"),
+    addSpellById("eldritch-blast"),
+    addSpellById("hex"),
   ),
 
   upgrade("Небожитель",
     setSubclass("Небожитель"),
-    addSpellFromSpellbook("light"),
-    addSpellFromSpellbook("cure-wounds"),
+    addSpellById("light"),
+    addSpellById("cure-wounds"),
     addAbility("Лечащий свет")[
       У вас есть кости лечения. Бонусным действием потратьте кости, чтобы вылечить существо в 60 футах.
     ],
@@ -115,8 +115,8 @@
   upgrade("Колдун 5ур",
     levelUp(),
     addMaxHP(6),
-    addSpellFromSpellbook("acid-splash"),
-    addSpellFromSpellbook("fireball"),
+    addSpellById("acid-splash"),
+    addSpellById("fireball"),
   ),
 
   upgrade("Плут 1ур",
