@@ -4,12 +4,19 @@
 
 #let spellColumns = (9mm, 20mm, 8mm, 1fr, 1fr, 1fr)
 
-#let spellBlock(spell) = block(breakable: false, width: 100%, above: 0pt, below: 0pt)[
+#let spellBlock(spell) = block(
+  breakable: false,
+  width: 100%,
+  above: 0pt,
+  below: 0pt,
+  inset: 0pt,
+  spacing: 0pt,
+)[
   #line(length: 100%, stroke: strokes.hairline)
   #grid(
     columns: spellColumns,
     align: top + left,
-    inset: paddings(0.75),
+    inset: (top: paddings(0), bottom: paddings(1), left: paddings(0.5), right: paddings(0.5)),
     grid.cell(rowspan: 2, align: horizon + center)[#spell.prep],
     grid.cell(rowspan: 2, align: horizon + left)[
       #set par(justify: false)
@@ -164,12 +171,7 @@
       ),
     )
   }
-  block(
-    stroke: strokes.thin,
-    inset: paddings(1),
-    width: 100%,
-    breakable: true,
-  )[
+  [
     #grid(
       columns: 1,
       inset: paddings(1),
@@ -369,14 +371,10 @@
     spellsSection(level: cantrip, ..charSpells.cantrips)
   }
 
-  let resolvedSlots = method(char, c => c.spellcasting.slots)
   for lvl in charSpells.byLevel.keys().map(int).sorted() {
     let spellList = charSpells.byLevel.at(str(lvl))
     if spellList.len() > 0 {
-      let slots = if resolvedSlots != none {
-        resolvedSlots.at(str(lvl), default: none)
-      }
-      spellsSection(level: spellLevel(lvl, slots: slots), ..spellList)
+      spellsSection(level: spellLevel(lvl), ..spellList)
     }
   }
 }
