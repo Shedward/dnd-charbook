@@ -22,7 +22,7 @@
   alignment: none,
   story: none,
   spellcasting: none,
-  level: 1,
+  level: 0,
   stats: none,
   skillProfs: none,
   skillExpert: (),
@@ -77,10 +77,12 @@
 #let setHitDice(hd) = (state) => (..state, hitDices: hd)
 #let setSpellcasting(sc) = (state) => (..state, spellcasting: sc)
 
-#let addHP(amount) = (state) => {
+#let addMaxHP(amount) = (state) => {
   let current = if state.maxHp == none { 0 } else { state.maxHp }
   (..state, maxHp: current + amount)
 }
+
+#let levelUp() = (state) => (..state, level: state.level + 1)
 
 // Stats
 

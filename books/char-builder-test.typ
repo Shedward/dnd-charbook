@@ -33,8 +33,8 @@
 
   upgrade("Колдун 1ур",
     setClass("Колдун"),
-    setLevel(1),
-    addHP(9),
+    levelUp(),
+    addMaxHP(9),
     setHitDice(hitDices[k8]),
     setSpellcasting(spellcasting(
       stat: CHA,
@@ -75,29 +75,40 @@
   ),
 
   upgrade("Колдун 2ур",
-    setLevel(2),
-    addHP(6),
+    levelUp(),
+    addMaxHP(6),
     addAbility("Воззвание: Мучительный взрыв")[
       Добавьте #damage("CHA", force) к урону Мистического заряда.
     ],
   ),
 
   upgrade("Колдун 3ур",
-    setLevel(3),
-    addHP(6),
+    levelUp(),
+    addMaxHP(6),
   ),
 
   upgrade("Колдун 4ур — ASI",
-    setLevel(4),
-    addHP(6),
+    levelUp(),
+    addMaxHP(6),
     addStatBonus(CHA, 2),
   ),
 
   upgrade("Колдун 5ур",
-    setLevel(5),
-    addHP(6),
+    levelUp(),
+    addMaxHP(6),
     addSpellFromSpellbook("acid-splash"),
     addSpellFromSpellbook("fireball"),
+  ),
+
+  upgrade("Плут 1ур",
+    setClass("Колдун 5 / Плут 1"),
+    levelUp(),
+    addMaxHP(7),
+    setHitDice([5к8 + 1к6]),
+    addSkillProfs(stealth),
+    addAbility("Скрытая атака")[
+      Один раз за ход добавьте #damage("1d6", piercing) к атаке с преимуществом или при союзнике рядом.
+    ],
   ),
 
   upgrade("Событие: Спасение гоблинки",
