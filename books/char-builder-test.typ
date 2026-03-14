@@ -5,17 +5,38 @@
 #let char = build(
   introduce(
     name: "Тест Билдер",
-    class: "Колдун",
-    subclass: "Небожитель",
-    race: "Человек",
-    type: "Гуманоид",
-    alignment: "Lawful Good",
-    story: "Учёный-затворник",
-    level: 4,
     stats: (STR: 8, DEX: 14, CON: 12, INT: 10, WIS: 13, CHA: 18),
-    speed: movementSpeed(walking: 30),
-    hitDices: hitDices[k8],
-    spellcasting: spellcasting(
+  ),
+
+  upgrade("Человек",
+    setRace("Человек"),
+    setType("Гуманоид"),
+    setAlignment("Законопослушный добрый"),
+    setSpeed(movementSpeed(walking: 30)),
+    addStatBonus(STR, 1),
+    addStatBonus(DEX, 1),
+    addStatBonus(CON, 1),
+    addStatBonus(INT, 1),
+    addStatBonus(WIS, 1),
+    addStatBonus(CHA, 1),
+    addProficiency(languageProficiency("Общий")),
+    addProficiency(languageProficiency("Эльфийский")),
+  ),
+
+  upgrade("Учёный-затворник",
+    setStory("Учёный-затворник"),
+    addSkillProfs(history, nature),
+    addAbility("Доступ к библиотеке")[
+      Вы можете запросить информацию из библиотек королевства.
+    ],
+  ),
+
+  upgrade("Колдун 1ур",
+    setClass("Колдун"),
+    setLevel(1),
+    addHP(9),
+    setHitDice(hitDices[k8]),
+    setSpellcasting(spellcasting(
       stat: CHA,
       focus: "Гримуар",
       slots: byLevelMethod((
@@ -26,13 +47,9 @@
         "7": ("4": 2),
         "9": ("5": 2),
       )),
-    ),
-  ),
-
-  upgrade("Колдун 1ур",
-    addHP(9),
-    addSkillProfs(persuasion, deception),
+    )),
     addSaveProfs(WIS, CHA),
+    addSkillProfs(persuasion, deception),
     addProficiency(armorProficiency("Лёгкая броня")),
     addProficiency(weaponProficiency("Простое оружие")),
     addAbility("Потусторонний покровитель")[
@@ -48,24 +65,8 @@
     addSpellFromSpellbook("hex"),
   ),
 
-  upgrade("Колдун 2ур",
-    addHP(6),
-    addAbility("Воззвание: Мучительный взрыв")[
-      Добавьте #damage("CHA", force) к урону Мистического заряда.
-    ],
-  ),
-
-  upgrade("Колдун 3ур",
-    addHP(6),
-  ),
-
-  upgrade("Колдун 4ур — ASI",
-    addHP(6),
-    setLevel(4),
-    addStatBonus(CHA, 2),
-  ),
-
-  upgrade("Небожитель 1ур",
+  upgrade("Небожитель",
+    setSubclass("Небожитель"),
     addSpellFromSpellbook("light"),
     addSpellFromSpellbook("cure-wounds"),
     addAbility("Лечащий свет")[
@@ -73,9 +74,28 @@
     ],
   ),
 
-  upgrade("Колдун 5ур",
+  upgrade("Колдун 2ур",
+    setLevel(2),
     addHP(6),
+    addAbility("Воззвание: Мучительный взрыв")[
+      Добавьте #damage("CHA", force) к урону Мистического заряда.
+    ],
+  ),
+
+  upgrade("Колдун 3ур",
+    setLevel(3),
+    addHP(6),
+  ),
+
+  upgrade("Колдун 4ур — ASI",
+    setLevel(4),
+    addHP(6),
+    addStatBonus(CHA, 2),
+  ),
+
+  upgrade("Колдун 5ур",
     setLevel(5),
+    addHP(6),
     addSpellFromSpellbook("acid-splash"),
     addSpellFromSpellbook("fireball"),
   ),
@@ -88,7 +108,7 @@
 
   upgrade("Конец события: Спасение гоблинки",
     removeAbility("Настоящий друг"),
-  )
+  ),
 )
 
 #charbook(char,
