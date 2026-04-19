@@ -312,6 +312,7 @@
     duration: durationFromSpellbook(s),
     range: targetFromSpellbook(s),
     components: componentsFromSpellbook(s),
+    description: s.description,
     ..etc,
   )[
     #if "body" in s {

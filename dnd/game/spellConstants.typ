@@ -118,6 +118,7 @@
   range: none,
   components: none,
   source: class,
+  description: none,
   body
 ) = (
   prep: prep,
@@ -129,6 +130,7 @@
   range: range,
   components: components,
   source: source,
+  description: description,
   body: body
 )
 
