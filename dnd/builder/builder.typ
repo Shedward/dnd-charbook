@@ -3,7 +3,7 @@
 #import "../page/spells.typ": spellFromSpellbook
 
 #import "charbook.typ": charbook
-#import "deck.typ": deck, spellCard, deckOfSpells
+#import "deck.typ": deckOfSpells
 
 #let _normalizeArray(v) = if v == none { () } else { v }
 
