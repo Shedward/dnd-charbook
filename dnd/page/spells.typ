@@ -60,11 +60,11 @@
       #hstack(
         size: (auto,),
         align: horizon,
-        gutter: paddings(2),
+        spacing: paddings(2),
         ..(slots.keys()
             .map(
               level => vstack(
-                gutter: paddings(0.5),
+                spacing: paddings(0.5),
 
                 spellSlots(slots.at(level)),
                 [ *#propCap(roman(int(level)))* ]
@@ -74,7 +74,7 @@
         ..(additional.keys()
             .map(
               key => vstack(
-                gutter: paddings(0.5),
+                spacing: paddings(0.5),
 
                 spellSlots(additional.at(key)),
                 [ *#propCap(key)* ]
@@ -112,7 +112,7 @@
 
   framed(fitting: expand-h)[
     #vstack(
-      row-gutter: paddings(1),
+      spacing: paddings(1),
       skipNone: true,
       grid(
         columns: (1fr, 1fr, 1fr),

@@ -220,3 +220,33 @@
     }
   ]
 }
+
+// Spell card
+
+
+#let spellCardTitle(body) = {
+  set text(
+    font: fonts.ability,
+    size: 15pt
+  )
+
+  body
+}
+
+#let spellCardDescriptionTitle(body) = {
+  set text(
+    font: fonts.header,
+    size: 7pt
+  )
+  smallcaps(body)
+}
+
+#let spellCardDescription(body) = {
+  set text(
+    font: fonts.body,
+    size: 6pt,
+    fill: colors.primary
+  )
+
+  body
+}

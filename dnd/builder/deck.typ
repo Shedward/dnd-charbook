@@ -5,7 +5,7 @@
 #let deckOfSpells(
   char,
   card: spellCard,
-  cardSize: (25%, 25%),
+  cardSize: (33.33%, 33.33%),
   paper: "a4",
   margin: 0mm,
   stroke: (paint: silver, thickness: 0.2mm, dash: "dashed")
