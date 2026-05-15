@@ -230,7 +230,7 @@
     castType.push(concentration)
   }
 
-  castType.join()
+  castType.join(" ")
 }
 
 #let durationFromSpellbook(m) = {
