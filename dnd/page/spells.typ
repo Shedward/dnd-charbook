@@ -328,7 +328,7 @@
     }
     #requiredComponentsFromSpellbook(s)
   ]
-  (id: s.id, ..sp)
+  (id: s.id, originalName: s.at("original_name", default: none), ..sp)
 }
 
 #let allSpells() = {

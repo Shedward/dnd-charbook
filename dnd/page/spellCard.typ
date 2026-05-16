@@ -81,16 +81,24 @@
   )
 )
 
-#let spellCardBack(spell) = spellCardLayout(
-  vstack(
-    spacing: paddings(2),
-    spellCardDescriptionTitle(spell.name),
-    block(width: 100%, clip: true)[
-      #set align(left)
-      #par(justify: true, spellCardDescription(spell.description))
-    ]
+#let spellCardBack(spell) = {
+  let original = spell.at("originalName", default: none)
+  let title = if original != none and original != spell.name [
+    *#spell.name* #text(size: 0.8em)[(#original)]
+  ] else [
+    *#spell.name*
+  ]
+  spellCardLayout(
+    vstack(
+      spacing: paddings(2),
+      spellCardDescriptionTitle(title),
+      block(width: 100%, clip: true)[
+        #set align(left)
+        #par(justify: true, spellCardDescription(spell.description))
+      ]
+    )
   )
-)
+}
 
 #let spellCard(spell) = (
   front: spellCardFront(spell),
