@@ -81,6 +81,11 @@
   )
 )
 
+#let _tightenDescription(s) = s.replace(
+  regex("([^.!?:\n])\n+"),
+  m => m.captures.at(0) + " ",
+)
+
 #let spellCardBack(spell) = {
   let original = spell.at("originalName", default: none)
   let title = if original != none and original != spell.name [
@@ -94,7 +99,7 @@
       spellCardDescriptionTitle(title),
       block(width: 100%, clip: true)[
         #set align(left)
-        #par(justify: true, spellCardDescription(spell.description))
+        #par(justify: true, spellCardDescription(_tightenDescription(spell.description)))
       ]
     )
   )

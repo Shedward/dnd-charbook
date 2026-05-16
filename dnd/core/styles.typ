@@ -244,7 +244,7 @@
 #let spellCardDescription(body) = {
   set text(
     font: fonts.body,
-    size: 6pt,
+    size: 5.5pt,
     fill: colors.primary
   )
 
