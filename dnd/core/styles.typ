@@ -229,6 +229,7 @@
     font: fonts.ability,
     size: 15pt
   )
+  set par(justify: false)
 
   body
 }
