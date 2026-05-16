@@ -93,16 +93,17 @@
   ] else [
     *#spell.name*
   ]
-  spellCardLayout(
-    vstack(
-      spacing: paddings(2),
-      spellCardDescriptionTitle(title),
-      block(width: 100%, clip: true)[
-        #set align(left)
-        #par(justify: true, spellCardDescription(_tightenDescription(spell.description)))
-      ]
-    )
-  )
+  spellCardLayout(block(width: 100%, height: 100%, grid(
+    columns: 1fr,
+    rows: (auto, 1fr, auto),
+    row-gutter: paddings(1.5),
+    align(left, spellCardDescriptionTitle(title)),
+    block(width: 100%, clip: true)[
+      #set align(left)
+      #par(justify: true, spellCardDescription(_tightenDescription(spell.description)))
+    ],
+    align(right, spellCaption(spell.school)),
+  )))
 }
 
 #let spellCard(spell) = (
