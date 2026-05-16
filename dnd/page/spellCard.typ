@@ -26,10 +26,17 @@
   stroke: strokes.hairline + colors.secondary,
 )
 
-#let spellCardSectionDivider = line(
-  length: 100%,
-  stroke: strokes.thin + colors.secondary,
-)
+#let spellCardSectionDivider = {
+  let segment = line(length: 100%, stroke: strokes.thin + colors.secondary)
+  grid(
+    columns: (1fr, auto, 1fr),
+    align: horizon,
+    column-gutter: paddings(0.5),
+    segment,
+    rhombus(width: 1.5mm, stroke: strokes.thin + colors.secondary, fill: colors.secondary),
+    segment,
+  )
+}
 
 #let spellCardLevelBadge(level) = {
   let label = if level == none {
@@ -49,7 +56,7 @@
   spellCardDivider,
   spellCardChip(spell.castTime),
   spellCardLevelBadge(spell.at("level", default: none)),
-  spellCardChip(spell.castType, alignment: left + horizon),
+  spellCardChip(spell.castType),
 )
 
 #let spellCardTarget(spell) = grid(
