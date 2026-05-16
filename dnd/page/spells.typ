@@ -277,7 +277,15 @@
 }
 
 #let componentsFromSpellbook(s) = {
-  s.components.components.join()
+  let isRequired = s.components.material_required == true
+  s.components.components.map(c => {
+    let key = "ui.spells.component." + lower(c)
+    if c == "M" and isRequired {
+      underline(strong(loc(key)))
+    } else {
+      loc(key)
+    }
+  }).join()
 }
 
 #let requiredComponentsFromSpellbook(s) = {

@@ -49,7 +49,7 @@
   text(font: fonts.ability, size: 18pt, label)
 }
 
-#let spellCardResources(spell) = grid(
+#let spellCardResources(spell) = pad(x: -paddings(2), grid(
   columns: (1fr, auto, 1fr, auto, 2fr),
   align: center + horizon,
   spellCardChip(spell.components),
@@ -57,7 +57,7 @@
   spellCardChip(spell.castTime),
   spellCardLevelBadge(spell.at("level", default: none)),
   spellCardChip(spell.castType),
-)
+))
 
 #let spellCardTarget(spell) = grid(
   columns: (1fr, auto, 1fr),
