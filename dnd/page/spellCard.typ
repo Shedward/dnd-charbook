@@ -86,6 +86,38 @@
   m => m.captures.at(0) + " ",
 )
 
+#let _renderDescription(s) = par(
+  justify: true,
+  spellCardDescription(_tightenDescription(s)),
+)
+
+#let _fitDescription(rawText) = layout(size => context {
+  let full = _renderDescription(rawText)
+  if measure(box(width: size.width, full)).height <= size.height {
+    return align(left, full)
+  }
+
+  let clusters = rawText.clusters()
+  let n = clusters.len()
+  let lo = 0
+  let hi = n
+  while lo < hi {
+    let mid = calc.div-euclid(lo + hi + 1, 2)
+    let candidate = _renderDescription(
+      clusters.slice(0, mid).join("") + "…"
+    )
+    let fits = measure(box(width: size.width, candidate)).height <= size.height
+    if fits { lo = mid } else { hi = mid - 1 }
+  }
+
+  let i = lo
+  while i > 0 and clusters.at(i - 1) != " " and clusters.at(i - 1) != "\n" {
+    i = i - 1
+  }
+  let prefix = clusters.slice(0, i).join("").trim()
+  align(left, _renderDescription(prefix + "…"))
+})
+
 #let spellCardBack(spell) = {
   let original = spell.at("originalName", default: none)
   let title = if original != none and original != spell.name [
@@ -98,10 +130,7 @@
     rows: (auto, 1fr, auto),
     row-gutter: paddings(1.5),
     align(left, spellCardDescriptionTitle(title)),
-    block(width: 100%, clip: true)[
-      #set align(left)
-      #par(justify: true, spellCardDescription(_tightenDescription(spell.description)))
-    ],
+    _fitDescription(spell.description),
     align(right, spellCaption(spell.school)),
   )))
 }
