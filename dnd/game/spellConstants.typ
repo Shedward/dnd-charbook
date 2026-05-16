@@ -71,9 +71,11 @@
 
 #let mile(m) = 5279 * m
 
-#let target(range, count: 1) = [#(rangeDescr(range))#icon("target")#countDescr(count)]
-#let point(range, count: 1) = [#(rangeDescr(range))#icon("point")#countDescr(count)]
-#let area(iconName) = (size, range: 0) => [#(rangeDescr(range))/#(size)ft#icon(iconName)]
+#let _iconRow(body, iconName, gap: 0.2em) = box[#body#h(gap)#icon(iconName)]
+
+#let target(range, count: 1) = [#_iconRow(rangeDescr(range), "target")#countDescr(count)]
+#let point(range, count: 1) = [#_iconRow(rangeDescr(range), "point")#countDescr(count)]
+#let area(iconName) = (size, range: 0) => _iconRow([#(rangeDescr(range))/#(size)ft], iconName)
 #let sight = loc("spell.range.sight")
 
 #let circle = area("circle")
@@ -83,10 +85,10 @@
 #let sphere = area("sphere")
 #let straightLine = area("arrow-right")
 #let cone = area("cone")
-#let cylinder = (radius, height, range: 0) => [#(rangeDescr(range))/#(radius)x#(height)ft#icon("cylinder")]
-#let rectangle = (x, y, z, range: 0) => [#(rangeDescr(range))/#(x)x#(y)x#(z)ft#icon("cube")]
+#let cylinder = (radius, height, range: 0) => _iconRow([#(rangeDescr(range))/#(radius)x#(height)ft], "cylinder")
+#let rectangle = (x, y, z, range: 0) => _iconRow([#(rangeDescr(range))/#(x)x#(y)x#(z)ft], "cube")
 
-#let volume(size) = [#(size)ft#icon("cube")]
+#let volume(size) = _iconRow([#(size)ft], "cube")
 
 // Sources
 #let class = [Class]
