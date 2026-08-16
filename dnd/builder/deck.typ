@@ -9,7 +9,8 @@
   card: spellCard,
   cardSize: (33.33%, 33.33%),
   paper: "a4",
-  margin: 0mm,
+  margin: 5mm,
+  cardPadding: 5mm,
   stroke: (paint: silver, thickness: 0.2mm, dash: "dashed")
 ) = {
   setCharacter(char)
@@ -24,7 +25,8 @@
     card,
     paper: paper,
     margin: margin,
-    stroke: stroke
+    cardPadding: cardPadding,
+    stroke: stroke,
   )
 }
 
@@ -34,7 +36,8 @@
   card: spellCard,
   cardSize: (33.33%, 33.33%),
   paper: "a4",
-  margin: 0mm,
+  margin: 5mm,
+  cardPadding: 5mm,
   stroke: (paint: silver, thickness: 0.2mm, dash: "dashed"),
 ) = {
   let filtered = spellbook()
@@ -51,6 +54,7 @@
     card,
     paper: paper,
     margin: margin,
+    cardPadding: cardPadding,
     stroke: stroke,
   )
 }

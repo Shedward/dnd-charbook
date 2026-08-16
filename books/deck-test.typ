@@ -3,4 +3,4 @@
 
 #dnd.core.setLocale("ru")
 
-#deckOfClassSpells("изобретатель")
+#deckOfClassSpells("жрец")

@@ -5,7 +5,8 @@
   cardSize,
   renderCard,
   paper: "a4",
-  margin: 3mm,
+  margin: 5mm,
+  cardPadding: 5mm,
   stroke: 0.5pt + gray,
 ) = {
   show: charbook
@@ -29,6 +30,7 @@
     assert(cols > 0 and rows > 0, message: "deck: card size exceeds page area")
     let perPage = cols * rows
 
+    let wrap = content => pad(cardPadding, content)
     let emptyCell = box(width: cw, height: ch)
     let gridOf(cells) = grid(
       columns: (cw,) * cols,
@@ -46,12 +48,12 @@
       let rendered = chunk.map(renderCard)
       let isLast = chunkStart + perPage >= data.len()
 
-      let frontCells = rendered.map(r => r.front)
+      let frontCells = rendered.map(r => wrap(r.front))
       while frontCells.len() < perPage { frontCells.push(emptyCell) }
       gridOf(frontCells)
       pagebreak()
 
-      let backCells = rendered.map(r => r.back)
+      let backCells = rendered.map(r => wrap(r.back))
       while backCells.len() < perPage { backCells.push(emptyCell) }
       let mirrored = ()
       for r in range(rows) {

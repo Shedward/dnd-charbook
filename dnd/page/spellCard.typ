@@ -1,15 +1,12 @@
 #import "../core/core.typ": *
 #import "../core/layout.typ": *
 
-#let spellCardLayout(body) = pad(
-  paddings(2),
-  framed(
-    fitting: expand,
-    insets: paddings(2),
-    alignment: center + top,
-    stroke: strokes.thin + colors.secondary,
-    body,
-  )
+#let spellCardLayout(body) = framed(
+  fitting: expand,
+  insets: paddings(2),
+  alignment: center + top,
+  stroke: strokes.thin + colors.secondary,
+  body,
 )
 
 #let spellCardChip(content, alignment: center + horizon) = box(
