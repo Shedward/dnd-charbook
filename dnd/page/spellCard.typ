@@ -64,18 +64,47 @@
   spellCardChip(spell.duration),
 )
 
+// Keep DSL elements (icons, formulas, contextual translations) intact when
+// shortening the rich body. Plain text can break at word boundaries.
+#let _bodyParts(body) = {
+  if body.has("children") {
+    body.children.map(_bodyParts).flatten()
+  } else if body.func() == text and body.has("text") {
+    body.text.matches(regex("\\S+|\\s+")).map(m => [#m.text])
+  } else if body.func() == strong or body.func() == emph {
+    _bodyParts(body.body).map(part => (body.func())(part))
+  } else {
+    (body,)
+  }
+}
+
+#let _fitBody(body) = layout(size => context {
+  let render(value) = align(left, par(justify: true, value))
+  let fits(value) = measure(box(width: size.width, render(value))).height <= size.height
+  if fits(body) { return render(body) }
+  if not fits([…]) { return [] }
+
+  let parts = _bodyParts(body)
+  let prefix(n) = [#parts.slice(0, n).join()…]
+  let lo = 0
+  let hi = parts.len()
+  while lo < hi {
+    let mid = calc.div-euclid(lo + hi + 1, 2)
+    if fits(prefix(mid)) { lo = mid } else { hi = mid - 1 }
+  }
+  render(prefix(lo))
+})
+
 #let spellCardFront(spell) = spellCardLayout(
-  vstack(
+  block(width: 100%, height: 100%, vstack(
+    size: (auto, auto, auto, auto, 1fr),
     spacing: (paddings(1.5), paddings(1.5), paddings(1.5), paddings(2)),
     spellCardResources(spell),
     spellCardTitle(spell.name),
     spellCardSectionDivider,
     spellCardTarget(spell),
-    block(width: 100%)[
-      #set align(left)
-      #par(justify: true, spell.body)
-    ]
-  )
+    _fitBody(spell.body),
+  ))
 )
 
 #let _tightenDescription(s) = s.replace(
