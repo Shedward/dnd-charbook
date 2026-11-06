@@ -30,9 +30,8 @@
   )
 }
 
-#let deckOfClassSpells(
-  class,
-  subclass: none,
+#let _catalogueDeck(
+  spells,
   card: spellCard,
   cardSize: (33.33%, 33.33%),
   paper: "a4",
@@ -40,21 +39,15 @@
   cardPadding: 5mm,
   stroke: (paint: silver, thickness: 0.2mm, dash: "dashed"),
 ) = {
-  let filtered = spellbook()
-    .filter(s => is_spell_for_class(s, class: class, subclass: subclass))
-  let all = ()
-  for lvl in range(10) {
-    all += filtered
-      .filter(s => s.level == lvl)
-      .map(s => (..spellFromSpellbook(s), level: lvl))
-  }
-  deck(
-    all,
-    cardSize,
-    card,
-    paper: paper,
-    margin: margin,
-    cardPadding: cardPadding,
-    stroke: stroke,
-  )
+  let cards = spells.sorted(key: s => s.level)
+    .map(s => (..spellFromSpellbook(s), level: s.level))
+  deck(cards, cardSize, card, paper: paper, margin: margin,
+    cardPadding: cardPadding, stroke: stroke)
+}
+
+#let deckOfAllSpells(..options) = _catalogueDeck(spellbook(), ..options)
+
+#let deckOfClassSpells(class, subclass: none, ..options) = {
+  let spells = spellbook().filter(s => is_spell_for_class(s, class: class, subclass: subclass))
+  _catalogueDeck(spells, ..options)
 }

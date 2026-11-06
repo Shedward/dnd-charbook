@@ -78,11 +78,13 @@
   }
 }
 
-#let _fitBody(body) = layout(size => context {
+#let _fitBody(spell) = layout(size => context {
+  let body = spell.body
   let render(value) = align(left, par(justify: true, value))
   let fits(value) = measure(box(width: size.width, render(value))).height <= size.height
   if fits(body) { return render(body) }
-  if not fits([…]) { return [] }
+  let clipped = [#metadata((id: spell.at("id", default: none), name: spell.name)) <clipped-spell-front>]
+  if not fits([…]) { return clipped }
 
   let parts = _bodyParts(body)
   let prefix(n) = [#parts.slice(0, n).join()…]
@@ -92,7 +94,7 @@
     let mid = calc.div-euclid(lo + hi + 1, 2)
     if fits(prefix(mid)) { lo = mid } else { hi = mid - 1 }
   }
-  render(prefix(lo))
+  clipped + render(prefix(lo))
 })
 
 #let spellCardFront(spell) = spellCardLayout(
@@ -103,7 +105,7 @@
     spellCardTitle(spell.name),
     spellCardSectionDivider,
     spellCardTarget(spell),
-    _fitBody(spell.body),
+    _fitBody(spell),
   ))
 )
 
