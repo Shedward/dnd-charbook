@@ -1,8 +1,6 @@
-#let icon(name, ..args) = context {
+#let icon(name, ..args) = {
     let resolvedArgs = if (args.named().len() == 0) {
-      let fontSize = text.size
-      let baseline = 1pt
-      (height: fontSize - baseline, baseline: baseline)
+      (height: 0.85em, baseline: 0.15em)
     } else {
       args
     }

@@ -253,7 +253,7 @@
     addSpellById("hunger-of-hadar"),
 
     addAbility("Сияющая душа")[
-        +ХАР к изл. и огню
+        +#formula("CHA") к изл. и огню
       ],
   ),
 
@@ -281,6 +281,32 @@
 
     addSpellById("fly"),
   ),
+
+ upgrade("Колдун 9ур",
+   levelUp(),
+   addMaxHP(6),
+
+   addAbility("Воззвание:\n Дьявольское зрение")[
+     Видишь в обычной и магической тьме на 120 футов
+   ],
+
+   addSpellById("mislead"),
+
+   removeSpellById("cure-wounds"),
+   addSpellById("synaptic-static")
+ ),
+
+ upgrade("Колдун 10ур",
+   levelUp(),
+   addMaxHP(6),
+
+   addSpellById("mind-sliver"),
+
+   addAbility("Небесное сопротивление")[
+     Вы и до 5ти существ получаете временные хиты #formula("LVL + CHA")
+     когда вы заканчиваете короткий или продолжительный отдых.
+   ]
+ ),
 )
 
 #charbook(char, locale: "ru")

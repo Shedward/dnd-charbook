@@ -60,11 +60,11 @@
       #hstack(
         size: (auto,),
         align: horizon,
-        gutter: paddings(2),
+        spacing: paddings(2),
         ..(slots.keys()
             .map(
               level => vstack(
-                gutter: paddings(0.5),
+                spacing: paddings(0.5),
 
                 spellSlots(slots.at(level)),
                 [ *#propCap(roman(int(level)))* ]
@@ -74,7 +74,7 @@
         ..(additional.keys()
             .map(
               key => vstack(
-                gutter: paddings(0.5),
+                spacing: paddings(0.5),
 
                 spellSlots(additional.at(key)),
                 [ *#propCap(key)* ]
@@ -112,7 +112,7 @@
 
   framed(fitting: expand-h)[
     #vstack(
-      row-gutter: paddings(1),
+      spacing: paddings(1),
       skipNone: true,
       grid(
         columns: (1fr, 1fr, 1fr),
@@ -230,7 +230,7 @@
     castType.push(concentration)
   }
 
-  castType.join()
+  castType.join(" ")
 }
 
 #let durationFromSpellbook(m) = {
@@ -277,7 +277,15 @@
 }
 
 #let componentsFromSpellbook(s) = {
-  s.components.components.join()
+  let isRequired = s.components.material_required == true
+  s.components.components.map(c => {
+    let key = "ui.spells.component." + lower(c)
+    if c == "M" and isRequired {
+      underline(strong(loc(key)))
+    } else {
+      loc(key)
+    }
+  }).join()
 }
 
 #let requiredComponentsFromSpellbook(s) = {
@@ -312,6 +320,7 @@
     duration: durationFromSpellbook(s),
     range: targetFromSpellbook(s),
     components: componentsFromSpellbook(s),
+    description: s.description,
     ..etc,
   )[
     #if "body" in s {
@@ -319,7 +328,7 @@
     }
     #requiredComponentsFromSpellbook(s)
   ]
-  (id: s.id, ..sp)
+  (id: s.id, originalName: s.at("original_name", default: none), ..sp)
 }
 
 #let allSpells() = {

@@ -1,7 +1,9 @@
 #import "../game/game.typ": *
 #import "../data/data.typ": spellbook
 #import "../page/spells.typ": spellFromSpellbook
-#import "render.typ": charbook
+
+#import "charbook.typ": charbook
+#import "deck.typ": deckOfSpells, deckOfClassSpells, deckOfAllSpells
 
 #let _normalizeArray(v) = if v == none { () } else { v }
 

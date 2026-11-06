@@ -15,6 +15,15 @@
   fn(currentCharacter)
 }
 
+#let tryResolveForCharacter(present, absent) = context {
+  let records = query(<character>)
+  if records.len() > 0 {
+    present(records.first().value)
+  } else {
+    absent()
+  }
+}
+
 #let STR = "STR"
 #let DEX = "DEX"
 #let CON = "CON"

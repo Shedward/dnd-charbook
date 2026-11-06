@@ -30,16 +30,26 @@ Requires [Typst](https://typst.app/) to be installed.
 
 ### Module structure
 
-All reusable code lives under `dnd/`, which is split into four modules re-exported by `dnd/dnd.typ`:
+All reusable code lives under `dnd/`, which is split into five modules re-exported by `dnd/dnd.typ`:
 
 - **`dnd/core/`** — Layout primitives, styling, graphics utilities, localization (`loc`), dimensions, and resource helpers. Import as `dnd.core.*`.
 - **`dnd/game/`** — D&D data model: `character()` constructor, stat/skill constants and calculations (modifiers, spell DC, proficiency bonus), spell definitions and helper functions, abilities, proficiencies, and biography structures.
 - **`dnd/page/`** — Page layout components that compose game data into rendered pages: cover, attacks, spells, abilities, proficiencies, inventory, quests, biography, and character list pages.
 - **`dnd/data/`** — Data loading (wraps `resources/data/spellbook.json`) and spellbook filtering utilities.
 
-### Character book pattern
+- **`dnd/builder/`** — Character progression, standard book assembly and printable decks. See the [README](README.md) for runnable examples.
 
-Each file in `books/` follows this structure:
+### Builder API and decks
+
+Use `books/marek-grivachov.typ` as the reference for a new book. Import `dnd/builder/builder.typ` for mutations and renderers, and `dnd/game/game.typ` for stats and game helpers. Start `build(...)` with `introduce(...)` (default level 0). Mutations run in order. `upgrade(source, ..mutations)` groups changes and labels added abilities, proficiencies and spells with their source. Increment the level explicitly with `levelUp()`. Use `addSpellById(id)` for one catalogue spell and `addClassSpells(class, level)` for a class at one spell level. The result contains cantrips and spells grouped by level.
+
+`charbook(char, locale: "ru")` applies A5 styling, sets the character and locale, and renders the standard pages. Spell, ability, proficiency and biography sections depend on the supplied data.
+
+For cards, set the locale in the deck document. `deckOfSpells(char)` registers the character and prints their spells. `deckOfClassSpells(class, subclass: none)` selects catalogue entries by their stored class/subclass names. Both use `page/deck.typ` for pagination and mirrored backs. Defaults are A4 with a 3 × 3 grid. Override `paper`, `cardSize`, `margin`, `cardPadding` or `stroke` for print layout. The `card` callback returns a dictionary with `front` and `back`; the default in `page/spellCard.typ` fits the description to the back and truncates overflowing text with an ellipsis.
+
+### Manual page composition
+
+Older books compose individual pages directly:
 
 ```typ
 #import "../dnd/dnd.typ"
@@ -63,13 +73,13 @@ Each file in `books/` follows this structure:
 
 ### Key patterns
 
-**Localization:** All user-facing strings use `loc(en: "...", ru: "...")`. The active locale is set once per book with `#setLocale("en"|"ru")` and resolved via Typst's `context` + metadata query system.
+**Localization:** Shared UI labels use `loc("key", subs: (:))` with entries in `resources/data/localization.json`. English is the fallback. The active locale is set once per book with `#setLocale("en"|"ru")` and resolved via Typst's `context` + metadata query system.
 
 **Character context:** `setCharacter()` stores the character dict as metadata; page components retrieve it via `resolveForCharacter()`. This avoids passing the character dict to every function call.
 
 **Level-dependent values:** `byLevelMethod(dict)` takes a dictionary keyed by level strings (threshold-based, e.g. `"1": 2, "4": 3`) and returns a function that resolves to the correct value for the character's current level. Used for spell slots, cantrip counts, etc.
 
-**Formulas:** `roll("2d6+STR")` and `formula("PROF+DEX")` evaluate expressions using the current character's stats. `STR`, `DEX`, `CON`, `INT`, `WIS`, `CHA`, `PROF`, and `LVL` are substituted automatically.
+**Formulas:** `roll("2d6+STR")` and `formula("PROF+DEX")` use stat modifiers from the current character. Both support stat names and the casting modifier `MOD`; `formula` also resolves `PROF` and `LVL`. Without character context they display the expression.
 
 **Resources:** Icons are in `resources/icons/`, spell data in `resources/data/spellbook.json`.
 
@@ -97,7 +107,7 @@ Spell data lives in `resources/data/spellbook.json` (505 spells). Each record ha
 }
 ```
 
-`duration` is seconds as a float (`0.0` = instant, `null` = permanent). `target` is a DSL string evaluated in the same scope as `body`.
+`duration` is seconds as a float (`0.0` = instant, `null` = permanent). `target` is a DSL string evaluated by the target parser in `dnd/page/spells.typ`. The card back uses the separate `description` field.
 
 ### Spell body DSL
 
@@ -132,5 +142,7 @@ Use `/create-spell` to generate a new spell record following all DSL and style r
 **Spacing:** Use `#v(X)` at the start of block content for entry gaps — Typst suppresses leading vertical space at the top of a column/page, so the first entry gets no gap automatically. Avoid `block(above: X)` as a drop-in replacement: if you also remove a trailing `\`, you silently lose spacing (`\` after a block contributes ~line-height of vertical space).
 
 **Paragraph wrapping:** Never wrap block content in `par()` — it generates "parbreak/block may not occur inside of a paragraph" warnings (one call can produce 20+). Use `block[#set par(...) #body]` to apply paragraph settings, or `#set par(...)` directly inside table cell content.
+
+**Verification:** `buildAll.sh` covers top-level books only. For builder or spell catalogue changes, also compile `books/debug/char-builder-test.typ` or `books/debug/spellbook-test.typ` with `--root .`. For card layout, compile `books/deck-test.typ` and inspect both sides. CI compiles `main.typ`, which includes the Edna book. The spell preview scripts still reference older paths under `books/`; use the debug files directly.
 
 **Checking warnings:** `tail -10` hides most build warnings. Always check: `./scripts/buildAll.sh 2>&1 | grep -i warning`

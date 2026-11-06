@@ -68,9 +68,15 @@
   eval(e)
 }
 
-#let roll(formula) = resolveForCharacter(c => characterRoll(c, formula))
+#let roll(formula) = tryResolveForCharacter(
+  c => characterRoll(c, formula),
+  () => formula,
+)
 
-#let formula(formula) = resolveForCharacter(c => characterFormula(c, formula))
+#let formula(formula) = tryResolveForCharacter(
+  c => characterFormula(c, formula),
+  () => formula,
+)
 
 #let dc(dcFormula) = [#loc("spell.dsl.dc") #formula(dcFormula)]
 

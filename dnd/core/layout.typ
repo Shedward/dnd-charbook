@@ -23,6 +23,7 @@
 // - body: Actual content
 #let container(
   fitting: shrink,
+  alignment: center + horizon,
   insets: paddings(1),
   background: (size) => rect(width: size.width, height: size.height),
   body
@@ -60,7 +61,9 @@
       ]
       #place(center + horizon)[
         #block(width: size.width, height: size.height)[
-          #bodyWithPadding
+          #align(alignment)[
+            #bodyWithPadding
+          ]
         ]
       ]
     ]
@@ -72,12 +75,14 @@
 // - stroke: Stroke width
 #let framed(
   stroke: strokes.thin,
+  alignment: center + horizon,
   radius: paddings(1) - 0.1 * paddings(1),
   insets: paddings(1),
   fitting: shrink,
   body
 ) = container(
   fitting: fitting,
+  alignment: alignment,
   insets: insets,
   background: size => frame(
     width: size.width,
@@ -190,16 +195,18 @@
   }
 }
 
-#let hstack(size: (1fr,), skipNone: false, ..elems) = {
+#let hstack(size: (1fr,), spacing: 0pt, skipNone: false, ..elems) = {
   grid(
     columns: matchedSize(filterNone(elems.pos(), shouldSkip: skipNone), size),
-    ..elems
+    column-gutter: spacing,
+    ..elems,
   )
 }
 
-#let vstack(size: (auto,), skipNone: false, ..elems) = {
+#let vstack(size: (auto,), spacing: 0pt, skipNone: false, ..elems) = {
   grid(
     rows: matchedSize(filterNone(elems.pos(), shouldSkip: skipNone), size),
-    ..elems
+    row-gutter: spacing,
+    ..elems,
   )
 }

@@ -35,7 +35,7 @@
   },
   "spell.duration.suffix.minute": {
     "en": "m",
-    "ru": "мин"
+    "ru": "м"
   },
   "spell.duration.suffix.hour": {
     "en": "h",
@@ -556,6 +556,18 @@
   "ui.spells.components": {
     "en": "Comp.",
     "ru": "Компон."
+  },
+  "ui.spells.component.v": {
+    "en": "V",
+    "ru": "В"
+  },
+  "ui.spells.component.s": {
+    "en": "S",
+    "ru": "С"
+  },
+  "ui.spells.component.m": {
+    "en": "M",
+    "ru": "М"
   },
   "ui.spells.requires": {
     "en": " Requires ",
