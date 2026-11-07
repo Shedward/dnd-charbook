@@ -23,9 +23,10 @@ def prompt_block(path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("spell_id")
-    for option, folder in (("layout", "layouts"), ("story", "stories"), ("style", "styles")):
+    for options, folder in ((("--layout",), "layouts"), (("--story",), "stories"),
+                            (("--aesthetic", "--style"), "aesthetics")):
         choices = sorted(p.name for p in (PROFILES / folder).iterdir() if profile_path(folder, p.name).is_file())
-        parser.add_argument("--" + option, required=True, choices=choices)
+        parser.add_argument(*options, required=True, choices=choices)
     scene_input = parser.add_mutually_exclusive_group(required=True)
     scene_input.add_argument("--scene", help="Reviewed scene brief")
     scene_input.add_argument("--scene-from", type=Path, help="Read the scene-prompt from a finished PNG (Pillow)")
@@ -58,7 +59,7 @@ def main():
     print(f"Generate one illustration for {spell['name']} ({args.spell_id}).", layout,
           prompt_block(PROFILES / "scale.md"),
           prompt_block(profile_path("stories", args.story)),
-          prompt_block(profile_path("styles", args.style)),
+          prompt_block(profile_path("aesthetics", args.aesthetic)),
           "Scene: " + scene, sep="\n\n")
 
 
