@@ -58,6 +58,8 @@ PDF появится в `build/`. Параметр `--root .` нужен для 
 typst compile --root . --input illustration-set=woodcut-frames books/deck-test.typ build/frames.pdf
 ```
 
+Готовые PNG в `resources/illustrations/` хранятся в Git LFS. После клонирования установите Git LFS и выполните в репозитории `git lfs install --local` и `git lfs pull`. Для сборки с одним набором можно загрузить только его, например `git lfs pull --include="resources/illustrations/woodcut-frames/*.png"`. Черновики генерации остаются в `build/`.
+
 В `resources/illustrations/` хранится один финальный PNG на заклинание в наборе. Холст — 70,67 × 99,67 мм с вылетом 2 мм. Размер печати и пропорции общие для наборов. Разрешение PNG может различаться: упаковщик размещает исходник виньетки пиксель в пиксель, а полноформатный арт сохраняет разрешение генератора. Книга использует область виньетки из того же PNG; книжный набор включается через `--input book-illustration-set=<набор>`. Для публикации нужен Python с Pillow. Команды приведены в профилях [виньетки](docs/illustrations/profiles/layouts/vignette/vignette.md) и [рамки](docs/illustrations/profiles/layouts/full-face/full-face.md).
 
 Для лицевой стороны можно задать [частичную цветовую схему](docs/cards/plate-format.md#цветовая-схема). Typst берёт цвета из метаданных PNG конкретной карты, затем из `style.json` набора. У остальных элементов сохраняется обычное оформление.
