@@ -1,1 +1,20 @@
-{}
+{
+  "acid-splash": {},
+  "dominate-beast": {},
+  "fabricate": {},
+  "insect-plague": {},
+  "knock": {},
+  "mordenkainens-magnificent-mansion": {
+    "body-scale": 0.84
+  },
+  "nondetection": {},
+  "ottos-irresistible-dance": {},
+  "prismatic-spray": {},
+  "scrying": {
+    "body-scale": 0.78
+  },
+  "spirit-shroud": {
+    "body-scale": 0.84
+  },
+  "wrathful-smite": {}
+}

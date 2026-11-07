@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1] / "resources" / "illustrations"
 WIDTH, HEIGHT = 200 / 3 + 4, 287 / 3 + 4  # Finished card plus 2 mm bleed.
 CROP = "book-crop"
 SCHEME = "color-scheme"
+SCENE = "scene-prompt"
 COLOR_ROLES = {"title", "stats", "rules", "divider", "content-fill"}
 
 
@@ -25,7 +26,7 @@ def color_scheme(value):
     return value
 
 
-def vignette(source, target, width_mm, body_scale=None, scheme=None):
+def vignette(source, target, width_mm, body_scale=None, scheme=None, scene=None):
     # Keep the source at native resolution. Physical size determines canvas pixels.
     source.load()
     px = source.width / width_mm
@@ -62,12 +63,20 @@ def vignette(source, target, width_mm, body_scale=None, scheme=None):
         info.add_text("body-scale", str(body_scale))
     if scheme:
         info.add_text(SCHEME, json.dumps(scheme))
+    if scene:
+        info.add_itxt(SCENE, scene)
     info.add_text(CROP, json.dumps([x, y, source.width, source.height]))
     plate.save(target, format="PNG", pnginfo=info)
 
 
+def write_index(path, data):
+    with NamedTemporaryFile("w", dir=path.parent, delete=False) as temp:
+        json.dump(data, temp, indent=2)
+        temp.write("\n")
+    Path(temp.name).replace(path)
+
+
 def index(directory):
-    manifest = directory / "index.json"
     style_file = directory / "style.json"
     style = json.loads(style_file.read_text()) if style_file.exists() else {}
     defaults = {"title": style["title-color"]} if style.get("title-color") is not None else {}
@@ -94,10 +103,7 @@ def index(directory):
             if scheme:
                 entry[SCHEME] = scheme
             entries[path.stem] = entry
-    with NamedTemporaryFile("w", dir=directory, delete=False) as temp:
-        json.dump(entries, temp, indent=2)
-        temp.write("\n")
-    Path(temp.name).replace(manifest)
+    write_index(directory / "index.json", entries)
 
 
 def main():
@@ -108,7 +114,10 @@ def main():
     parser.add_argument("--vignette-width", type=float, metavar="MM")
     parser.add_argument("--body-scale", type=float, help="Use the same body scale as the generation mask")
     parser.add_argument("--color-scheme", type=Path, help="JSON file with optional face colors, including content-fill")
+    parser.add_argument("--scene-file", type=Path, help="UTF-8 scene brief to embed in the plate")
     args = parser.parse_args()
+    if args.scene_file is not None and args.source is None:
+        parser.error("--scene-file requires a source")
     if args.color_scheme is not None and args.source is None:
         parser.error("--color-scheme requires a source")
     if args.body_scale is not None and (not args.source or not 0 < args.body_scale <= 1):
@@ -134,31 +143,38 @@ def publish(folder, args, parser):
             staging = Path(temp.name)
         try:
             with Image.open(args.source) as img:
+                scene = args.scene_file.read_text(encoding="utf-8").strip() if args.scene_file else img.info.get(SCENE)
+                if args.scene_file and not scene:
+                    parser.error("--scene-file is empty")
                 raw_scheme = args.color_scheme.read_text() if args.color_scheme else img.info.get(SCHEME, "{}")
                 scheme = color_scheme(json.loads(raw_scheme))
                 if args.vignette_width is None:
                     if img.format != "PNG" or abs(img.width / img.height - WIDTH / HEIGHT) > 0.002:
                         parser.error("Expected a full card PNG with bleed")
-                    if args.body_scale is None and args.color_scheme is None:
+                    if args.body_scale is None and args.color_scheme is None and args.scene_file is None:
                         shutil.copyfile(args.source, staging)
                     else:
                         info = PngImagePlugin.PngInfo()
                         for key, value in img.text.items():
-                            if key != SCHEME and (key != "body-scale" or args.body_scale is None):
+                            if key not in (SCHEME, SCENE) and (key != "body-scale" or args.body_scale is None):
                                 info.add_text(key, value)
                         if args.body_scale is not None:
                             info.add_text("body-scale", str(args.body_scale))
+                        if scene:
+                            info.add_itxt(SCENE, scene)
                         if scheme:
                             info.add_text(SCHEME, json.dumps(scheme))
                         img.save(staging, format="PNG", pnginfo=info)
                 else:
                     if not 0 < args.vignette_width <= WIDTH - 14:
                         parser.error("Vignette width must fit inside the frame")
-                    vignette(img, staging, args.vignette_width, args.body_scale, scheme)
+                    vignette(img, staging, args.vignette_width, args.body_scale, scheme, scene)
             staging.replace(target)
         finally:
             staging.unlink(missing_ok=True)
     index(folder)
+    sets = sorted(path.parent.name for path in ROOT.glob("*/index.json"))
+    write_index(ROOT / "sets.json", sets)
 
 
 if __name__ == "__main__":

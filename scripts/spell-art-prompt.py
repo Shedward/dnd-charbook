@@ -26,7 +26,9 @@ def main():
     for option, folder in (("layout", "layouts"), ("story", "stories"), ("style", "styles")):
         choices = sorted(p.name for p in (PROFILES / folder).iterdir() if profile_path(folder, p.name).is_file())
         parser.add_argument("--" + option, required=True, choices=choices)
-    parser.add_argument("--scene", required=True, help="Reviewed scene brief")
+    scene_input = parser.add_mutually_exclusive_group(required=True)
+    scene_input.add_argument("--scene", help="Reviewed scene brief")
+    scene_input.add_argument("--scene-from", type=Path, help="Read the scene-prompt from a finished PNG (Pillow)")
     parser.add_argument("--mask", type=Path, help="Exported spatial guide for this spell")
     args = parser.parse_args()
 
@@ -43,11 +45,21 @@ def main():
     elif args.mask is not None:
         parser.error(f"{args.layout} takes no spatial guide")
 
+    scene = args.scene
+    if args.scene_from:
+        from PIL import Image
+        try:
+            with Image.open(args.scene_from) as plate:
+                scene = plate.info.get("scene-prompt")
+        except OSError as error:
+            parser.error(str(error))
+        if not scene:
+            parser.error(f"No scene-prompt in {args.scene_from}")
     print(f"Generate one illustration for {spell['name']} ({args.spell_id}).", layout,
           prompt_block(PROFILES / "scale.md"),
           prompt_block(profile_path("stories", args.story)),
           prompt_block(profile_path("styles", args.style)),
-          "Scene: " + args.scene, sep="\n\n")
+          "Scene: " + scene, sep="\n\n")
 
 
 if __name__ == "__main__":
