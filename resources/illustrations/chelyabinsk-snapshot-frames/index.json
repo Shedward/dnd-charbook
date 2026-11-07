@@ -16,6 +16,23 @@
       "divider": "#545451"
     }
   },
+  "arcane-lock": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.86,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
   "dominate-beast": {
     "font": "PT Serif",
     "title-type": {
@@ -60,6 +77,23 @@
       "uppercase": true
     },
     "body-scale": 0.92,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "heat-metal": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.9,
     "color-scheme": {
       "title": "#792936",
       "stats": "#292829",
@@ -186,6 +220,23 @@
       "divider": "#545451"
     }
   },
+  "silence": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.92,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
   "spirit-shroud": {
     "font": "PT Serif",
     "title-type": {
@@ -196,6 +247,23 @@
       "uppercase": true
     },
     "body-scale": 0.8,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "water-walk": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.92,
     "color-scheme": {
       "title": "#792936",
       "stats": "#292829",

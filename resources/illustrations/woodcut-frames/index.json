@@ -1,7 +1,13 @@
 {
   "acid-splash": {},
+  "arcane-lock": {
+    "body-scale": 0.86
+  },
   "dominate-beast": {},
   "fabricate": {},
+  "heat-metal": {
+    "body-scale": 0.9
+  },
   "insect-plague": {},
   "knock": {},
   "mordenkainens-magnificent-mansion": {
@@ -13,8 +19,10 @@
   "scrying": {
     "body-scale": 0.78
   },
+  "silence": {},
   "spirit-shroud": {
     "body-scale": 0.84
   },
+  "water-walk": {},
   "wrathful-smite": {}
 }

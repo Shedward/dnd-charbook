@@ -11,6 +11,8 @@
   "knock", "fabricate",
   "nondetection", "acid-splash",
   "wrathful-smite", "insect-plague",
+  "silence", "heat-metal",
+  "water-walk", "arcane-lock",
 )
 #let catalogue = dnd.data.spellbook()
 #let sample = sampleIds.map(id => {
