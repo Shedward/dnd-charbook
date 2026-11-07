@@ -9,7 +9,7 @@
     context {
       let ink = text.fill
       if type(ink) == color and ink != black {
-        let svg = read(path).replace("#000000", ink.to-hex()).replace("#FFFFFF", "none")
+        let svg = read(path).replace("#000000", ink.to-hex())
         box(image(bytes(svg), format: "svg"), ..resolvedArgs)
       } else {
         box(image(path), ..resolvedArgs)
