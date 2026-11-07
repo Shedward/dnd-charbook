@@ -48,7 +48,7 @@
       let rendered = chunk.map(renderCard)
       let isLast = chunkStart + perPage >= data.len()
 
-      let frontCells = rendered.map(r => wrap(r.front))
+      let frontCells = rendered.map(r => if r.at("fullFront", default: false) { r.front } else { wrap(r.front) })
       while frontCells.len() < perPage { frontCells.push(emptyCell) }
       gridOf(frontCells)
       pagebreak()

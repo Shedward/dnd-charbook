@@ -1,4 +1,5 @@
 #import "../game/character.typ": setCharacter
+#import "../core/resources.typ": defaultIllustrationSet
 #import "../page/deck.typ": deck
 #import "../page/spellCard.typ": spellCard
 #import "../page/spells.typ": spellFromSpellbook
@@ -6,7 +7,8 @@
 
 #let deckOfSpells(
   char,
-  card: spellCard,
+  card: auto,
+  illustrationSet: defaultIllustrationSet,
   cardSize: (33.33%, 33.33%),
   paper: "a4",
   margin: 5mm,
@@ -22,7 +24,7 @@
   deck(
     all,
     cardSize,
-    card,
+    if card == auto { spellCard.with(illustrationSet: illustrationSet) } else { card },
     paper: paper,
     margin: margin,
     cardPadding: cardPadding,
@@ -32,7 +34,8 @@
 
 #let _catalogueDeck(
   spells,
-  card: spellCard,
+  card: auto,
+  illustrationSet: defaultIllustrationSet,
   cardSize: (33.33%, 33.33%),
   paper: "a4",
   margin: 5mm,
@@ -41,7 +44,8 @@
 ) = {
   let cards = spells.sorted(key: s => s.level)
     .map(s => (..spellFromSpellbook(s), level: s.level))
-  deck(cards, cardSize, card, paper: paper, margin: margin,
+  let renderer = if card == auto { spellCard.with(illustrationSet: illustrationSet) } else { card }
+  deck(cards, cardSize, renderer, paper: paper, margin: margin,
     cardPadding: cardPadding, stroke: stroke)
 }
 

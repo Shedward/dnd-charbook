@@ -2,6 +2,6 @@
 
 #dnd.core.setLocale("ru")
 #dnd.builder.deckOfAllSpells(card: spell => (
-  front: dnd.page.spellCardFront(spell),
+  ..dnd.page.spellCard(spell),
   back: [],
 ))

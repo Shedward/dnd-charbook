@@ -30,7 +30,14 @@
     grid.cell(align: right, inset: (top: paddings(0.25)))[
       #if (spell.castType == none) [-] else [#spell.castType]
     ],
-    grid.cell(colspan: 3, inset: (top: paddings(0.25)), spell.body),
+    grid.cell(colspan: 3, inset: (top: paddings(0.25)))[
+      #spell.body
+      #let illustration = bookSpellIllustration(spell)
+      #if illustration != none {
+        v(paddings(1))
+        illustration
+      }
+    ],
   )
 ]
 
