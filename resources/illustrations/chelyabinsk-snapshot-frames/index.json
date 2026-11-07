@@ -1,0 +1,223 @@
+{
+  "acid-splash": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.88,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "dominate-beast": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.8,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "fabricate": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.9,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "fireball": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.92,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "insect-plague": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.8,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "knock": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.8,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "mordenkainens-magnificent-mansion": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.73,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "nondetection": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.88,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "ottos-irresistible-dance": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.74,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "prismatic-spray": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.8,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "scrying": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.75,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "spirit-shroud": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.8,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  },
+  "wrathful-smite": {
+    "font": "PT Serif",
+    "title-type": {
+      "font": "Georgia",
+      "size": 12.5,
+      "weight": "bold",
+      "tracking": 0.45,
+      "uppercase": true
+    },
+    "body-scale": 0.88,
+    "color-scheme": {
+      "title": "#792936",
+      "stats": "#292829",
+      "rules": "#191b1d",
+      "divider": "#545451"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "font": "PT Serif",
+  "color-scheme": {
+    "title": "#792936",
+    "stats": "#292829",
+    "rules": "#191b1d",
+    "divider": "#545451"
+  },
+  "title-type": {
+    "font": "Georgia",
+    "size": 12.5,
+    "weight": "bold",
+    "tracking": 0.45,
+    "uppercase": true
+  }
+}

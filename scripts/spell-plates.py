@@ -82,12 +82,17 @@ def index(directory):
     defaults = {"title": style["title-color"]} if style.get("title-color") is not None else {}
     defaults.update(color_scheme(style.get(SCHEME, {})))
     color_scheme(defaults)
+    family = style.get("font")
+    if family is not None and (not isinstance(family, str) or not family.strip()):
+        raise ValueError(f"{style_file}: expected a font family name")
     entries = {}
     for path in sorted(directory.glob("*.png")):
         with Image.open(path) as img:
             if abs(img.width / img.height - WIDTH / HEIGHT) > 0.002:
                 raise ValueError(f"{path}: expected a card including 2 mm bleed")
-            entry = {}
+            entry = {"font": family} if family else {}
+            if "title-type" in style:
+                entry["title-type"] = style["title-type"]
             scale = float(img.info.get("body-scale", 1))
             if not 0 < scale <= 1:
                 raise ValueError(f"{path}: invalid body scale")

@@ -8,7 +8,7 @@
 |---|---|---|
 | Лайаут | Холст, области для рисунка и текста, отступы, способ экспорта и наложения | [`vignette` — нижняя виньетка](profiles/layouts/vignette/vignette.md), [`full-face` — иллюстрация до краёв карты](profiles/layouts/full-face/full-face.md) |
 | Сюжет и персонажи | Какое действие показывает эффект, кто участвует, где уместна шутка, как отличить близкие заклинания | [`effect-first` — действие и реакция](profiles/stories/effect-first/effect-first.md) |
-| Эстетика | Мир, облик героев и предметов, манера рисунка, палитра, характер перехода в бумагу | [`woodcut` — D&D в ксилографии](profiles/aesthetics/woodcut/woodcut.md), [`noir` — нуарный детектив](profiles/aesthetics/noir/noir.md) |
+| Эстетика | Мир, облик героев и предметов, манера рисунка, палитра, характер перехода в бумагу | [`woodcut` — D&D в ксилографии](profiles/aesthetics/woodcut/woodcut.md), [`noir` — нуарный детектив](profiles/aesthetics/noir/noir.md), [Челябинск на мыльницу](profiles/aesthetics/chelyabinsk-snapshot/chelyabinsk-snapshot.md) |
 
 **Принятая полноформатная серия** — `full-face / effect-first / woodcut`. Сначала сравните [маску с текстовым наложением](../cards/resources/ornament-guides.png), затем [готовые карточки после обрезки](profiles/aesthetics/woodcut/resources/woodcut-scenes.png). Маска задаёт поле текста, вылет, безопасную область и место для опционального орнамента. На готовом листе оценивайте читаемость действия, масштаб персонажей и связь нижней сцены с окружением вдоль краёв.
 

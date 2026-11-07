@@ -224,9 +224,9 @@
 // Spell card
 
 
-#let spellCardTitle(body) = {
+#let spellCardTitle(body, font: fonts.ability) = {
   set text(
-    font: fonts.ability,
+    font: font,
     size: 15pt
   )
   set par(justify: false)

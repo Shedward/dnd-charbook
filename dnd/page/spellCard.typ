@@ -9,11 +9,11 @@
   body,
 )
 
-#let spellCardChip(content, alignment: center + horizon) = box(
+#let spellCardChip(content, alignment: center + horizon, font: none) = box(
   width: 100%,
   inset: paddings(0.5),
   align(alignment, if content != none {
-    text(font: fonts.header, size: 9pt, smallcaps(content))
+    text(font: if font == none { fonts.header } else { font }, size: 9pt, smallcaps(content))
   })
 )
 
@@ -39,7 +39,7 @@
 
 #let spellCardSectionDivider = _sectionDivider(colors.secondary)
 
-#let spellCardLevelBadge(level) = {
+#let spellCardLevelBadge(level, font: none) = {
   let label = if level == none {
     []
   } else if level == 0 {
@@ -47,25 +47,25 @@
   } else {
     roman(level)
   }
-  text(font: fonts.ability, size: 18pt, label)
+  text(font: if font == none { fonts.ability } else { font }, size: 18pt, label)
 }
 
-#let spellCardResources(spell, divider: spellCardDivider) = pad(x: -paddings(2), grid(
+#let spellCardResources(spell, divider: spellCardDivider, family: none) = pad(x: -paddings(2), grid(
   columns: (1fr, auto, 1fr, auto, 2fr),
   align: center + horizon,
-  spellCardChip(spell.components),
+  spellCardChip(spell.components, font: family),
   divider,
-  spellCardChip(spell.castTime),
-  spellCardLevelBadge(spell.at("level", default: none)),
-  spellCardChip(spell.castType),
+  spellCardChip(spell.castTime, font: family),
+  spellCardLevelBadge(spell.at("level", default: none), font: family),
+  spellCardChip(spell.castType, font: family),
 ))
 
-#let spellCardTarget(spell, divider: spellCardDivider) = grid(
+#let spellCardTarget(spell, divider: spellCardDivider, family: none) = grid(
   columns: (1fr, auto, 1fr),
   align: center + horizon,
-  spellCardChip(spell.range),
+  spellCardChip(spell.range, font: family),
   divider,
-  spellCardChip(spell.duration),
+  spellCardChip(spell.duration, font: family),
 )
 
 // Keep DSL elements (icons, formulas, contextual translations) intact when
@@ -103,14 +103,14 @@
 
 #let _ink(body, scheme, role) = if role in scheme { text(fill: rgb(scheme.at(role)), body) } else { body }
 
-#let _frontHeader(spell, title, scheme: (:)) = {
+#let _frontHeader(spell, title, scheme: (:), family: none) = {
   let ink = if "divider" in scheme { rgb(scheme.divider) } else { colors.secondary }
   let divider = _divider(ink)
   (
-    _ink(spellCardResources(spell, divider: divider), scheme, "stats"),
-    spellCardTitle(_ink(title, scheme, "title")),
+    _ink(spellCardResources(spell, divider: divider, family: family), scheme, "stats"),
+    spellCardTitle(_ink(title, scheme, "title"), font: if family == none { fonts.ability } else { family }),
     _sectionDivider(ink),
-    _ink(spellCardTarget(spell, divider: divider), scheme, "stats"),
+    _ink(spellCardTarget(spell, divider: divider, family: family), scheme, "stats"),
   )
 }
 
@@ -142,13 +142,14 @@
 
 // Full-face fronts use the whole cut card, including the deck's usual outer padding.
 // The guide and the finished front measure exactly the same typeset content.
-#let _fullFace(spell, guide: none, ornamentGuide: false, showText: true, textEnd: none, scheme: (:), margin: 5mm, artClearance: 3mm, transitionWidth: 2mm, transitionColor: rgb("#ffd279")) = layout(size => context {
+#let _fullFace(spell, guide: none, ornamentGuide: false, showText: true, textEnd: none, scheme: (:), family: none, margin: 5mm, artClearance: 3mm, transitionWidth: 2mm, transitionColor: rgb("#ffd279")) = layout(size => context {
+  set text(font: family) if family != none
   let inset = paddings(2)
   let panelWidth = size.width - 2 * margin
   let width = panelWidth - 2 * inset
   let gutter = paddings(1.5)
   assert(margin >= 0pt and width > 0pt, message: "Full-face margin must leave space for text")
-  let header = _frontHeader(spell, spell.name, scheme: scheme)
+  let header = _frontHeader(spell, spell.name, scheme: scheme, family: family)
   let stack(items, gaps) = grid(columns: (width,), align: center + top,
     row-gutter: gaps, ..items)
   let heading = stack(header, gutter)
@@ -253,17 +254,17 @@
 })
 
 #let spellCardArtMask(spell, color: red, overlay: false, margin: 5mm, artClearance: 3mm,
-  transitionWidth: 2mm, transitionColor: rgb("#ffd279"), bleed: 0mm, ornamentGuide: true) = _fullFaceSheet(
+  transitionWidth: 2mm, transitionColor: rgb("#ffd279"), bleed: 0mm, ornamentGuide: true, family: none, scheme: (:)) = _fullFaceSheet(
   bleed: bleed,
   guide: color,
-  _fullFace(spell, guide: color, showText: overlay, ornamentGuide: ornamentGuide,
+  _fullFace(spell, guide: color, showText: overlay, family: family, scheme: scheme, ornamentGuide: ornamentGuide,
     margin: margin, artClearance: artClearance,
     transitionWidth: transitionWidth, transitionColor: transitionColor),
 )
 
-#let spellCardFullFace(spell, art, margin: 5mm, bleed: 0mm, artBleed: auto, textEnd: none, titleColor: none, scheme: (:)) = _fullFaceSheet(
+#let spellCardFullFace(spell, art, margin: 5mm, bleed: 0mm, artBleed: auto, textEnd: none, titleColor: none, scheme: (:), family: none) = _fullFaceSheet(
   bleed: bleed, art: art, artBleed: artBleed,
-  _fullFace(spell, margin: margin, textEnd: textEnd, scheme: (if titleColor == none { (:) } else { (title: titleColor) }) + scheme),
+  _fullFace(spell, margin: margin, family: family, textEnd: textEnd, scheme: (if titleColor == none { (:) } else { (title: titleColor) }) + scheme),
 )
 
 #let _tightenDescription(s) = s.replace(
@@ -320,13 +321,22 @@
   )))
 }
 
+#let spellPlateTypography(spell, style, scale) = {
+  let title = style.at("title-type", default: (:))
+  let name = if title == (:) { spell.name } else {
+    text(font: title.font, size: title.size * 1pt, weight: title.weight,
+      tracking: title.tracking * 1pt, if title.uppercase { upper(spell.name) } else { spell.name })
+  }
+  (..spell, name: name, body: text(size: scale * 1em, spell.body))
+}
+
 #let _plateFront(spell, plate, bleed: 0mm) = {
   if plate == none {
     return if bleed > 0mm { pad(bleed + 5mm, _plainFront(spell)) } else { _plainFront(spell) }
   }
   let scale = plate.at("body-scale", default: 1)
-  spellCardFullFace((..spell, body: text(size: scale * 1em, spell.body)), plate.path,
-    bleed: bleed, artBleed: 2mm, textEnd: plate.at("text-end", default: none), scheme: plate.at("color-scheme", default: (:)))
+  spellCardFullFace(spellPlateTypography(spell, plate, scale), plate.path,
+    bleed: bleed, artBleed: 2mm, textEnd: plate.at("text-end", default: none), scheme: plate.at("color-scheme", default: (:)), family: plate.at("font", default: none))
 }
 
 #let spellCardFront(spell, illustrationSet: defaultIllustrationSet, bleed: 0mm) = _plateFront(
