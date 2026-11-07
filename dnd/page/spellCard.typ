@@ -235,7 +235,16 @@
     }
     #place(top + left, dx: bleed, dy: bleed, block(width: w, height: h, card))
     #if guide != none and bleed > 0mm {
-      for (inset, dash) in ((bleed, "dashed"), (bleed + 2mm, "dotted")) {
+      let band = bleed + 2mm
+      let tint = rgb("#59bfdf").transparentize(12%)
+      for y in (0mm, size.height - band) {
+        place(top + left, dy: y, rect(width: size.width, height: band, fill: tint, stroke: none))
+      }
+      for x in (0mm, size.width - band) {
+        place(top + left, dx: x, dy: band,
+          rect(width: band, height: size.height - 2 * band, fill: tint, stroke: none))
+      }
+      for (inset, dash) in ((bleed, "dashed"), (band, "dotted")) {
         place(top + left, dx: inset, dy: inset, rect(width: size.width - 2 * inset,
           height: size.height - 2 * inset, stroke: (paint: rgb("#184461"), thickness: 0.28mm, dash: dash)))
       }
@@ -311,14 +320,18 @@
   )))
 }
 
-#let _plateFront(spell, plate) = {
-  if plate == none { return _plainFront(spell) }
+#let _plateFront(spell, plate, bleed: 0mm) = {
+  if plate == none {
+    return if bleed > 0mm { pad(bleed + 5mm, _plainFront(spell)) } else { _plainFront(spell) }
+  }
   let scale = plate.at("body-scale", default: 1)
   spellCardFullFace((..spell, body: text(size: scale * 1em, spell.body)), plate.path,
-    artBleed: 2mm, textEnd: plate.at("text-end", default: none), scheme: plate.at("color-scheme", default: (:)))
+    bleed: bleed, artBleed: 2mm, textEnd: plate.at("text-end", default: none), scheme: plate.at("color-scheme", default: (:)))
 }
 
-#let spellCardFront(spell, illustrationSet: defaultIllustrationSet) = _plateFront(spell, spellPlate(spell, illustrationSet))
+#let spellCardFront(spell, illustrationSet: defaultIllustrationSet, bleed: 0mm) = _plateFront(
+  spell, spellPlate(spell, illustrationSet), bleed: bleed,
+)
 
 #let spellCard(spell, illustrationSet: defaultIllustrationSet) = {
   let plate = spellPlate(spell, illustrationSet)

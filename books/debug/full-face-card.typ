@@ -14,7 +14,7 @@
 #let spell = (..base, level: entry.level, body: text(size: scale * 1em, base.body))
 #if mode == "front" {
   if "art" in sys.inputs {
-    dnd.page.spellCardFullFace(spell, sys.inputs.art, bleed: bleed, scheme: json.decode(sys.inputs.at("color-scheme", default: "{}")))
+    dnd.page.spellCardFullFace(spell, sys.inputs.art, bleed: bleed, scheme: json(bytes(sys.inputs.at("color-scheme", default: "{}"))))
   } else {
     assert(plate != none, message: "No plate for " + id + " in the selected set")
     dnd.page.spellCardFullFace(spell, plate.path, bleed: bleed, artBleed: 2mm,

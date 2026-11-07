@@ -1,7 +1,7 @@
 #import "../dnd/dnd.typ"
 
 #show: dnd.core.charbook
-#set page(paper: "a5", margin: 4mm)
+#set page(paper: "a4", margin: 12mm)
 #dnd.core.setLocale("ru")
 
 #let sampleIds = (
@@ -21,10 +21,40 @@
 #let sets = json("/resources/illustrations/sets.json")
 #let width = 200mm / 3
 #let height = 287mm / 3
+#let bleed = 2mm
+#let mark = 3mm
+#let gutter = 1mm
+#let plateWidth = width + 2 * bleed
+#let plateHeight = height + 2 * bleed
 #let front(spell, setName) = {
-  let card = dnd.page.spellCard(spell, illustrationSet: setName)
-  block(width: width, height: height, clip: true,
-    if card.fullFront { card.front } else { pad(5mm, card.front) })
+  let pen = 0.25pt + gray
+  let offset = mark + gutter
+  block(width: plateWidth + 2 * offset, height: plateHeight + 2 * offset)[
+    #place(top + left, dx: offset, dy: offset,
+      block(width: plateWidth, height: plateHeight,
+        dnd.page.spellCardFront(spell, illustrationSet: setName, bleed: bleed)))
+    #let veil = white.transparentize(34%)
+    #for y in (offset, offset + bleed + height) {
+      place(top + left, dx: offset, dy: y,
+        rect(width: plateWidth, height: bleed, fill: veil, stroke: none))
+    }
+    #for x in (offset, offset + bleed + width) {
+      place(top + left, dx: x, dy: offset + bleed,
+        rect(width: bleed, height: height, fill: veil, stroke: none))
+    }
+    #place(top + left, dx: offset + bleed, dy: offset + bleed,
+      rect(width: width, height: height, fill: none, stroke: 0.3pt + rgb("#aaaaaa")))
+    #for x in (offset + bleed, offset + bleed + width) {
+      for y in (0mm, offset + plateHeight + gutter) {
+        place(top + left, dx: x, dy: y, line(length: mark, angle: 90deg, stroke: pen))
+      }
+    }
+    #for y in (offset + bleed, offset + bleed + height) {
+      for x in (0mm, offset + plateWidth + gutter) {
+        place(top + left, dx: x, dy: y, line(length: mark, stroke: pen))
+      }
+    }
+  ]
 }
 
 // Each row compares one spell across sets at the deck's actual trim size.
@@ -32,7 +62,7 @@
   for columns in sets.chunks(2) {
     pagebreak(weak: true)
     align(center, grid(
-      columns: (width,) * columns.len(),
+      columns: (plateWidth + 2 * (mark + gutter),) * columns.len(),
       column-gutter: 3mm,
       row-gutter: 2mm,
       ..columns.map(name => align(center, text(size: 8pt, name))),
