@@ -1,7 +1,7 @@
 #import "../dnd/dnd.typ"
 
 #show: dnd.core.charbook
-#set page(paper: "a4", margin: 12mm)
+#set page(width: auto, height: auto, margin: 5mm)
 #dnd.core.setLocale("ru")
 
 #let sampleIds = (
@@ -57,16 +57,14 @@
   ]
 }
 
-// Each row compares one spell across sets at the deck's actual trim size.
-#for spells in sample.chunks(2) {
-  for columns in sets.chunks(2) {
-    pagebreak(weak: true)
-    align(center, grid(
-      columns: (plateWidth + 2 * (mark + gutter),) * columns.len(),
-      column-gutter: 3mm,
-      row-gutter: 2mm,
-      ..columns.map(name => align(center, text(size: 8pt, name))),
-      ..spells.map(spell => columns.map(name => front(spell, name))).flatten(),
-    ))
-  }
+// Keep all styles of one spell on a single sheet at the deck's trim size.
+#for spell in sample {
+  pagebreak(weak: true)
+  grid(
+    columns: (plateWidth + 2 * (mark + gutter),) * sets.len(),
+    column-gutter: 3mm,
+    row-gutter: 2mm,
+    ..sets.map(name => align(center, text(size: 8pt, name))),
+    ..sets.map(name => front(spell, name)),
+  )
 }
